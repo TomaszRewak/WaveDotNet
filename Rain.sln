@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rain", "Rain\Rain.csproj", "{0AC442C1-63C5-4D90-8525-78CD8EB9B431}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rain.Sandbox", "Rain.Sandbox\Rain.Sandbox.csproj", "{06CE492F-78EF-483C-98AB-8045BC121DF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rain.Sandbox", "Rain.Sandbox\Rain.Sandbox.csproj", "{06CE492F-78EF-483C-98AB-8045BC121DF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rain.Wave", "Rain.Wave\Rain.Wave.csproj", "{BF069839-0A53-41C0-83EE-F4E1C0DD2ABB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{06CE492F-78EF-483C-98AB-8045BC121DF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06CE492F-78EF-483C-98AB-8045BC121DF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06CE492F-78EF-483C-98AB-8045BC121DF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF069839-0A53-41C0-83EE-F4E1C0DD2ABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF069839-0A53-41C0-83EE-F4E1C0DD2ABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF069839-0A53-41C0-83EE-F4E1C0DD2ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF069839-0A53-41C0-83EE-F4E1C0DD2ABB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

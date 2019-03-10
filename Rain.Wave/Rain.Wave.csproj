@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Generators\" />
+    <Folder Include="Filters\" />
+    <Folder Include="Combiners\" />
+    <Folder Include="Transformer\" />
+  </ItemGroup>
+
+</Project>

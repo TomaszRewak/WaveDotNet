@@ -8,19 +8,34 @@ namespace Rain.Sandbox
 {
 	public interface IWave
 	{
-		float Probe();
+		float Probe(float time);
 	}
 
-	public class FilteredWhiteNoiseWave : IWave
+	public class WhiteNoiseWave : IWave
 	{
 		private Random _randomGenerator = new Random();
-		private float _lastSample;
 
-		public float Probe()
+		public float Probe(float time)
 		{
-			var randomValue = (float)_randomGenerator.NextDouble();
+			return (float)_randomGenerator.NextDouble();
+		}
+	}
 
-			_lastSample = _lastSample + (float)Math.Max(-0.2, Math.Min(0.2, Math.Sign(randomValue - _lastSample) * (float)Math.Pow(randomValue - _lastSample, 2)));
+	public class LowPassWaveFilter : IWave
+	{
+		private float _lastSample;
+		private IWave _baseWave;
+
+		public LowPassWaveFilter(IWave baseWave)
+		{
+			_baseWave = baseWave;
+		}
+
+		public float Probe(float time)
+		{
+			var value = _baseWave.Probe(time);
+
+			_lastSample = _lastSample + (float)Math.Max(-0.2, Math.Min(0.2, Math.Sign(value - _lastSample) * (float)Math.Pow(value - _lastSample, 2)));
 
 			return _lastSample;
 		}
@@ -28,24 +43,18 @@ namespace Rain.Sandbox
 
 	public class SinWaveFilter : IWave
 	{
-		private int _sample = 0;
-
 		private IWave _baseWave;
-		private int _interval;
 
-		public SinWaveFilter(IWave baseWave, int interval)
+		public SinWaveFilter(IWave baseWave)
 		{
 			_baseWave = baseWave;
-			_interval = interval;
 		}
 
-		public float Probe()
+		public float Probe(float time)
 		{
-			_sample = (_sample + 1) % _interval;
+			var filterValue = 0.75f + 0.25f * (float)Math.Sin(2 * Math.PI * time);
 
-			var filterValue = 0.75f + 0.25f * (float)Math.Sin(2 * Math.PI * _sample / _interval);
-
-			return filterValue * _baseWave.Probe();
+			return filterValue * _baseWave.Probe(time);
 		}
 	}
 
@@ -73,6 +82,8 @@ namespace Rain.Sandbox
 
 	public class WaveProvider : IWaveProvider
 	{
+		private float _time;
+
 		public IWave Wave { get; set; }
 
 		public WaveFormat WaveFormat { get; set; }
@@ -86,7 +97,10 @@ namespace Rain.Sandbox
 
 			int sampleRate = WaveFormat.SampleRate;
 			for (int n = 0; n < valueBuffer.Length; n++)
-				valueBuffer[n] = Wave.Probe() * Amplitude;
+			{
+				valueBuffer[n] = Wave.Probe(_time) * Amplitude;
+				_time += 1.0f / WaveFormat.SampleRate;
+			}
 
 			return count;
 		}
@@ -100,9 +114,7 @@ namespace Rain.Sandbox
 			{
 				WaveFormat = WaveFormat.CreateIeeeFloatWaveFormat(16000, 1),
 				Amplitude = 0.2f,
-				Wave = new SinWaveFilter(
-					new FilteredWhiteNoiseWave(),
-					64000)
+				Wave = new SinWaveFilter(new LowPassWaveFilter(new WhiteNoiseWave()))
 			};
 
 			using (var wo = new WaveOutEvent())

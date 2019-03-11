@@ -1,46 +1,14 @@
 ﻿using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
+using Rain.Wave;
+using Rain.Wave.Filters;
+using Rain.Wave.Generators;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace Rain.Sandbox
 {
-	public interface IWave
-	{
-		float Probe(float time);
-	}
-
-	public class WhiteNoiseWave : IWave
-	{
-		private Random _randomGenerator = new Random();
-
-		public float Probe(float time)
-		{
-			return (float)_randomGenerator.NextDouble();
-		}
-	}
-
-	public class LowPassWaveFilter : IWave
-	{
-		private float _lastSample;
-		private IWave _baseWave;
-
-		public LowPassWaveFilter(IWave baseWave)
-		{
-			_baseWave = baseWave;
-		}
-
-		public float Probe(float time)
-		{
-			var value = _baseWave.Probe(time);
-
-			_lastSample = _lastSample + (float)Math.Max(-0.2, Math.Min(0.2, Math.Sign(value - _lastSample) * (float)Math.Pow(value - _lastSample, 2)));
-
-			return _lastSample;
-		}
-	}
-
 	public class SinWaveFilter : IWave
 	{
 		private IWave _baseWave;
@@ -114,7 +82,7 @@ namespace Rain.Sandbox
 			{
 				WaveFormat = WaveFormat.CreateIeeeFloatWaveFormat(16000, 1),
 				Amplitude = 0.2f,
-				Wave = new SinWaveFilter(new LowPassWaveFilter(new WhiteNoiseWave()))
+				Wave = new SinWaveFilter(new SquareWaveFilter(new WhiteNoiseWaveGenerator()))
 			};
 
 			using (var wo = new WaveOutEvent())

@@ -5,10 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Generators\" />
-    <Folder Include="Filters\" />
     <Folder Include="Combiners\" />
-    <Folder Include="Transformer\" />
+    <Folder Include="Transformers\" />
   </ItemGroup>
 
 </Project>

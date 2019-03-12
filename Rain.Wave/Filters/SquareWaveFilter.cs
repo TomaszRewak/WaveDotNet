@@ -6,8 +6,9 @@ namespace Rain.Wave.Filters
 {
 	public sealed class SquareWaveFilter : IWave
 	{
+		private readonly IWave _baseWave;
+
 		private float _lastSample;
-		private IWave _baseWave;
 
 		public SquareWaveFilter(IWave baseWave)
 		{

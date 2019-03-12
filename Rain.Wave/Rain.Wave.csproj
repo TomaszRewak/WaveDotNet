@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Combiners\" />
     <Folder Include="Transformers\" />
   </ItemGroup>
 

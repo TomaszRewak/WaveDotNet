@@ -16,7 +16,7 @@ namespace Rain.Wave.Combiners
 
 		public float Probe(float time)
 		{
-			return _waves.Aggregate(1f, (value, wave) => value * wave.Probe(time));;
+			return _waves.Aggregate(1f, (value, wave) => value * wave.Probe(time));
 		}
 	}
 }

@@ -4,18 +4,11 @@ using System.Text;
 
 namespace Rain.Wave.Generators
 {
-	public sealed class LinearWaveGenerator
+	public sealed class SinWaveGenerator : IWave
 	{
-		private readonly float _a;
-
-		public LinearWaveGenerator(float a)
-		{
-			_a = a;
-		}
-
 		public float Probe(float time)
 		{
-			return _a * time;
+			return (float)Math.Sin(time * Math.PI * 2);
 		}
 	}
 }

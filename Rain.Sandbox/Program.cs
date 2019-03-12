@@ -1,31 +1,16 @@
 ﻿using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 using Rain.Wave;
+using Rain.Wave.Combiners;
 using Rain.Wave.Filters;
 using Rain.Wave.Generators;
+using Rain.Wave.Transformers;
 using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 
 namespace Rain.Sandbox
 {
-	public class SinWaveFilter : IWave
-	{
-		private IWave _baseWave;
-
-		public SinWaveFilter(IWave baseWave)
-		{
-			_baseWave = baseWave;
-		}
-
-		public float Probe(float time)
-		{
-			var filterValue = 0.75f + 0.25f * (float)Math.Sin(2 * Math.PI * time);
-
-			return filterValue * _baseWave.Probe(time);
-		}
-	}
-
 	public class SimpleWaveProvider : IWaveProvider
 	{
 		private int _sample;
@@ -50,25 +35,25 @@ namespace Rain.Sandbox
 
 	public class WaveProvider : IWaveProvider
 	{
-		private float _time;
+		private long _time;
 
-		public IWave Wave { get; set; }
+		public WaveFormat WaveFormat { get; }
+		public IWave Wave { get; }
 
-		public WaveFormat WaveFormat { get; set; }
-		public float Amplitude { get; set; }
+		public WaveProvider(WaveFormat waveFormat, IWave wave)
+		{
+			WaveFormat = waveFormat;
+			Wave = new FrequencyWaveTransformer(
+				period: waveFormat.SampleRate,
+				baseWave: wave);
+		}
 
 		public int Read(byte[] buffer, int offset, int count)
 		{
 			var valueBuffer = MemoryMarshal.Cast<byte, float>(buffer.AsSpan().Slice(offset, count));
 
-			valueBuffer.Fill(0);
-
-			int sampleRate = WaveFormat.SampleRate;
 			for (int n = 0; n < valueBuffer.Length; n++)
-			{
-				valueBuffer[n] = Wave.Probe(_time) * Amplitude;
-				_time += 1.0f / WaveFormat.SampleRate;
-			}
+				valueBuffer[n] = Wave.Probe(_time++);
 
 			return count;
 		}
@@ -78,12 +63,26 @@ namespace Rain.Sandbox
 	{
 		static void Main(string[] args)
 		{
-			var sineWaveProvider = new WaveProvider
-			{
-				WaveFormat = WaveFormat.CreateIeeeFloatWaveFormat(16000, 1),
-				Amplitude = 0.2f,
-				Wave = new SinWaveFilter(new SquareWaveFilter(new WhiteNoiseWaveGenerator()))
-			};
+			var sineWaveProvider = new WaveProvider(
+				waveFormat: WaveFormat.CreateIeeeFloatWaveFormat(sampleRate: 16000, channels: 1),
+				wave: new AmplitureWaveTransformer(
+					multiplier: 0.3f,
+					baseWave: new MultiplicationWaveCombiner(
+						new SquareWaveFilter(new WhiteNoiseWaveGenerator()),
+						new AmplitudeOffsetWaveTransformer(
+							offset: 0.8f,
+							baseWave: new AmplitureWaveTransformer(
+								multiplier: 0.2f,
+								baseWave: new MultiplicationWaveCombiner(
+									new FrequencyWaveTransformer(
+										period: 4f,
+										baseWave: new SinWaveGenerator()),
+									new FrequencyWaveTransformer(
+										period: 3.3f,
+										baseWave: new SinWaveGenerator()),
+									new FrequencyWaveTransformer(
+										period: 5.7f,
+										baseWave: new SinWaveGenerator())))))));
 
 			using (var wo = new WaveOutEvent())
 			{

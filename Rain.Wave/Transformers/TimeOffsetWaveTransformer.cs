@@ -4,15 +4,15 @@ using System.Text;
 
 namespace Rain.Wave.Transformers
 {
-	public sealed class OffsetWaveTransformer
+	public sealed class TimeOffsetWaveTransformer
 	{
-		private readonly IWave _baseWave;
 		private readonly float _offset;
+		private readonly IWave _baseWave;
 
-		public OffsetWaveTransformer(IWave baseWave, float offset)
+		public TimeOffsetWaveTransformer(float offset, IWave baseWave)
 		{
-			_baseWave = baseWave;
 			_offset = offset;
+			_baseWave = baseWave;
 		}
 
 		public float Probe(float time)

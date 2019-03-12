@@ -4,20 +4,20 @@ using System.Text;
 
 namespace Rain.Wave.Transformers
 {
-	public sealed class FrequencyWaveTransformer
+	public sealed class FrequencyWaveTransformer : IWave
 	{
-		private readonly IWave _baseWave;
 		private readonly float _period;
+		private readonly IWave _baseWave;
 
-		public FrequencyWaveTransformer(IWave baseWave, float period)
+		public FrequencyWaveTransformer(float period, IWave baseWave)
 		{
-			_baseWave = baseWave;
 			_period = period;
+			_baseWave = baseWave;
 		}
 
 		public float Probe(float time)
 		{
-			return _baseWave.Probe(time * _period);
+			return _baseWave.Probe(time / _period);
 		}
 	}
 }

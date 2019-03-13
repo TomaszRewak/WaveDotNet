@@ -24,10 +24,20 @@ namespace Rain.Generator
 		{
 			var valueBuffer = MemoryMarshal.Cast<byte, float>(buffer.AsSpan().Slice(offset, count));
 
-			for (int n = 0; n < valueBuffer.Length; n++)
-				valueBuffer[n] = Channels[0].Probe(_time++);
+			while (!valueBuffer.IsEmpty)
+				valueBuffer = ReadSmaple(valueBuffer);
 
 			return count;
+		}
+
+		private Span<float> ReadSmaple(Span<float> buffer)
+		{
+			for (int i = 0; i < Channels.Length; i++)
+				buffer[i] = Channels[i].Probe(_time);
+
+			_time++;
+
+			return buffer.Slice(Channels.Length);
 		}
 	}
 }

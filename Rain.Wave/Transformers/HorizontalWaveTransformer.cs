@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Rain.Wave.Transformers
 {
-	public sealed class HorizontalWaveTransformer
+	public sealed class HorizontalWaveTransformer : IWave
 	{
 		private readonly float _offset;
 		private readonly IWave _baseWave;

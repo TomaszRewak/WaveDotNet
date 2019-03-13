@@ -20,7 +20,7 @@ namespace Rain.Sandbox
 						baseWave: new MultiplicationWaveCombiner(
 							new SquareWaveFilter(
 								baseWave: new WhiteNoiseWaveGenerator()),
-							new AmplitudeOffsetWaveTransformer(
+							new VerticalWaveTransformer(
 								offset: 0.8f,
 								baseWave: new AmplitureWaveTransformer(
 									multiplier: 0.2f,

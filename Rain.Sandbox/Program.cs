@@ -12,11 +12,11 @@ namespace Rain.Sandbox
 	{
 		static void Main(string[] args)
 		{
-			var sineWaveProvider = new WaveProvider(
-				sampleRate: 16000, 
+			var waveProvider = new WaveProvider(
+				sampleRate: 16000,
 				channels: new[] {
 					new AmplitureWaveTransformer(
-						multiplier: 0.3f,
+						multiplier: 0.2f,
 						baseWave: new MultiplicationWaveCombiner(
 							new SquareWaveFilter(
 								baseWave: new WhiteNoiseWaveGenerator()),
@@ -26,19 +26,19 @@ namespace Rain.Sandbox
 									multiplier: 0.2f,
 									baseWave: new MultiplicationWaveCombiner(
 										new FrequencyWaveTransformer(
-											period: 4f,
+											frequency: 0.25f,
 											baseWave: new SinWaveGenerator()),
 										new FrequencyWaveTransformer(
-											period: 3.3f,
+											frequency: 0.13f,
 											baseWave: new SinWaveGenerator()),
 										new FrequencyWaveTransformer(
-											period: 5.7f,
+											frequency: 0.07f,
 											baseWave: new SinWaveGenerator()))))))
 				});
 
 			using (var wo = new WaveOutEvent())
 			{
-				wo.Init(sineWaveProvider);
+				wo.Init(waveProvider);
 				wo.Play();
 
 				while (wo.PlaybackState == PlaybackState.Playing)

@@ -1,26 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Rain.Wave.Combiners
 {
-	public sealed class MinWaveCombiner
+	public sealed class MinWaveCombiner : IWave
 	{
-		private readonly IWave _waveA;
-		private readonly IWave _waveB;
+		private readonly IWave[] _waves;
 
-		public MinWaveCombiner(IWave waveA, IWave waveB)
+		public MinWaveCombiner(params IWave[] waves)
 		{
-			_waveA = waveA;
-			_waveB = waveB;
+			_waves = waves;
 		}
 
 		public float Probe(float time)
 		{
-			return Math.Min(
-				_waveA.Probe(time),
-				_waveB.Probe(time)
-			);
+			return this._waves.Min(wave => wave.Probe(time));
 		}
 	}
 }

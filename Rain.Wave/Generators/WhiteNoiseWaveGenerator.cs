@@ -10,7 +10,7 @@ namespace Rain.Wave.Generators
 
 		public float Probe(float time)
 		{
-			return (float)_randomGenerator.NextDouble();
+			return (float)_randomGenerator.NextDouble() * 2f - 1f;
 		}
 	}
 }

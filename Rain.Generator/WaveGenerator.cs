@@ -16,8 +16,8 @@ namespace Rain.Generator
 
 		public WaveProvider(int sampleRate, params IWave[] channels)
 		{
-			WaveFormat = new WaveFormat(sampleRate, channels.Length);
-			Channels = channels.Select(wave => new FrequencyWaveTransformer(sampleRate, wave)).ToArray();
+			WaveFormat = WaveFormat.CreateIeeeFloatWaveFormat(sampleRate, channels.Length);
+			Channels = channels.Select(wave => new FrequencyWaveTransformer(1f / sampleRate, wave)).ToArray();
 		}
 
 		public int Read(byte[] buffer, int offset, int count)

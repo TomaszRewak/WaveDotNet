@@ -6,18 +6,18 @@ namespace Rain.Wave.Transformers
 {
 	public sealed class FrequencyWaveTransformer : IWave
 	{
-		private readonly float _period;
+		private readonly float _frequency;
 		private readonly IWave _baseWave;
 
-		public FrequencyWaveTransformer(float period, IWave baseWave)
+		public FrequencyWaveTransformer(float frequency, IWave baseWave)
 		{
-			_period = period;
+			_frequency = frequency;
 			_baseWave = baseWave;
 		}
 
 		public float Probe(float time)
 		{
-			return _baseWave.Probe(time / _period);
+			return _baseWave.Probe(time * _frequency);
 		}
 	}
 }

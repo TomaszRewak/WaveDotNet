@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Rain.Wave.Transformers
 {
-	public sealed class AmplitureWaveTransformer : IWave
+	public sealed class AmplitudeWaveTransformer : IWave
 	{
 		private readonly float _multiplier;
 		private readonly IWave _baseWave;
 
-		public AmplitureWaveTransformer(float multiplier, IWave baseWave)
+		public AmplitudeWaveTransformer(float multiplier, IWave baseWave)
 		{
 			_multiplier = multiplier;
 			_baseWave = baseWave;

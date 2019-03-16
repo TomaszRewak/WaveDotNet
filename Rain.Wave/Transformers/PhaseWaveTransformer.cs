@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Rain.Wave.Transformers
 {
-	public sealed class HorizontalWaveTransformer : IWave
+	public sealed class PhaseWaveTransformer : IWave
 	{
 		private readonly float _offset;
 		private readonly IWave _baseWave;
 
-		public HorizontalWaveTransformer(float offset, IWave baseWave)
+		public PhaseWaveTransformer(float offset, IWave baseWave)
 		{
 			_offset = offset;
 			_baseWave = baseWave;

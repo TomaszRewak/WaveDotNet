@@ -12,51 +12,59 @@ namespace Rain.Sandbox
 	{
 		static void Main(string[] args)
 		{
-			var backgroundRainWave =
-				new AmplitudeWaveTransformer(
-					multiplier: 0.2f,
-					baseWave: new MultiplicationWaveCombiner(
-						new AmplitudeWaveFilter(
-							maxAmplitude: 0.75f,
-							baseWave: new SquareWaveFilter(
-								baseWave: new WhiteNoiseWaveGenerator())),
-						new VerticalWaveTransformer(
-							offset: 0.8f,
-							baseWave: new AmplitudeWaveTransformer(
-								multiplier: 0.2f,
-								baseWave: new MultiplicationWaveCombiner(
-									new FrequencyWaveTransformer(
-										frequency: 0.25f,
-										baseWave: new SinWaveGenerator()),
-									new FrequencyWaveTransformer(
-										frequency: 0.13f,
-										baseWave: new SinWaveGenerator()),
-									new FrequencyWaveTransformer(
-										frequency: 0.07f,
-										baseWave: new SinWaveGenerator()))))));
-
-			var waveProvider = new WaveProvider(
-				sampleRate: 16000,
-				channels: new[] {
-					new AdditiveWaveCombiner(
-						new AmplitudeWaveTransformer(1.0f, backgroundRainWave),
-						new HorizontalWaveTransformer(0.5f, new AmplitudeWaveTransformer(0.5f, backgroundRainWave))),
-
-					new AdditiveWaveCombiner(
-						new AmplitudeWaveTransformer(0.5f, backgroundRainWave),
-						new HorizontalWaveTransformer(0.5f, new AmplitudeWaveTransformer(1.0f, backgroundRainWave)))
-				});
-
-			//var thunderWave =
-			//	new AmplitureWaveTransformer(
+			//var backgroundRainWave =
+			//	new AmplitudeWaveTransformer(
 			//		multiplier: 0.2f,
-			//		baseWave: new FrequencyWaveTransformer(16500, new WhiteNoiseWaveGenerator()));
+			//		offset: 0.0f,
+			//		baseWave: new MultiplicationWaveCombiner(
+			//			new AmplitudeWaveFilter(
+			//				maxAmplitude: 0.75f,
+			//				baseWave: new SquareWaveFilter(
+			//					baseWave: new WhiteNoiseWaveGenerator())),
+			//			new AmplitudeWaveTransformer(
+			//				multiplier: 0.2f,
+			//				offset: 0.8f,
+			//				baseWave: new MultiplicationWaveCombiner(
+			//					new FrequencyWaveTransformer(
+			//						frequency: 0.25f,
+			//						baseWave: new SinWaveGenerator()),
+			//					new FrequencyWaveTransformer(
+			//						frequency: 0.13f,
+			//						baseWave: new SinWaveGenerator()),
+			//					new FrequencyWaveTransformer(
+			//						frequency: 0.07f,
+			//						baseWave: new SinWaveGenerator())))));
 
 			//var waveProvider = new WaveProvider(
 			//	sampleRate: 16000,
 			//	channels: new[] {
-			//		new AmplitureWaveTransformer(1.0f, thunderWave)
+			//		new AdditiveWaveCombiner(
+			//			new AmplitudeWaveTransformer(1.0f, 0.0f, backgroundRainWave),
+			//			new PhaseWaveTransformer(0.5f, new AmplitudeWaveTransformer(0.5f, 0.0f, backgroundRainWave))),
+
+			//		new AdditiveWaveCombiner(
+			//			new AmplitudeWaveTransformer(0.5f, 0.0f, backgroundRainWave),
+			//			new PhaseWaveTransformer(0.5f, new AmplitudeWaveTransformer(1.0f, 0.0f, backgroundRainWave)))
 			//	});
+
+			var thunderWave =
+				new AmplitudeWaveTransformer(
+					multiplier: 0.2f,
+					offset: 0.0f,
+					baseWave: new MultiplicationWaveCombiner(
+						new SquareWaveFilter(new SquareWaveFilter(new WhiteNoiseWaveGenerator())),
+						new MultiplicationWaveCombiner(
+							new LinearWaveGenerator(-0.2f, 1f),
+							new AmplitudeWaveTransformer(
+								multiplier: 0.2f,
+								offset: 0.8f,
+								baseWave: new SinWaveGenerator()))));
+
+			var waveProvider = new WaveProvider(
+				sampleRate: 16000,
+				channels: new[] {
+					new LoopWaveTransformer(5f, new AmplitudeWaveTransformer(1.0f, 0.0f, thunderWave))
+				});
 
 			using (var wo = new WaveOutEvent())
 			{

@@ -9,15 +9,6 @@ namespace Rain.Designer.ViewModels.Mesh.Implementation
 {
 	internal class MeshVM : ViewModel, IMeshVM
 	{
-		public IMeshNodeVM[,] Nodes { get; private set; }
-
-		public MeshVM()
-		{
-			Nodes = new[,] {
-				{ new MeshNodeVM() }
-			};
-		}
-
-
+		public IReadOnlyCollection<IMeshNodeVM> Nodes { get; private set; } = new List<IMeshNodeVM>();
 	}
 }

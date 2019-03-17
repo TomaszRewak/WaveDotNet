@@ -58,8 +58,18 @@
     <Compile Include="ViewModels\Common\ViewModel.cs" />
     <Compile Include="ViewModels\Common\ViewModelChange.cs" />
     <Compile Include="ViewModels\Common\ViewModelChangePropagation.cs" />
+    <Compile Include="ViewModels\Mesh\IMeshNodeVM.cs" />
+    <Compile Include="ViewModels\Mesh\IMeshVM.cs" />
+    <Compile Include="ViewModels\Mesh\Implementation\MeshNodeVM.cs" />
+    <Compile Include="ViewModels\Mesh\Implementation\MeshVM.cs" />
     <Compile Include="ViewModels\WaveDesigner\Implementation\WaveDesignerVM.cs" />
     <Compile Include="ViewModels\WaveDesigner\IWaveDesignerVM.cs" />
+    <Compile Include="Views\Mesh\MeshControl.xaml.cs">
+      <DependentUpon>MeshControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Mesh\MeshNodeControl.xaml.cs">
+      <DependentUpon>MeshNodeControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -72,6 +82,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Mesh\MeshControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Mesh\MeshNodeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -99,8 +117,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

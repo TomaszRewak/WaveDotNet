@@ -10,19 +10,19 @@ namespace Rain.Designer.ViewModels.Common
 {
 	internal interface IViewModel : INotifyPropertyChanged
 	{
-		void Set<T>(ref T field, T value, [CallerMemberName] string property = "");
+		IViewModelChangePropagation<T> Set<T>(ref T field, T value, [CallerMemberName] string property = "");
 	}
 
 	internal class ViewModel : IViewModel
 	{
-		public void Set<T>(ref T field, T value, [CallerMemberName] string propertyName = "")
+		public IViewModelChangePropagation<T> Set<T>(ref T field, T value, [CallerMemberName] string propertyName = "")
 		{
-			if (object.Equals(field, value))
-			{
+			var change = new ViewModelChange<T>(field, value);
+
+			if (change.Changed)
 				field = value;
 
-				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-			}
+			return new ViewModelChangePropagation<T>(change);
 		}
 
 		public event PropertyChangedEventHandler PropertyChanged;

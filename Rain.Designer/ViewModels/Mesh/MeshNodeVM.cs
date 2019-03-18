@@ -6,10 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rain.Designer.ViewModels.Mesh.Implementation
+namespace Rain.Designer.ViewModels.Mesh
 {
+	internal interface IMeshNodeVM
+	{
+		MeshPoint Position { get; }
+	}
+
 	internal class MeshNodeVM : ViewModel, IMeshNodeVM
 	{
-		public UnorderedPair<MeshPoint> Position { get; set; }
+		private MeshPoint _position;
+		public MeshPoint Position
+		{
+			get => _position;
+			set => Set(ref _position, value);
+		}
 	}
 }

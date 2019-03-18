@@ -8,8 +8,14 @@ namespace Rain.Designer.DataStructures
 {
 	internal struct MeshPoint
 	{
-		public int Row { get; set; }
-		public int Column { get; set; }
+		public int X { get; set; }
+		public int Y { get; set; }
+
+		public MeshPoint(int x, int y)
+		{
+			X = x;
+			Y = y;
+		}
 
 		public override bool Equals(object obj)
 		{
@@ -21,15 +27,15 @@ namespace Rain.Designer.DataStructures
 
 		public bool Equals(MeshPoint value)
 		{
-			return Row == value.Row && Column == value.Column;
+			return X == value.X && Y == value.Y;
 		}
 
 		public override int GetHashCode()
 		{
-			return Row.GetHashCode() ^ Column.GetHashCode();
+			return X.GetHashCode() ^ Y.GetHashCode();
 		}
 
-		public static bool operator == (MeshPoint lhs, MeshPoint rhs)
+		public static bool operator ==(MeshPoint lhs, MeshPoint rhs)
 		{
 			return lhs.Equals(rhs);
 		}

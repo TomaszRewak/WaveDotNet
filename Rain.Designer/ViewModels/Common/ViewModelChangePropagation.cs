@@ -8,6 +8,7 @@ namespace Rain.Designer.ViewModels.Common
 {
 	internal interface IViewModelChangePropagation<T>
 	{
+		IViewModelChangePropagation<T> Then(Action action);
 	}
 
 	internal class ViewModelChangePropagation<T> : IViewModelChangePropagation<T>
@@ -19,7 +20,7 @@ namespace Rain.Designer.ViewModels.Common
 			_change = change;
 		}
 
-		IViewModelChangePropagation<T> Then(Action action)
+		public IViewModelChangePropagation<T> Then(Action action)
 		{
 			if (_change.Changed)
 				action();

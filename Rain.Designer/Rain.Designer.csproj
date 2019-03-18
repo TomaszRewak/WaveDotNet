@@ -60,12 +60,10 @@
     <Compile Include="ViewModels\Common\ViewModel.cs" />
     <Compile Include="ViewModels\Common\ViewModelChange.cs" />
     <Compile Include="ViewModels\Common\ViewModelChangePropagation.cs" />
-    <Compile Include="ViewModels\Mesh\IMeshNodeVM.cs" />
-    <Compile Include="ViewModels\Mesh\IMeshVM.cs" />
-    <Compile Include="ViewModels\Mesh\Implementation\MeshNodeVM.cs" />
-    <Compile Include="ViewModels\Mesh\Implementation\MeshVM.cs" />
-    <Compile Include="ViewModels\WaveDesigner\Implementation\WaveDesignerVM.cs" />
-    <Compile Include="ViewModels\WaveDesigner\IWaveDesignerVM.cs" />
+    <Compile Include="ViewModels\Mesh\MeshConnectionVM.cs" />
+    <Compile Include="ViewModels\Mesh\MeshNodeVM.cs" />
+    <Compile Include="ViewModels\Mesh\MeshVM.cs" />
+    <Compile Include="ViewModels\WaveDesigner\WaveDesignerVM.cs" />
     <Compile Include="Views\Mesh\MeshControl.xaml.cs">
       <DependentUpon>MeshControl.xaml</DependentUpon>
     </Compile>
@@ -119,6 +117,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModels\Mesh\Helpers\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

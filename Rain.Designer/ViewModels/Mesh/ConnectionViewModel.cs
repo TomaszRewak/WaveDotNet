@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Rain.Designer.ViewModels.Mesh
 {
-	internal class MeshNodeVM : ViewModel
+	internal class ConnectionViewModel : ViewModel
 	{
-		private MeshPoint _position;
-		public MeshPoint Position
+		private UnorderedPair<MeshPoint> _connection;
+		public UnorderedPair<MeshPoint> Ends
 		{
-			get => _position;
-			set => Set(ref _position, value);
+			get => _connection;
+			set => Set(ref _connection, value);
 		}
 	}
 }

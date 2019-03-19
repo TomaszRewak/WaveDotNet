@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Rain.Designer.Modules;
+using Rain.Designer.ViewModels.Mesh;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,7 +16,10 @@ namespace Rain.Designer
 		protected override void OnStartup(StartupEventArgs e)
 		{
 			var serviceCollection = new ServiceCollection();
+			MeshModule.Register(serviceCollection);
 			var container = serviceCollection.BuildServiceProvider();
+
+			container.GetRequiredService<MeshViewModel>();
 
 			base.OnStartup(e);
 		}

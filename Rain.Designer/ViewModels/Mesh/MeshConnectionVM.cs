@@ -8,12 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rain.Designer.ViewModels.Mesh
 {
-	internal interface IMeshConnectionVM : IViewModel
-	{
-		UnorderedPair<MeshPoint> Connection { get; }
-	}
-
-	internal class MeshConnectionVM : ViewModel, IMeshConnectionVM
+	internal class MeshConnectionVM : ViewModel
 	{
 		private UnorderedPair<MeshPoint> _connection;
 		public UnorderedPair<MeshPoint> Connection

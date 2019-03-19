@@ -6,15 +6,7 @@ using System.Threading.Tasks;
 
 namespace Rain.Designer.ViewModels.Common
 {
-	internal interface IViewModelChange<T>
-	{
-		T OldValue { get; }
-		T NewValue { get; }
-
-		bool Changed { get; }
-	}
-
-	internal class ViewModelChange<T> : IViewModelChange<T>
+	internal class ViewModelChange<T>
 	{
 		public T OldValue { get; }
 		public T NewValue { get; }

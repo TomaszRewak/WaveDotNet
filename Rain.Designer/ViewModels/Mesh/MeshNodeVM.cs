@@ -8,12 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rain.Designer.ViewModels.Mesh
 {
-	internal interface IMeshNodeVM
-	{
-		MeshPoint Position { get; }
-	}
-
-	internal class MeshNodeVM : ViewModel, IMeshNodeVM
+	internal class MeshNodeVM : ViewModel
 	{
 		private MeshPoint _position;
 		public MeshPoint Position

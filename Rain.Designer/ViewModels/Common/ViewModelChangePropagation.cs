@@ -6,21 +6,16 @@ using System.Threading.Tasks;
 
 namespace Rain.Designer.ViewModels.Common
 {
-	internal interface IViewModelChangePropagation<T>
+	internal class ViewModelChangePropagation<T>
 	{
-		IViewModelChangePropagation<T> Then(Action action);
-	}
+		private readonly ViewModelChange<T> _change;
 
-	internal class ViewModelChangePropagation<T> : IViewModelChangePropagation<T>
-	{
-		private readonly IViewModelChange<T> _change;
-
-		public ViewModelChangePropagation(IViewModelChange<T> change)
+		public ViewModelChangePropagation(ViewModelChange<T> change)
 		{
 			_change = change;
 		}
 
-		public IViewModelChangePropagation<T> Then(Action action)
+		public ViewModelChangePropagation<T> Then(Action action)
 		{
 			if (_change.Changed)
 				action();

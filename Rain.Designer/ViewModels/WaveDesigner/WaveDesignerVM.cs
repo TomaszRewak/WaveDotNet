@@ -7,11 +7,7 @@ using System.Threading.Tasks;
 
 namespace Rain.Designer.ViewModels.WaveDesigner
 {
-	internal interface IWaveDesignerVM
-	{
-	}
-
-	internal class WaveDesignerVM : ViewModel, IWaveDesignerVM
+	internal class WaveDesignerVM : ViewModel
 	{
 	}
 }

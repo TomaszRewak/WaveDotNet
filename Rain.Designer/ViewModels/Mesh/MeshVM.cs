@@ -8,20 +8,17 @@ using System.Threading.Tasks;
 
 namespace Rain.Designer.ViewModels.Mesh
 {
-	internal interface IMeshVM
-	{ }
-
-	internal class MeshVM : ViewModel, IMeshVM
+	internal class MeshVM : ViewModel
 	{
-		private IReadOnlyCollection<IMeshNodeVM> _nodes = new List<IMeshNodeVM>();
-		public IReadOnlyCollection<IMeshNodeVM> Nodes
+		private IReadOnlyCollection<MeshNodeVM> _nodes = new List<MeshNodeVM>();
+		public IReadOnlyCollection<MeshNodeVM> Nodes
 		{
 			get => _nodes;
 			private set => Set(ref _nodes, value).Then(UpdateConnections);
 		}
 
-		private IReadOnlyCollection<IMeshConnectionVM> _connections = new List<IMeshConnectionVM>();
-		public IReadOnlyCollection<IMeshConnectionVM> Connections
+		private IReadOnlyCollection<MeshConnectionVM> _connections = new List<MeshConnectionVM>();
+		public IReadOnlyCollection<MeshConnectionVM> Connections
 		{
 			get => _connections;
 			private set => Set(ref _connections, value);

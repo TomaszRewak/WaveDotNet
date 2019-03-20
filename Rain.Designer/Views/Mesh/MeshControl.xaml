@@ -6,8 +6,11 @@
              xmlns:local="clr-namespace:Rain.Designer.Views.Mesh"
 			 xmlns:vm="clr-namespace:Rain.Designer.ViewModels.Mesh"
              mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance Type=vm:IMeshNodeVM}" >
-	<Grid>
-		
-	</Grid>
+             d:DataContext="{d:DesignInstance Type=vm:MeshViewModel}" >
+	<Canvas>
+		<local:NodeControl Canvas.Left="100" Canvas.Top="100" Width="20" Height="20" Background="Red"/>
+		<local:NodeControl Canvas.Left="100" Canvas.Top="200" Width="20" Height="20"  Background="Red"/>
+		<local:NodeControl Canvas.Left="200" Canvas.Top="100" Width="20" Height="20"  Background="Red"/>
+		<local:NodeControl Canvas.Left="200" Canvas.Top="200" Width="20" Height="20"  Background="Red"/>
+	</Canvas>
 </UserControl>

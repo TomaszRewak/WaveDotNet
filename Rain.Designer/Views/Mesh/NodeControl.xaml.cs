@@ -15,14 +15,14 @@ using System.Windows.Shapes;
 
 namespace Rain.Designer.Views.Mesh
 {
-    /// <summary>
-    /// Interaction logic for MeshNodeControl.xaml
-    /// </summary>
-    public partial class MeshNodeControl : UserControl
-    {
-        public MeshNodeControl()
-        {
-            InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// Interaction logic for NodeControl.xaml
+	/// </summary>
+	public partial class NodeControl : UserControl
+	{
+		public NodeControl()
+		{
+			InitializeComponent();
+		}
+	}
 }

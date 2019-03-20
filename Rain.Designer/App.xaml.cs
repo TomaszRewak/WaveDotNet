@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Rain.Designer.Modules;
 using Rain.Designer.ViewModels.Mesh;
+using Rain.Designer.ViewModels.WaveDesigner;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -13,15 +14,25 @@ namespace Rain.Designer
 {
 	public partial class App : Application
 	{
+		internal WaveDesignerViewModel WaveDesigner { get; private set; }
+
 		protected override void OnStartup(StartupEventArgs e)
 		{
-			var serviceCollection = new ServiceCollection();
-			MeshModule.Register(serviceCollection);
-			var container = serviceCollection.BuildServiceProvider();
+			var container = PrepareServiceProvider();
 
-			container.GetRequiredService<MeshViewModel>();
+			WaveDesigner = container.GetRequiredService<WaveDesignerViewModel>();
 
 			base.OnStartup(e);
+		}
+
+		private ServiceProvider PrepareServiceProvider()
+		{
+			var serviceCollection = new ServiceCollection();
+
+			MeshModule.Register(serviceCollection);
+			WaveDesignerModule.Register(serviceCollection);
+
+			return serviceCollection.BuildServiceProvider();
 		}
 	}
 }

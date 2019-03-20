@@ -64,6 +64,7 @@
     <Compile Include="DataStructures\MeshPoint.cs" />
     <Compile Include="DataStructures\UnorderedPair.cs" />
     <Compile Include="Modules\MeshModule.cs" />
+    <Compile Include="Modules\WaveDesignerModule.cs" />
     <Compile Include="ViewModels\Common\ViewModel.cs" />
     <Compile Include="ViewModels\Common\ViewModelChange.cs" />
     <Compile Include="ViewModels\Common\ViewModelChangePropagation.cs" />
@@ -72,14 +73,14 @@
     <Compile Include="ViewModels\Mesh\ConnectionViewModel.cs" />
     <Compile Include="ViewModels\Mesh\NodeViewModel.cs" />
     <Compile Include="ViewModels\Mesh\MeshViewModel.cs" />
-    <Compile Include="ViewModels\WaveDesigner\WaveDesignerVM.cs" />
+    <Compile Include="ViewModels\WaveDesigner\WaveDesignerViewModel.cs" />
     <Compile Include="Views\Mesh\MeshControl.xaml.cs">
       <DependentUpon>MeshControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Mesh\MeshNodeControl.xaml.cs">
       <DependentUpon>MeshNodeControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Views\WaveDesigner\WaveDesignerWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -87,8 +88,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Views\WaveDesigner\WaveDesignerWindow.xaml.cs">
+      <DependentUpon>WaveDesignerWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Mesh\MeshControl.xaml">
@@ -127,6 +128,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModels\Mesh\Converters\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

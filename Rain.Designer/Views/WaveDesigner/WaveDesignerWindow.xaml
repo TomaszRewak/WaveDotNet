@@ -1,4 +1,4 @@
-﻿<Window x:Class="Rain.Designer.MainWindow"
+﻿<Window x:Class="Rain.Designer.Views.WaveDesigner.WaveDesignerWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,7 +7,7 @@
 		xmlns:vm="clr-namespace:Rain.Designer.Views.Mesh"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+	<Grid>
 		<vm:MeshControl/>
 	</Grid>
 </Window>

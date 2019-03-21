@@ -83,6 +83,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Mesh\NodePlaceholderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\WaveDesigner\WaveDesignerWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -93,6 +97,9 @@
     </Compile>
     <Compile Include="Views\Mesh\NodeControl.xaml.cs">
       <DependentUpon>NodeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Mesh\NodePlaceholderControl.xaml.cs">
+      <DependentUpon>NodePlaceholderControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WaveDesigner\WaveDesignerWindow.xaml.cs">
       <DependentUpon>WaveDesignerWindow.xaml</DependentUpon>

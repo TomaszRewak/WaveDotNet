@@ -74,6 +74,7 @@
     <Compile Include="ViewModels\Mesh\NodeViewModel.cs" />
     <Compile Include="ViewModels\Mesh\MeshViewModel.cs" />
     <Compile Include="ViewModels\WaveDesigner\WaveDesignerViewModel.cs" />
+    <Compile Include="Views\Common\DependencyObject.cs" />
     <Compile Include="Views\Mesh\Converters\MeshPointConverter.cs" />
     <Compile Include="Views\Mesh\MeshControl.xaml.cs">
       <DependentUpon>MeshControl.xaml</DependentUpon>

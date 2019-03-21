@@ -4,13 +4,27 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Rain.Designer.Views.Mesh"
-			 xmlns:vm="clr-namespace:Rain.Designer.ViewModels.Mesh"
-             mc:Ignorable="d" 
-             d:DataContext="{d:DesignInstance Type=vm:MeshViewModel}" >
-	<Canvas>
-		<local:NodeControl Canvas.Left="100" Canvas.Top="100" Width="20" Height="20" Background="Red"/>
-		<local:NodeControl Canvas.Left="100" Canvas.Top="200" Width="20" Height="20"  Background="Red"/>
-		<local:NodeControl Canvas.Left="200" Canvas.Top="100" Width="20" Height="20"  Background="Red"/>
-		<local:NodeControl Canvas.Left="200" Canvas.Top="200" Width="20" Height="20"  Background="Red"/>
-	</Canvas>
+			 xmlns:converters="clr-namespace:Rain.Designer.Views.Mesh.Converters"
+			 mc:Ignorable="d">
+	<UserControl.Resources>
+		<converters:MeshPointConverter x:Key="MeshPointConverter" Offset="50"/>
+	</UserControl.Resources>
+	<ItemsControl ItemsSource="{Binding Nodes}">
+		<ItemsControl.ItemsPanel>
+			<ItemsPanelTemplate>
+				<Canvas/>
+			</ItemsPanelTemplate>
+		</ItemsControl.ItemsPanel>
+		<ItemsControl.ItemContainerStyle>
+			<Style TargetType="ContentPresenter">
+				<Setter Property="Canvas.Left" Value="{Binding Position, Converter={StaticResource MeshPointConverter}, ConverterParameter={x:Static converters:MeshPointConverterDimension.Column}}"/>
+				<Setter Property="Canvas.Top" Value="{Binding Position, Converter={StaticResource MeshPointConverter}, ConverterParameter={x:Static converters:MeshPointConverterDimension.Row}}"/>
+			</Style>
+		</ItemsControl.ItemContainerStyle>
+		<ItemsControl.ItemTemplate>
+			<DataTemplate>
+				<local:NodeControl DataContext="{Binding}"/>
+			</DataTemplate>
+		</ItemsControl.ItemTemplate>
+	</ItemsControl>
 </UserControl>

@@ -20,7 +20,10 @@ namespace Rain.Designer.ViewModels.Common
 			var change = new ViewModelChange<T>(field, value);
 
 			if (change.Changed)
+			{
 				field = value;
+				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+			}
 
 			return new ViewModelChangePropagation<T>(change);
 		}

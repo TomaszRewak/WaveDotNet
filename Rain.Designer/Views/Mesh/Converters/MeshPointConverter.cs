@@ -1,4 +1,5 @@
 ﻿using Rain.Designer.DataStructures;
+using Rain.Designer.Views.Common;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -17,11 +18,13 @@ namespace Rain.Designer.Views.Mesh.Converters
 	}
 
 	[ValueConversion(typeof(MeshPoint), typeof(double), ParameterType = typeof(MeshPointConverterDimension))]
-	internal class MeshPointConverter : DependencyObject, IValueConverter
+	internal class MeshPointConverter : IValueConverter
 	{
+		public double Offset { get; set; }
+
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			if (!Enum.TryParse<MeshPointConverterDimension>(parameter as string, out var dimension))
+			if (!(parameter is MeshPointConverterDimension dimension))
 				return null;
 
 			if (!(value is MeshPoint meshPoint))
@@ -30,9 +33,9 @@ namespace Rain.Designer.Views.Mesh.Converters
 			switch (dimension)
 			{
 				case MeshPointConverterDimension.Column:
-					return meshPoint.X * 20;
+					return meshPoint.X * Offset;
 				case MeshPointConverterDimension.Row:
-					return meshPoint.Y * 20;
+					return meshPoint.Y * Offset;
 			}
 
 			return null;

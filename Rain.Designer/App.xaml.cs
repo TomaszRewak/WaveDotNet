@@ -4,6 +4,7 @@ using Rain.Designer.ViewModels.Mesh;
 using Rain.Designer.ViewModels.WaveDesigner;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Linq;
@@ -12,15 +13,16 @@ using System.Windows;
 
 namespace Rain.Designer
 {
-	public partial class App : Application
+	internal partial class App : Application, INotifyPropertyChanged
 	{
-		internal WaveDesignerViewModel WaveDesigner { get; private set; }
+		public WaveDesignerViewModel WaveDesigner { get; private set; }
 
 		protected override void OnStartup(StartupEventArgs e)
 		{
 			var container = PrepareServiceProvider();
 
 			WaveDesigner = container.GetRequiredService<WaveDesignerViewModel>();
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(WaveDesigner)));
 
 			base.OnStartup(e);
 		}
@@ -34,5 +36,7 @@ namespace Rain.Designer
 
 			return serviceCollection.BuildServiceProvider();
 		}
+		
+		public event PropertyChangedEventHandler PropertyChanged;
 	}
 }

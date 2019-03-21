@@ -20,6 +20,12 @@ namespace Rain.Designer.ViewModels.Mesh
 		{
 			_nodesHelper = nodesHelper;
 			_connectionsHelper = connectionsHelper;
+
+			Nodes = new[] {
+				new NodeViewModel() { Position = new MeshPoint(1, 1) },
+				new NodeViewModel() { Position = new MeshPoint(1, 3) },
+				new NodeViewModel() { Position = new MeshPoint(3, 3) }
+			};
 		}
 
 		private IReadOnlyCollection<NodeViewModel> _nodes = new List<NodeViewModel>();

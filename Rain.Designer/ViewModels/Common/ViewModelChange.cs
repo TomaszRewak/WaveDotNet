@@ -18,7 +18,7 @@ namespace Rain.Designer.ViewModels.Common
 			OldValue = oldValue;
 			NewValue = newValue;
 
-			Changed = newValue?.Equals(oldValue) ?? false;
+			Changed = !(newValue?.Equals(oldValue) ?? false);
 		}
 	}
 }

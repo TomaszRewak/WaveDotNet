@@ -20,7 +20,7 @@ namespace Rain.Designer.DataStructures
 		public override bool Equals(object obj)
 		{
 			if (obj is MeshPoint value)
-				this.Equals(value);
+				return this.Equals(value);
 
 			return false;
 		}

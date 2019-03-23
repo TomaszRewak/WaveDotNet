@@ -12,14 +12,13 @@
 				<Border Width="40"
 						Height="40"
 						CornerRadius="20"
-						Opacity="0.5"
 						Background="White"
-						BorderBrush="Gray"
+						BorderBrush="LightGray"
 						BorderThickness="1">
 					<TextBlock Text="＋" 
 							   HorizontalAlignment="Center" 
 							   VerticalAlignment="Center"
-							   Foreground="Gray"/>
+							   Foreground="LightGray"/>
 				</Border>
 			</ControlTemplate>
 		</Button.Template>

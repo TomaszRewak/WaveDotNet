@@ -7,6 +7,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 	<StackPanel>
+		<Button Command="{Binding DataContext.RemoveNodeCommand, RelativeSource={RelativeSource AncestorType=local:MeshControl}}"
+				CommandParameter="{Binding Position}">
+			<Button.Template>
+				<ControlTemplate>
+					<Border BorderBrush="Gray"
+							BorderThickness="1">
+						<TextBlock Text="Remove"
+								   TextAlignment="Center"
+								   Padding="10 5"/>
+					</Border>
+				</ControlTemplate>
+			</Button.Template>
+		</Button>
 		<TextBlock Text="{Binding Position.X}"/>
 		<TextBlock Text="{Binding Position.Y}"/>
 	</StackPanel>

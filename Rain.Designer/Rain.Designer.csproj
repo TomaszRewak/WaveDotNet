@@ -91,6 +91,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Mesh\NodeDetailsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Mesh\NodePlaceholderContainerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -112,6 +116,9 @@
     </Compile>
     <Compile Include="Views\Mesh\NodeControl.xaml.cs">
       <DependentUpon>NodeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Mesh\NodeDetailsControl.xaml.cs">
+      <DependentUpon>NodeDetailsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Mesh\NodePlaceholderContainerControl.xaml.cs">
       <DependentUpon>NodePlaceholderContainerControl.xaml</DependentUpon>

@@ -5,10 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Rain.Designer.Views.Mesh"
              mc:Ignorable="d">
-	<Border Width="40"
-			Height="40"
-			Background="DodgerBlue"
-			CornerRadius="20">
+	<Button Command="{Binding DataContext.SelectNodeCommand, RelativeSource={RelativeSource AncestorType=local:MeshControl}}"
+			CommandParameter="{Binding Position}">
+		<Button.Template>
+			<ControlTemplate TargetType="Button">
+				<Border Width="40"
+						Height="40"
+						Background="DodgerBlue"
+						CornerRadius="20">
 
-	</Border>
+				</Border>
+			</ControlTemplate>
+		</Button.Template>
+	</Button>
 </UserControl>

@@ -43,6 +43,13 @@ namespace Rain.Designer.ViewModels.Mesh
 			private set => Set(ref _connections, value);
 		}
 
+		private NodeViewModel _selectedNode = null;
+		public NodeViewModel SelectedNode
+		{
+			get => _selectedNode;
+			private set => Set(ref _selectedNode, value);
+		}
+
 		private void UpdateConnections()
 		{
 			Connections = _connectionsHelper.UpdateConnections(Nodes, Connections);
@@ -58,7 +65,13 @@ namespace Rain.Designer.ViewModels.Mesh
 			Nodes = _nodesHelper.RemoveNode(Nodes, meshPoint);
 		}
 
-		public ICommand AddNodeCommand => new Command<MeshPoint>(this.AddNode);
-		public ICommand RemoveNodeCommand => new Command<MeshPoint>(this.RemoveNode);
+		private void SelectNode(MeshPoint meshPoint)
+		{
+			SelectedNode = Nodes.FirstOrDefault(node => node.Position == meshPoint);
+		}
+
+		public ICommand AddNodeCommand => new Command<MeshPoint>(AddNode);
+		public ICommand RemoveNodeCommand => new Command<MeshPoint>(RemoveNode);
+		public ICommand SelectNodeCommand => new Command<MeshPoint>(SelectNode);
 	}
 }

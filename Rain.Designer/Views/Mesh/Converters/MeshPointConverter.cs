@@ -16,8 +16,7 @@ namespace Rain.Designer.Views.Mesh.Converters
 		Row,
 		Column
 	}
-
-	[ValueConversion(typeof(MeshPoint), typeof(double), ParameterType = typeof(MeshPointConverterDimension))]
+	
 	internal class MeshPointConverter : ValueConverter<MeshPoint, double, MeshPointConverterDimension>
 	{
 		public double Offset { get; set; }

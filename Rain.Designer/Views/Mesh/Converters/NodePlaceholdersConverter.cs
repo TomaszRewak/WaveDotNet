@@ -11,7 +11,6 @@ using System.Windows.Data;
 
 namespace Rain.Designer.Views.Mesh.Converters
 {
-	[ValueConversion(typeof(IReadOnlyCollection<MeshPoint>), typeof(IReadOnlyCollection<MeshPoint>))]
 	internal class NodePlaceholdersConverter : ValueConverter<IReadOnlyCollection<MeshPoint>, IReadOnlyCollection<MeshPoint>>
 	{
 		public override IReadOnlyCollection<MeshPoint> Convert(IReadOnlyCollection<MeshPoint> value)

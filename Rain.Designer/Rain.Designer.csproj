@@ -75,11 +75,22 @@
     <Compile Include="ViewModels\Mesh\MeshViewModel.cs" />
     <Compile Include="ViewModels\WaveDesigner\WaveDesignerViewModel.cs" />
     <Compile Include="Views\Common\DependencyObject.cs" />
+    <Compile Include="Views\Common\ValueConverter.cs" />
     <Compile Include="Views\Mesh\Converters\MeshPointConverter.cs" />
+    <Compile Include="Views\Mesh\Converters\NodePlaceholdersConverter.cs" />
+    <Compile Include="Views\Mesh\Converters\NodePositionSelectorConverter.cs" />
     <Compile Include="Views\Mesh\MeshControl.xaml.cs">
       <DependentUpon>MeshControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Mesh\NodeContainerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Mesh\NodeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Mesh\NodePlaceholderContainerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -95,8 +106,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\Mesh\NodeContainerControl.xaml.cs">
+      <DependentUpon>NodeContainerControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Mesh\NodeControl.xaml.cs">
       <DependentUpon>NodeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Mesh\NodePlaceholderContainerControl.xaml.cs">
+      <DependentUpon>NodePlaceholderContainerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Mesh\NodePlaceholderControl.xaml.cs">
       <DependentUpon>NodePlaceholderControl.xaml</DependentUpon>

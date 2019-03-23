@@ -9,7 +9,7 @@
              Width="20"
 			 Height="20"
 			 Background="PaleGreen">
-    <Grid>
-            
-    </Grid>
+	<ItemsControl >
+		
+	</ItemsControl>
 </UserControl>

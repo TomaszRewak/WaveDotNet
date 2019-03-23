@@ -18,32 +18,26 @@ namespace Rain.Designer.Views.Mesh.Converters
 	}
 
 	[ValueConversion(typeof(MeshPoint), typeof(double), ParameterType = typeof(MeshPointConverterDimension))]
-	internal class MeshPointConverter : IValueConverter
+	internal class MeshPointConverter : ValueConverter<MeshPoint, double, MeshPointConverterDimension>
 	{
 		public double Offset { get; set; }
 
-		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+		public override double Convert(MeshPoint value, MeshPointConverterDimension parameter)
 		{
-			if (!(parameter is MeshPointConverterDimension dimension))
-				return null;
-
-			if (!(value is MeshPoint meshPoint))
-				return null;
-
-			switch (dimension)
+			switch (parameter)
 			{
 				case MeshPointConverterDimension.Column:
-					return meshPoint.X * Offset;
+					return value.X * Offset;
 				case MeshPointConverterDimension.Row:
-					return meshPoint.Y * Offset;
+					return value.Y * Offset;
+				default:
+					throw new NotImplementedException();
 			}
-
-			return null;
 		}
 
-		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+		public override MeshPoint ConvertBack(double value, MeshPointConverterDimension parameter)
 		{
-			return null;
+			throw new NotImplementedException();
 		}
 	}
 }

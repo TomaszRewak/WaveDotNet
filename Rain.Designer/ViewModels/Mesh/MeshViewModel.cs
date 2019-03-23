@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Rain.Designer.ViewModels.Mesh
 {
@@ -47,14 +48,17 @@ namespace Rain.Designer.ViewModels.Mesh
 			Connections = _connectionsHelper.UpdateConnections(Nodes, Connections);
 		}
 
+		private void AddNode(MeshPoint meshPoint)
+		{
+			Nodes = _nodesHelper.AddNode(Nodes, meshPoint);
+		}
+
 		private void RemoveNode(MeshPoint meshPoint)
 		{
 			Nodes = _nodesHelper.RemoveNode(Nodes, meshPoint);
 		}
 
-		private void AddNode(MeshPoint meshPoint)
-		{
-			Nodes = _nodesHelper.AddNode(Nodes, meshPoint);
-		}
+		public ICommand AddNodeCommand => new Command<MeshPoint>(this.AddNode);
+		public ICommand RemoveNodeCommand => new Command<MeshPoint>(this.RemoveNode);
 	}
 }

@@ -65,6 +65,7 @@
     <Compile Include="DataStructures\UnorderedPair.cs" />
     <Compile Include="Modules\MeshModule.cs" />
     <Compile Include="Modules\WaveDesignerModule.cs" />
+    <Compile Include="ViewModels\Common\Command.cs" />
     <Compile Include="ViewModels\Common\ViewModel.cs" />
     <Compile Include="ViewModels\Common\ViewModelChange.cs" />
     <Compile Include="ViewModels\Common\ViewModelChangePropagation.cs" />

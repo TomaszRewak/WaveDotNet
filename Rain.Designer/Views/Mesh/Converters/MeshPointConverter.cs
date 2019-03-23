@@ -19,6 +19,7 @@ namespace Rain.Designer.Views.Mesh.Converters
 	
 	internal class MeshPointConverter : ValueConverter<MeshPoint, double, MeshPointConverterDimension>
 	{
+		public double PointDistance { get; set; }
 		public double Offset { get; set; }
 
 		public override double Convert(MeshPoint value, MeshPointConverterDimension parameter)
@@ -26,9 +27,9 @@ namespace Rain.Designer.Views.Mesh.Converters
 			switch (parameter)
 			{
 				case MeshPointConverterDimension.Column:
-					return value.X * Offset;
+					return value.X * PointDistance + Offset;
 				case MeshPointConverterDimension.Row:
-					return value.Y * Offset;
+					return value.Y * PointDistance + Offset;
 				default:
 					throw new NotImplementedException();
 			}

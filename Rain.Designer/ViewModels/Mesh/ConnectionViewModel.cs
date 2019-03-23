@@ -14,7 +14,27 @@ namespace Rain.Designer.ViewModels.Mesh
 		public UnorderedPair<MeshPoint> Ends
 		{
 			get => _connection;
-			set => Set(ref _connection, value);
+			set => Set(ref _connection, value).Then(UpdatePoints);
+		}
+
+		private MeshPoint _pointA;
+		public MeshPoint PointA
+		{
+			get => _pointA;
+			private set => Set(ref _pointA, value);
+		}
+
+		private MeshPoint _pointB;
+		public MeshPoint PointB
+		{
+			get => _pointB;
+			private set => Set(ref _pointB, value);
+		}
+
+		private void UpdatePoints()
+		{
+			PointA = Ends.First();
+			PointB = Ends.Last();
 		}
 	}
 }

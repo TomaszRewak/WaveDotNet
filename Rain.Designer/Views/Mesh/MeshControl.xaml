@@ -15,6 +15,7 @@
 								  DockPanel.Dock="Right"/>
 		<Grid>
 			<local:NodePlaceholderContainerControl DataContext="{Binding Nodes, Converter={StaticResource NodePositionConverter}}"/>
+			<local:ConnectionContainerControl DataContext="{Binding Connections}" />
 			<local:NodeContainerControl DataContext="{Binding Nodes}"/>
 		</Grid>
 	</DockPanel>

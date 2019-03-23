@@ -77,12 +77,26 @@
     <Compile Include="ViewModels\WaveDesigner\WaveDesignerViewModel.cs" />
     <Compile Include="Views\Common\DependencyObject.cs" />
     <Compile Include="Views\Common\ValueConverter.cs" />
+    <Compile Include="Views\Mesh\ConnectionContainerControl.xaml.cs">
+      <DependentUpon>ConnectionContainerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Mesh\ConnectionControl.xaml.cs">
+      <DependentUpon>ConnectionControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Mesh\Converters\MeshPointConverter.cs" />
     <Compile Include="Views\Mesh\Converters\NodePlaceholdersConverter.cs" />
     <Compile Include="Views\Mesh\Converters\NodePositionConverter.cs" />
     <Compile Include="Views\Mesh\MeshControl.xaml.cs">
       <DependentUpon>MeshControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Mesh\ConnectionContainerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Mesh\ConnectionControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Mesh\NodeContainerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

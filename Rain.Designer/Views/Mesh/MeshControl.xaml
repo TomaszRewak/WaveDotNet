@@ -6,7 +6,11 @@
              xmlns:local="clr-namespace:Rain.Designer.Views.Mesh"
 			 xmlns:converters="clr-namespace:Rain.Designer.Views.Mesh.Converters"
 			 mc:Ignorable="d">
+	<UserControl.Resources>
+		<converters:NodePositionConverter x:Key="NodePositionConverter"/>
+	</UserControl.Resources>
 	<Grid>
+		<local:NodePlaceholderContainerControl DataContext="{Binding Nodes, Converter={StaticResource NodePositionConverter}}"/>
 		<local:NodeContainerControl DataContext="{Binding Nodes}"/>
 	</Grid>
 </UserControl>

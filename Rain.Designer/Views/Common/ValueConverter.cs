@@ -16,10 +16,10 @@ namespace Rain.Designer.Views.Common
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			if (!(value is TIn typedValue))
-				return null;
+				throw new InvalidCastException();
 
 			if (!(parameter is TParam typedParameter))
-				return null;
+				throw new InvalidCastException();
 
 			return Convert(typedValue, typedParameter);
 		}
@@ -27,22 +27,34 @@ namespace Rain.Designer.Views.Common
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			if (!(value is TOut typedValue))
-				return null;
+				throw new InvalidCastException();
 
 			if (!(parameter is TParam typedParameter))
-				return null;
+				throw new InvalidCastException();
 
 			return ConvertBack(typedValue, typedParameter);
 		}
 	}
 
-	internal abstract class ValueConverter<TIn, TOut> : ValueConverter<TIn, TOut, object>
+	internal abstract class ValueConverter<TIn, TOut> : IValueConverter
 	{
 		public abstract TOut Convert(TIn value);
 		public abstract TIn ConvertBack(TOut value);
 
-		public override TOut Convert(TIn value, object parameter) => Convert(value);
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			if (!(value is TIn typedValue))
+				throw new InvalidCastException();
 
-		public override TIn ConvertBack(TOut value, object parameter) => ConvertBack(value);
+			return Convert(typedValue);
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			if (!(value is TOut typedValue))
+				throw new InvalidCastException();
+
+			return ConvertBack(typedValue);
+		}
 	}
 }

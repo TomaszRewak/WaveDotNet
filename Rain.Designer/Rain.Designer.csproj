@@ -78,7 +78,7 @@
     <Compile Include="Views\Common\ValueConverter.cs" />
     <Compile Include="Views\Mesh\Converters\MeshPointConverter.cs" />
     <Compile Include="Views\Mesh\Converters\NodePlaceholdersConverter.cs" />
-    <Compile Include="Views\Mesh\Converters\NodePositionSelectorConverter.cs" />
+    <Compile Include="Views\Mesh\Converters\NodePositionConverter.cs" />
     <Compile Include="Views\Mesh\MeshControl.xaml.cs">
       <DependentUpon>MeshControl.xaml</DependentUpon>
     </Compile>

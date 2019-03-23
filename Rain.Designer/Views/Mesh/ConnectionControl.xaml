@@ -15,5 +15,5 @@
 		  X2="{Binding PointB, Converter={StaticResource MeshPointConverter}, ConverterParameter={x:Static converters:MeshPointConverterDimension.Column}}"
 		  Y2="{Binding PointB, Converter={StaticResource MeshPointConverter}, ConverterParameter={x:Static converters:MeshPointConverterDimension.Row}}"
 		  Stroke="LightBlue" 
-		  StrokeThickness="5"/>
+		  StrokeThickness="15"/>
 </UserControl>

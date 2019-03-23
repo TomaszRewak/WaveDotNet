@@ -12,8 +12,9 @@
 				<Border Width="40"
 						Height="40"
 						Background="DodgerBlue"
-						CornerRadius="20">
-
+						CornerRadius="20"
+						BorderBrush="White"
+						BorderThickness="4">
 				</Border>
 			</ControlTemplate>
 		</Button.Template>

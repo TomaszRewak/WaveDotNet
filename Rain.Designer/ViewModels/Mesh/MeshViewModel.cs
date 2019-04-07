@@ -33,7 +33,9 @@ namespace Rain.Designer.ViewModels.Mesh
 		public IReadOnlyCollection<NodeViewModel> Nodes
 		{
 			get => _nodes;
-			private set => Set(ref _nodes, value).Then(UpdateConnections);
+			private set => Set(ref _nodes, value)
+				.Then(UpdateConnections)
+				.Then(UpdateSelectedNode);
 		}
 
 		private IReadOnlyCollection<ConnectionViewModel> _connections = new List<ConnectionViewModel>();
@@ -53,6 +55,12 @@ namespace Rain.Designer.ViewModels.Mesh
 		private void UpdateConnections()
 		{
 			Connections = _connectionsHelper.UpdateConnections(Nodes, Connections);
+		}
+
+		private void UpdateSelectedNode()
+		{
+			if (!Nodes.Contains(SelectedNode))
+				SelectedNode = null;
 		}
 
 		private void AddNode(MeshPoint meshPoint)

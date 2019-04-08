@@ -15,6 +15,12 @@ namespace Rain.Designer.ViewModels.Samples
 		public SamplesViewModel(Func<SampleViewModel> sampleFactory)
 		{
 			_sampleFactory = sampleFactory;
+
+			Samples = new[] {
+				_sampleFactory(),
+				_sampleFactory(),
+				_sampleFactory()
+			};
 		}
 
 		private IReadOnlyCollection<SampleViewModel> _samples = new List<SampleViewModel>();

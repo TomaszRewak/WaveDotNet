@@ -39,7 +39,7 @@ namespace Rain.Designer.ViewModels.Common
 
 		public bool CanExecute(object parameter)
 		{
-			return true;
+			return parameter is T;
 		}
 
 		public void Execute(object parameter)

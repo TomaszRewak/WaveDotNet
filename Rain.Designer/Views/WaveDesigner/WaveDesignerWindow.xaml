@@ -6,10 +6,15 @@
         xmlns:local="clr-namespace:Rain.Designer"
 		xmlns:vm="clr-namespace:Rain.Designer.ViewModels.WaveDesigner"
 		xmlns:mesh="clr-namespace:Rain.Designer.Views.Mesh"
+		xmlns:samples="clr-namespace:Rain.Designer.Views.Samples"
 		mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
 		d:DataContext="{d:DesignInstance vm:WaveDesignerViewModel}">
-	<Grid>
-		<mesh:MeshControl DataContext="{Binding Mesh}"/>
-	</Grid>
+	<DockPanel>
+		<samples:SamplesControl
+			DataContext="{Binding Samples, Mode=OneWay}"
+			DockPanel.Dock="Left"/>
+		<mesh:MeshControl 
+			DataContext="{Binding Mesh, Mode=OneWay}"/>
+	</DockPanel>
 </Window>

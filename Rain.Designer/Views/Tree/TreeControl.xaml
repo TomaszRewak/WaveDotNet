@@ -6,25 +6,51 @@
              xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-		<StackPanel>
-			<Border
-				Width="25"
-				Height="25"
-				CornerRadius="25"
-				Background="ForestGreen"/>
+	<StackPanel>
+		<Border
+			Width="25"
+			Height="25"
+			CornerRadius="25"
+			Background="ForestGreen"
+			HorizontalAlignment="Center"/>
+		<StackPanel Orientation="Horizontal">
+			<ItemsControl ItemsSource="{Binding SubTrees}">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<StackPanel Orientation="Horizontal"/>
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<local:TreeControl 
+							DataContext="{Binding}" 
+							Margin="5 10"
+							VerticalAlignment="Top"/>
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+			<Button 
+				Command="{Binding DataContext.AddSubTreeCommand, RelativeSource={RelativeSource AncestorType=local:TreeControl}}"
+				Margin="5 10"
+				VerticalAlignment="Top">
+				<Button.Template>
+					<ControlTemplate TargetType="Button">
+						<Border 
+							Width="25"
+							Height="25"
+							CornerRadius="25"
+							Background="White"
+							BorderBrush="LightGray"
+							BorderThickness="1">
+							<TextBlock 
+								Text="＋" 
+								HorizontalAlignment="Center" 
+								VerticalAlignment="Center"
+								Foreground="LightGray"/>
+						</Border>
+					</ControlTemplate>
+				</Button.Template>
+			</Button>
 		</StackPanel>
-		<ItemsControl ItemsSource="{Binding SubTrees}">
-			<ItemsControl.ItemsPanel>
-				<ItemsPanelTemplate>
-					<StackPanel Orientation="Horizontal"/>
-				</ItemsPanelTemplate>
-			</ItemsControl.ItemsPanel>
-			<ItemsControl.ItemTemplate>
-				<DataTemplate>
-					<local:TreeControl DataContext="{Binding}" Margin="10"/>
-				</DataTemplate>
-			</ItemsControl.ItemTemplate>
-		</ItemsControl>
-    </StackPanel>
+	</StackPanel>
 </UserControl>

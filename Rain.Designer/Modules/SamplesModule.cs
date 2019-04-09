@@ -13,6 +13,7 @@ namespace Rain.Designer.Modules
 		public static void Register(ServiceCollection serviceCollection)
 		{
 			serviceCollection.AddTransient<SamplesViewModel>();
+			serviceCollection.AddTransient<SampleViewModel>();
 			serviceCollection.AddTransient<Func<SampleViewModel>>(sp => () => sp.GetService<SampleViewModel>());
 		}
 	}

@@ -9,7 +9,7 @@
     <Grid>
 		<Button
 			Content="Remove"
-			Command="{Binding DataContext.RemoveSampleCommand, RelativeSource={RelativeSource AncestorType=local:SamplesControl}, Mode=OneWay}"
+			Command="{Binding DataContext.RemoveSampleCommand, RelativeSource={RelativeSource AncestorType=local:SamplesControl}}"
 			CommandParameter="{Binding}"/>
 	</Grid>
 </UserControl>

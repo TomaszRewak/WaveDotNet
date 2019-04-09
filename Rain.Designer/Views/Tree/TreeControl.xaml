@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Rain.Designer.Views.Tree.TreeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel>
+		<StackPanel>
+			<Border
+				Width="25"
+				Height="25"
+				CornerRadius="25"
+				Background="ForestGreen"/>
+		</StackPanel>
+		<ItemsControl ItemsSource="{Binding SubTrees}">
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<StackPanel Orientation="Horizontal"/>
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<local:TreeControl DataContext="{Binding}" Margin="10"/>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+    </StackPanel>
+</UserControl>

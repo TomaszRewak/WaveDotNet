@@ -7,10 +7,14 @@
 		xmlns:vm="clr-namespace:Rain.Designer.ViewModels.WaveDesigner"
 		xmlns:mesh="clr-namespace:Rain.Designer.Views.Mesh"
 		xmlns:samples="clr-namespace:Rain.Designer.Views.Samples"
+		xmlns:tree="clr-namespace:Rain.Designer.Views.Tree"
 		mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
 		d:DataContext="{d:DesignInstance vm:WaveDesignerViewModel}">
 	<DockPanel>
+		<tree:TreeControl
+			DataContext="{Binding Tree, Mode=OneWay}"
+			DockPanel.Dock="Left"/>
 		<samples:SamplesControl
 			DataContext="{Binding Samples, Mode=OneWay}"
 			DockPanel.Dock="Left"/>

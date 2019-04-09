@@ -34,6 +34,7 @@ namespace Rain.Designer
 			MeshModule.Register(serviceCollection);
 			WaveDesignerModule.Register(serviceCollection);
 			SamplesModule.Register(serviceCollection);
+			TreeModule.Register(serviceCollection);
 
 			return serviceCollection.BuildServiceProvider();
 		}

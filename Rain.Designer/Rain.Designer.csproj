@@ -65,6 +65,7 @@
     <Compile Include="DataStructures\UnorderedPair.cs" />
     <Compile Include="Modules\MeshModule.cs" />
     <Compile Include="Modules\SamplesModule.cs" />
+    <Compile Include="Modules\TreeModule.cs" />
     <Compile Include="Modules\WaveDesignerModule.cs" />
     <Compile Include="ViewModels\Common\Command.cs" />
     <Compile Include="ViewModels\Common\ViewModel.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="ViewModels\Mesh\MeshViewModel.cs" />
     <Compile Include="ViewModels\Samples\SamplesViewModel.cs" />
     <Compile Include="ViewModels\Samples\SampleViewModel.cs" />
+    <Compile Include="ViewModels\Tree\TreeViewModel.cs" />
     <Compile Include="ViewModels\WaveDesigner\WaveDesignerViewModel.cs" />
     <Compile Include="Views\Common\DependencyObject.cs" />
     <Compile Include="Views\Common\ValueConverter.cs" />
@@ -128,6 +130,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Tree\TreeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\WaveDesigner\WaveDesignerWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -156,6 +162,9 @@
     </Compile>
     <Compile Include="Views\Samples\SamplesControl.xaml.cs">
       <DependentUpon>SamplesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\TreeControl.xaml.cs">
+      <DependentUpon>TreeControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WaveDesigner\WaveDesignerWindow.xaml.cs">
       <DependentUpon>WaveDesignerWindow.xaml</DependentUpon>
@@ -193,9 +202,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\Tree\" />
-    <Folder Include="Views\Tree\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

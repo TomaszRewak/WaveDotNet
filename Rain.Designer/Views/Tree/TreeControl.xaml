@@ -11,6 +11,7 @@
 			Width="25"
 			Height="25"
 			CornerRadius="25"
+			Margin="5 10"
 			Background="ForestGreen"
 			HorizontalAlignment="Center"/>
 		<StackPanel Orientation="Horizontal">
@@ -24,7 +25,6 @@
 					<DataTemplate>
 						<local:TreeControl 
 							DataContext="{Binding}" 
-							Margin="5 10"
 							VerticalAlignment="Top"/>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
@@ -32,21 +32,21 @@
 			<Button 
 				Command="{Binding DataContext.AddSubTreeCommand, RelativeSource={RelativeSource AncestorType=local:TreeControl}}"
 				Margin="5 10"
+				Width="25"
+				Height="25"
 				VerticalAlignment="Top">
 				<Button.Template>
 					<ControlTemplate TargetType="Button">
-						<Border 
-							Width="25"
-							Height="25"
+						<Border
 							CornerRadius="25"
-							Background="White"
-							BorderBrush="LightGray"
+							Background="LightGray"
+							BorderBrush="ForestGreen"
 							BorderThickness="1">
 							<TextBlock 
 								Text="＋" 
 								HorizontalAlignment="Center" 
 								VerticalAlignment="Center"
-								Foreground="LightGray"/>
+								Foreground="ForestGreen"/>
 						</Border>
 					</ControlTemplate>
 				</Button.Template>

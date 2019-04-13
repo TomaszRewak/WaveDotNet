@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Markup;
 
 namespace Rain.Designer.Views.Common
 {
-	internal abstract class ValueConverter<TIn, TOut, TParam> : IValueConverter
+	internal abstract class ValueConverter<TIn, TOut, TParam> : MarkupExtension, IValueConverter
 	{
-		public abstract TOut Convert(TIn value, TParam parameter);
-		public abstract TIn ConvertBack(TOut value, TParam parameter);
+		protected abstract TOut Convert(TIn value, TParam parameter);
+		protected abstract TIn ConvertBack(TOut value, TParam parameter);
 
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
@@ -33,6 +34,11 @@ namespace Rain.Designer.Views.Common
 				throw new InvalidCastException();
 
 			return ConvertBack(typedValue, typedParameter);
+		}
+
+		public override object ProvideValue(IServiceProvider serviceProvider)
+		{
+			return this;
 		}
 	}
 

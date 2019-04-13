@@ -1,6 +1,7 @@
 ﻿using Rain.Designer.ViewModels.Common;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,26 @@ namespace Rain.Designer.ViewModels.Tree
 			_treeFactory = treeFactory;
 		}
 
+		private void SubTreeChanged(object subTree, PropertyChangedEventArgs args)
+		{
+			if (args.PropertyName == nameof(TreeViewModel.Width))
+				this.UpdateWidth();
+		}
+
 		private IReadOnlyCollection<TreeViewModel> _subTrees = new List<TreeViewModel>();
 		public IReadOnlyCollection<TreeViewModel> SubTrees
 		{
 			get => _subTrees;
-			set => Set(ref _subTrees, value);
+			set => Set(ref _subTrees, value)
+				.ObserveChildren(SubTreeChanged)
+				.Then(UpdateWidth);
+		}
+
+		private int _width = 1;
+		public int Width
+		{
+			get => _width;
+			set => Set(ref _width, value);
 		}
 
 		private void AddSubTree()
@@ -29,6 +45,13 @@ namespace Rain.Designer.ViewModels.Tree
 			SubTrees = SubTrees
 				.Concat(new[] { _treeFactory() })
 				.ToList();
+		}
+
+		private void UpdateWidth()
+		{
+			Width = SubTrees.Any() 
+				? SubTrees.Sum(subTree => subTree.Width)
+				: 1;
 		}
 
 		public ICommand AddSubTreeCommand => new Command(AddSubTree);

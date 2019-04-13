@@ -22,7 +22,7 @@ namespace Rain.Designer.Views.Mesh.Converters
 		public double PointDistance { get; set; }
 		public double Offset { get; set; }
 
-		public override double Convert(MeshPoint value, MeshPointConverterDimension parameter)
+		protected override double Convert(MeshPoint value, MeshPointConverterDimension parameter)
 		{
 			switch (parameter)
 			{
@@ -35,7 +35,7 @@ namespace Rain.Designer.Views.Mesh.Converters
 			}
 		}
 
-		public override MeshPoint ConvertBack(double value, MeshPointConverterDimension parameter)
+		protected override MeshPoint ConvertBack(double value, MeshPointConverterDimension parameter)
 		{
 			throw new NotImplementedException();
 		}

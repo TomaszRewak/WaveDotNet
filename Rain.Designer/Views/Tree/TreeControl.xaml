@@ -4,37 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
-             mc:Ignorable="d" 
+			 xmlns:converters="clr-namespace:Rain.Designer.Views.Tree.Converters"
+			 xmlns:s="clr-namespace:System;assembly=mscorlib"
+			 xmlns:markups="clr-namespace:Rain.Designer.Views.Markups"
+			 mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-	<StackPanel>
-		<Border
-			Width="25"
-			Height="25"
-			CornerRadius="25"
-			Margin="5 10"
-			Background="ForestGreen"
-			HorizontalAlignment="Center"/>
-		<StackPanel Orientation="Horizontal">
-			<ItemsControl ItemsSource="{Binding SubTrees}">
-				<ItemsControl.ItemsPanel>
-					<ItemsPanelTemplate>
-						<StackPanel Orientation="Horizontal"/>
-					</ItemsPanelTemplate>
-				</ItemsControl.ItemsPanel>
-				<ItemsControl.ItemTemplate>
-					<DataTemplate>
-						<local:TreeControl 
-							DataContext="{Binding}" 
-							VerticalAlignment="Top"/>
-					</DataTemplate>
-				</ItemsControl.ItemTemplate>
-			</ItemsControl>
+	<UserControl.Resources>
+		<s:Double x:Key="NodeSize">25</s:Double>
+		<s:Double x:Key="NodeMargin">5</s:Double>
+		<s:Double x:Key="NodeHorizontalSpacing">35</s:Double>
+	</UserControl.Resources>
+	<Grid>
+		<StackPanel>
+			<Border
+				Width="{StaticResource NodeSize}"
+				Height="{StaticResource NodeSize}"
+				CornerRadius="25"
+				Margin="5 5"
+				Background="ForestGreen"
+				HorizontalAlignment="Center"/>
 			<Button 
 				Command="{Binding DataContext.AddSubTreeCommand, RelativeSource={RelativeSource AncestorType=local:TreeControl}}"
-				Margin="5 10"
-				Width="25"
-				Height="25"
-				VerticalAlignment="Top">
+				Margin="10 -20 -10 -5"
+				Width="{StaticResource NodeSize}"
+				Height="{StaticResource NodeSize}"
+				HorizontalAlignment="Center">
 				<Button.Template>
 					<ControlTemplate TargetType="Button">
 						<Border
@@ -51,6 +45,44 @@
 					</ControlTemplate>
 				</Button.Template>
 			</Button>
+			<StackPanel Orientation="Horizontal">
+				<ItemsControl ItemsSource="{Binding SubTrees}">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<StackPanel Orientation="Horizontal"/>
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<local:TreeControl 
+							DataContext="{Binding}" 
+							VerticalAlignment="Top"/>
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+			</StackPanel>
 		</StackPanel>
-	</StackPanel>
+		<ItemsControl ItemsSource="{Binding SubTrees}" AlternationCount="{x:Static s:Int32.MaxValue}">
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<Canvas HorizontalAlignment="Center"/>
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<Line 
+						X1="0" 
+						Y1="{markups:DivideDouble A={StaticResource NodeHorizontalSpacing}, B=2}" 
+						X2="{converters:ChildNodePositionConverter 
+							NodeIndex={Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource Mode=TemplatedParent}},
+							Tree={Binding DataContext, RelativeSource={RelativeSource AncestorType=local:TreeControl}},
+							Width={Binding DataContext.Width, RelativeSource={RelativeSource AncestorType=local:TreeControl}},
+							NodesDistance={StaticResource NodeHorizontalSpacing}}"
+						Y2="60" 						
+						Stroke="Red"
+						StrokeThickness="5"/>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+	</Grid>
 </UserControl>

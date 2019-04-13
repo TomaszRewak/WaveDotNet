@@ -10,37 +10,62 @@
 			 mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 	<UserControl.Resources>
-		<s:Double x:Key="NodeSize">25</s:Double>
-		<s:Double x:Key="NodeMargin">5</s:Double>
-		<markups:AddDouble x:Key="NodeOuterSize" A="{StaticResource NodeSize}" B="{markups:MultiplyDouble A={StaticResource NodeMargin}, B=2}"/>
+		<s:Double x:Key="NodeSize">30</s:Double>
+		<s:Double x:Key="NodeMarginSize">10</s:Double>
+		<Thickness x:Key="NodeMargin" Left="{StaticResource NodeMarginSize}" Top="{StaticResource NodeMarginSize}" Right="{StaticResource NodeMarginSize}" Bottom="{StaticResource NodeMarginSize}"/>
+		<markups:AddDouble x:Key="NodeOuterSize" A="{StaticResource NodeSize}" B="{markups:MultiplyDouble A={StaticResource NodeMarginSize}, B=2}"/>
 	</UserControl.Resources>
 	<Grid>
+		<ItemsControl ItemsSource="{Binding SubTrees}" AlternationCount="{x:Static s:Int32.MaxValue}">
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<Canvas HorizontalAlignment="Center"/>
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<Line 
+						X1="0" 
+						Y1="{markups:DivideDouble A={StaticResource NodeOuterSize}, B=2}" 
+						X2="{converters:ChildNodePositionConverter 
+							NodeIndex={Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource Mode=TemplatedParent}},
+							Tree={Binding DataContext, RelativeSource={RelativeSource AncestorType=local:TreeControl}},
+							Width={Binding DataContext.Width, RelativeSource={RelativeSource AncestorType=local:TreeControl}},
+							NodesDistance={StaticResource NodeOuterSize}}"
+						Y2="{markups:MultiplyDouble A={StaticResource NodeOuterSize}, B=1.5}" 						
+						Stroke="LightGreen"
+						StrokeThickness="5"/>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
 		<StackPanel>
 			<Border
 				Width="{StaticResource NodeSize}"
 				Height="{StaticResource NodeSize}"
 				CornerRadius="25"
-				Margin="5 5"
+				Margin="{StaticResource NodeMargin}"
 				Background="ForestGreen"
+				BorderThickness="3"
+				BorderBrush="White"
 				HorizontalAlignment="Center"/>
 			<Button 
 				Command="{Binding DataContext.AddSubTreeCommand, RelativeSource={RelativeSource AncestorType=local:TreeControl}}"
-				Margin="10 -20 -10 -5"
-				Width="{StaticResource NodeSize}"
-				Height="{StaticResource NodeSize}"
+				Margin="0 -20 -20 0"
+				Width="20"
+				Height="20"
 				HorizontalAlignment="Center">
 				<Button.Template>
 					<ControlTemplate TargetType="Button">
 						<Border
 							CornerRadius="25"
 							Background="LightGray"
-							BorderBrush="ForestGreen"
-							BorderThickness="1">
+							BorderThickness="3"
+							BorderBrush="White">
 							<TextBlock 
 								Text="＋" 
 								HorizontalAlignment="Center" 
 								VerticalAlignment="Center"
-								Foreground="ForestGreen"/>
+								Foreground="White"/>
 						</Border>
 					</ControlTemplate>
 				</Button.Template>
@@ -62,27 +87,5 @@
 				</ItemsControl>
 			</StackPanel>
 		</StackPanel>
-		<ItemsControl ItemsSource="{Binding SubTrees}" AlternationCount="{x:Static s:Int32.MaxValue}">
-			<ItemsControl.ItemsPanel>
-				<ItemsPanelTemplate>
-					<Canvas HorizontalAlignment="Center"/>
-				</ItemsPanelTemplate>
-			</ItemsControl.ItemsPanel>
-			<ItemsControl.ItemTemplate>
-				<DataTemplate>
-					<Line 
-						X1="0" 
-						Y1="{markups:DivideDouble A={StaticResource NodeOuterSize}, B=2}" 
-						X2="{converters:ChildNodePositionConverter 
-							NodeIndex={Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource Mode=TemplatedParent}},
-							Tree={Binding DataContext, RelativeSource={RelativeSource AncestorType=local:TreeControl}},
-							Width={Binding DataContext.Width, RelativeSource={RelativeSource AncestorType=local:TreeControl}},
-							NodesDistance={StaticResource NodeOuterSize}}"
-						Y2="{markups:MultiplyDouble A={StaticResource NodeOuterSize}, B=1.5}" 						
-						Stroke="Red"
-						StrokeThickness="5"/>
-				</DataTemplate>
-			</ItemsControl.ItemTemplate>
-		</ItemsControl>
 	</Grid>
 </UserControl>

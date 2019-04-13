@@ -88,6 +88,7 @@
     <Compile Include="Views\Common\ValueConverter.cs" />
     <Compile Include="Views\Markups\AddDouble.cs" />
     <Compile Include="Views\Markups\DivideDouble.cs" />
+    <Compile Include="Views\Markups\MultiplyDouble.cs" />
     <Compile Include="Views\Mesh\ConnectionContainerControl.xaml.cs">
       <DependentUpon>ConnectionContainerControl.xaml</DependentUpon>
     </Compile>

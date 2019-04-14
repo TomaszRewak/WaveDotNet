@@ -12,6 +12,13 @@ namespace Rain.Designer.Views.Markups
 		public double A { get; set; }
 		public double B { get; set; }
 
+		public AddDouble() { }
+		public AddDouble(double a, double b)
+		{
+			A = a;
+			B = b;
+		}
+
 		public override object ProvideValue(IServiceProvider serviceProvider)
 		{
 			return A + B;

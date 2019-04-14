@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
-			 xmlns:converters="clr-namespace:Rain.Designer.Views.Tree.Converters"
+			 xmlns:c="clr-namespace:Rain.Designer.Views.Tree.Converters"
 			 xmlns:s="clr-namespace:System;assembly=mscorlib"
 			 xmlns:m="clr-namespace:Rain.Designer.Views.Markups"
 			 mc:Ignorable="d" 
@@ -26,13 +26,13 @@
 				<DataTemplate>
 					<Line 
 						X1="0" 
-						Y1="{m:DivideDouble A={StaticResource NodeOuterSize}, B=2}" 
-						X2="{converters:ChildNodePositionConverter 
+						Y1="{m:DivideDouble {StaticResource NodeOuterSize}, 2}" 
+						X2="{c:ChildNodePositionConverter 
 							NodeIndex={Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource Mode=TemplatedParent}},
 							Tree={m:DataContextBinding ControlType=local:TreeControl},
 							Width={m:DataContextBinding Width, ControlType=local:TreeControl},
 							NodesDistance={StaticResource NodeOuterSize}}"
-						Y2="{m:MultiplyDouble A={StaticResource NodeOuterSize}, B=1.5}" 						
+						Y2="{m:MultiplyDouble {StaticResource NodeOuterSize}, 1.5}" 						
 						Stroke="LightGreen"
 						StrokeThickness="5"/>
 				</DataTemplate>

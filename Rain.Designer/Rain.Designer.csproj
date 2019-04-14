@@ -66,10 +66,12 @@
     </ApplicationDefinition>
     <Compile Include="DataStructures\MeshPoint.cs" />
     <Compile Include="DataStructures\UnorderedPair.cs" />
+    <Compile Include="Modules\Helpers\ModuleFactoryHelper.cs" />
     <Compile Include="Modules\MeshModule.cs" />
     <Compile Include="Modules\SamplesModule.cs" />
     <Compile Include="Modules\TreeModule.cs" />
     <Compile Include="Modules\WaveDesignerModule.cs" />
+    <Compile Include="Modules\WavesModule.cs" />
     <Compile Include="ViewModels\Common\Command.cs" />
     <Compile Include="ViewModels\Common\ViewModel.cs" />
     <Compile Include="ViewModels\Common\ViewModelChange.cs" />
@@ -81,6 +83,15 @@
     <Compile Include="ViewModels\Mesh\MeshViewModel.cs" />
     <Compile Include="ViewModels\Samples\SamplesViewModel.cs" />
     <Compile Include="ViewModels\Samples\SampleViewModel.cs" />
+    <Compile Include="ViewModels\Tree\Helpers\WaveBlockFactoryHelper.cs" />
+    <Compile Include="ViewModels\Tree\NodeViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Combiners\AdditiveWaveCombinerBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Generators\LinearWaveGeneratorBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Generators\SinWaveGeneratorBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Transformers\AmplitudeWaveTransformerBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Transformers\FrequencyWaveTransformerBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\SimpleWaveBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\WaveBlockViewModel.cs" />
     <Compile Include="ViewModels\Tree\TreeDesignerViewModel.cs" />
     <Compile Include="ViewModels\Tree\TreeViewModel.cs" />
     <Compile Include="ViewModels\WaveDesigner\WaveDesignerViewModel.cs" />
@@ -139,6 +150,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Tree\SubTreeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Tree\TreeControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -177,6 +192,9 @@
       <DependentUpon>SamplesControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Tree\Converters\ChildNodePositionConverter.cs" />
+    <Compile Include="Views\Tree\SubTreeControl.xaml.cs">
+      <DependentUpon>SubTreeControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Tree\TreeControl.xaml.cs">
       <DependentUpon>TreeControl.xaml</DependentUpon>
     </Compile>
@@ -219,6 +237,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Rain.Wave\Rain.Wave.csproj">
+      <Project>{BF069839-0A53-41C0-83EE-F4E1C0DD2ABB}</Project>
+      <Name>Rain.Wave</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

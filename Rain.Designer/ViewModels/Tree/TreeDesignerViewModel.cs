@@ -29,6 +29,6 @@ namespace Rain.Designer.ViewModels.Tree
 			this.SelectedSubTree = tree;
 		}
 
-		public ICommand SelectTreeCommand => new Command<TreeViewModel>(SelectSubTree);
+		public ICommand SelectSubTreeCommand => new Command<TreeViewModel>(SelectSubTree);
     }
 }

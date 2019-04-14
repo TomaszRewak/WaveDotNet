@@ -13,9 +13,13 @@ namespace Rain.Designer.ViewModels.Tree
     {
 		private readonly Func<TreeViewModel> _treeFactory;
 
-		public TreeViewModel(Func<TreeViewModel> treeFactory)
+		public TreeViewModel(
+			Func<TreeViewModel> treeFactory, 
+			NodeViewModel rootNode)
 		{
 			_treeFactory = treeFactory;
+
+			RootNode = rootNode;
 		}
 
 		private void SubTreeChanged(object subTree, PropertyChangedEventArgs args)
@@ -23,6 +27,8 @@ namespace Rain.Designer.ViewModels.Tree
 			if (args.PropertyName == nameof(TreeViewModel.Width))
 				this.UpdateWidth();
 		}
+
+		public NodeViewModel RootNode { get; }
 
 		private IReadOnlyCollection<TreeViewModel> _subTrees = new List<TreeViewModel>();
 		public IReadOnlyCollection<TreeViewModel> SubTrees

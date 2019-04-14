@@ -40,7 +40,8 @@
 		</ItemsControl>
 		<StackPanel>
 			<Button
-				Command="{m:DataContextBinding SelectSubTree, ControlType=local:TreeDesignerControl}"
+				Command="{m:DataContextBinding SelectSubTreeCommand, ControlType=local:TreeDesignerControl}"
+				CommandParameter="{Binding}"
 				Width="{StaticResource NodeSize}"
 				Height="{StaticResource NodeSize}"
 				Margin="{StaticResource NodeMargin}"
@@ -56,7 +57,7 @@
 				</Button.Template>
 			</Button>
 			<Button 
-				Command="{Binding DataContext.AddSubTreeCommand, RelativeSource={RelativeSource AncestorType=local:TreeControl}}"
+				Command="{m:DataContextBinding AddSubTreeCommand, ControlType=local:TreeControl}"
 				Width="20"
 				Height="20"
 				Margin="0 -20 -20 0"

@@ -12,8 +12,8 @@
         Title="MainWindow" Height="450" Width="800"
 		d:DataContext="{d:DesignInstance vm:WaveDesignerViewModel}">
 	<DockPanel>
-		<tree:TreeControl
-			DataContext="{Binding Tree, Mode=OneWay}"
+		<tree:TreeDesignerControl
+			DataContext="{Binding TreeDesigner}"
 			DockPanel.Dock="Left"/>
 		<samples:SamplesControl
 			DataContext="{Binding Samples, Mode=OneWay}"

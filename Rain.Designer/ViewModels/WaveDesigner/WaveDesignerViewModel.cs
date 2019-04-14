@@ -15,28 +15,18 @@ namespace Rain.Designer.ViewModels.WaveDesigner
 		public MeshViewModel Mesh { get; }
 		public SamplesViewModel Samples { get; }
 		public TreeViewModel Tree { get; }
+		public TreeDesignerViewModel TreeDesigner { get; }
 
 		public WaveDesignerViewModel(
 			MeshViewModel mesh,
 			SamplesViewModel samples,
-			Func<TreeViewModel> treeFactory)
+			Func<TreeViewModel> treeFactory,
+			TreeDesignerViewModel treeDesigner)
 		{
 			Mesh = mesh;
 			Samples = samples;
 			Tree = treeFactory();
-
-			Tree.SubTrees = Enumerable.Range(0, 3)
-				.Select(_ =>
-				{
-					var subTree = treeFactory();
-
-					subTree.SubTrees = Enumerable.Range(0, 2)
-						.Select(__ => treeFactory())
-						.ToList();
-
-					return subTree;
-				})
-				.ToList();
+			TreeDesigner = treeDesigner;
 		}
 	}
 }

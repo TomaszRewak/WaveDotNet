@@ -81,12 +81,14 @@
     <Compile Include="ViewModels\Mesh\MeshViewModel.cs" />
     <Compile Include="ViewModels\Samples\SamplesViewModel.cs" />
     <Compile Include="ViewModels\Samples\SampleViewModel.cs" />
+    <Compile Include="ViewModels\Tree\TreeDesignerViewModel.cs" />
     <Compile Include="ViewModels\Tree\TreeViewModel.cs" />
     <Compile Include="ViewModels\WaveDesigner\WaveDesignerViewModel.cs" />
     <Compile Include="Views\Common\DependencyObject.cs" />
     <Compile Include="Views\Common\MultiValueConverter.cs" />
     <Compile Include="Views\Common\ValueConverter.cs" />
     <Compile Include="Views\Markups\AddDouble.cs" />
+    <Compile Include="Views\Markups\DataContextBinding.cs" />
     <Compile Include="Views\Markups\DivideDouble.cs" />
     <Compile Include="Views\Markups\MultiplyDouble.cs" />
     <Compile Include="Views\Mesh\ConnectionContainerControl.xaml.cs">
@@ -141,6 +143,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Tree\TreeDesignerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\WaveDesigner\WaveDesignerWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -173,6 +179,9 @@
     <Compile Include="Views\Tree\Converters\ChildNodePositionConverter.cs" />
     <Compile Include="Views\Tree\TreeControl.xaml.cs">
       <DependentUpon>TreeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\TreeDesignerControl.xaml.cs">
+      <DependentUpon>TreeDesignerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WaveDesigner\WaveDesignerWindow.xaml.cs">
       <DependentUpon>WaveDesignerWindow.xaml</DependentUpon>

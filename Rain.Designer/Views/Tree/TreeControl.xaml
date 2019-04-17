@@ -4,9 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
-			 xmlns:c="clr-namespace:Rain.Designer.Views.Tree.Converters"
+			 xmlns:tc="clr-namespace:Rain.Designer.Views.Tree.Converters"
 			 xmlns:s="clr-namespace:System;assembly=mscorlib"
 			 xmlns:m="clr-namespace:Rain.Designer.Views.Markups"
+			 xmlns:c="clr-namespace:Rain.Designer.Views.Converters"
 			 mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 	<UserControl.Resources>
@@ -27,7 +28,7 @@
 					<Line 
 						X1="0" 
 						Y1="{m:DivideDouble {StaticResource NodeOuterSize}, 2}" 
-						X2="{c:ChildNodePositionConverter 
+						X2="{tc:ChildNodePositionConverter 
 							NodeIndex={Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource Mode=TemplatedParent}},
 							Tree={m:DataContextBinding ControlType=local:TreeControl},
 							Width={m:DataContextBinding Width, ControlType=local:TreeControl},
@@ -50,9 +51,19 @@
 					<ControlTemplate>
 						<Border
 							CornerRadius="25"
-							Background="ForestGreen"
 							BorderThickness="3"
-							BorderBrush="White"/>
+							BorderBrush="White">
+							<Border.Background>
+								<Binding Path="RootNode.WaveBlock">
+									<Binding.Converter>
+										<c:ChainConverter>
+											<c:ChainedConverter Converter="{c:ComparisonConverter Value={x:Null}}"/>
+											<c:ChainedConverter Converter="{c:BooleanToColorConverter True=Red, False=ForestGreen}"/>
+										</c:ChainConverter>
+									</Binding.Converter>
+								</Binding>
+							</Border.Background>
+						</Border>
 					</ControlTemplate>
 				</Button.Template>
 			</Button>

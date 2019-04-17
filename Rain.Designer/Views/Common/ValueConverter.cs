@@ -42,7 +42,7 @@ namespace Rain.Designer.Views.Common
 		}
 	}
 
-	internal abstract class ValueConverter<TIn, TOut> : IValueConverter
+	internal abstract class ValueConverter<TIn, TOut> : MarkupExtension, IValueConverter
 	{
 		public abstract TOut Convert(TIn value);
 		public abstract TIn ConvertBack(TOut value);
@@ -61,6 +61,11 @@ namespace Rain.Designer.Views.Common
 				throw new InvalidCastException();
 
 			return ConvertBack(typedValue);
+		}
+
+		public override object ProvideValue(IServiceProvider serviceProvider)
+		{
+			return this;
 		}
 	}
 }

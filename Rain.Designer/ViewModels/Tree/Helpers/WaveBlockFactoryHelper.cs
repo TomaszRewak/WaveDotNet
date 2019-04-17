@@ -23,7 +23,7 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 				Name = name;
 			}
 
-			WaveBlockViewModel Create() => _factory();
+			public WaveBlockViewModel Create() => _factory();
 
 			public string Name { get; }
 		}

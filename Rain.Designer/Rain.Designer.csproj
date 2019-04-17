@@ -150,7 +150,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Tree\SubTreeControl.xaml">
+    <Page Include="Views\Tree\NodeControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -192,8 +192,8 @@
       <DependentUpon>SamplesControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Tree\Converters\ChildNodePositionConverter.cs" />
-    <Compile Include="Views\Tree\SubTreeControl.xaml.cs">
-      <DependentUpon>SubTreeControl.xaml</DependentUpon>
+    <Compile Include="Views\Tree\NodeControl.xaml.cs">
+      <DependentUpon>NodeControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Tree\TreeControl.xaml.cs">
       <DependentUpon>TreeControl.xaml</DependentUpon>

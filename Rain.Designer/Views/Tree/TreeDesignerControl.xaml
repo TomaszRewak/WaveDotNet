@@ -6,9 +6,12 @@
              xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <DockPanel>
-		<local:SubTreeControl
-			DataContext="{Binding SelectedSubTree}"/>
+	<DockPanel>
+		<local:NodeControl
+			DataContext="{Binding SelectedNode}"
+			DockPanel.Dock="Right"
+			Background="Red"
+			Width="100"/>
 		<local:TreeControl
 			DataContext="{Binding Tree}"/>
 	</DockPanel>

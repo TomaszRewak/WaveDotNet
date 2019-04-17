@@ -15,14 +15,14 @@ using System.Windows.Shapes;
 
 namespace Rain.Designer.Views.Tree
 {
-    /// <summary>
-    /// Interaction logic for SubTreeControl.xaml
-    /// </summary>
-    public partial class SubTreeControl : UserControl
-    {
-        public SubTreeControl()
-        {
-            InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// Interaction logic for NodeControl.xaml
+	/// </summary>
+	public partial class NodeControl : UserControl
+	{
+		public NodeControl()
+		{
+			InitializeComponent();
+		}
+	}
 }

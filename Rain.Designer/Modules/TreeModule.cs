@@ -30,7 +30,6 @@ namespace Rain.Designer.Modules
 			serviceCollection.AddFactory<FrequencyWaveTransformerBlockViewModel>();
 
 			serviceCollection.AddSingleton<WaveBlockFactoryHelper>();
-			serviceCollection.AddSingleton<WaveBlockFactoryHelper>();
 		}
 	}
 }

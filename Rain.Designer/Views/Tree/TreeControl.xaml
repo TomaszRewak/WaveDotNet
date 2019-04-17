@@ -40,8 +40,8 @@
 		</ItemsControl>
 		<StackPanel>
 			<Button
-				Command="{m:DataContextBinding SelectSubTreeCommand, ControlType=local:TreeDesignerControl}"
-				CommandParameter="{Binding}"
+				Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}"
+				CommandParameter="{Binding RootNode}"
 				Width="{StaticResource NodeSize}"
 				Height="{StaticResource NodeSize}"
 				Margin="{StaticResource NodeMargin}"

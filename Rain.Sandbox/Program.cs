@@ -47,31 +47,13 @@ namespace Rain.Sandbox
 			//			new PhaseWaveTransformer(0.5f, new AmplitudeWaveTransformer(1.0f, 0.0f, backgroundRainWave)))
 			//	});
 
-			var thunderWave =
-				new AmplitudeWaveTransformer(
-					multiplier: 0.2f,
-					offset: 0.0f,
-					baseWave: new MultiplicationWaveCombiner(
-						new SquareWaveFilter(new SquareWaveFilter(new WhiteNoiseWaveGenerator())),
-						new MultiplicationWaveCombiner(
-							new LinearWaveGenerator(-0.2f, 1f),
-							new AmplitudeWaveTransformer(
-								multiplier: 0.2f,
-								offset: 0.8f,
-								baseWave: new SinWaveGenerator()))));
+			var wave = new WhiteNoiseWaveGenerator();
 
-			var waveProvider = new WaveProvider(
-				sampleRate: 16000,
-				channels: new[] {
-					new LoopWaveTransformer(5f, new AmplitudeWaveTransformer(1.0f, 0.0f, thunderWave))
-				});
-
-			using (var wo = new WaveOutEvent())
+			using (var wo = new WavePlayer(wave))
 			{
-				wo.Init(waveProvider);
 				wo.Play();
 
-				while (wo.PlaybackState == PlaybackState.Playing)
+				while (true)
 					Thread.Sleep(500);
 			}
 		}

@@ -26,8 +26,11 @@ namespace Rain.Designer.Modules
 			serviceCollection.AddFactory<SinWaveGeneratorBlockViewModel>();
 			serviceCollection.AddFactory<AmplitudeWaveTransformerBlockViewModel>();
 			serviceCollection.AddFactory<FrequencyWaveTransformerBlockViewModel>();
+			serviceCollection.AddFactory<WhiteNoiseWaveGeneratorBlockViewModel>();
 
 			serviceCollection.AddSingleton<WaveBlockFactoryHelper>();
+			serviceCollection.AddSingleton<WavePlayerHelper>();
+			serviceCollection.AddSingleton<WaveBuilderHelper>();
 		}
 	}
 }

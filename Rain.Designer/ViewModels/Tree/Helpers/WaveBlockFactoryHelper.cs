@@ -33,7 +33,8 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 			Func<LinearWaveGeneratorBlockViewModel> linearWaveGeneratorBlockFactory,
 			Func<SinWaveGeneratorBlockViewModel> sinWaveGeneratorBlockFactory,
 			Func<AmplitudeWaveTransformerBlockViewModel> amplitudeWaveTransformerBlockFactory,
-			Func<FrequencyWaveTransformerBlockViewModel> frequencyWaveTransformerBlockFactory)
+			Func<FrequencyWaveTransformerBlockViewModel> frequencyWaveTransformerBlockFactory,
+			Func<WhiteNoiseWaveGeneratorBlockViewModel> whiteNoiseWaveTransformerBlockFactory)
 		{
 			AvailableFactories = new List<WaveBlockFactory>
 			{
@@ -42,6 +43,7 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 				new WaveBlockFactory("Sin function", sinWaveGeneratorBlockFactory),
 				new WaveBlockFactory("Amplitude", amplitudeWaveTransformerBlockFactory),
 				new WaveBlockFactory("Frequency", frequencyWaveTransformerBlockFactory),
+				new WaveBlockFactory("WhiteNoise", whiteNoiseWaveTransformerBlockFactory),
 			};
 		}
 

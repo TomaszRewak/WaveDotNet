@@ -44,8 +44,12 @@
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.0.0-preview3.19153.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="NAudio, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.9.0-preview2\lib\net35\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -84,9 +88,12 @@
     <Compile Include="ViewModels\Samples\SamplesViewModel.cs" />
     <Compile Include="ViewModels\Samples\SampleViewModel.cs" />
     <Compile Include="ViewModels\Tree\Helpers\WaveBlockFactoryHelper.cs" />
+    <Compile Include="ViewModels\Tree\Helpers\WaveBuilderHelper.cs" />
+    <Compile Include="ViewModels\Tree\Helpers\WavePlayerHelper.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Combiners\AdditiveWaveCombinerBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Generators\LinearWaveGeneratorBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Generators\SinWaveGeneratorBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Generators\WhiteNoiseWaveGeneratorBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Transformers\AmplitudeWaveTransformerBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Transformers\FrequencyWaveTransformerBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\SimpleWaveBlockViewModel.cs" />
@@ -249,6 +256,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rain.Generator\Rain.Generator.csproj">
+      <Project>{17233837-5ACD-40CE-9CCF-B282376BB53A}</Project>
+      <Name>Rain.Generator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rain.Wave\Rain.Wave.csproj">
       <Project>{BF069839-0A53-41C0-83EE-F4E1C0DD2ABB}</Project>
       <Name>Rain.Wave</Name>

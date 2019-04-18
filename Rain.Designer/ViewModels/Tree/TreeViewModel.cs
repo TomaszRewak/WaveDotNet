@@ -15,13 +15,19 @@ namespace Rain.Designer.ViewModels.Tree
 	internal class TreeViewModel : ViewModel
 	{
 		private readonly WaveBlockFactoryHelper _waveBlockFactoryHelper;
+		private readonly WaveBuilderHelper _waveBuilderHelper;
+		private readonly WavePlayerHelper _wavePlayerHelper;
 		private readonly Func<TreeViewModel> _treeFactory;
 
 		public TreeViewModel(
 			WaveBlockFactoryHelper waveBlockFactoryHelper,
+			WaveBuilderHelper waveBuilderHelper,
+			WavePlayerHelper wavePlayerHelper,
 			Func<TreeViewModel> treeFactory)
 		{
 			_waveBlockFactoryHelper = waveBlockFactoryHelper;
+			_waveBuilderHelper = waveBuilderHelper;
+			_wavePlayerHelper = wavePlayerHelper;
 			_treeFactory = treeFactory;
 		}
 
@@ -113,6 +119,10 @@ namespace Rain.Designer.ViewModels.Tree
 		{
 			if (!CanPlay)
 				return;
+
+			var wave = _waveBuilderHelper.BuildWave(this);
+
+			_wavePlayerHelper.PlayWave(wave);
 		}
 
 		public ICommand AddSubTreeCommand => new Command(AddSubTree);

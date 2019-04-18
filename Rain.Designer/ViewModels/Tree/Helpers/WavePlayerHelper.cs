@@ -14,7 +14,7 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
     {
 		public void PlayWave(IWave wave)
 		{
-			var player = new WavePlayer(new WhiteNoiseWaveGenerator());
+			var player = new WavePlayer(wave);
 			player.Play();
 		}
     }

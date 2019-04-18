@@ -21,8 +21,6 @@ namespace Rain.Designer.Modules
 
 			serviceCollection.AddFactory<TreeViewModel>();
 
-			serviceCollection.AddTransient<NodeViewModel>();
-
 			serviceCollection.AddFactory<AdditiveWaveCombinerBlockViewModel>();
 			serviceCollection.AddFactory<LinearWaveGeneratorBlockViewModel>();
 			serviceCollection.AddFactory<SinWaveGeneratorBlockViewModel>();

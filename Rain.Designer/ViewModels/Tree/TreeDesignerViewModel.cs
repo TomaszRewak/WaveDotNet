@@ -17,18 +17,18 @@ namespace Rain.Designer.ViewModels.Tree
 			Tree = tree;
 		}
 
-		private NodeViewModel _selectedNode;
-		public NodeViewModel SelectedNode
+		private TreeViewModel _selectedNode;
+		public TreeViewModel SelectedNode
 		{
 			get => _selectedNode;
 			set => Set(ref _selectedNode, value);
 		}
 
-		private void SelectNode(NodeViewModel node)
+		private void SelectNode(TreeViewModel node)
 		{
 			this.SelectedNode = node;
 		}
 
-		public ICommand SelectNodeCommand => new Command<NodeViewModel>(SelectNode);
+		public ICommand SelectNodeCommand => new Command<TreeViewModel>(SelectNode);
     }
 }

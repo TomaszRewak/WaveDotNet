@@ -42,7 +42,7 @@
 		<StackPanel>
 			<Button
 				Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}"
-				CommandParameter="{Binding RootNode}"
+				CommandParameter="{Binding}"
 				Width="{StaticResource NodeSize}"
 				Height="{StaticResource NodeSize}"
 				Margin="{StaticResource NodeMargin}"
@@ -54,7 +54,7 @@
 							BorderThickness="3"
 							BorderBrush="White">
 							<Border.Background>
-								<Binding Path="RootNode.WaveBlock">
+								<Binding Path="WaveBlock">
 									<Binding.Converter>
 										<c:ChainConverter>
 											<c:ChainedConverter Converter="{c:ComparisonConverter Value={x:Null}}"/>

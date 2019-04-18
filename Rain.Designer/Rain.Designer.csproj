@@ -84,7 +84,6 @@
     <Compile Include="ViewModels\Samples\SamplesViewModel.cs" />
     <Compile Include="ViewModels\Samples\SampleViewModel.cs" />
     <Compile Include="ViewModels\Tree\Helpers\WaveBlockFactoryHelper.cs" />
-    <Compile Include="ViewModels\Tree\NodeViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Combiners\AdditiveWaveCombinerBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Generators\LinearWaveGeneratorBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Generators\SinWaveGeneratorBlockViewModel.cs" />

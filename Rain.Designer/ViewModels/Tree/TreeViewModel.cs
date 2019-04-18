@@ -65,6 +65,14 @@ namespace Rain.Designer.ViewModels.Tree
 				.Concat(new[] { _treeFactory() })
 				.ToList();
 		}
+
+		private void RemoveSubTree(TreeViewModel subTree)
+		{
+			SubTrees = SubTrees
+				.Except(new[] { subTree })
+				.ToList();
+		}
+
 		private void ChangeWave(WaveBlockFactory waveBlockFactory)
 		{
 			WaveBlock = waveBlockFactory.Create();
@@ -78,6 +86,7 @@ namespace Rain.Designer.ViewModels.Tree
 		}
 
 		public ICommand AddSubTreeCommand => new Command(AddSubTree);
+		public ICommand RemoveSubTreeCommand => new Command<TreeViewModel>(RemoveSubTree);
 		public ICommand ChangeWaveCommand => new Command<WaveBlockFactory>(ChangeWave);
 	}
 }

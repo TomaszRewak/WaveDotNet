@@ -1,65 +1,72 @@
-﻿<UserControl x:Class="Rain.Designer.Views.Tree.TreeControl"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
-			 xmlns:tc="clr-namespace:Rain.Designer.Views.Tree.Converters"
-			 xmlns:s="clr-namespace:System;assembly=mscorlib"
-			 xmlns:m="clr-namespace:Rain.Designer.Views.Markups"
-			 xmlns:c="clr-namespace:Rain.Designer.Views.Converters"
-			 mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+	x:Class="Rain.Designer.Views.Tree.TreeControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:c="clr-namespace:Rain.Designer.Views.Converters"
+	xmlns:controls="clr-namespace:Rain.Designer.Views.Tree.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
+	xmlns:m="clr-namespace:Rain.Designer.Views.Markups"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:s="clr-namespace:System;assembly=mscorlib"
+	xmlns:tc="clr-namespace:Rain.Designer.Views.Tree.Converters"
+	d:DesignHeight="450"
+	d:DesignWidth="800"
+	mc:Ignorable="d">
 	<UserControl.Resources>
-		<s:Double x:Key="NodeSize">30</s:Double>
+		<s:Double x:Key="NodeSize">40</s:Double>
 		<s:Double x:Key="NodeMarginSize">10</s:Double>
-		<Thickness x:Key="NodeMargin" Left="{StaticResource NodeMarginSize}" Top="{StaticResource NodeMarginSize}" Right="{StaticResource NodeMarginSize}" Bottom="{StaticResource NodeMarginSize}"/>
-		<m:AddDouble x:Key="NodeOuterSize" A="{StaticResource NodeSize}" B="{m:MultiplyDouble A={StaticResource NodeMarginSize}, B=2}"/>
+		<Thickness
+			x:Key="NodeMargin"
+			Bottom="{StaticResource NodeMarginSize}"
+			Left="{StaticResource NodeMarginSize}"
+			Right="{StaticResource NodeMarginSize}"
+			Top="{StaticResource NodeMarginSize}" />
+		<m:AddDouble
+			x:Key="NodeOuterSize"
+			A="{StaticResource NodeSize}"
+			B="{m:MultiplyDouble A={StaticResource NodeMarginSize}, B=2}" />
 	</UserControl.Resources>
 	<Grid>
-		<ItemsControl ItemsSource="{Binding SubTrees}" AlternationCount="{x:Static s:Int32.MaxValue}">
+		<ItemsControl AlternationCount="{x:Static s:Int32.MaxValue}" ItemsSource="{Binding SubTrees}">
 			<ItemsControl.ItemsPanel>
 				<ItemsPanelTemplate>
-					<Canvas HorizontalAlignment="Center"/>
+					<Canvas HorizontalAlignment="Center" />
 				</ItemsPanelTemplate>
 			</ItemsControl.ItemsPanel>
 			<ItemsControl.ItemTemplate>
 				<DataTemplate>
-					<Line 
-						X1="0" 
-						Y1="{m:DivideDouble {StaticResource NodeOuterSize}, 2}" 
-						X2="{tc:ChildNodePositionConverter 
-							NodeIndex={Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource Mode=TemplatedParent}},
-							Tree={m:DataContextBinding ControlType=local:TreeControl},
-							Width={m:DataContextBinding Width, ControlType=local:TreeControl},
-							NodesDistance={StaticResource NodeOuterSize}}"
-						Y2="{m:MultiplyDouble {StaticResource NodeOuterSize}, 1.5}" 						
+					<Line
 						Stroke="LightGreen"
-						StrokeThickness="5"/>
+						StrokeThickness="5"
+						X1="0"
+						X2="{tc:ChildNodePositionConverter NodeIndex={Binding (ItemsControl.AlternationIndex), RelativeSource={RelativeSource Mode=TemplatedParent}}, Tree={m:DataContextBinding ControlType=local:TreeControl}, Width={m:DataContextBinding Width, ControlType=local:TreeControl}, NodesDistance={StaticResource NodeOuterSize}}"
+						Y1="{m:DivideDouble {StaticResource NodeOuterSize}, 2}"
+						Y2="{m:MultiplyDouble {StaticResource NodeOuterSize}, 1.5}" />
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>
 		</ItemsControl>
 		<StackPanel>
 			<Button
-				Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}"
-				CommandParameter="{Binding}"
 				Width="{StaticResource NodeSize}"
 				Height="{StaticResource NodeSize}"
 				Margin="{StaticResource NodeMargin}"
-				HorizontalAlignment="Center">
+				HorizontalAlignment="Center"
+				Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}"
+				CommandParameter="{Binding}">
 				<Button.Template>
 					<ControlTemplate>
 						<Border
-							CornerRadius="25"
+							BorderBrush="White"
 							BorderThickness="3"
-							BorderBrush="White">
+							CornerRadius="25">
 							<Border.Background>
 								<Binding Path="WaveBlock">
 									<Binding.Converter>
 										<c:ChainConverter>
-											<c:ChainedConverter Converter="{c:ComparisonConverter Value={x:Null}}"/>
-											<c:ChainedConverter Converter="{c:BooleanToColorConverter True=Red, False=ForestGreen}"/>
-											<c:ChainedConverter Converter="{c:ColorToBrushConverter}"/>
+											<c:ChainedConverter Converter="{c:ComparisonConverter Value={x:Null}}" />
+											<c:ChainedConverter Converter="{c:BooleanToColorConverter True=Red, False=ForestGreen}" />
+											<c:ChainedConverter Converter="{c:ColorToBrushConverter}" />
 										</c:ChainConverter>
 									</Binding.Converter>
 								</Binding>
@@ -68,40 +75,41 @@
 					</ControlTemplate>
 				</Button.Template>
 			</Button>
-			<Button 
+			<controls:NodeButtonControl
+				Width="25"
+				Height="25"
+				Margin="0,-25,-25,0"
+				HorizontalAlignment="Center"
 				Command="{m:DataContextBinding AddSubTreeCommand, ControlType=local:TreeControl}"
-				Width="20"
-				Height="20"
-				Margin="0 -20 -20 0"
-				HorizontalAlignment="Center">
-				<Button.Template>
-					<ControlTemplate TargetType="Button">
-						<Border
-							CornerRadius="25"
-							Background="LightGray"
-							BorderThickness="3"
-							BorderBrush="White">
-							<TextBlock 
-								Text="＋" 
-								HorizontalAlignment="Center" 
-								VerticalAlignment="Center"
-								Foreground="White"/>
-						</Border>
-					</ControlTemplate>
-				</Button.Template>
-			</Button>
+				Content="＋" />
+			<controls:NodeButtonControl
+				Width="25"
+				Height="25"
+				Margin="0,-25,25,0"
+				HorizontalAlignment="Center"
+				Command="{m:DataContextBinding AddSubTreeCommand, ControlType=local:TreeControl}"
+				Content="▶" />
 			<StackPanel Orientation="Horizontal">
 				<ItemsControl ItemsSource="{Binding SubTrees}">
 					<ItemsControl.ItemsPanel>
 						<ItemsPanelTemplate>
-							<StackPanel Orientation="Horizontal"/>
+							<StackPanel Orientation="Horizontal" />
 						</ItemsPanelTemplate>
 					</ItemsControl.ItemsPanel>
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
-							<local:TreeControl 
-							DataContext="{Binding}" 
-							VerticalAlignment="Top"/>
+							<Grid>
+								<local:TreeControl VerticalAlignment="Top" DataContext="{Binding}" />
+								<controls:NodeButtonControl
+									Width="20"
+									Height="20"
+									Margin="0,5,0,0"
+									HorizontalAlignment="Center"
+									VerticalAlignment="Top"
+									Command="{m:DataContextBinding RemoveSubTreeCommand, ControlType=local:TreeControl}"
+									CommandParameter="{Binding}"
+									Content="－" />
+							</Grid>
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
 				</ItemsControl>

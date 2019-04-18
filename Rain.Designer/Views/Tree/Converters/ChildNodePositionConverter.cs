@@ -24,6 +24,9 @@ namespace Rain.Designer.Views.Tree.Converters
 			var nodeIndex = valueProvider.Get<int>(0);
 			var tree = valueProvider.Get<TreeViewModel>(1);
 
+			if (nodeIndex >= tree.SubTrees.Count)
+				return 0;
+
 			var nodesToTheLeft =
 				tree
 					.SubTrees

@@ -122,6 +122,8 @@
     <Compile Include="Views\Converters\ChainConverter.cs" />
     <Compile Include="Views\Converters\ColorToBrushConverter.cs" />
     <Compile Include="Views\Converters\ComparisonConverter.cs" />
+    <Compile Include="Views\Converters\ObjectToTypeConverter.cs" />
+    <Compile Include="Views\Converters\SwitchConverter.cs" />
     <Compile Include="Views\Markups\AddDouble.cs" />
     <Compile Include="Views\Markups\DataContextBinding.cs" />
     <Compile Include="Views\Markups\DivideDouble.cs" />
@@ -137,6 +139,15 @@
     <Compile Include="Views\Mesh\Converters\NodePositionConverter.cs" />
     <Compile Include="Views\Mesh\MeshControl.xaml.cs">
       <DependentUpon>MeshControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Generators\SinWaveGeneratorBlockControl.xaml.cs">
+      <DependentUpon>SinWaveGeneratorBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Generators\WhiteNoiseGeneratorBlockControl.xaml.cs">
+      <DependentUpon>WhiteNoiseGeneratorBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\WaveBlockControl.xaml.cs">
+      <DependentUpon>WaveBlockControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\Mesh\ConnectionContainerControl.xaml">
       <SubType>Designer</SubType>
@@ -237,6 +248,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Mesh\MeshControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Generators\SinWaveGeneratorBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Generators\WhiteNoiseGeneratorBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\WaveBlockControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -31,7 +31,7 @@ namespace Rain.Designer.Views.Converters
 		{
 			foreach (var converter in this)
 				value = converter.Convert(value, culture);
-
+			
 			return value;
 		}
 

@@ -14,14 +14,8 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
     {
 		public void PlayWave(IWave wave)
 		{
-			Thread thread1 = new Thread(() => {
-				var player = new WavePlayer(new WhiteNoiseWaveGenerator());
-				player.Play();
-
-				while (true)
-					Thread.Sleep(500);
-			});
-			thread1.Start();
+			var player = new WavePlayer(new WhiteNoiseWaveGenerator());
+			player.Play();
 		}
     }
 }

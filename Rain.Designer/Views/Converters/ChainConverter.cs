@@ -9,6 +9,7 @@ using System.Windows.Markup;
 
 namespace Rain.Designer.Views.Converters
 {
+	[ContentProperty(nameof(Converter))]
 	internal class ChainedConverter
 	{
 		public IValueConverter Converter { get; set; }

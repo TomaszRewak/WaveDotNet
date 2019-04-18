@@ -19,24 +19,18 @@
 						<c:ChainConverter>
 							<c:ChainedConverter Converter="{c:ObjectToTypeConverter}" />
 							<c:ChainedConverter>
-								<c:ChainedConverter.Converter>
-									<c:SwitchConverter>
-										<c:CaseConverter Case="{x:Type generators:SinWaveGeneratorBlockViewModel}">
-											<c:CaseConverter.Value>
-												<DataTemplate>
-													<generators1:SinWaveGeneratorBlockControl />
-												</DataTemplate>
-											</c:CaseConverter.Value>
-										</c:CaseConverter>
-										<c:CaseConverter Case="{x:Type generators:WhiteNoiseWaveGeneratorBlockViewModel}">
-											<c:CaseConverter.Value>
-												<DataTemplate>
-													<generators1:WhiteNoiseGeneratorBlockControl />
-												</DataTemplate>
-											</c:CaseConverter.Value>
-										</c:CaseConverter>
-									</c:SwitchConverter>
-								</c:ChainedConverter.Converter>
+								<c:SwitchConverter>
+									<c:CaseConverter Case="{x:Type generators:SinWaveGeneratorBlockViewModel}">
+										<DataTemplate>
+											<generators1:SinWaveGeneratorBlockControl />
+										</DataTemplate>
+									</c:CaseConverter>
+									<c:CaseConverter Case="{x:Type generators:WhiteNoiseWaveGeneratorBlockViewModel}">
+										<DataTemplate>
+											<generators1:WhiteNoiseGeneratorBlockControl />
+										</DataTemplate>
+									</c:CaseConverter>
+								</c:SwitchConverter>
 							</c:ChainedConverter>
 						</c:ChainConverter>
 					</Binding.Converter>

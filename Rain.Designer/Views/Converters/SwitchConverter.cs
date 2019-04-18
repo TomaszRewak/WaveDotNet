@@ -5,9 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Markup;
 
 namespace Rain.Designer.Views.Converters
 {
+	[ContentProperty(nameof(Value))]
 	internal class CaseConverter
 	{
 		public object Case { get; set; }

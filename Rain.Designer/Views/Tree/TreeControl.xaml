@@ -59,6 +59,7 @@
 										<c:ChainConverter>
 											<c:ChainedConverter Converter="{c:ComparisonConverter Value={x:Null}}"/>
 											<c:ChainedConverter Converter="{c:BooleanToColorConverter True=Red, False=ForestGreen}"/>
+											<c:ChainedConverter Converter="{c:ColorToBrushConverter}"/>
 										</c:ChainConverter>
 									</Binding.Converter>
 								</Binding>

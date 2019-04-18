@@ -100,6 +100,7 @@
     <Compile Include="Views\Common\ValueConverter.cs" />
     <Compile Include="Views\Converters\BooleanToColorConverter.cs" />
     <Compile Include="Views\Converters\ChainConverter.cs" />
+    <Compile Include="Views\Converters\ColorToBrushConverter.cs" />
     <Compile Include="Views\Converters\ComparisonConverter.cs" />
     <Compile Include="Views\Markups\AddDouble.cs" />
     <Compile Include="Views\Markups\DataContextBinding.cs" />

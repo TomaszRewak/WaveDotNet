@@ -16,10 +16,13 @@ namespace Rain.Designer.Views.Common
 
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			if (!(value is TIn typedValue))
+			if (!(parameter is TParam typedParameter))
 				throw new InvalidCastException();
 
-			if (!(parameter is TParam typedParameter))
+			if (value == null)
+				return Convert(default, typedParameter);
+
+			if (!(value is TIn typedValue))
 				throw new InvalidCastException();
 
 			return Convert(typedValue, typedParameter);
@@ -27,10 +30,14 @@ namespace Rain.Designer.Views.Common
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			if (!(value is TOut typedValue))
-				throw new InvalidCastException();
 
 			if (!(parameter is TParam typedParameter))
+				throw new InvalidCastException();
+
+			if (value == null)
+				return ConvertBack(default, typedParameter);
+
+			if (!(value is TOut typedValue))
 				throw new InvalidCastException();
 
 			return ConvertBack(typedValue, typedParameter);
@@ -49,6 +56,9 @@ namespace Rain.Designer.Views.Common
 
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
+			if (value == null)
+				return Convert(default);
+
 			if (!(value is TIn typedValue))
 				throw new InvalidCastException();
 
@@ -57,6 +67,9 @@ namespace Rain.Designer.Views.Common
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
+			if (value == null)
+				return ConvertBack(default);
+
 			if (!(value is TOut typedValue))
 				throw new InvalidCastException();
 

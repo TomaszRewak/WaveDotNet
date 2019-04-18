@@ -10,6 +10,12 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Combiners
 {
 	internal class AdditiveWaveCombinerBlockViewModel : WaveBlockViewModel
 	{
+		public AdditiveWaveCombinerBlockViewModel()
+		{
+			MinInputs = 1;
+			MaxInputs = Int32.MaxValue;
+		}
+
 		public override IWave GenerateWave(IWave[] inputs)
 		{
 			return new AdditiveWaveCombiner(inputs);

@@ -14,15 +14,17 @@ namespace Rain.Designer.ViewModels.Waves
 		public int MinInputs
 		{
 			get => _minInputs;
-			set => Set(ref _minInputs, value);
+			protected set => Set(ref _minInputs, value);
 		}
 
 		private int _maxInputs = int.MaxValue;
 		public int MaxInputs
 		{
 			get => _maxInputs;
-			set => Set(ref _maxInputs, value);
+			protected set => Set(ref _maxInputs, value);
 		}
+
+		public bool CanGenerate(int inputsNumber) => inputsNumber >= MinInputs && inputsNumber <= MaxInputs;
 
 		public abstract IWave GenerateWave(IWave[] inputs);
 	}

@@ -27,8 +27,15 @@ namespace Rain.Designer.ViewModels.Tree
 
 		private void SubTreeChanged(object subTree, PropertyChangedEventArgs args)
 		{
-			if (args.PropertyName == nameof(TreeViewModel.Width))
-				this.UpdateWidth();
+			switch (args.PropertyName)
+			{
+				case nameof(TreeViewModel.Width):
+					this.UpdateWidth();
+					break;
+				case nameof(TreeViewModel.CanPlay):
+					this.UpdateCanPlay();
+					break;
+			}
 		}
 
 		private IReadOnlyCollection<TreeViewModel> _subTrees = new List<TreeViewModel>();
@@ -37,7 +44,8 @@ namespace Rain.Designer.ViewModels.Tree
 			get => _subTrees;
 			set => Set(ref _subTrees, value)
 				.ObserveChildren(SubTreeChanged)
-				.Then(UpdateWidth);
+				.Then(UpdateWidth)
+				.Then(UpdateCanPlay);
 		}
 
 		public IReadOnlyCollection<WaveBlockFactory> AvailableWavesBlocks
@@ -49,7 +57,8 @@ namespace Rain.Designer.ViewModels.Tree
 		public WaveBlockViewModel WaveBlock
 		{
 			get => _waveBlock;
-			set => Set(ref _waveBlock, value);
+			set => Set(ref _waveBlock, value)
+				.Then(UpdateCanPlay);
 		}
 
 		private int _width = 1;
@@ -57,6 +66,13 @@ namespace Rain.Designer.ViewModels.Tree
 		{
 			get => _width;
 			set => Set(ref _width, value);
+		}
+
+		private bool _canPlay;
+		public bool CanPlay
+		{
+			get => _canPlay;
+			set => Set(ref _canPlay, value);
 		}
 
 		private void AddSubTree()
@@ -85,8 +101,23 @@ namespace Rain.Designer.ViewModels.Tree
 				: 1;
 		}
 
+		private void UpdateCanPlay()
+		{
+			this.CanPlay =
+				this.WaveBlock != null &&
+				this.SubTrees.All(subTree => subTree.CanPlay) &&
+				this.WaveBlock.CanGenerate(this.SubTrees.Count);
+		}
+
+		private void Play()
+		{
+			if (!CanPlay)
+				return;
+		}
+
 		public ICommand AddSubTreeCommand => new Command(AddSubTree);
 		public ICommand RemoveSubTreeCommand => new Command<TreeViewModel>(RemoveSubTree);
 		public ICommand ChangeWaveCommand => new Command<WaveBlockFactory>(ChangeWave);
+		public ICommand PlayCommand => new Command(Play);
 	}
 }

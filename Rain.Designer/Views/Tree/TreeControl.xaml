@@ -87,7 +87,8 @@
 				Height="25"
 				Margin="0,-25,25,0"
 				HorizontalAlignment="Center"
-				Command="{m:DataContextBinding AddSubTreeCommand, ControlType=local:TreeControl}"
+				Background="{Binding CanPlay, Converter={c:BooleanToSolidColorBrushConverter True=DarkGreen, False=LightGray}}"
+				Command="{m:DataContextBinding PlayCommand, ControlType=local:TreeControl}"
 				Content="▶" />
 			<StackPanel Orientation="Horizontal">
 				<ItemsControl ItemsSource="{Binding SubTrees}">

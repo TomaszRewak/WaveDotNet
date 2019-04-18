@@ -98,6 +98,7 @@
     <Compile Include="Views\Common\MultiValueConverter.cs" />
     <Compile Include="Views\Common\ValueConverter.cs" />
     <Compile Include="Views\Converters\BooleanToColorConverter.cs" />
+    <Compile Include="Views\Converters\BooleanToSolidColorBrushConverter.cs" />
     <Compile Include="Views\Converters\ChainConverter.cs" />
     <Compile Include="Views\Converters\ColorToBrushConverter.cs" />
     <Compile Include="Views\Converters\ComparisonConverter.cs" />

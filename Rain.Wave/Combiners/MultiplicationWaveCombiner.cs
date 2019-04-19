@@ -7,18 +7,13 @@ namespace Rain.Wave.Combiners
 {
 	public sealed class MultiplicationWaveCombiner : IWave
 	{
-		private readonly IWave[] _waves;
-
-		public MultiplicationWaveCombiner(params IWave[] waves)
-		{
-			_waves = waves;
-		}
+		public IWave[] Waves { get; set; }
 
 		public double Probe(double time)
 		{
 			var value = 1.0;
 
-			foreach (var wave in _waves)
+			foreach (var wave in Waves)
 				value *= wave.Probe(time);
 
 			return value;

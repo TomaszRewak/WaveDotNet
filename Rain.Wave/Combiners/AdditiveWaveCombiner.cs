@@ -7,16 +7,11 @@ namespace Rain.Wave.Combiners
 {
 	public sealed class AdditiveWaveCombiner : IWave
 	{
-		private readonly IWave[] _waves;
-
-		public AdditiveWaveCombiner(params IWave[] waves)
-		{
-			_waves = waves;
-		}
+		public IWave[] Waves { get; set; }
 
 		public double Probe(double time)
 		{
-			return _waves.Sum(wave => wave.Probe(time));
+			return Waves.Sum(wave => wave.Probe(time));
 		}
 	}
 }

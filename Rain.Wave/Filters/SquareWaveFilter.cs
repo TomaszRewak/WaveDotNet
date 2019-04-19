@@ -6,16 +6,16 @@ namespace Rain.Wave.Filters
 {
 	public sealed class SquareWaveFilter : IWave
 	{
-		private readonly IWave _baseWave;
+		public IWave BaseWave { get; set; }
 
 		public SquareWaveFilter(IWave baseWave)
 		{
-			_baseWave = baseWave;
+			BaseWave = baseWave;
 		}
 
 		public double Probe(double time)
 		{
-			var value = _baseWave.Probe(time);
+			var value = BaseWave.Probe(time);
 
 			return value * value;
 		}

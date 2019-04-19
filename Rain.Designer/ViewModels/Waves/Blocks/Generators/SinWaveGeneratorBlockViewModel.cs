@@ -22,7 +22,10 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new SinWaveGenerator(Frequency);
+			return new SinWaveGenerator
+			{
+				Frequency = Frequency
+			};
 		}
 	}
 }

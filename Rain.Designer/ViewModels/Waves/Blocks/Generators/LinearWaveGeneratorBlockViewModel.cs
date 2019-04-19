@@ -29,7 +29,11 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new LinearWaveGenerator(A, B);
+			return new LinearWaveGenerator
+			{
+				A = A,
+				B = B
+			};
 		}
 	}
 }

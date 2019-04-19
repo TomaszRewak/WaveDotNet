@@ -3,6 +3,7 @@
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:c="clr-namespace:Rain.Designer.Views.Converters"
+	xmlns:combiners="clr-namespace:Rain.Designer.ViewModels.Waves.Blocks.Combiners"
 	xmlns:controls="clr-namespace:Rain.Designer.Views.Tree.Controls"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:generators="clr-namespace:Rain.Designer.ViewModels.Waves.Blocks.Generators"
@@ -69,7 +70,8 @@
 								<c:SwitchConverter Default="">
 									<c:CaseConverter Case="{x:Null}" Value="✏" />
 									<c:CaseConverter Case="{x:Type generators:SinWaveGeneratorBlockViewModel}" Value="∿" />
-									<c:CaseConverter Case="{x:Type generators:WhiteNoiseWaveGeneratorBlockViewModel}" Value="⍟" />
+									<c:CaseConverter Case="{x:Type generators:WhiteNoiseWaveGeneratorBlockViewModel}" Value="⠶" />
+									<c:CaseConverter Case="{x:Type combiners:AdditiveWaveCombinerBlockViewModel}" Value="+" />
 								</c:SwitchConverter>
 							</c:ChainedConverter>
 						</c:ChainConverter>

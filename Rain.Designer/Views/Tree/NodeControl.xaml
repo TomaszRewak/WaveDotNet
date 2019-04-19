@@ -13,7 +13,6 @@
 	mc:Ignorable="d">
 	<Grid>
 		<Border
-			x:Name="MainCircle"
 			Width="{DynamicResource NodeSize}"
 			Height="{DynamicResource NodeSize}"
 			Margin="{DynamicResource NodeMargin}"
@@ -22,6 +21,34 @@
 			BorderThickness="3"
 			CornerRadius="25">
 			<Border.Background>
+				<MultiBinding>
+					<Binding />
+					<m:DataContextBinding ControlType="{x:Type local:TreeDesignerControl}" Path="SelectedNode" />
+					<MultiBinding.Converter>
+						<c:MultiValueChainConverter>
+							<c:MultiValueChainConverter.MultiValueConverter>
+								<c:MultiValueComparisonConverter />
+							</c:MultiValueChainConverter.MultiValueConverter>
+							<c:MultiValueChainConverter.PostProcessing>
+								<c:ChainConverter>
+									<c:ChainedConverter Converter="{c:BooleanToDoubleConverter True=1., False=0.2}" />
+									<c:ChainedConverter Converter="{c:ColorInterpolationConverter From=White, To=ForestGreen}" />
+									<c:ChainedConverter Converter="{c:ColorToBrushConverter}" />
+								</c:ChainConverter>
+							</c:MultiValueChainConverter.PostProcessing>
+						</c:MultiValueChainConverter>
+					</MultiBinding.Converter>
+				</MultiBinding>
+			</Border.Background>
+		</Border>
+		<controls:NodeButtonControl
+			Width="25"
+			Height="25"
+			HorizontalAlignment="Center"
+			Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}"
+			CommandParameter="{Binding}"
+			Content="✎">
+			<controls:NodeButtonControl.Background>
 				<Binding Path="WaveBlock">
 					<Binding.Converter>
 						<c:ChainConverter>
@@ -31,16 +58,8 @@
 						</c:ChainConverter>
 					</Binding.Converter>
 				</Binding>
-			</Border.Background>
-		</Border>
-		<controls:NodeButtonControl
-			Width="25"
-			Height="25"
-			HorizontalAlignment="Center"
-			Background="{Binding Background, ElementName=MainCircle}"
-			Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}"
-			CommandParameter="{Binding}"
-			Content="✎" />
+			</controls:NodeButtonControl.Background>
+		</controls:NodeButtonControl>
 		<controls:NodeButtonControl
 			Width="25"
 			Height="25"

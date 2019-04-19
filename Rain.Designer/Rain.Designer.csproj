@@ -125,11 +125,16 @@
     <Compile Include="Views\Common\MultiValueConverter.cs" />
     <Compile Include="Views\Common\ValueConverter.cs" />
     <Compile Include="Views\Converters\BooleanToColorConverter.cs" />
+    <Compile Include="Views\Converters\BooleanToDoubleConverter.cs" />
     <Compile Include="Views\Converters\BooleanToSolidColorBrushConverter.cs" />
+    <Compile Include="Views\Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Views\Converters\ChainConverter.cs" />
+    <Compile Include="Views\Converters\ColorInterpolationConverter.cs" />
     <Compile Include="Views\Converters\ColorToBrushConverter.cs" />
     <Compile Include="Views\Converters\ComparisonConverter.cs" />
     <Compile Include="Views\Converters\FloatToStringConverter.cs" />
+    <Compile Include="Views\Converters\MultiValueChainConverter.cs" />
+    <Compile Include="Views\Converters\MultiValueComparisonConverter.cs" />
     <Compile Include="Views\Converters\TypeToDataTemplateConverter.cs" />
     <Compile Include="Views\Converters\ObjectToTypeConverter.cs" />
     <Compile Include="Views\Converters\SwitchConverter.cs" />

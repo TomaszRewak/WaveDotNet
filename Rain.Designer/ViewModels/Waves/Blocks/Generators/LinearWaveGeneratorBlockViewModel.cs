@@ -10,11 +10,8 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 {
 	internal class LinearWaveGeneratorBlockViewModel : WaveBlockViewModel
 	{
-		public LinearWaveGeneratorBlockViewModel()
-		{
-			MinInputs = 0;
-			MaxInputs = 0;
-		}
+		public LinearWaveGeneratorBlockViewModel() : base(0, 0)
+		{ }
 
 		private float _a;
 		public float A

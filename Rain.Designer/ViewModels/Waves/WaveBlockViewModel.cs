@@ -10,18 +10,13 @@ namespace Rain.Designer.ViewModels.Waves
 {
 	internal abstract class WaveBlockViewModel : ViewModel
 	{
-		private int _minInputs = 0;
-		public int MinInputs
-		{
-			get => _minInputs;
-			protected set => Set(ref _minInputs, value);
-		}
+		public int MinInputs { get; }
+		public int MaxInputs { get; }
 
-		private int _maxInputs = int.MaxValue;
-		public int MaxInputs
+		protected WaveBlockViewModel(int minInputs, int maxInputs)
 		{
-			get => _maxInputs;
-			protected set => Set(ref _maxInputs, value);
+			MinInputs = minInputs;
+			MaxInputs = maxInputs;
 		}
 
 		public bool CanGenerate(int inputsNumber) => inputsNumber >= MinInputs && inputsNumber <= MaxInputs;

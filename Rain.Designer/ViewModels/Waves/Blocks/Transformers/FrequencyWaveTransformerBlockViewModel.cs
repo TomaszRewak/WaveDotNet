@@ -10,11 +10,8 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Transformers
 {
 	internal class FrequencyWaveTransformerBlockViewModel : WaveBlockViewModel
 	{
-		public FrequencyWaveTransformerBlockViewModel()
-		{
-			MinInputs = 1;
-			MaxInputs = 1;
-		}
+		public FrequencyWaveTransformerBlockViewModel() : base(1, 1)
+		{ }
 
 		private float _frequency;
 		public float Frequency

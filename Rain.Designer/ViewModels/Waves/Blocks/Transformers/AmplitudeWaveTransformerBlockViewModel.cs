@@ -10,11 +10,8 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Transformers
 {
 	internal class AmplitudeWaveTransformerBlockViewModel : WaveBlockViewModel
 	{
-		public AmplitudeWaveTransformerBlockViewModel()
-		{
-			MinInputs = 1;
-			MaxInputs = 1;
-		}
+		public AmplitudeWaveTransformerBlockViewModel() : base(1, 1)
+		{ }
 
 		private float _multiplier;
 		public float Multiplier

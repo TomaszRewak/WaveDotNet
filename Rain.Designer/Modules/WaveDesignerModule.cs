@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Rain.Designer.ViewModels.WaveDesigner;
+using Rain.Designer.ViewModels.WaveDesigner.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace Rain.Designer.Modules
 		public static void Register(ServiceCollection serviceCollection)
 		{
 			serviceCollection.AddTransient<WaveDesignerViewModel>();
+
+			serviceCollection.AddTransient<FileHelper>();
 		}
 	}
 }

@@ -47,6 +47,9 @@
     <Reference Include="NAudio, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\NAudio.1.9.0-preview2\lib\net35\NAudio.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
@@ -102,7 +105,9 @@
     <Compile Include="ViewModels\Samples\SampleViewModel.cs" />
     <Compile Include="ViewModels\Tree\Helpers\WaveBlockFactoryHelper.cs" />
     <Compile Include="ViewModels\Tree\Helpers\WaveBuilderHelper.cs" />
+    <Compile Include="ViewModels\Tree\Helpers\WaveLoaderHelper.cs" />
     <Compile Include="ViewModels\Tree\Helpers\WavePlayerHelper.cs" />
+    <Compile Include="ViewModels\WaveDesigner\Helpers\FileHelper.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Combiners\AdditiveWaveCombinerBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Generators\LinearWaveGeneratorBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Generators\SinWaveGeneratorBlockViewModel.cs" />
@@ -296,6 +301,10 @@
     <ProjectReference Include="..\Rain.Generator\Rain.Generator.csproj">
       <Project>{17233837-5ACD-40CE-9CCF-B282376BB53A}</Project>
       <Name>Rain.Generator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rain.Serialization\Rain.Serialization.csproj">
+      <Project>{E187E2F2-68A1-4A39-B148-C03AC2BDC4E3}</Project>
+      <Name>Rain.Serialization</Name>
     </ProjectReference>
     <ProjectReference Include="..\Rain.Wave\Rain.Wave.csproj">
       <Project>{BF069839-0A53-41C0-83EE-F4E1C0DD2ABB}</Project>

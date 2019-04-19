@@ -10,11 +10,16 @@ namespace Rain.Designer.ViewModels.Tree
 {
     internal class TreeDesignerViewModel : ViewModel
     {
-		public TreeViewModel Tree { get; }
-
 		public TreeDesignerViewModel(TreeViewModel tree)
 		{
 			Tree = tree;
+		}
+
+		private TreeViewModel _tree;
+		public TreeViewModel Tree
+		{
+			get => _tree;
+			set => Set(ref _tree, value);
 		}
 
 		private TreeViewModel _selectedNode;

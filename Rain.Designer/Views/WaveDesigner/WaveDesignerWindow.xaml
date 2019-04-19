@@ -1,24 +1,29 @@
-﻿<Window x:Class="Rain.Designer.Views.WaveDesigner.WaveDesignerWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Rain.Designer"
-		xmlns:vm="clr-namespace:Rain.Designer.ViewModels.WaveDesigner"
-		xmlns:mesh="clr-namespace:Rain.Designer.Views.Mesh"
-		xmlns:samples="clr-namespace:Rain.Designer.Views.Samples"
-		xmlns:tree="clr-namespace:Rain.Designer.Views.Tree"
-		mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-		d:DataContext="{d:DesignInstance vm:WaveDesignerViewModel}">
+﻿<Window
+	x:Class="Rain.Designer.Views.WaveDesigner.WaveDesignerWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="clr-namespace:Rain.Designer"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:mesh="clr-namespace:Rain.Designer.Views.Mesh"
+	xmlns:samples="clr-namespace:Rain.Designer.Views.Samples"
+	xmlns:tree="clr-namespace:Rain.Designer.Views.Tree"
+	xmlns:vm="clr-namespace:Rain.Designer.ViewModels.WaveDesigner"
+	Title="MainWindow"
+	Width="800"
+	Height="450"
+	d:DataContext="{d:DesignInstance vm:WaveDesignerViewModel}"
+	mc:Ignorable="d">
 	<DockPanel>
-		<tree:TreeDesignerControl
-			DataContext="{Binding TreeDesigner}"
-			DockPanel.Dock="Left"/>
-		<samples:SamplesControl
-			DataContext="{Binding Samples, Mode=OneWay}"
-			DockPanel.Dock="Left"/>
-		<mesh:MeshControl 
-			DataContext="{Binding Mesh, Mode=OneWay}"/>
+		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+			<Button
+				Command="{Binding SaveCommand}"
+				Content="Save"
+				IsEnabled="{Binding TreeDesigner.Tree.CanPlay}" />
+			<Button Command="{Binding LoadCommand}" Content="Load" />
+		</StackPanel>
+		<tree:TreeDesignerControl DataContext="{Binding TreeDesigner}" DockPanel.Dock="Left" />
+		<samples:SamplesControl DataContext="{Binding Samples, Mode=OneWay}" DockPanel.Dock="Left" />
+		<mesh:MeshControl DataContext="{Binding Mesh, Mode=OneWay}" />
 	</DockPanel>
 </Window>

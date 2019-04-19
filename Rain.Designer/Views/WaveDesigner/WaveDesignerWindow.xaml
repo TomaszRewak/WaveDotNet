@@ -7,6 +7,7 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:mesh="clr-namespace:Rain.Designer.Views.Mesh"
 	xmlns:samples="clr-namespace:Rain.Designer.Views.Samples"
+	xmlns:tracks="clr-namespace:Rain.Designer.Views.Tracks"
 	xmlns:tree="clr-namespace:Rain.Designer.Views.Tree"
 	xmlns:vm="clr-namespace:Rain.Designer.ViewModels.WaveDesigner"
 	Title="MainWindow"
@@ -15,6 +16,7 @@
 	d:DataContext="{d:DesignInstance vm:WaveDesignerViewModel}"
 	mc:Ignorable="d">
 	<DockPanel>
+		<tracks:TracksControl DataContext="{Binding Tracks}" DockPanel.Dock="Bottom" />
 		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
 			<Button
 				Command="{Binding SaveCommand}"
@@ -23,7 +25,7 @@
 			<Button Command="{Binding LoadCommand}" Content="Load" />
 		</StackPanel>
 		<tree:TreeDesignerControl DataContext="{Binding TreeDesigner}" DockPanel.Dock="Left" />
-		<samples:SamplesControl DataContext="{Binding Samples, Mode=OneWay}" DockPanel.Dock="Left" />
+		<samples:SamplesControl DataContext="{Binding Samples}" DockPanel.Dock="Left" />
 		<mesh:MeshControl DataContext="{Binding Mesh, Mode=OneWay}" />
 	</DockPanel>
 </Window>

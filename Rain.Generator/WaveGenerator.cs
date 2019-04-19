@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 
 namespace Rain.Generator
 {
-	public class WaveProvider : IWaveProvider
+	internal class WaveProvider : IWaveProvider
 	{
 		private long _time;
 

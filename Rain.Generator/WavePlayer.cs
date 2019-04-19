@@ -14,7 +14,7 @@ namespace Rain.Generator
 			this(new WaveProvider(sampleRate, new[] { wave }))
 		{ }
 
-		public WavePlayer(IWaveProvider waveProvider)
+		internal WavePlayer(IWaveProvider waveProvider)
 		{
 			_player = new WaveOutEvent();
 			_player.Init(waveProvider);
@@ -23,6 +23,12 @@ namespace Rain.Generator
 		public void Play()
 		{
 			_player.Play();
+		}
+
+		public void Stop()
+		{
+			_player.Stop();
+			_player.Pause();
 		}
 
 		public void Dispose()

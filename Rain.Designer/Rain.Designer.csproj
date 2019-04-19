@@ -89,6 +89,7 @@
     <Compile Include="Modules\Helpers\ModuleFactoryHelper.cs" />
     <Compile Include="Modules\MeshModule.cs" />
     <Compile Include="Modules\SamplesModule.cs" />
+    <Compile Include="Modules\TracksModule.cs" />
     <Compile Include="Modules\TreeModule.cs" />
     <Compile Include="Modules\WaveDesignerModule.cs" />
     <Compile Include="Modules\WavesModule.cs" />
@@ -103,6 +104,8 @@
     <Compile Include="ViewModels\Mesh\MeshViewModel.cs" />
     <Compile Include="ViewModels\Samples\SamplesViewModel.cs" />
     <Compile Include="ViewModels\Samples\SampleViewModel.cs" />
+    <Compile Include="ViewModels\Tracks\TracksViewModel.cs" />
+    <Compile Include="ViewModels\Tracks\TrackViewModel.cs" />
     <Compile Include="ViewModels\Tree\Helpers\WaveBlockFactoryHelper.cs" />
     <Compile Include="ViewModels\Tree\Helpers\WaveBuilderHelper.cs" />
     <Compile Include="ViewModels\Tree\Helpers\WaveLoaderHelper.cs" />
@@ -146,6 +149,12 @@
     <Compile Include="Views\Mesh\MeshControl.xaml.cs">
       <DependentUpon>MeshControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Tracks\TrackControl.xaml.cs">
+      <DependentUpon>TrackControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tracks\TracksControl.xaml.cs">
+      <DependentUpon>TracksControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Waves\Blocks\Generators\SinWaveGeneratorBlockControl.xaml.cs">
       <DependentUpon>SinWaveGeneratorBlockControl.xaml</DependentUpon>
     </Compile>
@@ -188,6 +197,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Samples\SamplesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tracks\TrackControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tracks\TracksControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

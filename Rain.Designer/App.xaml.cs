@@ -35,6 +35,7 @@ namespace Rain.Designer
 			WaveDesignerModule.Register(serviceCollection);
 			SamplesModule.Register(serviceCollection);
 			TreeModule.Register(serviceCollection);
+			TracksModule.Register(serviceCollection);
 
 			return serviceCollection.BuildServiceProvider();
 		}

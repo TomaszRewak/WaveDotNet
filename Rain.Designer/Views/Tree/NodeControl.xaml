@@ -5,6 +5,7 @@
 	xmlns:c="clr-namespace:Rain.Designer.Views.Converters"
 	xmlns:controls="clr-namespace:Rain.Designer.Views.Tree.Controls"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:generators="clr-namespace:Rain.Designer.ViewModels.Waves.Blocks.Generators"
 	xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
 	xmlns:m="clr-namespace:Rain.Designer.Views.Markups"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -47,7 +48,7 @@
 			HorizontalAlignment="Center"
 			Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}"
 			CommandParameter="{Binding}"
-			Content="✎">
+			FontFamily="Cambria">
 			<controls:NodeButtonControl.Background>
 				<Binding Path="WaveBlock">
 					<Binding.Converter>
@@ -59,6 +60,22 @@
 					</Binding.Converter>
 				</Binding>
 			</controls:NodeButtonControl.Background>
+			<controls:NodeButtonControl.Content>
+				<Binding Path="WaveBlock">
+					<Binding.Converter>
+						<c:ChainConverter>
+							<c:ChainedConverter Converter="{c:ObjectToTypeConverter}" />
+							<c:ChainedConverter>
+								<c:SwitchConverter Default="">
+									<c:CaseConverter Case="{x:Null}" Value="✏" />
+									<c:CaseConverter Case="{x:Type generators:SinWaveGeneratorBlockViewModel}" Value="∿" />
+									<c:CaseConverter Case="{x:Type generators:WhiteNoiseWaveGeneratorBlockViewModel}" Value="⍟" />
+								</c:SwitchConverter>
+							</c:ChainedConverter>
+						</c:ChainConverter>
+					</Binding.Converter>
+				</Binding>
+			</controls:NodeButtonControl.Content>
 		</controls:NodeButtonControl>
 		<controls:NodeButtonControl
 			Width="25"

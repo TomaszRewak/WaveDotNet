@@ -22,7 +22,8 @@
 						VerticalAlignment="Center"
 						FontSize="9"
 						Foreground="White"
-						Text="{Binding Content, ElementName=Self}" />
+						Text="{Binding Content, ElementName=Self}"
+						TextAlignment="Center" />
 				</Border>
 			</Border>
 		</ControlTemplate>

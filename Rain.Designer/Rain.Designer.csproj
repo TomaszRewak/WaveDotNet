@@ -122,6 +122,7 @@
     <Compile Include="Views\Converters\ChainConverter.cs" />
     <Compile Include="Views\Converters\ColorToBrushConverter.cs" />
     <Compile Include="Views\Converters\ComparisonConverter.cs" />
+    <Compile Include="Views\Converters\TypeToDataTemplateConverter.cs" />
     <Compile Include="Views\Converters\ObjectToTypeConverter.cs" />
     <Compile Include="Views\Converters\SwitchConverter.cs" />
     <Compile Include="Views\Markups\AddDouble.cs" />

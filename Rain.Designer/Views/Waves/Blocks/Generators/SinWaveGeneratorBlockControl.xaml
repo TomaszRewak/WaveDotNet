@@ -11,6 +11,6 @@
 	mc:Ignorable="d">
 	<StackPanel>
 		<TextBlock>Sin wave</TextBlock>
-		<TextBox Text="{Binding Frequency, Converter={c:FloatToStringConverter}}" />
+		<TextBox Text="{Binding Frequency, Converter={c:DoubleToStringConverter}}" />
 	</StackPanel>
 </UserControl>

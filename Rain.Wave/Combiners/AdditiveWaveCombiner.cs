@@ -14,7 +14,7 @@ namespace Rain.Wave.Combiners
 			_waves = waves;
 		}
 
-		public float Probe(float time)
+		public double Probe(double time)
 		{
 			return _waves.Sum(wave => wave.Probe(time));
 		}

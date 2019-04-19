@@ -13,8 +13,8 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 		public SinWaveGeneratorBlockViewModel() : base(0, 0)
 		{ }
 
-		private float _frequency = 2_000f;
-		public float Frequency
+		private double _frequency = 2_000f;
+		public double Frequency
 		{
 			get => _frequency;
 			set => Set(ref _frequency, value);

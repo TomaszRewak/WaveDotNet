@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Rain.Designer.Views.Converters
 {
-	internal class FloatToStringConverter : ValueConverter<float, string>
+	internal class DoubleToStringConverter : ValueConverter<double, string>
 	{
-		public override string Convert(float value)
+		public override string Convert(double value)
 		{
 			return value.ToString();
 		}
 
-		public override float ConvertBack(string value)
+		public override double ConvertBack(string value)
 		{
-			return float.Parse(value);
+			return double.Parse(value);
 		}
 	}
 }

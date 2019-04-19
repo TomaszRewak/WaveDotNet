@@ -13,8 +13,8 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Transformers
 		public FrequencyWaveTransformerBlockViewModel() : base(1, 1)
 		{ }
 
-		private float _frequency;
-		public float Frequency
+		private double _frequency;
+		public double Frequency
 		{
 			get => _frequency;
 			set => Set(ref _frequency, value);

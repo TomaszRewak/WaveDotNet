@@ -6,16 +6,16 @@ namespace Rain.Wave.Generators
 {
 	public sealed class LinearWaveGenerator : IWave
 	{
-		private readonly float _a;
-		private readonly float _b;
+		private readonly double _a;
+		private readonly double _b;
 
-		public LinearWaveGenerator(float a, float b)
+		public LinearWaveGenerator(double a, double b)
 		{
 			_a = a;
 			_b = b;
 		}
 
-		public float Probe(float time)
+		public double Probe(double time)
 		{
 			return _a * time + _b;
 		}

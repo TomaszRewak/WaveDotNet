@@ -6,16 +6,16 @@ namespace Rain.Wave.Transformers
 {
 	public sealed class PhaseWaveTransformer : IWave
 	{
-		private readonly float _offset;
+		private readonly double _offset;
 		private readonly IWave _baseWave;
 
-		public PhaseWaveTransformer(float offset, IWave baseWave)
+		public PhaseWaveTransformer(double offset, IWave baseWave)
 		{
 			_offset = offset;
 			_baseWave = baseWave;
 		}
 
-		public float Probe(float time)
+		public double Probe(double time)
 		{
 			return _baseWave.Probe(time + _offset);
 		}

@@ -13,7 +13,7 @@ namespace Rain.Wave.Filters
 			_baseWave = baseWave;
 		}
 
-		public float Probe(float time)
+		public double Probe(double time)
 		{
 			var value = _baseWave.Probe(time);
 

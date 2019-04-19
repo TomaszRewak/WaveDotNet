@@ -6,16 +6,16 @@ namespace Rain.Wave.Generators
 {
 	public sealed class SinWaveGenerator : IWave
 	{
-		private readonly float _frequency;
+		private readonly double _frequency;
 
-		public SinWaveGenerator(float frequency)
+		public SinWaveGenerator(double frequency)
 		{
 			_frequency = frequency;
 		}
 
-		public float Probe(float time)
+		public double Probe(double time)
 		{
-			return (float)Math.Sin(time * Math.PI * 2 * _frequency);
+			return Math.Sin(time * Math.PI * 2 * _frequency);
 		}
 	}
 }

@@ -14,7 +14,7 @@ namespace Rain.Wave.Combiners
 			_waves = waves;
 		}
 
-		public float Probe(float time)
+		public double Probe(double time)
 		{
 			return this._waves.Min(wave => wave.Probe(time));
 		}

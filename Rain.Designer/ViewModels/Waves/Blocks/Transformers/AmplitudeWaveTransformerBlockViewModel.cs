@@ -13,15 +13,15 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Transformers
 		public AmplitudeWaveTransformerBlockViewModel() : base(1, 1)
 		{ }
 
-		private float _multiplier;
-		public float Multiplier
+		private double _multiplier;
+		public double Multiplier
 		{
 			get => _multiplier;
 			set => Set(ref _multiplier, value);
 		}
 
-		private float _offset;
-		public float Offset
+		private double _offset;
+		public double Offset
 		{
 			get => _offset;
 			set => Set(ref _offset, value);

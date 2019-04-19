@@ -6,7 +6,7 @@ namespace Rain.Wave.Generators
 {
 	public sealed class SquareWaveGenerator : IWave
 	{
-		public float Probe(float time)
+		public double Probe(double time)
 		{
 			return time % 1f < 0.5 ? -1f : 1f;
 		}

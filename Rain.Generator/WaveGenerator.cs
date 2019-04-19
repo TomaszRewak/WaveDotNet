@@ -33,7 +33,7 @@ namespace Rain.Generator
 		private Span<float> ReadSmaple(Span<float> buffer)
 		{
 			for (int i = 0; i < Channels.Length; i++)
-				buffer[i] = Channels[i].Probe(_time);
+				buffer[i] = (float)Channels[i].Probe(_time);
 
 			_time++;
 

@@ -8,9 +8,9 @@ namespace Rain.Wave.Generators
 	{
 		private Random _randomGenerator = new Random();
 
-		public float Probe(float time)
+		public double Probe(double time)
 		{
-			return (float)_randomGenerator.NextDouble() * 2f - 1f;
+			return _randomGenerator.NextDouble() * 2.0 - 1.0;
 		}
 	}
 }

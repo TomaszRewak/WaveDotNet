@@ -6,16 +6,16 @@ namespace Rain.Wave.Generators
 {
 	public sealed class TriangleWaveGenerator : IWave
 	{
-		public float Probe(float time)
+		public double Probe(double time)
 		{
-			var modulo = time % 1f;
+			var modulo = time % 1.0;
 
 			return
-				modulo < 0.5f
+				modulo < 0.5
 				?
-				4f * modulo - 1f
+				4.0 * modulo - 1.0
 				:
-				-4f * modulo + 3f;
+				-4.0 * modulo + 3.0;
 		}
 	}
 }

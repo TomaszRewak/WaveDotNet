@@ -14,9 +14,9 @@ namespace Rain.Wave.Combiners
 			_waves = waves;
 		}
 
-		public float Probe(float time)
+		public double Probe(double time)
 		{
-			var value = 1f;
+			var value = 1.0;
 
 			foreach (var wave in _waves)
 				value *= wave.Probe(time);

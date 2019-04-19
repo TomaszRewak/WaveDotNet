@@ -9,6 +9,9 @@
 	d:DesignWidth="800"
 	mc:Ignorable="d">
 	<Grid>
-		<Button Command="{Binding StopCommand}" Content="Stop" />
+		<Button
+			Width="100"
+			Command="{Binding StopCommand}"
+			Content="Stop" />
 	</Grid>
 </UserControl>

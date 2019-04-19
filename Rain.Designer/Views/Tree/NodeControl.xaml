@@ -1,22 +1,59 @@
-﻿<UserControl x:Class="Rain.Designer.Views.Tree.NodeControl"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
-			 xmlns:m="clr-namespace:Rain.Designer.Views.Markups"
-			 mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
-		<ItemsControl ItemsSource="{Binding AvailableWavesBlocks}">
-			<ItemsControl.ItemTemplate>
-				<DataTemplate>
-					<Button
-						Content="{Binding Name}"
-						Command="{m:DataContextBinding ChangeWaveCommand, ControlType=local:NodeControl}"
-						CommandParameter="{Binding}"/>
-				</DataTemplate>
-			</ItemsControl.ItemTemplate>
-		</ItemsControl>
-    </StackPanel>
+﻿<UserControl
+	x:Class="Rain.Designer.Views.Tree.NodeControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:c="clr-namespace:Rain.Designer.Views.Converters"
+	xmlns:controls="clr-namespace:Rain.Designer.Views.Tree.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
+	xmlns:m="clr-namespace:Rain.Designer.Views.Markups"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	d:DesignHeight="450"
+	d:DesignWidth="800"
+	mc:Ignorable="d">
+	<Grid>
+		<Button
+			Width="{DynamicResource NodeSize}"
+			Height="{DynamicResource NodeSize}"
+			Margin="{DynamicResource NodeMargin}"
+			HorizontalAlignment="Center"
+			Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}"
+			CommandParameter="{Binding}">
+			<Button.Template>
+				<ControlTemplate>
+					<Border
+						BorderBrush="White"
+						BorderThickness="3"
+						CornerRadius="25">
+						<Border.Background>
+							<Binding Path="WaveBlock">
+								<Binding.Converter>
+									<c:ChainConverter>
+										<c:ChainedConverter Converter="{c:ComparisonConverter Value={x:Null}}" />
+										<c:ChainedConverter Converter="{c:BooleanToColorConverter True=Red, False=ForestGreen}" />
+										<c:ChainedConverter Converter="{c:ColorToBrushConverter}" />
+									</c:ChainConverter>
+								</Binding.Converter>
+							</Binding>
+						</Border.Background>
+					</Border>
+				</ControlTemplate>
+			</Button.Template>
+		</Button>
+		<controls:NodeButtonControl
+			Width="25"
+			Height="25"
+			Margin="0,35,-25,0"
+			HorizontalAlignment="Center"
+			Command="{m:DataContextBinding AddSubTreeCommand, ControlType=local:TreeControl}"
+			Content="＋" />
+		<controls:NodeButtonControl
+			Width="25"
+			Height="25"
+			Margin="0,35,25,0"
+			HorizontalAlignment="Center"
+			Background="{Binding CanPlay, Converter={c:BooleanToSolidColorBrushConverter True=DarkGreen, False=LightGray}}"
+			Command="{m:DataContextBinding PlayCommand, ControlType=local:TreeControl}"
+			Content="▶" />
+	</Grid>
 </UserControl>

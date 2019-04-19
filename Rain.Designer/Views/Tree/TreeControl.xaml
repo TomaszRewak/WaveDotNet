@@ -47,49 +47,7 @@
 			</ItemsControl.ItemTemplate>
 		</ItemsControl>
 		<StackPanel>
-			<Button
-				Width="{StaticResource NodeSize}"
-				Height="{StaticResource NodeSize}"
-				Margin="{StaticResource NodeMargin}"
-				HorizontalAlignment="Center"
-				Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}"
-				CommandParameter="{Binding}">
-				<Button.Template>
-					<ControlTemplate>
-						<Border
-							BorderBrush="White"
-							BorderThickness="3"
-							CornerRadius="25">
-							<Border.Background>
-								<Binding Path="WaveBlock">
-									<Binding.Converter>
-										<c:ChainConverter>
-											<c:ChainedConverter Converter="{c:ComparisonConverter Value={x:Null}}" />
-											<c:ChainedConverter Converter="{c:BooleanToColorConverter True=Red, False=ForestGreen}" />
-											<c:ChainedConverter Converter="{c:ColorToBrushConverter}" />
-										</c:ChainConverter>
-									</Binding.Converter>
-								</Binding>
-							</Border.Background>
-						</Border>
-					</ControlTemplate>
-				</Button.Template>
-			</Button>
-			<controls:NodeButtonControl
-				Width="25"
-				Height="25"
-				Margin="0,-25,-25,0"
-				HorizontalAlignment="Center"
-				Command="{m:DataContextBinding AddSubTreeCommand, ControlType=local:TreeControl}"
-				Content="＋" />
-			<controls:NodeButtonControl
-				Width="25"
-				Height="25"
-				Margin="0,-25,25,0"
-				HorizontalAlignment="Center"
-				Background="{Binding CanPlay, Converter={c:BooleanToSolidColorBrushConverter True=DarkGreen, False=LightGray}}"
-				Command="{m:DataContextBinding PlayCommand, ControlType=local:TreeControl}"
-				Content="▶" />
+			<local:NodeControl DataContext="{Binding}" />
 			<StackPanel Orientation="Horizontal">
 				<ItemsControl ItemsSource="{Binding SubTrees}">
 					<ItemsControl.ItemsPanel>

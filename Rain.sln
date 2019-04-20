@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rain.Generator", "Rain.Gene
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rain.Designer", "Rain.Designer\Rain.Designer.csproj", "{DF8DE4B4-8CED-435D-8CDE-7244B5431EC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rain.Serialization", "Rain.Serialization\Rain.Serialization.csproj", "{E187E2F2-68A1-4A39-B148-C03AC2BDC4E3}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{DF8DE4B4-8CED-435D-8CDE-7244B5431EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF8DE4B4-8CED-435D-8CDE-7244B5431EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF8DE4B4-8CED-435D-8CDE-7244B5431EC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E187E2F2-68A1-4A39-B148-C03AC2BDC4E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E187E2F2-68A1-4A39-B148-C03AC2BDC4E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E187E2F2-68A1-4A39-B148-C03AC2BDC4E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E187E2F2-68A1-4A39-B148-C03AC2BDC4E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

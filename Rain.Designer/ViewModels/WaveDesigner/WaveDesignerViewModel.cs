@@ -19,7 +19,6 @@ namespace Rain.Designer.ViewModels.WaveDesigner
 	{
 		private readonly FileHelper _fileHelper;
 		private readonly WaveBuilderHelper _waveBuilderHelper;
-		private readonly WaveLoaderHelper _waveLoaderHelper;
 
 		public MeshViewModel Mesh { get; }
 		public SamplesViewModel Samples { get; }
@@ -29,7 +28,6 @@ namespace Rain.Designer.ViewModels.WaveDesigner
 		public WaveDesignerViewModel(
 			FileHelper fileHelper,
 			WaveBuilderHelper waveBuilderHelper,
-			WaveLoaderHelper waveLoaderHelper,
 			MeshViewModel mesh,
 			SamplesViewModel samples,
 			TreeDesignerViewModel treeDesigner,
@@ -37,7 +35,6 @@ namespace Rain.Designer.ViewModels.WaveDesigner
 		{
 			_fileHelper = fileHelper;
 			_waveBuilderHelper = waveBuilderHelper;
-			_waveLoaderHelper = waveLoaderHelper;
 
 			Mesh = mesh;
 			Samples = samples;
@@ -47,13 +44,13 @@ namespace Rain.Designer.ViewModels.WaveDesigner
 
 		private void Save()
 		{
-			_fileHelper.Save(_waveBuilderHelper.BuildWave(TreeDesigner.Tree));
+			_fileHelper.Save(TreeDesigner.Nodes);
 		}
 
 		private void Load()
 		{
-			if (_fileHelper.Load(out IWave wave))
-				TreeDesigner.Tree = _waveLoaderHelper.Load(wave);
+			if (_fileHelper.Load(out IReadOnlyCollection<Tree.NodeViewModel> nodes))
+				TreeDesigner.Nodes = nodes;
 		}
 
 		public ICommand SaveCommand => new Command(Save);

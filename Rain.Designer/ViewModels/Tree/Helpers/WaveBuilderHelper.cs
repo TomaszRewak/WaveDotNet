@@ -9,10 +9,10 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 {
     internal class WaveBuilderHelper
     {
-		public IWave BuildWave(TreeViewModel tree)
+		public IWave BuildWave(NodeViewModel tree)
 		{
 			var subWaves = tree
-				.SubTrees
+				.Inputs
 				.Select(BuildWave)
 				.ToArray();
 

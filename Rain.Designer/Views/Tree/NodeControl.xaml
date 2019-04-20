@@ -10,14 +10,25 @@
 	xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
 	xmlns:m="clr-namespace:Rain.Designer.Views.Markups"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:s="clr-namespace:System;assembly=mscorlib"
 	d:DesignHeight="450"
 	d:DesignWidth="800"
 	mc:Ignorable="d">
+	<UserControl.Resources>
+		<s:Double x:Key="NodeSize">40</s:Double>
+		<s:Double x:Key="NodeMarginSize">10</s:Double>
+		<Thickness
+			x:Key="NodeMargin"
+			Bottom="{StaticResource NodeMarginSize}"
+			Left="{StaticResource NodeMarginSize}"
+			Right="{StaticResource NodeMarginSize}"
+			Top="{StaticResource NodeMarginSize}" />
+	</UserControl.Resources>
 	<Grid>
 		<Border
-			Width="{DynamicResource NodeSize}"
-			Height="{DynamicResource NodeSize}"
-			Margin="{DynamicResource NodeMargin}"
+			Width="{StaticResource NodeSize}"
+			Height="{StaticResource NodeSize}"
+			Margin="{StaticResource NodeMargin}"
 			HorizontalAlignment="Center"
 			BorderBrush="White"
 			BorderThickness="3"
@@ -70,7 +81,8 @@
 								<c:SwitchConverter Default="">
 									<c:CaseConverter Case="{x:Null}" Value="✏" />
 									<c:CaseConverter Case="{x:Type generators:SinWaveGeneratorBlockViewModel}" Value="∿" />
-									<c:CaseConverter Case="{x:Type generators:WhiteNoiseWaveGeneratorBlockViewModel}" Value="⠶" />
+									<c:CaseConverter Case="{x:Type generators:WhiteNoiseWaveGeneratorBlockViewModel}" Value="▩" />
+									<c:CaseConverter Case="{x:Type generators:LinearWaveGeneratorBlockViewModel}" Value="╱" />
 									<c:CaseConverter Case="{x:Type combiners:AdditiveWaveCombinerBlockViewModel}" Value="+" />
 								</c:SwitchConverter>
 							</c:ChainedConverter>
@@ -84,7 +96,6 @@
 			Height="25"
 			Margin="0,35,-30,0"
 			HorizontalAlignment="Center"
-			Command="{m:DataContextBinding AddSubTreeCommand, ControlType=local:TreeControl}"
 			Content="＋" />
 		<controls:NodeButtonControl
 			Width="25"
@@ -92,7 +103,7 @@
 			Margin="0,35,30,0"
 			HorizontalAlignment="Center"
 			Background="{Binding CanPlay, Converter={c:BooleanToSolidColorBrushConverter True=DarkGreen, False=LightGray}}"
-			Command="{m:DataContextBinding PlayCommand, ControlType=local:TreeControl}"
+			Command="{Binding PlayCommand}"
 			Content="▶" />
 	</Grid>
 </UserControl>

@@ -1,4 +1,5 @@
-﻿using Rain.Designer.ViewModels.Common;
+﻿using Rain.Designer.DataStructures;
+using Rain.Designer.ViewModels.Common;
 using Rain.Designer.ViewModels.Tree.Helpers;
 using Rain.Designer.ViewModels.Waves;
 using System;
@@ -12,45 +13,38 @@ using static Rain.Designer.ViewModels.Tree.Helpers.WaveBlockFactoryHelper;
 
 namespace Rain.Designer.ViewModels.Tree
 {
-	internal class TreeViewModel : ViewModel
+	internal class NodeViewModel : ViewModel
 	{
 		private readonly WaveBlockFactoryHelper _waveBlockFactoryHelper;
 		private readonly WaveBuilderHelper _waveBuilderHelper;
 		private readonly WavePlayerHelper _wavePlayerHelper;
-		private readonly Func<TreeViewModel> _treeFactory;
 
-		public TreeViewModel(
+		public NodeViewModel(
 			WaveBlockFactoryHelper waveBlockFactoryHelper,
 			WaveBuilderHelper waveBuilderHelper,
-			WavePlayerHelper wavePlayerHelper,
-			Func<TreeViewModel> treeFactory)
+			WavePlayerHelper wavePlayerHelper)
 		{
 			_waveBlockFactoryHelper = waveBlockFactoryHelper;
 			_waveBuilderHelper = waveBuilderHelper;
 			_wavePlayerHelper = wavePlayerHelper;
-			_treeFactory = treeFactory;
 		}
 
-		private void SubTreeChanged(object subTree, PropertyChangedEventArgs args)
+		private void InputChanged(object subTree, PropertyChangedEventArgs args)
 		{
 			switch (args.PropertyName)
 			{
-				case nameof(TreeViewModel.Width):
-					this.UpdateWidth();
-					break;
-				case nameof(TreeViewModel.CanPlay):
+				case nameof(CanPlay):
 					this.UpdateCanPlay();
 					break;
 			}
 		}
 
-		private IReadOnlyCollection<TreeViewModel> _subTrees = new List<TreeViewModel>();
-		public IReadOnlyCollection<TreeViewModel> SubTrees
+		private IReadOnlyCollection<NodeViewModel> _inputs = new List<NodeViewModel>();
+		public IReadOnlyCollection<NodeViewModel> Inputs
 		{
-			get => _subTrees;
-			set => Set(ref _subTrees, value)
-				.ObserveChildren(SubTreeChanged)
-				.Then(UpdateWidth)
+			get => _inputs;
+			set => Set(ref _inputs, value)
+				.ObserveChildren(InputChanged)
 				.Then(UpdateCanPlay);
 		}
 
@@ -67,13 +61,6 @@ namespace Rain.Designer.ViewModels.Tree
 				.Then(UpdateCanPlay);
 		}
 
-		private int _width = 1;
-		public int Width
-		{
-			get => _width;
-			set => Set(ref _width, value);
-		}
-
 		private bool _canPlay;
 		public bool CanPlay
 		{
@@ -81,17 +68,27 @@ namespace Rain.Designer.ViewModels.Tree
 			set => Set(ref _canPlay, value);
 		}
 
-		private void AddSubTree()
+		private Position _position;
+		public Position Position
 		{
-			SubTrees = SubTrees
-				.Concat(new[] { _treeFactory() })
+			get => _position;
+			set => Set(ref _position, value);
+		}
+
+		private void AddInput(NodeViewModel input)
+		{
+			Inputs = Inputs
+				.Concat(new[] { input })
 				.ToList();
 		}
 
-		private void RemoveSubTree(TreeViewModel subTree)
+		private void RemoveInput(int index)
 		{
-			SubTrees = SubTrees
-				.Except(new[] { subTree })
+			var inputsBefore = Inputs.Take(index);
+			var inputsAfter = Inputs.Skip(index + 1);
+
+			Inputs = inputsBefore
+				.Concat(inputsAfter)
 				.ToList();
 		}
 
@@ -100,19 +97,12 @@ namespace Rain.Designer.ViewModels.Tree
 			WaveBlock = waveBlockFactory.Create();
 		}
 
-		private void UpdateWidth()
-		{
-			Width = SubTrees.Any()
-				? SubTrees.Sum(subTree => subTree.Width)
-				: 1;
-		}
-
 		private void UpdateCanPlay()
 		{
 			this.CanPlay =
 				this.WaveBlock != null &&
-				this.SubTrees.All(subTree => subTree.CanPlay) &&
-				this.WaveBlock.CanGenerate(this.SubTrees.Count);
+				this.Inputs.All(subTree => subTree.CanPlay) &&
+				this.WaveBlock.CanGenerate(this.Inputs.Count);
 		}
 
 		private void Play()
@@ -125,8 +115,8 @@ namespace Rain.Designer.ViewModels.Tree
 			_wavePlayerHelper.PlayWave(wave);
 		}
 
-		public ICommand AddSubTreeCommand => new Command(AddSubTree);
-		public ICommand RemoveSubTreeCommand => new Command<TreeViewModel>(RemoveSubTree);
+		public ICommand AddInputCommand => new Command<NodeViewModel>(AddInput);
+		public ICommand RemoveInputCommand => new Command<int>(RemoveInput);
 		public ICommand ChangeWaveCommand => new Command<WaveBlockFactory>(ChangeWave);
 		public ICommand PlayCommand => new Command(Play);
 	}

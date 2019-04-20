@@ -1,4 +1,5 @@
-﻿using Rain.Designer.ViewModels.Common;
+﻿using Rain.Designer.DataStructures;
+using Rain.Designer.ViewModels.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,30 +11,43 @@ namespace Rain.Designer.ViewModels.Tree
 {
     internal class TreeDesignerViewModel : ViewModel
     {
-		public TreeDesignerViewModel(TreeViewModel tree)
+		private Func<NodeViewModel> _nodeFactory;
+
+		public TreeDesignerViewModel(Func<NodeViewModel> nodeFactory)
 		{
-			Tree = tree;
+			_nodeFactory = nodeFactory;
 		}
 
-		private TreeViewModel _tree;
-		public TreeViewModel Tree
+		private IReadOnlyCollection<NodeViewModel> _nodes = new List<NodeViewModel>();
+		public IReadOnlyCollection<NodeViewModel> Nodes
 		{
-			get => _tree;
-			set => Set(ref _tree, value);
+			get => _nodes;
+			set => Set(ref _nodes, value);
 		}
 
-		private TreeViewModel _selectedNode;
-		public TreeViewModel SelectedNode
+		private NodeViewModel _selectedNode;
+		public NodeViewModel SelectedNode
 		{
 			get => _selectedNode;
 			set => Set(ref _selectedNode, value);
 		}
 
-		private void SelectNode(TreeViewModel node)
+		private void AddNode(Position position)
+		{
+			var newNode = _nodeFactory();
+			newNode.Position = position;
+
+			Nodes = Nodes
+				.Concat(new[] { newNode })
+				.ToList();
+		}
+
+		private void SelectNode(NodeViewModel node)
 		{
 			this.SelectedNode = node;
 		}
 
-		public ICommand SelectNodeCommand => new Command<TreeViewModel>(SelectNode);
+		public ICommand AddNodeCommand => new Command<Position>(AddNode);
+		public ICommand SelectNodeCommand => new Command<NodeViewModel>(SelectNode);
     }
 }

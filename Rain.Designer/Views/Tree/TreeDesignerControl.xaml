@@ -20,6 +20,6 @@
 			Background="LightCyan"
 			DataContext="{Binding SelectedNode.WaveBlock}"
 			DockPanel.Dock="Right" />
-		<local:TreeControl DataContext="{Binding Tree}" />
+		<local:NodesControl DataContext="{Binding Nodes}" />
 	</DockPanel>
 </UserControl>

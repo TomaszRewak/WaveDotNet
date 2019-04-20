@@ -19,7 +19,7 @@ namespace Rain.Designer.Modules
 		{
 			serviceCollection.AddTransient<TreeDesignerViewModel>();
 
-			serviceCollection.AddFactory<TreeViewModel>();
+			serviceCollection.AddFactory<NodeViewModel>();
 
 			serviceCollection.AddFactory<AdditiveWaveCombinerBlockViewModel>();
 			serviceCollection.AddFactory<LinearWaveGeneratorBlockViewModel>();
@@ -31,7 +31,6 @@ namespace Rain.Designer.Modules
 			serviceCollection.AddSingleton<WaveBlockFactoryHelper>();
 			serviceCollection.AddSingleton<WavePlayerHelper>();
 			serviceCollection.AddSingleton<WaveBuilderHelper>();
-			serviceCollection.AddSingleton<WaveLoaderHelper>();
 		}
 	}
 }

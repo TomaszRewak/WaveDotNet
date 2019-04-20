@@ -66,6 +66,7 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -84,6 +85,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataStructures\CanvasPoint.cs" />
     <Compile Include="DataStructures\MeshPoint.cs" />
     <Compile Include="DataStructures\UnorderedPair.cs" />
     <Compile Include="Modules\Helpers\ModuleFactoryHelper.cs" />
@@ -108,7 +110,6 @@
     <Compile Include="ViewModels\Tracks\TrackViewModel.cs" />
     <Compile Include="ViewModels\Tree\Helpers\WaveBlockFactoryHelper.cs" />
     <Compile Include="ViewModels\Tree\Helpers\WaveBuilderHelper.cs" />
-    <Compile Include="ViewModels\Tree\Helpers\WaveLoaderHelper.cs" />
     <Compile Include="ViewModels\Tree\Helpers\WavePlayerHelper.cs" />
     <Compile Include="ViewModels\WaveDesigner\Helpers\FileHelper.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Combiners\AdditiveWaveCombinerBlockViewModel.cs" />
@@ -119,10 +120,11 @@
     <Compile Include="ViewModels\Waves\Blocks\Transformers\FrequencyWaveTransformerBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\WaveBlockViewModel.cs" />
     <Compile Include="ViewModels\Tree\TreeDesignerViewModel.cs" />
-    <Compile Include="ViewModels\Tree\TreeViewModel.cs" />
+    <Compile Include="ViewModels\Tree\NodeViewModel.cs" />
     <Compile Include="ViewModels\WaveDesigner\WaveDesignerViewModel.cs" />
     <Compile Include="Views\Common\DependencyObject.cs" />
     <Compile Include="Views\Common\MultiValueConverter.cs" />
+    <Compile Include="Views\Common\UserControl.cs" />
     <Compile Include="Views\Common\ValueConverter.cs" />
     <Compile Include="Views\Converters\BooleanToColorConverter.cs" />
     <Compile Include="Views\Converters\BooleanToDoubleConverter.cs" />
@@ -229,7 +231,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Tree\TreeControl.xaml">
+    <Page Include="Views\Tree\NodesControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -269,12 +271,11 @@
     <Compile Include="Views\Tree\Controls\NodeButtonControl.xaml.cs">
       <DependentUpon>NodeButtonControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Tree\Converters\ChildNodePositionConverter.cs" />
     <Compile Include="Views\Tree\NodeControl.xaml.cs">
       <DependentUpon>NodeControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Tree\TreeControl.xaml.cs">
-      <DependentUpon>TreeControl.xaml</DependentUpon>
+    <Compile Include="Views\Tree\NodesControl.xaml.cs">
+      <DependentUpon>NodesControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Tree\TreeDesignerControl.xaml.cs">
       <DependentUpon>TreeDesignerControl.xaml</DependentUpon>
@@ -331,10 +332,6 @@
     <ProjectReference Include="..\Rain.Generator\Rain.Generator.csproj">
       <Project>{17233837-5ACD-40CE-9CCF-B282376BB53A}</Project>
       <Name>Rain.Generator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Rain.Serialization\Rain.Serialization.csproj">
-      <Project>{E187E2F2-68A1-4A39-B148-C03AC2BDC4E3}</Project>
-      <Name>Rain.Serialization</Name>
     </ProjectReference>
     <ProjectReference Include="..\Rain.Wave\Rain.Wave.csproj">
       <Project>{BF069839-0A53-41C0-83EE-F4E1C0DD2ABB}</Project>

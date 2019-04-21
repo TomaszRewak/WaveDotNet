@@ -16,7 +16,7 @@
 	mc:Ignorable="d">
 	<UserControl.Resources>
 		<s:Double x:Key="NodeSize">40</s:Double>
-		<s:Double x:Key="NodeMarginSize">10</s:Double>
+		<s:Double x:Key="NodeMarginSize">-20</s:Double>
 		<Thickness
 			x:Key="NodeMargin"
 			Bottom="{StaticResource NodeMarginSize}"
@@ -24,11 +24,10 @@
 			Right="{StaticResource NodeMarginSize}"
 			Top="{StaticResource NodeMarginSize}" />
 	</UserControl.Resources>
-	<Grid>
+	<Grid Margin="-20">
 		<Border
 			Width="{StaticResource NodeSize}"
 			Height="{StaticResource NodeSize}"
-			Margin="{StaticResource NodeMargin}"
 			HorizontalAlignment="Center"
 			BorderBrush="White"
 			BorderThickness="3"
@@ -94,14 +93,16 @@
 		<controls:NodeButtonControl
 			Width="25"
 			Height="25"
-			Margin="0,35,-30,0"
-			HorizontalAlignment="Center"
+			Margin="0,0,-5,-10"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Bottom"
 			Content="＋" />
 		<controls:NodeButtonControl
 			Width="25"
 			Height="25"
-			Margin="0,35,30,0"
-			HorizontalAlignment="Center"
+			Margin="-5,0,0,-10"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Bottom"
 			Background="{Binding CanPlay, Converter={c:BooleanToSolidColorBrushConverter True=DarkGreen, False=LightGray}}"
 			Command="{Binding PlayCommand}"
 			Content="▶" />

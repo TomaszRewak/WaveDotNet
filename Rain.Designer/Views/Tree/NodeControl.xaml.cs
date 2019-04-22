@@ -68,6 +68,11 @@ namespace Rain.Designer.Views.Tree
 			e.Handled = true;
 		}
 
+		private void MouseDownWithin(object sender, MouseButtonEventArgs e)
+		{
+			e.Handled = true;
+		}
+
 		public event EventHandler SelectNode;
 	}
 }

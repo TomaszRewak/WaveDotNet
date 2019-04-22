@@ -7,6 +7,7 @@
 	xmlns:controls="clr-namespace:Rain.Designer.Views.Tree.Controls"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:generators="clr-namespace:Rain.Designer.ViewModels.Waves.Blocks.Generators"
+	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
 	xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
 	xmlns:m="clr-namespace:Rain.Designer.Views.Markups"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -14,6 +15,7 @@
 	d:DesignHeight="450"
 	d:DesignWidth="800"
 	x:ClassModifier="internal"
+	MouseDown="MouseDownWithin"
 	mc:Ignorable="d">
 	<UserControl.Resources>
 		<s:Double x:Key="NodeSize">40</s:Double>
@@ -56,9 +58,9 @@
 		</Border>
 		<Border
 			x:Name="DragHandle"
-			PreviewMouseLeftButtonDown="StartDrag"
-			PreviewMouseLeftButtonUp="EndDrag"
-			PreviewMouseMove="Drag">
+			MouseLeftButtonDown="StartDrag"
+			MouseLeftButtonUp="EndDrag"
+			MouseMove="Drag">
 			<controls:NodePartControl
 				Width="25"
 				Height="25"
@@ -109,6 +111,12 @@
 			HorizontalAlignment="Left"
 			VerticalAlignment="Bottom"
 			Background="{Binding CanPlay, Converter={c:BooleanToSolidColorBrushConverter True=DarkGreen, False=LightGray}}"
-			Text="▶" />
+			Text="▶">
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="MouseUp">
+					<i:InvokeCommandAction Command="{Binding PlayCommand}" />
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+		</controls:NodePartControl>
 	</Grid>
 </UserControl>

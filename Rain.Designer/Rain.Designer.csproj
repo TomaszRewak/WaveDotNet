@@ -55,6 +55,7 @@
       <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.2\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
@@ -219,7 +220,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Tree\Controls\NodeButtonControl.xaml">
+    <Page Include="Views\Tree\Controls\NodePartControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -268,8 +269,8 @@
     <Compile Include="Views\Samples\SamplesControl.xaml.cs">
       <DependentUpon>SamplesControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Tree\Controls\NodeButtonControl.xaml.cs">
-      <DependentUpon>NodeButtonControl.xaml</DependentUpon>
+    <Compile Include="Views\Tree\Controls\NodePartControl.xaml.cs">
+      <DependentUpon>NodePartControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Tree\NodeControl.xaml.cs">
       <DependentUpon>NodeControl.xaml</DependentUpon>

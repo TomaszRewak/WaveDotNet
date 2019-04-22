@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Rain.Designer.DataStructures;
+using Rain.Designer.ViewModels.Tree;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,49 @@ namespace Rain.Designer.Views.Tree
 	/// </summary>
 	public partial class NodeControl : UserControl
 	{
+		private System.Drawing.Point _dragStartPoint;
+		private Position _dragStartPosition;
+		private bool _dragging;
+
 		public NodeControl()
 		{
 			InitializeComponent();
+		}
+
+		private NodeViewModel Node => DataContext as NodeViewModel;
+
+		private void StartDrag(object sender, MouseButtonEventArgs e)
+		{
+			_dragging = true;
+			_dragStartPoint = System.Windows.Forms.Control.MousePosition;
+			_dragStartPosition = Node.Position;
+
+			DragHandle.CaptureMouse();
+
+			e.Handled = true;
+		}
+
+		private void EndDrag(object sender, MouseButtonEventArgs e)
+		{
+			_dragging = false;
+
+			DragHandle.ReleaseMouseCapture();
+
+			e.Handled = true;
+		}
+
+		private void Drag(object sender, MouseEventArgs e)
+		{
+			if (!_dragging)
+				return;
+
+			var dragCurrentPoint = System.Windows.Forms.Control.MousePosition;
+
+			Node.Position = new Position(
+				_dragStartPosition.X + dragCurrentPoint.X - _dragStartPoint.X,
+				_dragStartPosition.Y + dragCurrentPoint.Y - _dragStartPoint.Y);
+
+			e.Handled = true;
 		}
 	}
 }

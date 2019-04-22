@@ -53,58 +53,61 @@
 				</MultiBinding>
 			</Border.Background>
 		</Border>
-		<controls:NodeButtonControl
-			Width="25"
-			Height="25"
-			HorizontalAlignment="Center"
-			Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}"
-			CommandParameter="{Binding}"
-			FontFamily="Cambria">
-			<controls:NodeButtonControl.Background>
-				<Binding Path="WaveBlock">
-					<Binding.Converter>
-						<c:ChainConverter>
-							<c:ChainedConverter Converter="{c:ComparisonConverter Value={x:Null}}" />
-							<c:ChainedConverter Converter="{c:BooleanToColorConverter True=DarkRed, False=ForestGreen}" />
-							<c:ChainedConverter Converter="{c:ColorToBrushConverter}" />
-						</c:ChainConverter>
-					</Binding.Converter>
-				</Binding>
-			</controls:NodeButtonControl.Background>
-			<controls:NodeButtonControl.Content>
-				<Binding Path="WaveBlock">
-					<Binding.Converter>
-						<c:ChainConverter>
-							<c:ChainedConverter Converter="{c:ObjectToTypeConverter}" />
-							<c:ChainedConverter>
-								<c:SwitchConverter Default="">
-									<c:CaseConverter Case="{x:Null}" Value="✏" />
-									<c:CaseConverter Case="{x:Type generators:SinWaveGeneratorBlockViewModel}" Value="∿" />
-									<c:CaseConverter Case="{x:Type generators:WhiteNoiseWaveGeneratorBlockViewModel}" Value="▩" />
-									<c:CaseConverter Case="{x:Type generators:LinearWaveGeneratorBlockViewModel}" Value="╱" />
-									<c:CaseConverter Case="{x:Type combiners:AdditiveWaveCombinerBlockViewModel}" Value="+" />
-								</c:SwitchConverter>
-							</c:ChainedConverter>
-						</c:ChainConverter>
-					</Binding.Converter>
-				</Binding>
-			</controls:NodeButtonControl.Content>
-		</controls:NodeButtonControl>
-		<controls:NodeButtonControl
+		<Border
+			x:Name="DragHandle"
+			PreviewMouseLeftButtonDown="StartDrag"
+			PreviewMouseLeftButtonUp="EndDrag"
+			PreviewMouseMove="Drag">
+			<controls:NodePartControl
+				Width="25"
+				Height="25"
+				HorizontalAlignment="Center"
+				FontFamily="Cambria">
+				<controls:NodePartControl.Background>
+					<Binding Path="WaveBlock">
+						<Binding.Converter>
+							<c:ChainConverter>
+								<c:ChainedConverter Converter="{c:ComparisonConverter Value={x:Null}}" />
+								<c:ChainedConverter Converter="{c:BooleanToColorConverter True=DarkRed, False=ForestGreen}" />
+								<c:ChainedConverter Converter="{c:ColorToBrushConverter}" />
+							</c:ChainConverter>
+						</Binding.Converter>
+					</Binding>
+				</controls:NodePartControl.Background>
+				<controls:NodePartControl.Text>
+					<Binding Path="WaveBlock">
+						<Binding.Converter>
+							<c:ChainConverter>
+								<c:ChainedConverter Converter="{c:ObjectToTypeConverter}" />
+								<c:ChainedConverter>
+									<c:SwitchConverter Default="">
+										<c:CaseConverter Case="{x:Null}" Value="✏" />
+										<c:CaseConverter Case="{x:Type generators:SinWaveGeneratorBlockViewModel}" Value="∿" />
+										<c:CaseConverter Case="{x:Type generators:WhiteNoiseWaveGeneratorBlockViewModel}" Value="▩" />
+										<c:CaseConverter Case="{x:Type generators:LinearWaveGeneratorBlockViewModel}" Value="╱" />
+										<c:CaseConverter Case="{x:Type combiners:AdditiveWaveCombinerBlockViewModel}" Value="+" />
+									</c:SwitchConverter>
+								</c:ChainedConverter>
+							</c:ChainConverter>
+						</Binding.Converter>
+					</Binding>
+				</controls:NodePartControl.Text>
+			</controls:NodePartControl>
+		</Border>
+		<controls:NodePartControl
 			Width="25"
 			Height="25"
 			Margin="0,0,-5,-10"
 			HorizontalAlignment="Right"
 			VerticalAlignment="Bottom"
-			Content="＋" />
-		<controls:NodeButtonControl
+			Text="＋" />
+		<controls:NodePartControl
 			Width="25"
 			Height="25"
 			Margin="-5,0,0,-10"
 			HorizontalAlignment="Left"
 			VerticalAlignment="Bottom"
 			Background="{Binding CanPlay, Converter={c:BooleanToSolidColorBrushConverter True=DarkGreen, False=LightGray}}"
-			Command="{Binding PlayCommand}"
-			Content="▶" />
+			Text="▶" />
 	</Grid>
 </UserControl>

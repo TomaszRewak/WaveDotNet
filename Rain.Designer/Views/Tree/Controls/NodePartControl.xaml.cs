@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rain.Designer.Views.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,12 +16,19 @@ using System.Windows.Shapes;
 
 namespace Rain.Designer.Views.Tree.Controls
 {
-    /// <summary>
-    /// Interaction logic for NodeButtonControl.xaml
-    /// </summary>
-    public partial class NodeButtonControl : Button
-    {
-        public NodeButtonControl()
+    internal class NodePartControlBase : UserControl<NodePartControl>
+	{ }
+
+	internal partial class NodePartControl : NodePartControlBase
+	{
+		private static readonly DependencyProperty TextPropert = Register<string>(nameof(Text));
+		public string Text
+		{
+			get => GetValue<string>(TextPropert);
+			set => SetValue(TextPropert, value);
+		}
+
+        public NodePartControl()
         {
             InitializeComponent();
         }

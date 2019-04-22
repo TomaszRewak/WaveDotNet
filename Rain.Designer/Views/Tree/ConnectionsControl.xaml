@@ -25,10 +25,10 @@
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
 							<local:ConnectionControl
-								X1="{Binding Position.X}"
-								X2="{Binding DataContext.Position.X, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-								Y1="{Binding Position.Y}"
-								Y2="{Binding DataContext.Position.Y, RelativeSource={RelativeSource AncestorType=ItemsControl}}" />
+								X1="{Binding DataContext.Position.X, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+								X2="{Binding Position.X}"
+								Y1="{Binding DataContext.Position.Y, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+								Y2="{Binding Position.Y}" />
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
 				</ItemsControl>

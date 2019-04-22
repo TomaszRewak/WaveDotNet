@@ -135,10 +135,12 @@
     <Compile Include="Views\Converters\ColorInterpolationConverter.cs" />
     <Compile Include="Views\Converters\ColorToBrushConverter.cs" />
     <Compile Include="Views\Converters\ComparisonConverter.cs" />
+    <Compile Include="Views\Converters\DoubleMultiplyConverter.cs" />
     <Compile Include="Views\Converters\IntMultiplyConverter.cs" />
     <Compile Include="Views\Converters\FloatToStringConverter.cs" />
     <Compile Include="Views\Converters\MultiValueChainConverter.cs" />
     <Compile Include="Views\Converters\MultiValueComparisonConverter.cs" />
+    <Compile Include="Views\Converters\MultiValueDoubleAddConverter.cs" />
     <Compile Include="Views\Converters\NullableToBooleanConverter.cs" />
     <Compile Include="Views\Converters\TypeToDataTemplateConverter.cs" />
     <Compile Include="Views\Converters\ObjectToTypeConverter.cs" />

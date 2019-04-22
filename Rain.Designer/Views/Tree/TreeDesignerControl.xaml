@@ -20,6 +20,9 @@
 			Background="LightCyan"
 			DataContext="{Binding SelectedNode.WaveBlock}"
 			DockPanel.Dock="Right" />
-		<local:NodesControl DataContext="{Binding Nodes}" />
+		<Grid Width="500" Background="WhiteSmoke">
+			<local:ConnectionsControl DataContext="{Binding Nodes}" />
+			<local:NodesControl DataContext="{Binding Nodes}" />
+		</Grid>
 	</DockPanel>
 </UserControl>

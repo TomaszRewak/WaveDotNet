@@ -14,11 +14,7 @@
 	d:DesignWidth="800"
 	x:ClassModifier="internal"
 	mc:Ignorable="d">
-	<Grid
-		Width="500"
-		Height="500"
-		Background="WhiteSmoke"
-		MouseMove="MouseMoveOverCanvas">
+	<Grid Background="Transparent" MouseMove="MouseMoveOverCanvas">
 		<i:Interaction.Triggers>
 			<i:EventTrigger EventName="MouseLeftButtonDown">
 				<i:InvokeCommandAction Command="{m:DataContextBinding AddNodeCommand, ControlType=local:TreeDesignerControl}" CommandParameter="{Binding MousePosition, RelativeSource={RelativeSource AncestorType=local:NodesControl}}" />

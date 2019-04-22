@@ -13,6 +13,7 @@
 	xmlns:s="clr-namespace:System;assembly=mscorlib"
 	d:DesignHeight="450"
 	d:DesignWidth="800"
+	x:ClassModifier="internal"
 	mc:Ignorable="d">
 	<UserControl.Resources>
 		<s:Double x:Key="NodeSize">40</s:Double>

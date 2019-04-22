@@ -20,7 +20,7 @@ namespace Rain.Designer.Views.Tree
 	/// <summary>
 	/// Interaction logic for NodeControl.xaml
 	/// </summary>
-	public partial class NodeControl : UserControl
+	internal partial class NodeControl : UserControl
 	{
 		private System.Drawing.Point _dragStartPoint;
 		private Position _dragStartPosition;
@@ -40,7 +40,6 @@ namespace Rain.Designer.Views.Tree
 			_dragStartPosition = Node.Position;
 
 			DragHandle.CaptureMouse();
-
 			e.Handled = true;
 		}
 
@@ -48,8 +47,10 @@ namespace Rain.Designer.Views.Tree
 		{
 			_dragging = false;
 
-			DragHandle.ReleaseMouseCapture();
+			if (_dragStartPoint == System.Windows.Forms.Control.MousePosition)
+				SelectNode?.Invoke(this, null);
 
+			DragHandle.ReleaseMouseCapture();
 			e.Handled = true;
 		}
 
@@ -66,5 +67,7 @@ namespace Rain.Designer.Views.Tree
 
 			e.Handled = true;
 		}
+
+		public event EventHandler SelectNode;
 	}
 }

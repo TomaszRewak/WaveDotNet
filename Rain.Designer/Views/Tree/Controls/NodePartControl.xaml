@@ -27,7 +27,6 @@
 						TextAlignment="Center" />
 				</Border>
 			</Border>
-
 		</ControlTemplate>
 	</local:NodePartControlBase.Template>
 </local:NodePartControlBase>

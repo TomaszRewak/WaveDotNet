@@ -41,7 +41,13 @@
 					<local:NodeControl
 						Canvas.Left="{Binding Position.X}"
 						Canvas.Top="{Binding Position.Y}"
-						DataContext="{Binding}" />
+						DataContext="{Binding}">
+						<i:Interaction.Triggers>
+							<i:EventTrigger EventName="SelectNode">
+								<i:InvokeCommandAction Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}" CommandParameter="{Binding}" />
+							</i:EventTrigger>
+						</i:Interaction.Triggers>
+					</local:NodeControl>
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>
 		</ItemsControl>

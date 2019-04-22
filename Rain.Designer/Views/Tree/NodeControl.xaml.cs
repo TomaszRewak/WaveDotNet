@@ -47,9 +47,6 @@ namespace Rain.Designer.Views.Tree
 		{
 			_dragging = false;
 
-			if (_dragStartPoint == System.Windows.Forms.Control.MousePosition)
-				SelectNode?.Invoke(this, null);
-
 			DragHandle.ReleaseMouseCapture();
 			e.Handled = true;
 		}
@@ -72,7 +69,5 @@ namespace Rain.Designer.Views.Tree
 		{
 			e.Handled = true;
 		}
-
-		public event EventHandler SelectNode;
 	}
 }

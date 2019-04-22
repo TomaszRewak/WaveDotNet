@@ -40,6 +40,8 @@ namespace Rain.Designer.ViewModels.Tree
 			Nodes = Nodes
 				.Concat(new[] { newNode })
 				.ToList();
+
+			SelectedNode = newNode;
 		}
 
 		private void SelectNode(NodeViewModel node)

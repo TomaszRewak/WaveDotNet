@@ -69,5 +69,18 @@ namespace Rain.Designer.Views.Tree
 		{
 			e.Handled = true;
 		}
+
+		private void TriggerStartConnection(object sender, MouseButtonEventArgs e)
+		{
+			StartConnection?.Invoke(this, Node);
+		}
+
+		private void TriggerEndConnection(object sender, MouseButtonEventArgs e)
+		{
+			EndConnection?.Invoke(this, Node);
+		}
+
+		public event EventHandler<NodeViewModel> StartConnection;
+		public event EventHandler<NodeViewModel> EndConnection;
 	}
 }

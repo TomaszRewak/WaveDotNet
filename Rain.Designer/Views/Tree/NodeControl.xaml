@@ -64,8 +64,7 @@
 			<controls:NodePartControl
 				Width="25"
 				Height="25"
-				HorizontalAlignment="Center"
-				FontFamily="Cambria">
+				HorizontalAlignment="Center">
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="MouseDown">
 						<i:InvokeCommandAction Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}" CommandParameter="{Binding}" />
@@ -105,9 +104,31 @@
 		<controls:NodePartControl
 			Width="25"
 			Height="25"
+			Margin="0,-14,0,0"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Top"
+			Background="Goldenrod"
+			MouseDown="TriggerStartConnection"
+			MouseUp="TriggerEndConnection"
+			Text="⊙">
+			<controls:NodePartControl.Visibility>
+				<Binding Path="ConnectionNode" RelativeSource="{RelativeSource AncestorType=local:NodesControl}">
+					<Binding.Converter>
+						<c:ChainConverter>
+							<c:ChainedConverter Converter="{c:NullableToBooleanConverter}" />
+							<c:ChainedConverter Converter="{c:BooleanToVisibilityConverter True=Visible, False=Collapsed}" />
+						</c:ChainConverter>
+					</Binding.Converter>
+				</Binding>
+			</controls:NodePartControl.Visibility>
+		</controls:NodePartControl>
+		<controls:NodePartControl
+			Width="25"
+			Height="25"
 			Margin="0,0,-5,-10"
 			HorizontalAlignment="Right"
 			VerticalAlignment="Bottom"
+			MouseDown="TriggerStartConnection"
 			Text="＋" />
 		<controls:NodePartControl
 			Width="25"

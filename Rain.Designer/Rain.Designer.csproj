@@ -139,6 +139,7 @@
     <Compile Include="Views\Converters\FloatToStringConverter.cs" />
     <Compile Include="Views\Converters\MultiValueChainConverter.cs" />
     <Compile Include="Views\Converters\MultiValueComparisonConverter.cs" />
+    <Compile Include="Views\Converters\NullableToBooleanConverter.cs" />
     <Compile Include="Views\Converters\TypeToDataTemplateConverter.cs" />
     <Compile Include="Views\Converters\ObjectToTypeConverter.cs" />
     <Compile Include="Views\Converters\SwitchConverter.cs" />

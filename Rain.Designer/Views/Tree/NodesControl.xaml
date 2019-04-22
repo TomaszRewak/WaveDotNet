@@ -41,7 +41,9 @@
 					<local:NodeControl
 						Canvas.Left="{Binding Position.X}"
 						Canvas.Top="{Binding Position.Y}"
-						DataContext="{Binding}" />
+						DataContext="{Binding}"
+						EndConnection="NodeControl_EndConnection"
+						StartConnection="NodeControl_StartConnection" />
 				</DataTemplate>
 			</ItemsControl.ItemTemplate>
 		</ItemsControl>

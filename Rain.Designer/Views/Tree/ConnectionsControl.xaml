@@ -24,9 +24,7 @@
 					</ItemsControl.ItemsPanel>
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
-							<Line
-								Stroke="Red"
-								StrokeThickness="2"
+							<local:ConnectionControl
 								X1="{Binding Position.X}"
 								X2="{Binding DataContext.Position.X, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
 								Y1="{Binding Position.Y}"

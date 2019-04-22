@@ -1,0 +1,22 @@
+﻿<local:ConnectionControlBase
+	x:Class="Rain.Designer.Views.Tree.ConnectionControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	x:Name="Self"
+	d:DesignHeight="450"
+	d:DesignWidth="800"
+	x:ClassModifier="internal"
+	mc:Ignorable="d">
+	<Grid>
+		<Line
+			Stroke="DarkGreen"
+			StrokeThickness="2"
+			X1="{Binding X1, ElementName=Self}"
+			X2="{Binding X2, ElementName=Self}"
+			Y1="{Binding Y1, ElementName=Self}"
+			Y2="{Binding Y2, ElementName=Self}" />
+	</Grid>
+</local:ConnectionControlBase>

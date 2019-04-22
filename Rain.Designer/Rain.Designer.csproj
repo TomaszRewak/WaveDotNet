@@ -165,6 +165,9 @@
     <Compile Include="Views\Tracks\TracksControl.xaml.cs">
       <DependentUpon>TracksControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Tree\ConnectionControl.xaml.cs">
+      <DependentUpon>ConnectionControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Tree\ConnectionsControl.xaml.cs">
       <DependentUpon>ConnectionsControl.xaml</DependentUpon>
     </Compile>
@@ -221,6 +224,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Tracks\TracksControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tree\ConnectionControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

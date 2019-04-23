@@ -122,14 +122,35 @@
 				</Binding>
 			</controls:NodePartControl.Visibility>
 		</controls:NodePartControl>
-		<controls:NodePartControl
-			Width="25"
+		<Canvas
 			Height="25"
-			Margin="0,0,-5,-10"
-			HorizontalAlignment="Right"
-			VerticalAlignment="Bottom"
-			MouseDown="TriggerStartConnection"
-			Text="＋" />
+			Margin="20,0,0,-10"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Bottom">
+			<StackPanel Orientation="Horizontal">
+				<ItemsControl AlternationCount="{x:Static s:Int32.MaxValue}" ItemsSource="{Binding Inputs}">
+					<ItemsControl.ItemsPanel>
+						<ItemsPanelTemplate>
+							<StackPanel Orientation="Horizontal" />
+						</ItemsPanelTemplate>
+					</ItemsControl.ItemsPanel>
+					<ItemsControl.ItemTemplate>
+						<DataTemplate>
+							<controls:NodePartControl
+								Width="25"
+								Height="25"
+								MouseDown="TriggerStartConnection"
+								Text="{Binding Path=(ItemsControl.AlternationIndex), RelativeSource={RelativeSource TemplatedParent}}" />
+						</DataTemplate>
+					</ItemsControl.ItemTemplate>
+				</ItemsControl>
+				<controls:NodePartControl
+					Width="25"
+					Height="25"
+					MouseDown="TriggerStartConnection"
+					Text="＋" />
+			</StackPanel>
+		</Canvas>
 		<controls:NodePartControl
 			Width="25"
 			Height="25"

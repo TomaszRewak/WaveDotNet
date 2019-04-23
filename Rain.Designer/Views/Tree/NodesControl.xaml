@@ -10,6 +10,7 @@
 	xmlns:m="clr-namespace:Rain.Designer.Views.Markups"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:s="clr-namespace:System;assembly=mscorlib"
+	x:Name="Self"
 	d:DesignHeight="450"
 	d:DesignWidth="800"
 	x:ClassModifier="internal"
@@ -20,6 +21,23 @@
 				<i:InvokeCommandAction Command="{m:DataContextBinding AddNodeCommand, ControlType=local:TreeDesignerControl}" CommandParameter="{Binding MousePosition, RelativeSource={RelativeSource AncestorType=local:NodesControl}}" />
 			</i:EventTrigger>
 		</i:Interaction.Triggers>
+		<local:ConnectionControl
+			ConnectionIndex="{Binding ConnectionNode.Inputs.Count, ElementName=Self}"
+			X1="{Binding ConnectionNode.Position.X, ElementName=Self}"
+			X2="{Binding MousePosition.X, ElementName=Self}"
+			Y1="{Binding ConnectionNode.Position.Y, ElementName=Self}"
+			Y2="{Binding MousePosition.Y, ElementName=Self}">
+			<local:ConnectionControl.Visibility>
+				<Binding ElementName="Self" Path="ConnectionNode">
+					<Binding.Converter>
+						<c:ChainConverter>
+							<c:ChainedConverter Converter="{c:NullableToBooleanConverter}" />
+							<c:ChainedConverter Converter="{c:BooleanToVisibilityConverter True=Visible, False=Collapsed}" />
+						</c:ChainConverter>
+					</Binding.Converter>
+				</Binding>
+			</local:ConnectionControl.Visibility>
+		</local:ConnectionControl>
 		<ItemsControl ItemsSource="{Binding}">
 			<ItemsControl.ItemsPanel>
 				<ItemsPanelTemplate>

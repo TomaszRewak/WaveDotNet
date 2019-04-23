@@ -64,6 +64,8 @@ namespace Rain.Designer.Views.Tree
 
 			if (ConnectionNode.AddInputCommand.CanExecute(e))
 				ConnectionNode.AddInputCommand.Execute(e);
+
+			ConnectionNode = null;
 		}
 	}
 }

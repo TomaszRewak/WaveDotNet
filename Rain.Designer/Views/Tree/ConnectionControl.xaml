@@ -28,13 +28,13 @@
 			</converters:MultiValueChainConverter>
 			<converters:ChainConverter x:Key="IndexOffser">
 				<converters:ChainedConverter Converter="{converters:IntToDoubleConverter}" />
-				<converters:ChainedConverter Converter="{converters:DoubleMultiplyConverter By=25}" />
+				<converters:ChainedConverter Converter="{converters:DoubleMultiplyConverter By=22}" />
 				<converters:ChainedConverter Converter="{converters:DoubleAddConverter Value=13}" />
 			</converters:ChainConverter>
 		</ResourceDictionary>
 	</local:ConnectionControlBase.Resources>
 	<Grid>
-		<Line Y1="{Binding Y1, ElementName=Self, Converter={converters:DoubleAddConverter Value=25}}">
+		<Line SnapsToDevicePixels="True" Y1="{Binding Y1, ElementName=Self, Converter={converters:DoubleAddConverter Value=25}}">
 			<Line.X1>
 				<MultiBinding Converter="{converters:MultiValueDoubleAddConverter}">
 					<Binding ElementName="Self" Path="X1" />

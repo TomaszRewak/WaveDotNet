@@ -64,7 +64,8 @@
 			<controls:NodePartControl
 				Width="25"
 				Height="25"
-				HorizontalAlignment="Center">
+				HorizontalAlignment="Center"
+				FontFamily="Cambria">
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="MouseDown">
 						<i:InvokeCommandAction Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}" CommandParameter="{Binding}" />
@@ -139,6 +140,7 @@
 							<controls:NodePartControl
 								Width="25"
 								Height="25"
+								Margin="0,0,-3,0"
 								MouseDown="TriggerStartConnection"
 								Text="{Binding Path=(ItemsControl.AlternationIndex), RelativeSource={RelativeSource TemplatedParent}}" />
 						</DataTemplate>

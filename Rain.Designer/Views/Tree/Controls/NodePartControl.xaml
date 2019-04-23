@@ -10,7 +10,6 @@
 	d:DesignWidth="800"
 	x:ClassModifier="internal"
 	Background="LightSlateGray"
-	FontFamily="Cambria"
 	mc:Ignorable="d">
 	<local:NodePartControlBase.Template>
 		<ControlTemplate>

@@ -5,6 +5,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:system="clr-namespace:System;assembly=mscorlib"
 	d:DesignHeight="450"
 	d:DesignWidth="800"
 	mc:Ignorable="d">
@@ -16,7 +17,10 @@
 		</ItemsControl.ItemsPanel>
 		<ItemsControl.ItemTemplate>
 			<DataTemplate>
-				<ItemsControl x:Name="NodeConnections" ItemsSource="{Binding Inputs}">
+				<ItemsControl
+					x:Name="NodeConnections"
+					AlternationCount="{x:Static system:Int32.MaxValue}"
+					ItemsSource="{Binding Inputs}">
 					<ItemsControl.ItemsPanel>
 						<ItemsPanelTemplate>
 							<Canvas />
@@ -25,6 +29,7 @@
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
 							<local:ConnectionControl
+								ConnectionIndex="{Binding Path=(ItemsControl.AlternationIndex), RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentPresenter}}}"
 								X1="{Binding DataContext.Position.X, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
 								X2="{Binding Position.X}"
 								Y1="{Binding DataContext.Position.Y, RelativeSource={RelativeSource AncestorType=ItemsControl}}"

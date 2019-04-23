@@ -49,6 +49,13 @@ namespace Rain.Designer.Views.Tree
 			set => SetValue(Y2Property, value);
 		}
 
+		private static readonly DependencyProperty ConnectionIndexProperty = Register<int>(nameof(ConnectionIndex));
+		public int ConnectionIndex
+		{
+			get => GetValue<int>(ConnectionIndexProperty);
+			set => SetValue(ConnectionIndexProperty, value);
+		}
+
 		public ConnectionControl()
 		{
 			InitializeComponent();

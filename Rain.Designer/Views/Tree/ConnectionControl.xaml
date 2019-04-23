@@ -11,98 +11,86 @@
 	d:DesignWidth="800"
 	x:ClassModifier="internal"
 	mc:Ignorable="d">
+	<local:ConnectionControlBase.Resources>
+		<ResourceDictionary>
+			<Style TargetType="Line">
+				<Setter Property="Stroke" Value="PaleGreen" />
+				<Setter Property="StrokeThickness" Value="3" />
+				<Setter Property="StrokeEndLineCap" Value="Round" />
+			</Style>
+			<converters:MultiValueChainConverter x:Key="HalfOfHeight">
+				<converters:MultiValueChainConverter.MultiValueConverter>
+					<converters:MultiValueDoubleAddConverter />
+				</converters:MultiValueChainConverter.MultiValueConverter>
+				<converters:MultiValueChainConverter.PostProcessing>
+					<converters:DoubleMultiplyConverter By="0.5" />
+				</converters:MultiValueChainConverter.PostProcessing>
+			</converters:MultiValueChainConverter>
+			<converters:ChainConverter x:Key="IndexOffser">
+				<converters:ChainedConverter Converter="{converters:IntToDoubleConverter}" />
+				<converters:ChainedConverter Converter="{converters:DoubleMultiplyConverter By=25}" />
+				<converters:ChainedConverter Converter="{converters:DoubleAddConverter Value=13}" />
+			</converters:ChainConverter>
+		</ResourceDictionary>
+	</local:ConnectionControlBase.Resources>
 	<Grid>
-		<Line Stroke="DarkGreen" StrokeThickness="2">
+		<Line Y1="{Binding Y1, ElementName=Self, Converter={converters:DoubleAddConverter Value=25}}">
 			<Line.X1>
-				<Binding ElementName="Self" Path="X1" />
+				<MultiBinding Converter="{converters:MultiValueDoubleAddConverter}">
+					<Binding ElementName="Self" Path="X1" />
+					<Binding
+						Converter="{StaticResource IndexOffser}"
+						ElementName="Self"
+						Path="ConnectionIndex" />
+				</MultiBinding>
 			</Line.X1>
 			<Line.X2>
-				<Binding ElementName="Self" Path="X1" />
+				<MultiBinding Converter="{converters:MultiValueDoubleAddConverter}">
+					<Binding ElementName="Self" Path="X1" />
+					<Binding
+						Converter="{StaticResource IndexOffser}"
+						ElementName="Self"
+						Path="ConnectionIndex" />
+				</MultiBinding>
 			</Line.X2>
-			<Line.Y1>
-				<Binding ElementName="Self" Path="Y1" />
-			</Line.Y1>
 			<Line.Y2>
-				<MultiBinding>
+				<MultiBinding Converter="{StaticResource HalfOfHeight}">
 					<Binding ElementName="Self" Path="Y1" />
 					<Binding ElementName="Self" Path="Y2" />
-					<MultiBinding.Converter>
-						<converters:MultiValueChainConverter>
-							<converters:MultiValueChainConverter.MultiValueConverter>
-								<converters:MultiValueDoubleAddConverter />
-							</converters:MultiValueChainConverter.MultiValueConverter>
-							<converters:MultiValueChainConverter.PostProcessing>
-								<converters:DoubleMultiplyConverter By="0.5" />
-							</converters:MultiValueChainConverter.PostProcessing>
-						</converters:MultiValueChainConverter>
-					</MultiBinding.Converter>
 				</MultiBinding>
 			</Line.Y2>
 		</Line>
-		<Line Stroke="DarkGreen" StrokeThickness="2">
-			<Line.X1>
-				<Binding ElementName="Self" Path="X2" />
-			</Line.X1>
-			<Line.X2>
-				<Binding ElementName="Self" Path="X2" />
-			</Line.X2>
+		<Line
+			X1="{Binding X2, ElementName=Self}"
+			X2="{Binding X2, ElementName=Self}"
+			Y2="{Binding Y2, ElementName=Self}">
 			<Line.Y1>
-				<MultiBinding>
+				<MultiBinding Converter="{StaticResource HalfOfHeight}">
 					<Binding ElementName="Self" Path="Y1" />
 					<Binding ElementName="Self" Path="Y2" />
-					<MultiBinding.Converter>
-						<converters:MultiValueChainConverter>
-							<converters:MultiValueChainConverter.MultiValueConverter>
-								<converters:MultiValueDoubleAddConverter />
-							</converters:MultiValueChainConverter.MultiValueConverter>
-							<converters:MultiValueChainConverter.PostProcessing>
-								<converters:DoubleMultiplyConverter By="0.5" />
-							</converters:MultiValueChainConverter.PostProcessing>
-						</converters:MultiValueChainConverter>
-					</MultiBinding.Converter>
 				</MultiBinding>
 			</Line.Y1>
-			<Line.Y2>
-				<Binding ElementName="Self" Path="Y2" />
-			</Line.Y2>
 		</Line>
-		<Line Stroke="DarkGreen" StrokeThickness="2">
+		<Line X2="{Binding X2, ElementName=Self}">
 			<Line.X1>
-				<Binding ElementName="Self" Path="X1" />
+				<MultiBinding Converter="{converters:MultiValueDoubleAddConverter}">
+					<Binding ElementName="Self" Path="X1" />
+					<Binding
+						Converter="{StaticResource IndexOffser}"
+						ElementName="Self"
+						Path="ConnectionIndex" />
+				</MultiBinding>
 			</Line.X1>
-			<Line.X2>
-				<Binding ElementName="Self" Path="X2" />
-			</Line.X2>
 			<Line.Y1>
-				<MultiBinding>
+				<MultiBinding Converter="{StaticResource HalfOfHeight}">
 					<Binding ElementName="Self" Path="Y1" />
 					<Binding ElementName="Self" Path="Y2" />
-					<MultiBinding.Converter>
-						<converters:MultiValueChainConverter>
-							<converters:MultiValueChainConverter.MultiValueConverter>
-								<converters:MultiValueDoubleAddConverter />
-							</converters:MultiValueChainConverter.MultiValueConverter>
-							<converters:MultiValueChainConverter.PostProcessing>
-								<converters:DoubleMultiplyConverter By="0.5" />
-							</converters:MultiValueChainConverter.PostProcessing>
-						</converters:MultiValueChainConverter>
-					</MultiBinding.Converter>
 				</MultiBinding>
 			</Line.Y1>
 			<Line.Y2>
-				<MultiBinding>
+				<MultiBinding Converter="{StaticResource HalfOfHeight}">
 					<Binding ElementName="Self" Path="Y1" />
 					<Binding ElementName="Self" Path="Y2" />
-					<MultiBinding.Converter>
-						<converters:MultiValueChainConverter>
-							<converters:MultiValueChainConverter.MultiValueConverter>
-								<converters:MultiValueDoubleAddConverter />
-							</converters:MultiValueChainConverter.MultiValueConverter>
-							<converters:MultiValueChainConverter.PostProcessing>
-								<converters:DoubleMultiplyConverter By="0.5" />
-							</converters:MultiValueChainConverter.PostProcessing>
-						</converters:MultiValueChainConverter>
-					</MultiBinding.Converter>
 				</MultiBinding>
 			</Line.Y2>
 		</Line>

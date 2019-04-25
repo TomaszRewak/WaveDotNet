@@ -142,6 +142,7 @@
     <Compile Include="Views\Converters\IntToDoubleConverter.cs" />
     <Compile Include="Views\Converters\MultiValueChainConverter.cs" />
     <Compile Include="Views\Converters\MultiValueComparisonConverter.cs" />
+    <Compile Include="Views\Converters\MultiValueCoordinatesToPointConverter.cs" />
     <Compile Include="Views\Converters\MultiValueDoubleAddConverter.cs" />
     <Compile Include="Views\Converters\NullableToBooleanConverter.cs" />
     <Compile Include="Views\Converters\TypeToDataTemplateConverter.cs" />
@@ -175,6 +176,7 @@
     <Compile Include="Views\Tree\ConnectionsControl.xaml.cs">
       <DependentUpon>ConnectionsControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Tree\Converters\BezierCurveConverter.cs" />
     <Compile Include="Views\Tree\NodeEditorControl.xaml.cs">
       <DependentUpon>NodeEditorControl.xaml</DependentUpon>
     </Compile>

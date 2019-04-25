@@ -1,4 +1,5 @@
-﻿using Rain.Designer.Views.Common;
+﻿using Rain.Designer.DataStructures;
+using Rain.Designer.Views.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,32 +22,18 @@ namespace Rain.Designer.Views.Tree
 
 	internal partial class ConnectionControl : ConnectionControlBase
 	{
-		private static readonly DependencyProperty X1Property = Register<double>(nameof(X1));
-		public double X1
+		private static readonly DependencyProperty BeginProperty = Register<Position>(nameof(Begin));
+		public Position Begin
 		{
-			get => GetValue<double>(X1Property);
-			set => SetValue(X1Property, value);
+			get => GetValue<Position>(BeginProperty);
+			set => SetValue(BeginProperty, value);
 		}
 
-		private static readonly DependencyProperty Y1Property = Register<double>(nameof(Y1));
-		public double Y1
+		private static readonly DependencyProperty EndProperty = Register<Position>(nameof(End));
+		public Position End
 		{
-			get => GetValue<double>(Y1Property);
-			set => SetValue(Y1Property, value);
-		}
-
-		private static readonly DependencyProperty X2Property = Register<double>(nameof(X2));
-		public double X2
-		{
-			get => GetValue<double>(X2Property);
-			set => SetValue(X2Property, value);
-		}
-
-		private static readonly DependencyProperty Y2Property = Register<double>(nameof(Y2));
-		public double Y2
-		{
-			get => GetValue<double>(Y2Property);
-			set => SetValue(Y2Property, value);
+			get => GetValue<Position>(EndProperty);
+			set => SetValue(EndProperty, value);
 		}
 
 		private static readonly DependencyProperty ConnectionIndexProperty = Register<int>(nameof(ConnectionIndex));

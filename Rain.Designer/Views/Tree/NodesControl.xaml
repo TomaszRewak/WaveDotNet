@@ -22,11 +22,9 @@
 			</i:EventTrigger>
 		</i:Interaction.Triggers>
 		<local:ConnectionControl
+			Begin="{Binding ConnectionNode.Position, ElementName=Self}"
 			ConnectionIndex="{Binding ConnectionNode.Inputs.Count, ElementName=Self}"
-			X1="{Binding ConnectionNode.Position.X, ElementName=Self}"
-			X2="{Binding MousePosition.X, ElementName=Self}"
-			Y1="{Binding ConnectionNode.Position.Y, ElementName=Self}"
-			Y2="{Binding MousePosition.Y, ElementName=Self}">
+			End="{Binding MousePosition, ElementName=Self}">
 			<local:ConnectionControl.Visibility>
 				<Binding ElementName="Self" Path="ConnectionNode">
 					<Binding.Converter>

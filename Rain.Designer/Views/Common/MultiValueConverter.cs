@@ -25,6 +25,20 @@ namespace Rain.Designer.Views.Common
 
 			return value;
 		}
+
+		public bool TryGet<T>(int index, out T value)
+		{
+			if (_values[index] is T typedValue)
+			{
+				value = typedValue;
+				return true;
+			}
+			else
+			{
+				value = default;
+				return false;
+			}
+		}
 	}
 
 	internal abstract class MultiValueConverter<TOut, TParam> : MarkupExtension, IMultiValueConverter

@@ -29,11 +29,9 @@
 					<ItemsControl.ItemTemplate>
 						<DataTemplate>
 							<local:ConnectionControl
+								Begin="{Binding DataContext.Position, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
 								ConnectionIndex="{Binding Path=(ItemsControl.AlternationIndex), RelativeSource={RelativeSource TemplatedParent}}"
-								X1="{Binding DataContext.Position.X, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-								X2="{Binding Position.X}"
-								Y1="{Binding DataContext.Position.Y, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-								Y2="{Binding Position.Y}" />
+								End="{Binding Position}" />
 						</DataTemplate>
 					</ItemsControl.ItemTemplate>
 				</ItemsControl>

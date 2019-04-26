@@ -3,6 +3,7 @@ using Rain.Designer.Modules.Helpers;
 using Rain.Designer.ViewModels.Tree;
 using Rain.Designer.ViewModels.Tree.Helpers;
 using Rain.Designer.ViewModels.Waves.Blocks.Combiners;
+using Rain.Designer.ViewModels.Waves.Blocks.Filters;
 using Rain.Designer.ViewModels.Waves.Blocks.Generators;
 using Rain.Designer.ViewModels.Waves.Blocks.Transformers;
 using System;
@@ -22,11 +23,22 @@ namespace Rain.Designer.Modules
 			serviceCollection.AddFactory<NodeViewModel>();
 
 			serviceCollection.AddFactory<AdditiveWaveCombinerBlockViewModel>();
+			serviceCollection.AddFactory<MaxWaveCombinerBlockViewModel>();
+			serviceCollection.AddFactory<MinWaveCombinerBlockViewModel>();
+			serviceCollection.AddFactory<MultiplicationWaveCombinerBlockViewModel>();
+
+			serviceCollection.AddFactory<AmplitudeWaveFilterBlockViewModel>();
+			serviceCollection.AddFactory<PowerWaveFilterBlockViewModel>();
+
 			serviceCollection.AddFactory<LinearWaveGeneratorBlockViewModel>();
 			serviceCollection.AddFactory<SinWaveGeneratorBlockViewModel>();
+			serviceCollection.AddFactory<SquareWaveGeneratorBlockViewModel>();
+			serviceCollection.AddFactory<TriangleWaveGeneratorBlockViewModel>();
+			serviceCollection.AddFactory<WhiteNoiseWaveGeneratorBlockViewModel>();
+
 			serviceCollection.AddFactory<AmplitudeWaveTransformerBlockViewModel>();
 			serviceCollection.AddFactory<FrequencyWaveTransformerBlockViewModel>();
-			serviceCollection.AddFactory<WhiteNoiseWaveGeneratorBlockViewModel>();
+			serviceCollection.AddFactory<LoopWaveTransformerBlockViewModel>();
 
 			serviceCollection.AddSingleton<WaveBlockFactoryHelper>();
 			serviceCollection.AddSingleton<WavePlayerHelper>();

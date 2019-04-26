@@ -4,20 +4,17 @@ using System.Text;
 
 namespace Rain.Wave.Filters
 {
-	public sealed class SquareWaveFilter : IWave
+	public sealed class PowerWaveFilter : IWave
 	{
 		public IWave BaseWave { get; set; }
 
-		public SquareWaveFilter(IWave baseWave)
-		{
-			BaseWave = baseWave;
-		}
+		public double Power { get; set; }
 
 		public double Probe(double time)
 		{
 			var value = BaseWave.Probe(time);
 
-			return value * value;
+			return Math.Pow(value, Power);
 		}
 	}
 }

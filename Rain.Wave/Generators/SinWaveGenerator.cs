@@ -7,10 +7,11 @@ namespace Rain.Wave.Generators
 	public sealed class SinWaveGenerator : IWave
 	{
 		public double Frequency { get; set; }
+		public double Amplitude { get; set; }
 
 		public double Probe(double time)
 		{
-			return Math.Sin(time * Math.PI * 2 * Frequency);
+			return Math.Sin(time * Math.PI * 2 * Frequency) * Amplitude;
 		}
 	}
 }

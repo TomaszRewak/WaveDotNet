@@ -13,14 +13,14 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 		public LinearWaveGeneratorBlockViewModel() : base(0, 0)
 		{ }
 
-		private double _a;
+		private double _a = 1;
 		public double A
 		{
 			get => _a;
 			set => Set(ref _a, value);
 		}
 
-		private double _b;
+		private double _b = 0;
 		public double B
 		{
 			get => _b;

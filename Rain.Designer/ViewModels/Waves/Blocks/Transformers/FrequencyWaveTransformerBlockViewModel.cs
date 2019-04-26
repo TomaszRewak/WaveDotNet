@@ -13,7 +13,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Transformers
 		public FrequencyWaveTransformerBlockViewModel() : base(1, 1)
 		{ }
 
-		private double _frequency;
+		private double _frequency = 1;
 		public double Frequency
 		{
 			get => _frequency;
@@ -22,7 +22,11 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Transformers
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new FrequencyWaveTransformer(Frequency, inputs.First());
+			return new FrequencyWaveTransformer
+			{
+				Frequency = Frequency,
+				BaseWave = inputs.First()
+			};
 		}
 	}
 }

@@ -1,16 +1,16 @@
-﻿using Rain.Wave;
-using Rain.Wave.Generators;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Rain.Wave;
+using Rain.Wave.Generators;
 
 namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 {
-	internal class SinWaveGeneratorBlockViewModel : WaveBlockViewModel
+	internal class SquareWaveGeneratorBlockViewModel : WaveBlockViewModel
 	{
-		public SinWaveGeneratorBlockViewModel() : base(0, 0)
+		public SquareWaveGeneratorBlockViewModel() : base(0, 0)
 		{ }
 
 		private double _frequency = 200.0;
@@ -29,10 +29,10 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new SinWaveGenerator
+			return new SquareWaveGenerator
 			{
-				Frequency = Frequency,
-				Amplitude = Amplitude
+				Amplitude = Amplitude,
+				Frequency = Frequency
 			};
 		}
 	}

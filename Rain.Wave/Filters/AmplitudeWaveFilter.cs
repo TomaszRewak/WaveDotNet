@@ -6,8 +6,8 @@ namespace Rain.Wave.Filters
 {
 	public sealed class AmplitudeWaveFilter : IWave
 	{
-		private double MaxAmplitude { get; set; }
-		private IWave BaseWave { get; set; }
+		public double MaxAmplitude { get; set; }
+		public IWave BaseWave { get; set; }
 
 		public double Probe(double time)
 		{

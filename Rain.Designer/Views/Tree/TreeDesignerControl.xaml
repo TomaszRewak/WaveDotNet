@@ -9,20 +9,24 @@
 	d:DesignHeight="450"
 	d:DesignWidth="800"
 	mc:Ignorable="d">
-	<DockPanel>
-		<local:NodeEditorControl
-			Width="100"
-			Background="Red"
-			DataContext="{Binding SelectedNode}"
-			DockPanel.Dock="Right" />
-		<waves:WaveBlockControl
-			Width="100"
-			Background="LightCyan"
-			DataContext="{Binding SelectedNode.WaveBlock}"
-			DockPanel.Dock="Right" />
-		<Grid Width="500" Background="WhiteSmoke">
+	<Grid Width="600">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="5" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<Grid Grid.Column="0" Background="WhiteSmoke">
 			<local:ConnectionsControl DataContext="{Binding Nodes}" />
 			<local:NodesControl DataContext="{Binding Nodes}" />
 		</Grid>
-	</DockPanel>
+		<GridSplitter
+			Grid.Column="1"
+			Width="5"
+			HorizontalAlignment="Stretch"
+			Background="DarkGray" />
+		<UniformGrid Grid.Column="2" Columns="2">
+			<local:NodeEditorControl DataContext="{Binding SelectedNode}" />
+			<waves:WaveBlockControl DataContext="{Binding SelectedNode.WaveBlock}" />
+		</UniformGrid>
+	</Grid>
 </UserControl>

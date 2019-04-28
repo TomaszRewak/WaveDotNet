@@ -21,6 +21,7 @@
 				<i:InvokeCommandAction Command="{m:DataContextBinding AddNodeCommand, ControlType=local:TreeDesignerControl}" CommandParameter="{Binding MousePosition, RelativeSource={RelativeSource AncestorType=local:NodesControl}}" />
 			</i:EventTrigger>
 		</i:Interaction.Triggers>
+		<local:ConnectionsControl DataContext="{Binding}" />
 		<local:ConnectionControl
 			Begin="{Binding ConnectionNode.Position, ElementName=Self}"
 			ConnectionIndex="{Binding ConnectionNode.Inputs.Count, ElementName=Self}"

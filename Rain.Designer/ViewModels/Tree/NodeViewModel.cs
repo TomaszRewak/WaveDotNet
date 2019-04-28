@@ -48,9 +48,17 @@ namespace Rain.Designer.ViewModels.Tree
 				.Then(UpdateCanPlay);
 		}
 
-		public IReadOnlyCollection<WaveBlockFactory> AvailableWavesBlocks
+		public IReadOnlyCollection<WaveBlockFactory> AvailableWaveBlockFactories
 		{
 			get => _waveBlockFactoryHelper.AvailableFactories;
+		}
+
+		private WaveBlockFactory _selectedWaveBlockFactory;
+		public WaveBlockFactory SelectedWaveBlockFactory
+		{
+			get => _selectedWaveBlockFactory;
+			set => Set(ref _selectedWaveBlockFactory, value)
+				.Then(UpdateWaveBlock);
 		}
 
 		private WaveBlockViewModel _waveBlock;
@@ -92,9 +100,9 @@ namespace Rain.Designer.ViewModels.Tree
 				.ToList();
 		}
 
-		private void ChangeWave(WaveBlockFactory waveBlockFactory)
+		private void UpdateWaveBlock()
 		{
-			WaveBlock = waveBlockFactory.Create();
+			WaveBlock = SelectedWaveBlockFactory.Create();
 		}
 
 		private void UpdateCanPlay()
@@ -117,7 +125,6 @@ namespace Rain.Designer.ViewModels.Tree
 
 		public ICommand AddInputCommand => new Command<NodeViewModel>(AddInput);
 		public ICommand RemoveInputCommand => new Command<int>(RemoveInput);
-		public ICommand ChangeWaveCommand => new Command<WaveBlockFactory>(ChangeWave);
 		public ICommand PlayCommand => new Command(Play);
 	}
 }

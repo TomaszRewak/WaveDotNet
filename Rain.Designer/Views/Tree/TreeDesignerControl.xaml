@@ -15,18 +15,15 @@
 			<ColumnDefinition Width="5" />
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
-		<Grid Grid.Column="0" Background="WhiteSmoke">
-			<local:ConnectionsControl DataContext="{Binding Nodes}" />
-			<local:NodesControl DataContext="{Binding Nodes}" />
-		</Grid>
+		<local:NodesControl
+			Grid.Column="0"
+			Background="WhiteSmoke"
+			DataContext="{Binding Nodes}" />
 		<GridSplitter
 			Grid.Column="1"
 			Width="5"
 			HorizontalAlignment="Stretch"
 			Background="DarkGray" />
-		<UniformGrid Grid.Column="2" Columns="2">
-			<local:NodeEditorControl DataContext="{Binding SelectedNode}" />
-			<waves:WaveBlockControl DataContext="{Binding SelectedNode.WaveBlock}" />
-		</UniformGrid>
+		<local:NodeEditorControl Grid.Column="2" DataContext="{Binding SelectedNode}" />
 	</Grid>
 </UserControl>

@@ -91,7 +91,6 @@
     <Compile Include="DataStructures\UnorderedPair.cs" />
     <Compile Include="Modules\Helpers\ModuleFactoryHelper.cs" />
     <Compile Include="Modules\MeshModule.cs" />
-    <Compile Include="Modules\SamplesModule.cs" />
     <Compile Include="Modules\TracksModule.cs" />
     <Compile Include="Modules\TreeModule.cs" />
     <Compile Include="Modules\WaveDesignerModule.cs" />
@@ -105,8 +104,6 @@
     <Compile Include="ViewModels\Mesh\ConnectionViewModel.cs" />
     <Compile Include="ViewModels\Mesh\NodeViewModel.cs" />
     <Compile Include="ViewModels\Mesh\MeshViewModel.cs" />
-    <Compile Include="ViewModels\Samples\SamplesViewModel.cs" />
-    <Compile Include="ViewModels\Samples\SampleViewModel.cs" />
     <Compile Include="ViewModels\Tracks\TracksViewModel.cs" />
     <Compile Include="ViewModels\Tracks\TrackViewModel.cs" />
     <Compile Include="ViewModels\Tree\Helpers\WaveBlockFactoryHelper.cs" />
@@ -225,14 +222,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Samples\SampleControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Samples\SamplesControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Tracks\TrackControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -291,12 +280,6 @@
     </Compile>
     <Compile Include="Views\Mesh\NodePlaceholderControl.xaml.cs">
       <DependentUpon>NodePlaceholderControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Samples\SampleControl.xaml.cs">
-      <DependentUpon>SampleControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Samples\SamplesControl.xaml.cs">
-      <DependentUpon>SamplesControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Tree\Controls\NodePartControl.xaml.cs">
       <DependentUpon>NodePartControl.xaml</DependentUpon>

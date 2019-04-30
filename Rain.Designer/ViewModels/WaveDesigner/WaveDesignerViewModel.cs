@@ -1,6 +1,5 @@
 ﻿using Rain.Designer.ViewModels.Common;
 using Rain.Designer.ViewModels.Mesh;
-using Rain.Designer.ViewModels.Samples;
 using Rain.Designer.ViewModels.Tracks;
 using Rain.Designer.ViewModels.Tree;
 using Rain.Designer.ViewModels.Tree.Helpers;
@@ -21,7 +20,6 @@ namespace Rain.Designer.ViewModels.WaveDesigner
 		private readonly WaveBuilderHelper _waveBuilderHelper;
 
 		public MeshViewModel Mesh { get; }
-		public SamplesViewModel Samples { get; }
 		public TreeDesignerViewModel TreeDesigner { get; }
 		public TracksViewModel Tracks { get; }
 
@@ -29,7 +27,6 @@ namespace Rain.Designer.ViewModels.WaveDesigner
 			FileHelper fileHelper,
 			WaveBuilderHelper waveBuilderHelper,
 			MeshViewModel mesh,
-			SamplesViewModel samples,
 			TreeDesignerViewModel treeDesigner,
 			TracksViewModel tracks)
 		{
@@ -37,7 +34,6 @@ namespace Rain.Designer.ViewModels.WaveDesigner
 			_waveBuilderHelper = waveBuilderHelper;
 
 			Mesh = mesh;
-			Samples = samples;
 			TreeDesigner = treeDesigner;
 			Tracks = tracks;
 		}

@@ -185,11 +185,17 @@
     <Compile Include="Views\Tree\NodeEditorControl.xaml.cs">
       <DependentUpon>NodeEditorControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Waves\Blocks\Generators\SquareWaveGeneratorBlockControl.xaml.cs">
+      <DependentUpon>SquareWaveGeneratorBlockControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Waves\Blocks\Generators\SinWaveGeneratorBlockControl.xaml.cs">
       <DependentUpon>SinWaveGeneratorBlockControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Waves\Blocks\Generators\WhiteNoiseGeneratorBlockControl.xaml.cs">
       <DependentUpon>WhiteNoiseGeneratorBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Controls\SimpleWaveBlockForm.xaml.cs">
+      <DependentUpon>SimpleWaveBlockForm.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Waves\WaveBlockControl.xaml.cs">
       <DependentUpon>WaveBlockControl.xaml</DependentUpon>
@@ -301,11 +307,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Waves\Blocks\Generators\SquareWaveGeneratorBlockControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Waves\Blocks\Generators\SinWaveGeneratorBlockControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Waves\Blocks\Generators\WhiteNoiseGeneratorBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Controls\SimpleWaveBlockForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

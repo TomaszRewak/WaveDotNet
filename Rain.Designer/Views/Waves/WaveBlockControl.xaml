@@ -4,8 +4,8 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:c="clr-namespace:Rain.Designer.Views.Converters"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-	xmlns:generators="clr-namespace:Rain.Designer.ViewModels.Waves.Blocks.Generators"
-	xmlns:generators1="clr-namespace:Rain.Designer.Views.Waves.Blocks.Generators"
+	xmlns:gc="clr-namespace:Rain.Designer.Views.Waves.Blocks.Generators"
+	xmlns:gvm="clr-namespace:Rain.Designer.ViewModels.Waves.Blocks.Generators"
 	xmlns:local="clr-namespace:Rain.Designer.Views.Waves"
 	xmlns:markups="clr-namespace:Rain.Designer.Views.Markups"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -19,8 +19,9 @@
 					<c:ChainedConverter Converter="{c:ObjectToTypeConverter}" />
 					<c:ChainedConverter>
 						<c:SwitchConverter>
-							<c:CaseConverter Case="{x:Type generators:SinWaveGeneratorBlockViewModel}" Value="{x:Type generators1:SinWaveGeneratorBlockControl}" />
-							<c:CaseConverter Case="{x:Type generators:WhiteNoiseWaveGeneratorBlockViewModel}" Value="{x:Type generators1:WhiteNoiseGeneratorBlockControl}" />
+							<c:CaseConverter Case="{x:Type gvm:SinWaveGeneratorBlockViewModel}" Value="{x:Type gc:SinWaveGeneratorBlockControl}" />
+							<c:CaseConverter Case="{x:Type gvm:WhiteNoiseWaveGeneratorBlockViewModel}" Value="{x:Type gc:WhiteNoiseGeneratorBlockControl}" />
+							<c:CaseConverter Case="{x:Type gvm:SquareWaveGeneratorBlockViewModel}" Value="{x:Type gc:SquareWaveGeneratorBlockControl}" />
 						</c:SwitchConverter>
 					</c:ChainedConverter>
 					<c:ChainedConverter Converter="{c:TypeToDataTemplateConverter DataContextSource={markups:DataContextBinding ControlType=local:WaveBlockControl}}" />

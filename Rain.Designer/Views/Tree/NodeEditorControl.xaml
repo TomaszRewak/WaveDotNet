@@ -11,12 +11,12 @@
 	d:DesignHeight="450"
 	d:DesignWidth="800"
 	mc:Ignorable="d">
-	<StackPanel>
+	<DockPanel>
 		<ComboBox
 			DisplayMemberPath="Name"
+			DockPanel.Dock="Top"
 			ItemsSource="{Binding AvailableWaveBlockFactories}"
 			SelectedItem="{Binding SelectedWaveBlockFactory}" />
-		<TextBlock Text="{Binding SelectedWaveBlockFactory.Name}" />
 		<waves:WaveBlockControl DataContext="{Binding WaveBlock}" />
-	</StackPanel>
+	</DockPanel>
 </UserControl>

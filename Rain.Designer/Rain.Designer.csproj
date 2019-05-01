@@ -185,14 +185,35 @@
     <Compile Include="Views\Tree\NodeEditorControl.xaml.cs">
       <DependentUpon>NodeEditorControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Waves\Blocks\Filters\AmplitudeWaveFilterBlockControl.xaml.cs">
+      <DependentUpon>AmplitudeWaveFilterBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Filters\PowerWaveFilterBlockControl.xaml.cs">
+      <DependentUpon>PowerWaveFilterBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Generators\LinearWaveGeneratorBlockControl.xaml.cs">
+      <DependentUpon>LinearWaveGeneratorBlockControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Waves\Blocks\Generators\SquareWaveGeneratorBlockControl.xaml.cs">
       <DependentUpon>SquareWaveGeneratorBlockControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Waves\Blocks\Generators\SinWaveGeneratorBlockControl.xaml.cs">
       <DependentUpon>SinWaveGeneratorBlockControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Waves\Blocks\Generators\TriangleWaveGeneratorBlockControl.xaml.cs">
+      <DependentUpon>TriangleWaveGeneratorBlockControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Waves\Blocks\Generators\WhiteNoiseGeneratorBlockControl.xaml.cs">
       <DependentUpon>WhiteNoiseGeneratorBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Transformers\AmplitudeWaveTransformerBlockControl.xaml.cs">
+      <DependentUpon>AmplitudeWaveTransformerBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Transformers\FrequencyWaveTransformerBlockControl.xaml.cs">
+      <DependentUpon>FrequencyWaveTransformerBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Transformers\LoopWaveTransformerBlockControl.xaml.cs">
+      <DependentUpon>LoopWaveTransformerBlockControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Waves\Controls\SimpleWaveBlockForm.xaml.cs">
       <DependentUpon>SimpleWaveBlockForm.xaml</DependentUpon>
@@ -307,6 +328,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Waves\Blocks\Filters\AmplitudeWaveFilterBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Filters\PowerWaveFilterBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Generators\LinearWaveGeneratorBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Waves\Blocks\Generators\SquareWaveGeneratorBlockControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -315,7 +348,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Waves\Blocks\Generators\TriangleWaveGeneratorBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Waves\Blocks\Generators\WhiteNoiseGeneratorBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Transformers\AmplitudeWaveTransformerBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Transformers\FrequencyWaveTransformerBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Transformers\LoopWaveTransformerBlockControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

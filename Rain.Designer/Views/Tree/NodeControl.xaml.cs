@@ -22,7 +22,7 @@ namespace Rain.Designer.Views.Tree
 	/// </summary>
 	internal partial class NodeControl : UserControl
 	{
-		private System.Drawing.Point _dragStartPoint;
+		private Point _dragStartPoint;
 		private Position _dragStartPosition;
 		private bool _dragging;
 
@@ -36,7 +36,7 @@ namespace Rain.Designer.Views.Tree
 		private void StartDrag(object sender, MouseButtonEventArgs e)
 		{
 			_dragging = true;
-			_dragStartPoint = System.Windows.Forms.Control.MousePosition;
+			_dragStartPoint = Mouse.GetPosition(Parent as IInputElement);
 			_dragStartPosition = Node.Position;
 
 			DragHandle.CaptureMouse();
@@ -56,7 +56,7 @@ namespace Rain.Designer.Views.Tree
 			if (!_dragging)
 				return;
 
-			var dragCurrentPoint = System.Windows.Forms.Control.MousePosition;
+			var dragCurrentPoint = Mouse.GetPosition(Parent as IInputElement);
 
 			Node.Position = new Position(
 				_dragStartPosition.X + dragCurrentPoint.X - _dragStartPoint.X,

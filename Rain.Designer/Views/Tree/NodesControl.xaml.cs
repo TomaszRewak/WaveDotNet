@@ -63,6 +63,13 @@ namespace Rain.Designer.Views.Tree
 			set => SetValue(IsPressingProperty, value);
 		}
 
+		private readonly DependencyPropertyKey ZoomProperty = RegisterReadOnly<double>(nameof(Zoom), 1);
+		public double Zoom
+		{
+			get => GetValue<double>(ZoomProperty.DependencyProperty);
+			set => SetValue(ZoomProperty, value);
+		}
+
 		private void UpdateMousePosition()
 		{
 			var positon = Mouse.GetPosition(NodesContainer);
@@ -80,6 +87,20 @@ namespace Rain.Designer.Views.Tree
 				Left = NodesContainer.Margin.Left - MouseDownPosition.X + MousePosition.X,
 				Top = NodesContainer.Margin.Top - MouseDownPosition.Y + MousePosition.Y,
 			};
+		}
+
+		private void ZoomIn(double factor)
+		{
+			var newZoom = Math.Max(0.1, Zoom + factor);
+			var mousePosition = Mouse.GetPosition(NodesContainer);
+
+			NodesContainer.Margin = new Thickness()
+			{
+				Left = NodesContainer.Margin.Left + (mousePosition.X - mousePosition.X / Zoom * newZoom) / 2,
+				Top = NodesContainer.Margin.Top + (mousePosition.Y - mousePosition.Y / Zoom * newZoom) / 2,
+			};
+
+			Zoom = newZoom;
 		}
 
 		private void MouseMoveOverCanvas(object sender, MouseEventArgs e)
@@ -124,6 +145,11 @@ namespace Rain.Designer.Views.Tree
 
 			NodesContainer.ReleaseMouseCapture();
 			IsPressing = false;
+		}
+
+		private void MouseWheelOverCanvas(object sender, MouseWheelEventArgs e)
+		{
+			ZoomIn(e.Delta * 0.001);
 		}
 	}
 }

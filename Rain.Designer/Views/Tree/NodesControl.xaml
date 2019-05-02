@@ -21,7 +21,11 @@
 		Background="Transparent"
 		MouseLeftButtonDown="MouseLeftButtonDownOverCanvas"
 		MouseLeftButtonUp="MouseLeftButtonUpOverCanvas"
-		MouseMove="MouseMoveOverCanvas">
+		MouseMove="MouseMoveOverCanvas"
+		MouseWheel="MouseWheelOverCanvas">
+		<Border.LayoutTransform>
+			<ScaleTransform CenterX="0" CenterY="0" ScaleX="{Binding Zoom, ElementName=Self}" ScaleY="{Binding Zoom, ElementName=Self}" />
+		</Border.LayoutTransform>
 		<Grid Name="NodesContainer">
 			<local:ConnectionsControl DataContext="{Binding Nodes}" />
 			<local:ConnectionControl

@@ -18,7 +18,7 @@
 		<local:NodesControl
 			Grid.Column="0"
 			Background="WhiteSmoke"
-			DataContext="{Binding Nodes}" />
+			DataContext="{Binding}" />
 		<GridSplitter
 			Grid.Column="1"
 			Width="5"

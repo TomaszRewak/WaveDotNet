@@ -23,16 +23,16 @@ namespace Rain.Designer.Views.Tree
 
 	internal partial class NodesControl : NodesControlBase
 	{
+		public NodesControl()
+		{
+			InitializeComponent();
+		}
+
 		private static readonly DependencyProperty ConnectionNodeProperty = Register<NodeViewModel>(nameof(ConnectionNode));
 		public NodeViewModel ConnectionNode
 		{
 			get => GetValue<NodeViewModel>(ConnectionNodeProperty);
 			set => SetValue(ConnectionNodeProperty, value);
-		}
-
-		public NodesControl()
-		{
-			InitializeComponent();
 		}
 
 		private readonly DependencyPropertyKey MousePositionProperty = RegisterReadOnly<Position>(nameof(MousePosition));
@@ -42,22 +42,63 @@ namespace Rain.Designer.Views.Tree
 			set => SetValue(MousePositionProperty, value);
 		}
 
+		private readonly DependencyPropertyKey MouseDownPositionProperty = RegisterReadOnly<Position>(nameof(MouseDownPosition));
+		public Position MouseDownPosition
+		{
+			get => GetValue<Position>(MouseDownPositionProperty.DependencyProperty);
+			set => SetValue(MouseDownPositionProperty, value);
+		}
+
+		private readonly DependencyPropertyKey DraggedDistanceProperty = RegisterReadOnly<double>(nameof(DraggedDistance));
+		public double DraggedDistance
+		{
+			get => GetValue<double>(DraggedDistanceProperty.DependencyProperty);
+			set => SetValue(DraggedDistanceProperty, value);
+		}
+
+		private readonly DependencyPropertyKey IsPressingProperty = RegisterReadOnly<bool>(nameof(IsPressing));
+		public bool IsPressing
+		{
+			get => GetValue<bool>(IsPressingProperty.DependencyProperty);
+			set => SetValue(IsPressingProperty, value);
+		}
+
+		private void UpdateMousePosition()
+		{
+			var positon = Mouse.GetPosition(NodesContainer);
+			MousePosition = new Position(positon.X, positon.Y);
+		}
+
+		private void Drag()
+		{
+			DraggedDistance += 
+				Math.Abs(MouseDownPosition.X - MousePosition.X) + 
+				Math.Abs(MouseDownPosition.Y - MousePosition.Y);
+
+			NodesContainer.Margin = new Thickness()
+			{
+				Left = NodesContainer.Margin.Left - MouseDownPosition.X + MousePosition.X,
+				Top = NodesContainer.Margin.Top - MouseDownPosition.Y + MousePosition.Y,
+			};
+		}
+
 		private void MouseMoveOverCanvas(object sender, MouseEventArgs e)
 		{
-			var positon = Mouse.GetPosition(sender as IInputElement);
-
-			MousePosition = new Position(positon.X, positon.Y);
+			UpdateMousePosition();
 
 			if (e.LeftButton != MouseButtonState.Pressed)
 				ConnectionNode = null;
+
+			if (IsPressing)
+				Drag();
 		}
 
-		private void NodeControl_StartConnection(object sender, NodeViewModel node)
+		private void StartConnection(object sender, NodeViewModel node)
 		{
 			ConnectionNode = node;
 		}
 
-		private void NodeControl_EndConnection(object sender, NodeViewModel e)
+		private void EndConnection(object sender, NodeViewModel e)
 		{
 			if (ConnectionNode == null)
 				return;
@@ -66,6 +107,23 @@ namespace Rain.Designer.Views.Tree
 				ConnectionNode.AddInputCommand.Execute(e);
 
 			ConnectionNode = null;
+		}
+
+		private void MouseLeftButtonDownOverCanvas(object sender, MouseButtonEventArgs e)
+		{
+			NodesContainer.CaptureMouse();
+			IsPressing = true;
+			DraggedDistance = 0;
+			MouseDownPosition = MousePosition;
+		}
+
+		private void MouseLeftButtonUpOverCanvas(object sender, MouseButtonEventArgs e)
+		{
+			if (IsPressing && DraggedDistance < 5)
+				(DataContext as TreeDesignerViewModel)?.AddNodeCommand.Execute(MousePosition);
+
+			NodesContainer.ReleaseMouseCapture();
+			IsPressing = false;
 		}
 	}
 }

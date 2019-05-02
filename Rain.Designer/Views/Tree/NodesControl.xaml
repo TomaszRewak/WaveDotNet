@@ -16,50 +16,52 @@
 	x:ClassModifier="internal"
 	ClipToBounds="True"
 	mc:Ignorable="d">
-	<Grid Background="Transparent" MouseMove="MouseMoveOverCanvas">
-		<i:Interaction.Triggers>
-			<i:EventTrigger EventName="MouseLeftButtonDown">
-				<i:InvokeCommandAction Command="{m:DataContextBinding AddNodeCommand, ControlType=local:TreeDesignerControl}" CommandParameter="{Binding MousePosition, RelativeSource={RelativeSource AncestorType=local:NodesControl}}" />
-			</i:EventTrigger>
-		</i:Interaction.Triggers>
-		<local:ConnectionsControl DataContext="{Binding}" />
-		<local:ConnectionControl
-			Begin="{Binding ConnectionNode.Position, ElementName=Self}"
-			ConnectionIndex="{Binding ConnectionNode.Inputs.Count, ElementName=Self}"
-			End="{Binding MousePosition, ElementName=Self}">
-			<local:ConnectionControl.Visibility>
-				<Binding ElementName="Self" Path="ConnectionNode">
-					<Binding.Converter>
-						<c:ChainConverter>
-							<c:ChainedConverter Converter="{c:NullableToBooleanConverter}" />
-							<c:ChainedConverter Converter="{c:BooleanToVisibilityConverter True=Visible, False=Collapsed}" />
-						</c:ChainConverter>
-					</Binding.Converter>
-				</Binding>
-			</local:ConnectionControl.Visibility>
-		</local:ConnectionControl>
-		<ItemsControl ItemsSource="{Binding}">
-			<ItemsControl.ItemsPanel>
-				<ItemsPanelTemplate>
-					<Canvas />
-				</ItemsPanelTemplate>
-			</ItemsControl.ItemsPanel>
-			<ItemsControl.ItemContainerStyle>
-				<Style>
-					<Setter Property="Canvas.Left" Value="{Binding Position.X}" />
-					<Setter Property="Canvas.Top" Value="{Binding Position.Y}" />
-				</Style>
-			</ItemsControl.ItemContainerStyle>
-			<ItemsControl.ItemTemplate>
-				<DataTemplate>
-					<local:NodeControl
-						Canvas.Left="{Binding Position.X}"
-						Canvas.Top="{Binding Position.Y}"
-						DataContext="{Binding}"
-						EndConnection="NodeControl_EndConnection"
-						StartConnection="NodeControl_StartConnection" />
-				</DataTemplate>
-			</ItemsControl.ItemTemplate>
-		</ItemsControl>
-	</Grid>
+	<Border
+		Name="ScrollContainer"
+		Background="Transparent"
+		MouseLeftButtonDown="MouseLeftButtonDownOverCanvas"
+		MouseLeftButtonUp="MouseLeftButtonUpOverCanvas"
+		MouseMove="MouseMoveOverCanvas">
+		<Grid Name="NodesContainer">
+			<local:ConnectionsControl DataContext="{Binding Nodes}" />
+			<local:ConnectionControl
+				Begin="{Binding ConnectionNode.Position, ElementName=Self}"
+				ConnectionIndex="{Binding ConnectionNode.Inputs.Count, ElementName=Self}"
+				End="{Binding MousePosition, ElementName=Self}">
+				<local:ConnectionControl.Visibility>
+					<Binding ElementName="Self" Path="ConnectionNode">
+						<Binding.Converter>
+							<c:ChainConverter>
+								<c:ChainedConverter Converter="{c:NullableToBooleanConverter}" />
+								<c:ChainedConverter Converter="{c:BooleanToVisibilityConverter True=Visible, False=Collapsed}" />
+							</c:ChainConverter>
+						</Binding.Converter>
+					</Binding>
+				</local:ConnectionControl.Visibility>
+			</local:ConnectionControl>
+			<ItemsControl ItemsSource="{Binding Nodes}">
+				<ItemsControl.ItemsPanel>
+					<ItemsPanelTemplate>
+						<Canvas />
+					</ItemsPanelTemplate>
+				</ItemsControl.ItemsPanel>
+				<ItemsControl.ItemContainerStyle>
+					<Style>
+						<Setter Property="Canvas.Left" Value="{Binding Position.X}" />
+						<Setter Property="Canvas.Top" Value="{Binding Position.Y}" />
+					</Style>
+				</ItemsControl.ItemContainerStyle>
+				<ItemsControl.ItemTemplate>
+					<DataTemplate>
+						<local:NodeControl
+							Canvas.Left="{Binding Position.X}"
+							Canvas.Top="{Binding Position.Y}"
+							DataContext="{Binding}"
+							EndConnection="EndConnection"
+							StartConnection="StartConnection" />
+					</DataTemplate>
+				</ItemsControl.ItemTemplate>
+			</ItemsControl>
+		</Grid>
+	</Border>
 </local:NodesControlBase>

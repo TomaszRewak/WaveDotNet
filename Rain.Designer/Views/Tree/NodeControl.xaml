@@ -1,4 +1,4 @@
-﻿<UserControl
+﻿<local:NodeControlBase
 	x:Class="Rain.Designer.Views.Tree.NodeControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -184,4 +184,4 @@
 			</i:Interaction.Triggers>
 		</controls:NodePartControl>
 	</Grid>
-</UserControl>
+</local:NodeControlBase>

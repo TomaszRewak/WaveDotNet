@@ -1,5 +1,6 @@
 ﻿using Rain.Designer.DataStructures;
 using Rain.Designer.ViewModels.Tree;
+using Rain.Designer.Views.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +18,10 @@ using System.Windows.Shapes;
 
 namespace Rain.Designer.Views.Tree
 {
-	/// <summary>
-	/// Interaction logic for NodeControl.xaml
-	/// </summary>
-	internal partial class NodeControl : UserControl
+	internal class NodeControlBase : UserControl<NodeControl>
+	{ }
+
+	internal partial class NodeControl : NodeControlBase
 	{
 		private Point _dragStartPoint;
 		private Position _dragStartPosition;
@@ -36,7 +37,7 @@ namespace Rain.Designer.Views.Tree
 		private void StartDrag(object sender, MouseButtonEventArgs e)
 		{
 			_dragging = true;
-			_dragStartPoint = Mouse.GetPosition(Parent as IInputElement);
+			_dragStartPoint = Mouse.GetPosition(null);
 			_dragStartPosition = Node.Position;
 
 			DragHandle.CaptureMouse();
@@ -56,11 +57,12 @@ namespace Rain.Designer.Views.Tree
 			if (!_dragging)
 				return;
 
-			var dragCurrentPoint = Mouse.GetPosition(Parent as IInputElement);
+			var dragCurrentPoint = Mouse.GetPosition(null);
+			var scale = this.TranslatePoint(new Point(1, 0), null).X - this.TranslatePoint(new Point(0, 0), null).X;
 
 			Node.Position = new Position(
-				_dragStartPosition.X + dragCurrentPoint.X - _dragStartPoint.X,
-				_dragStartPosition.Y + dragCurrentPoint.Y - _dragStartPoint.Y);
+				_dragStartPosition.X + (dragCurrentPoint.X - _dragStartPoint.X) / scale,
+				_dragStartPosition.Y + (dragCurrentPoint.Y - _dragStartPoint.Y) / scale);
 
 			e.Handled = true;
 		}

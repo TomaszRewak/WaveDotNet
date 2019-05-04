@@ -91,13 +91,13 @@ namespace Rain.Designer.Views.Tree
 
 		private void ZoomIn(double factor)
 		{
-			var newZoom = Math.Max(0.1, Zoom + factor);
-			var mousePosition = Mouse.GetPosition(NodesContainer);
+			var newZoom = Math.Min(Math.Max(0.25, Zoom *  factor), 4);
+			var mousePosition = Mouse.GetPosition(ScrollContainer);
 
 			NodesContainer.Margin = new Thickness()
 			{
-				Left = NodesContainer.Margin.Left + (mousePosition.X - mousePosition.X / Zoom * newZoom) / 2,
-				Top = NodesContainer.Margin.Top + (mousePosition.Y - mousePosition.Y / Zoom * newZoom) / 2,
+				Left = NodesContainer.Margin.Left + (mousePosition.X) * (1 - newZoom / Zoom),
+				Top = NodesContainer.Margin.Top + (mousePosition.Y) * (1 - newZoom / Zoom)
 			};
 
 			Zoom = newZoom;
@@ -149,7 +149,7 @@ namespace Rain.Designer.Views.Tree
 
 		private void MouseWheelOverCanvas(object sender, MouseWheelEventArgs e)
 		{
-			ZoomIn(e.Delta * 0.001);
+			ZoomIn(e.Delta > 0 ? 1.1 : 1 / 1.1);
 		}
 	}
 }

@@ -1,5 +1,4 @@
 ﻿using Rain.Designer.DataStructures;
-using Rain.Designer.ViewModels.Mesh;
 using Rain.Designer.Views.Common;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace Rain.Designer.Views.Mesh.Converters
+namespace Rain.Designer.Views.Waves.Blocks.Mesh.Converters
 {
 	internal class NodePlaceholdersConverter : ValueConverter<IReadOnlyCollection<MeshPoint>, IReadOnlyCollection<MeshPoint>>
 	{

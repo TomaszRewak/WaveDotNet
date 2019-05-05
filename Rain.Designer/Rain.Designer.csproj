@@ -99,11 +99,11 @@
     <Compile Include="ViewModels\Common\ViewModel.cs" />
     <Compile Include="ViewModels\Common\ViewModelChange.cs" />
     <Compile Include="ViewModels\Common\ViewModelChangePropagation.cs" />
-    <Compile Include="ViewModels\Mesh\Helpers\ConnectionsHelper.cs" />
-    <Compile Include="ViewModels\Mesh\Helpers\NodesHelper.cs" />
-    <Compile Include="ViewModels\Mesh\ConnectionViewModel.cs" />
-    <Compile Include="ViewModels\Mesh\NodeViewModel.cs" />
-    <Compile Include="ViewModels\Mesh\MeshViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Mesh\Helpers\ConnectionsHelper.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Mesh\Helpers\NodesHelper.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Mesh\ConnectionViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Mesh\NodeViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Mesh\MeshBlockViewModel.cs" />
     <Compile Include="ViewModels\Tracks\TracksViewModel.cs" />
     <Compile Include="ViewModels\Tracks\TrackViewModel.cs" />
     <Compile Include="ViewModels\Tree\Helpers\WaveBlockFactoryHelper.cs" />
@@ -157,17 +157,17 @@
     <Compile Include="Views\Markups\DataContextBinding.cs" />
     <Compile Include="Views\Markups\DivideDouble.cs" />
     <Compile Include="Views\Markups\MultiplyDouble.cs" />
-    <Compile Include="Views\Mesh\ConnectionContainerControl.xaml.cs">
+    <Compile Include="Views\Waves\Blocks\Mesh\ConnectionContainerControl.xaml.cs">
       <DependentUpon>ConnectionContainerControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Mesh\ConnectionControl.xaml.cs">
+    <Compile Include="Views\Waves\Blocks\Mesh\ConnectionControl.xaml.cs">
       <DependentUpon>ConnectionControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Mesh\Converters\MeshPointConverter.cs" />
-    <Compile Include="Views\Mesh\Converters\NodePlaceholdersConverter.cs" />
-    <Compile Include="Views\Mesh\Converters\NodePositionConverter.cs" />
-    <Compile Include="Views\Mesh\MeshControl.xaml.cs">
-      <DependentUpon>MeshControl.xaml</DependentUpon>
+    <Compile Include="Views\Waves\Blocks\Mesh\Converters\MeshPointConverter.cs" />
+    <Compile Include="Views\Waves\Blocks\Mesh\Converters\NodePlaceholdersConverter.cs" />
+    <Compile Include="Views\Waves\Blocks\Mesh\Converters\NodePositionConverter.cs" />
+    <Compile Include="Views\Waves\Blocks\Mesh\MeshBlockControl.xaml.cs">
+      <DependentUpon>MeshBlockControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Tracks\TrackControl.xaml.cs">
       <DependentUpon>TrackControl.xaml</DependentUpon>
@@ -221,31 +221,31 @@
     <Compile Include="Views\Waves\WaveBlockControl.xaml.cs">
       <DependentUpon>WaveBlockControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\Mesh\ConnectionContainerControl.xaml">
+    <Page Include="Views\Waves\Blocks\Mesh\ConnectionContainerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Mesh\ConnectionControl.xaml">
+    <Page Include="Views\Waves\Blocks\Mesh\ConnectionControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Mesh\NodeContainerControl.xaml">
+    <Page Include="Views\Waves\Blocks\Mesh\NodeContainerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Mesh\NodeControl.xaml">
+    <Page Include="Views\Waves\Blocks\Mesh\NodeControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Mesh\NodeDetailsControl.xaml">
+    <Page Include="Views\Waves\Blocks\Mesh\NodeDetailsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Mesh\NodePlaceholderContainerControl.xaml">
+    <Page Include="Views\Waves\Blocks\Mesh\NodePlaceholderContainerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Mesh\NodePlaceholderControl.xaml">
+    <Page Include="Views\Waves\Blocks\Mesh\NodePlaceholderControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -293,19 +293,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\Mesh\NodeContainerControl.xaml.cs">
+    <Compile Include="Views\Waves\Blocks\Mesh\NodeContainerControl.xaml.cs">
       <DependentUpon>NodeContainerControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Mesh\NodeControl.xaml.cs">
+    <Compile Include="Views\Waves\Blocks\Mesh\NodeControl.xaml.cs">
       <DependentUpon>NodeControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Mesh\NodeDetailsControl.xaml.cs">
+    <Compile Include="Views\Waves\Blocks\Mesh\NodeDetailsControl.xaml.cs">
       <DependentUpon>NodeDetailsControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Mesh\NodePlaceholderContainerControl.xaml.cs">
+    <Compile Include="Views\Waves\Blocks\Mesh\NodePlaceholderContainerControl.xaml.cs">
       <DependentUpon>NodePlaceholderContainerControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Mesh\NodePlaceholderControl.xaml.cs">
+    <Compile Include="Views\Waves\Blocks\Mesh\NodePlaceholderControl.xaml.cs">
       <DependentUpon>NodePlaceholderControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Tree\Controls\NodePartControl.xaml.cs">
@@ -324,7 +324,7 @@
       <DependentUpon>WaveDesignerWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\Mesh\MeshControl.xaml">
+    <Page Include="Views\Waves\Blocks\Mesh\MeshBlockControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Rain.Designer.Views.Mesh
+namespace Rain.Designer.Views.Waves.Blocks.Mesh
 {
     /// <summary>
-    /// Interaction logic for ConnectionControl.xaml
+    /// Interaction logic for ConnectionContainerControl.xaml
     /// </summary>
-    public partial class ConnectionControl : UserControl
+    public partial class ConnectionContainerControl : UserControl
     {
-        public ConnectionControl()
+        public ConnectionContainerControl()
         {
             InitializeComponent();
         }

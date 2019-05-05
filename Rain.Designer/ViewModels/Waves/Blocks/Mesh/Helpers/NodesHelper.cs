@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rain.Designer.ViewModels.Mesh.Helpers
+namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh.Helpers
 {
 	internal class NodesHelper
 	{

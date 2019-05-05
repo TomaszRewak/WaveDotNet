@@ -1,6 +1,8 @@
 ﻿using Rain.Designer.DataStructures;
 using Rain.Designer.ViewModels.Common;
-using Rain.Designer.ViewModels.Mesh.Helpers;
+using Rain.Designer.ViewModels.Waves.Blocks.Mesh.Helpers;
+using Rain.Wave;
+using Rain.Wave.Mesh;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,16 +10,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Rain.Designer.ViewModels.Mesh
+namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh
 {
-	internal class MeshViewModel : ViewModel
+	internal class MeshBlockViewModel : WaveBlockViewModel
 	{
 		private readonly NodesHelper _nodesHelper;
 		private readonly ConnectionsHelper _connectionsHelper;
 
-		public MeshViewModel(
+		public MeshBlockViewModel(
 			NodesHelper nodesHelper,
-			ConnectionsHelper connectionsHelper)
+			ConnectionsHelper connectionsHelper) : base(0, int.MaxValue)
 		{
 			_nodesHelper = nodesHelper;
 			_connectionsHelper = connectionsHelper;
@@ -76,6 +78,26 @@ namespace Rain.Designer.ViewModels.Mesh
 		private void SelectNode(MeshPoint meshPoint)
 		{
 			SelectedNode = Nodes.FirstOrDefault(node => node.Position == meshPoint);
+		}
+
+		public override IWave GenerateWave(IWave[] inputs)
+		{
+			return new MeshWaveGenerator
+			{
+				Nodes = Nodes.Select(node => new Node
+				{
+					Input = node.Input.HasValue ? inputs[node.Input.Value] : null,
+					IsOutput = node.IsOutput,
+					Mass = node.Mass,
+					Connections = Connections
+						.Where(connection => connection.Ends.Contains(node.Position))
+						.Select(connection => new Connection
+						{
+							Stiffness = connection.Stiffness
+						})
+						.ToArray()
+				}).ToArray()
+			};
 		}
 
 		public ICommand AddNodeCommand => new Command<MeshPoint>(AddNode);

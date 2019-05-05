@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Rain.Designer.Views.Mesh.Converters
+namespace Rain.Designer.Views.Waves.Blocks.Mesh.Converters
 {
 	internal enum MeshPointConverterDimension
 	{

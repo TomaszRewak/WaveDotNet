@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Rain.Designer.Modules;
-using Rain.Designer.ViewModels.Mesh;
 using Rain.Designer.ViewModels.WaveDesigner;
 using System;
 using System.Collections.Generic;
@@ -38,7 +37,7 @@ namespace Rain.Designer
 
 			return serviceCollection.BuildServiceProvider();
 		}
-		
+
 		public event PropertyChangedEventHandler PropertyChanged;
 	}
 }

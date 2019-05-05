@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Rain.Designer.ViewModels.Mesh;
-using Rain.Designer.ViewModels.Mesh.Helpers;
+using Rain.Designer.Modules.Helpers;
+using Rain.Designer.ViewModels.Waves.Blocks.Mesh;
+using Rain.Designer.ViewModels.Waves.Blocks.Mesh.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,11 +14,9 @@ namespace Rain.Designer.Modules
 	{
 		public static void Register(ServiceCollection serviceCollection)
 		{
-			serviceCollection.AddTransient<MeshViewModel>();
-			serviceCollection.AddTransient<NodeViewModel>();
-			serviceCollection.AddTransient<Func<NodeViewModel>>(sp => () => sp.GetService<NodeViewModel>());
-			serviceCollection.AddTransient<ConnectionViewModel>();
-			serviceCollection.AddTransient<Func<ConnectionViewModel>>(sp => () => sp.GetService<ConnectionViewModel>());
+			serviceCollection.AddFactory<MeshBlockViewModel>();
+			serviceCollection.AddFactory<NodeViewModel>();
+			serviceCollection.AddFactory<ConnectionViewModel>();
 
 			serviceCollection.AddTransient<NodesHelper>();
 			serviceCollection.AddTransient<ConnectionsHelper>();

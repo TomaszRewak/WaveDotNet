@@ -1,5 +1,4 @@
 ﻿using Rain.Designer.ViewModels.Common;
-using Rain.Designer.ViewModels.Mesh;
 using Rain.Designer.ViewModels.Tracks;
 using Rain.Designer.ViewModels.Tree;
 using Rain.Designer.ViewModels.Tree.Helpers;
@@ -18,22 +17,19 @@ namespace Rain.Designer.ViewModels.WaveDesigner
 	{
 		private readonly FileHelper _fileHelper;
 		private readonly WaveBuilderHelper _waveBuilderHelper;
-
-		public MeshViewModel Mesh { get; }
+		
 		public TreeDesignerViewModel TreeDesigner { get; }
 		public TracksViewModel Tracks { get; }
 
 		public WaveDesignerViewModel(
 			FileHelper fileHelper,
 			WaveBuilderHelper waveBuilderHelper,
-			MeshViewModel mesh,
 			TreeDesignerViewModel treeDesigner,
 			TracksViewModel tracks)
 		{
 			_fileHelper = fileHelper;
 			_waveBuilderHelper = waveBuilderHelper;
-
-			Mesh = mesh;
+			
 			TreeDesigner = treeDesigner;
 			Tracks = tracks;
 		}

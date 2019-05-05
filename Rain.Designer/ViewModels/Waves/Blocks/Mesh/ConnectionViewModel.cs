@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Rain.Designer.ViewModels.Mesh
+namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh
 {
 	internal class ConnectionViewModel : ViewModel
 	{
@@ -29,6 +29,13 @@ namespace Rain.Designer.ViewModels.Mesh
 		{
 			get => _pointB;
 			private set => Set(ref _pointB, value);
+		}
+
+		private double _stiffness;
+		public double Stiffness
+		{
+			get => _stiffness;
+			set => Set(ref _stiffness, value);
 		}
 
 		private void UpdatePoints()

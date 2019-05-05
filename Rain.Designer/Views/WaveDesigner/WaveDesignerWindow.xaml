@@ -5,7 +5,6 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:local="clr-namespace:Rain.Designer"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:mesh="clr-namespace:Rain.Designer.Views.Mesh"
 	xmlns:tracks="clr-namespace:Rain.Designer.Views.Tracks"
 	xmlns:tree="clr-namespace:Rain.Designer.Views.Tree"
 	xmlns:vm="clr-namespace:Rain.Designer.ViewModels.WaveDesigner"

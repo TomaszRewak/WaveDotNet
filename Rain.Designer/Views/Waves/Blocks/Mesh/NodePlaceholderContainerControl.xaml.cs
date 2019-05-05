@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Rain.Designer.Views.Mesh
+namespace Rain.Designer.Views.Waves.Blocks.Mesh
 {
     /// <summary>
-    /// Interaction logic for NodeContainerControl.xaml
+    /// Interaction logic for NodePlaceholderContainerControl.xaml
     /// </summary>
-    public partial class NodeContainerControl : UserControl
+    public partial class NodePlaceholderContainerControl : UserControl
     {
-        public NodeContainerControl()
+        public NodePlaceholderContainerControl()
         {
             InitializeComponent();
         }

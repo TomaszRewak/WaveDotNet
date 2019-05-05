@@ -1,0 +1,27 @@
+﻿<UserControl
+	x:Class="Rain.Designer.Views.Waves.Blocks.Mesh.NodeDetailsControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="clr-namespace:Rain.Designer.Views.Waves.Blocks.Mesh"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	d:DesignHeight="450"
+	d:DesignWidth="800"
+	mc:Ignorable="d">
+	<StackPanel>
+		<Button Command="{Binding DataContext.RemoveNodeCommand, RelativeSource={RelativeSource AncestorType=local:MeshBlockControl}}" CommandParameter="{Binding Position}">
+			<Button.Template>
+				<ControlTemplate>
+					<Border BorderBrush="Gray" BorderThickness="1">
+						<TextBlock
+							Padding="10,5"
+							Text="Remove"
+							TextAlignment="Center" />
+					</Border>
+				</ControlTemplate>
+			</Button.Template>
+		</Button>
+		<TextBlock Text="{Binding Position.X}" />
+		<TextBlock Text="{Binding Position.Y}" />
+	</StackPanel>
+</UserControl>

@@ -1,5 +1,4 @@
-﻿using Rain.Designer.ViewModels.Mesh;
-using Rain.Designer.ViewModels.WaveDesigner;
+﻿using Rain.Designer.ViewModels.WaveDesigner;
 using System;
 using System.Collections.Generic;
 using System.Linq;

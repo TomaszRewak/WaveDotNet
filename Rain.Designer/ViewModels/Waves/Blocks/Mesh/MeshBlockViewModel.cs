@@ -82,21 +82,31 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
+			var nodes = Nodes
+				.ToDictionary(
+					node => node.Position,
+					node => new Node
+					{
+						Input = node.Input.HasValue ? inputs[node.Input.Value] : null,
+						IsOutput = node.IsOutput,
+						Mass = node.Mass
+					});
+
+			foreach (var node in nodes)
+				node.Value.Connections = Connections
+					.Where(connection => connection.Ends.Contains(node.Key))
+					.Select(connection => new Connection
+					{
+						Stiffness = connection.Stiffness,
+						Target = nodes[connection.Ends.Second(node.Key)]
+					})
+					.ToArray();
+
 			return new MeshWaveGenerator
 			{
-				Nodes = Nodes.Select(node => new Node
-				{
-					Input = node.Input.HasValue ? inputs[node.Input.Value] : null,
-					IsOutput = node.IsOutput,
-					Mass = node.Mass,
-					Connections = Connections
-						.Where(connection => connection.Ends.Contains(node.Position))
-						.Select(connection => new Connection
-						{
-							Stiffness = connection.Stiffness
-						})
-						.ToArray()
-				}).ToArray()
+				Nodes = nodes
+					.Select(node => node.Value)
+					.ToArray()
 			};
 		}
 

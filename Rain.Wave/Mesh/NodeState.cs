@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Rain.Wave.Mesh
 {
-	internal class NodeState
+	internal struct NodeState
 	{
 		public double Position { get; set; }
 		public double Velocity { get; set; }

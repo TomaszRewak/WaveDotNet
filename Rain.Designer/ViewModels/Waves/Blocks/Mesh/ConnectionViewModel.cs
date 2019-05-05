@@ -31,7 +31,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh
 			private set => Set(ref _pointB, value);
 		}
 
-		private double _stiffness;
+		private double _stiffness = 0.5;
 		public double Stiffness
 		{
 			get => _stiffness;

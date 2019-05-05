@@ -23,5 +23,8 @@
 		</Button>
 		<TextBlock Text="{Binding Position.X}" />
 		<TextBlock Text="{Binding Position.Y}" />
+		<TextBox Text="{Binding Input}" />
+		<CheckBox IsChecked="{Binding IsOutput}" />
+		<TextBox Text="{Binding Mass}" />
 	</StackPanel>
 </UserControl>

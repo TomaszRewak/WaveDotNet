@@ -10,14 +10,11 @@
 	d:DesignWidth="800"
 	mc:Ignorable="d">
 	<UserControl.Resources>
-		<converters:MeshPointConverter
-			x:Key="MeshPointConverter"
-			PointDistance="80"
-			Offset="20" />
+		<converters:MeshPointConverter x:Key="MeshPointConverter" PointDistance="50" />
 	</UserControl.Resources>
 	<Line
-		Stroke="LightBlue"
-		StrokeThickness="5"
+		Stroke="CornflowerBlue"
+		StrokeThickness="2"
 		X1="{Binding PointA, Converter={StaticResource MeshPointConverter}, ConverterParameter={x:Static converters:MeshPointConverterDimension.Column}}"
 		X2="{Binding PointB, Converter={StaticResource MeshPointConverter}, ConverterParameter={x:Static converters:MeshPointConverterDimension.Column}}"
 		Y1="{Binding PointA, Converter={StaticResource MeshPointConverter}, ConverterParameter={x:Static converters:MeshPointConverterDimension.Row}}"

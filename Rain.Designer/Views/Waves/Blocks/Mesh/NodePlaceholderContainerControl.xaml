@@ -10,7 +10,7 @@
 	d:DesignWidth="800"
 	mc:Ignorable="d">
 	<UserControl.Resources>
-		<converters:MeshPointConverter x:Key="MeshPointConverter" PointDistance="80" />
+		<converters:MeshPointConverter x:Key="MeshPointConverter" PointDistance="50" />
 		<converters:NodePlaceholdersConverter x:Key="NodePlaceholdersConverter" />
 	</UserControl.Resources>
 	<ItemsControl ItemsSource="{Binding Converter={StaticResource NodePlaceholdersConverter}}">

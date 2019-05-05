@@ -20,16 +20,15 @@ namespace Rain.Designer.Views.Waves.Blocks.Mesh.Converters
 	internal class MeshPointConverter : ValueConverter<MeshPoint, double, MeshPointConverterDimension>
 	{
 		public double PointDistance { get; set; }
-		public double Offset { get; set; }
 
 		protected override double Convert(MeshPoint value, MeshPointConverterDimension parameter)
 		{
 			switch (parameter)
 			{
 				case MeshPointConverterDimension.Column:
-					return value.X * PointDistance + Offset;
+					return value.X * PointDistance;
 				case MeshPointConverterDimension.Row:
-					return value.Y * PointDistance + Offset;
+					return value.Y * PointDistance;
 				default:
 					throw new NotImplementedException();
 			}

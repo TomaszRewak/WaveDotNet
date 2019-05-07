@@ -32,11 +32,11 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 
 		public NodeViewModel DeserializeNode(NodeViewModel node, dynamic value)
 		{
-			node.Position = new Position(value.X, value.Y);
+			node.Position = new Position((double)value.X, (double)value.Y);
 
 			var factory = _waveBlockFactoryHelper
 				.AvailableFactories
-				.FirstOrDefault(f => f.Type.Name == value.WaveBlock.Name);
+				.FirstOrDefault(f => f.Type.Name == (string)value.WaveBlock.Name);
 
 			if (factory != null)
 			{

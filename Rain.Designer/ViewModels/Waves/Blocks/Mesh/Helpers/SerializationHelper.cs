@@ -42,17 +42,15 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh.Helpers
 
 		public void Load(MeshBlockViewModel mesh, dynamic value)
 		{
-			mesh.Nodes = value
-				.Nodes
-				.Select((Func<dynamic, NodeViewModel>)LoadNode)
+			mesh.Nodes = (value.Nodes as IEnumerable<dynamic>)
+				.Select(LoadNode)
 				.ToList();
 
 			foreach (var connection in value.Connections)
-				mesh
-					.Connections
-					.Where(c => c.Ends.Contains(new MeshPoint(value.X1, value.Y1)) && c.Ends.Contains(new MeshPoint(value.X2, value.Y2)))
+				mesh.Connections
+					.Where(c => c.Ends.Contains(new MeshPoint((int)connection.X1, (int)connection.Y1)) && c.Ends.Contains(new MeshPoint((int)connection.X2, (int)connection.Y2)))
 					.First()
-					.Stiffness = value.Stiffness;
+					.Stiffness = connection.Stiffness;
 		}
 
 		private NodeViewModel LoadNode(dynamic value)
@@ -63,7 +61,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh.Helpers
 			node.Input = value.Input;
 			node.IsOutput = value.IsOutput;
 			node.Mass = value.Mass;
-			node.Position = new DataStructures.MeshPoint(value.X, value.Y);
+			node.Position = new MeshPoint((int)value.X, (int)value.Y);
 
 			return node;
 		}

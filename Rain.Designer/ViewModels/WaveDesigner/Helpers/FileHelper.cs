@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Rain.Designer.ViewModels.Tree;
 using Rain.Wave;
 using System;
@@ -13,18 +14,14 @@ namespace Rain.Designer.ViewModels.WaveDesigner.Helpers
 {
 	internal class FileHelper
 	{
-		private static readonly JsonSerializerSettings _settings = new JsonSerializerSettings
-		{
-			TypeNameHandling = TypeNameHandling.Auto
-		};
-
 		public void Save(IReadOnlyCollection<NodeViewModel> nodes)
 		{
 			var saveFileDialog = new SaveFileDialog();
 			if (saveFileDialog.ShowDialog() != DialogResult.OK)
 				return;
 
-			var fileContent = JsonConvert.SerializeObject(nodes, _settings);
+			var serializedNodes = nodes.Select(node => node.Serialize());
+			var fileContent = JsonConvert.SerializeObject(serializedNodes, Formatting.Indented);
 
 			File.WriteAllText(saveFileDialog.FileName, fileContent);
 		}
@@ -38,8 +35,9 @@ namespace Rain.Designer.ViewModels.WaveDesigner.Helpers
 				return false;
 
 			var fileContent = File.ReadAllText(openFileDialog.FileName);
+			dynamic json = JObject.Parse(fileContent);
 
-			nodes = JsonConvert.DeserializeObject<List<NodeViewModel>>(fileContent, _settings);
+			//nodes = JObject.Parse(fileContent);
 
 			return true;
 		}

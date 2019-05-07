@@ -28,5 +28,15 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Filters
 				Power = Power
 			};
 		}
+
+		public override dynamic Serialize()
+		{
+			return new { Power };
+		}
+
+		public override void Deserialize(dynamic value)
+		{
+			Power = value.Power;
+		}
 	}
 }

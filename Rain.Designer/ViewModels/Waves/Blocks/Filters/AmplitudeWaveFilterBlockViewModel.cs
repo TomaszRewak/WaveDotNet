@@ -28,5 +28,15 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Filters
 				BaseWave = inputs.First()
 			};
 		}
+
+		public override dynamic Serialize()
+		{
+			return new { MaxAmplitude };
+		}
+
+		public override void Deserialize(dynamic value)
+		{
+			MaxAmplitude = value.MaxAmplitude;
+		}
 	}
 }

@@ -28,6 +28,7 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 			public WaveBlockViewModel Create() => _factory();
 
 			public string Name { get; }
+			public Type Type => _factory.Method.ReturnType;
 		}
 
 		public WaveBlockFactoryHelper(

@@ -16,13 +16,19 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh
 	{
 		private readonly NodesHelper _nodesHelper;
 		private readonly ConnectionsHelper _connectionsHelper;
+		private readonly WaveHelper _waveHelper;
+		private readonly SerializationHelper _serializationHelper;
 
 		public MeshBlockViewModel(
 			NodesHelper nodesHelper,
-			ConnectionsHelper connectionsHelper) : base(0, int.MaxValue)
+			ConnectionsHelper connectionsHelper,
+			WaveHelper waveHelper,
+			SerializationHelper serializationHelper) : base(0, int.MaxValue)
 		{
 			_nodesHelper = nodesHelper;
 			_connectionsHelper = connectionsHelper;
+			_waveHelper = waveHelper;
+			_serializationHelper = serializationHelper;
 
 			Nodes = new[] {
 				new NodeViewModel() { Position = new MeshPoint(2, 2) },
@@ -35,7 +41,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh
 		public IReadOnlyCollection<NodeViewModel> Nodes
 		{
 			get => _nodes;
-			private set => Set(ref _nodes, value)
+			set => Set(ref _nodes, value)
 				.Then(UpdateConnections)
 				.Then(UpdateSelectedNode);
 		}
@@ -82,33 +88,17 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			var nodes = Nodes
-				.ToDictionary(
-					node => node.Position,
-					node => new Node
-					{
-						Input = node.Input.HasValue ? inputs[node.Input.Value] : null,
-						IsOutput = node.IsOutput,
-						Mass = node.Mass,
-						InitialVelocity = node.InitialVelocity
-					});
+			return _waveHelper.GenerateWave(this, inputs);
+		}
 
-			foreach (var node in nodes)
-				node.Value.Connections = Connections
-					.Where(connection => connection.Ends.Contains(node.Key))
-					.Select(connection => new Connection
-					{
-						Stiffness = connection.Stiffness,
-						Target = nodes[connection.Ends.Second(node.Key)]
-					})
-					.ToArray();
+		public override dynamic Serialize()
+		{
+			return _serializationHelper.Save(this);
+		}
 
-			return new MeshWaveGenerator
-			{
-				Nodes = nodes
-					.Select(node => node.Value)
-					.ToArray()
-			};
+		public override void Deserialize(dynamic value)
+		{
+			_serializationHelper.Load(this, value);
 		}
 
 		public ICommand AddNodeCommand => new Command<MeshPoint>(AddNode);

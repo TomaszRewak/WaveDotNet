@@ -28,5 +28,15 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Transformers
 				BaseWave = inputs.First()
 			};
 		}
+
+		public override dynamic Serialize()
+		{
+			return new { Frequency };
+		}
+
+		public override void Deserialize(dynamic value)
+		{
+			Frequency = value.Frequency;
+		}
 	}
 }

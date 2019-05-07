@@ -96,12 +96,16 @@
     <Compile Include="Modules\WaveDesignerModule.cs" />
     <Compile Include="Modules\WavesModule.cs" />
     <Compile Include="ViewModels\Common\Command.cs" />
+    <Compile Include="ViewModels\Common\ISerializable.cs" />
     <Compile Include="ViewModels\Common\ViewModel.cs" />
     <Compile Include="ViewModels\Common\ViewModelChange.cs" />
     <Compile Include="ViewModels\Common\ViewModelChangePropagation.cs" />
+    <Compile Include="ViewModels\Tree\Helpers\WaveBlockSerializationHelper.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Mesh\Helpers\ConnectionsHelper.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Mesh\Helpers\NodesHelper.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Mesh\ConnectionViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Mesh\Helpers\SerializationHelper.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Mesh\Helpers\WaveHelper.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Mesh\NodeViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Mesh\MeshBlockViewModel.cs" />
     <Compile Include="ViewModels\Tracks\TracksViewModel.cs" />

@@ -27,5 +27,15 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 				Amplitude = Amplitude
 			};
 		}
+
+		public override dynamic Serialize()
+		{
+			return new { Amplitude };
+		}
+
+		public override void Deserialize(dynamic value)
+		{
+			Amplitude = value.Amplitude;
+		}
 	}
 }

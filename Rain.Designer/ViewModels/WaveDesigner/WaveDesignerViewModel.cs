@@ -41,7 +41,7 @@ namespace Rain.Designer.ViewModels.WaveDesigner
 
 		private void Load()
 		{
-			if (_fileHelper.Load(out IReadOnlyCollection<Tree.NodeViewModel> nodes))
+			if (_fileHelper.Load(out IReadOnlyCollection<NodeViewModel> nodes))
 				TreeDesigner.Nodes = nodes;
 		}
 

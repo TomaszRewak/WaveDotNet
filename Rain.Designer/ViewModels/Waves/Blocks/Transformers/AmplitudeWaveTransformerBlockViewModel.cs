@@ -44,5 +44,17 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Transformers
 				BaseWave = inputs.First()
 			};
 		}
+
+		public override dynamic Serialize()
+		{
+			return new { Multiplier, VerticalOffset, HorizontalOffset };
+		}
+
+		public override void Deserialize(dynamic value)
+		{
+			Multiplier = value.Multiplier;
+			VerticalOffset = value.VerticalOffset;
+			HorizontalOffset = value.HorizontalOffset;
+		}
 	}
 }

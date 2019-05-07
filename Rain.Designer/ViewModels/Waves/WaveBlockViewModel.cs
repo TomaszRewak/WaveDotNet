@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rain.Designer.ViewModels.Waves
 {
-	internal abstract class WaveBlockViewModel : ViewModel
+	internal abstract class WaveBlockViewModel : ViewModel, ISerializable
 	{
 		public int MinInputs { get; }
 		public int MaxInputs { get; }
@@ -22,5 +22,8 @@ namespace Rain.Designer.ViewModels.Waves
 		public bool CanGenerate(int inputsNumber) => inputsNumber >= MinInputs && inputsNumber <= MaxInputs;
 
 		public abstract IWave GenerateWave(IWave[] inputs);
+
+		public abstract dynamic Serialize();
+		public abstract void Deserialize(dynamic value);
 	}
 }

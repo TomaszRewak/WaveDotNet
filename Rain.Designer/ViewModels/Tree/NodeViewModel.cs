@@ -13,20 +13,23 @@ using static Rain.Designer.ViewModels.Tree.Helpers.WaveBlockFactoryHelper;
 
 namespace Rain.Designer.ViewModels.Tree
 {
-	internal class NodeViewModel : ViewModel
+	internal class NodeViewModel : ViewModel, ISerializable
 	{
 		private readonly WaveBlockFactoryHelper _waveBlockFactoryHelper;
 		private readonly WaveBuilderHelper _waveBuilderHelper;
 		private readonly WavePlayerHelper _wavePlayerHelper;
+		private readonly WaveBlockSerializationHelper _waveBlockSerializationHelper;
 
 		public NodeViewModel(
 			WaveBlockFactoryHelper waveBlockFactoryHelper,
 			WaveBuilderHelper waveBuilderHelper,
-			WavePlayerHelper wavePlayerHelper)
+			WavePlayerHelper wavePlayerHelper,
+			WaveBlockSerializationHelper waveBlockSerializationHelper)
 		{
 			_waveBlockFactoryHelper = waveBlockFactoryHelper;
 			_waveBuilderHelper = waveBuilderHelper;
 			_wavePlayerHelper = wavePlayerHelper;
+			_waveBlockSerializationHelper = waveBlockSerializationHelper;
 		}
 
 		private void InputChanged(object subTree, PropertyChangedEventArgs args)
@@ -121,6 +124,16 @@ namespace Rain.Designer.ViewModels.Tree
 			var wave = _waveBuilderHelper.BuildWave(this);
 
 			_wavePlayerHelper.PlayWave(wave);
+		}
+
+		public dynamic Serialize()
+		{
+			return _waveBlockSerializationHelper.SerializeNode(this);
+		}
+
+		public void Deserialize(dynamic value)
+		{
+			_waveBlockSerializationHelper.DeserializeNode(this, value);
 		}
 
 		public ICommand AddInputCommand => new Command<NodeViewModel>(AddInput);

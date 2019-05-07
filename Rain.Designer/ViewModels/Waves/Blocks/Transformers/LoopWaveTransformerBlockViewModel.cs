@@ -28,5 +28,15 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Transformers
 				Period = Period
 			};
 		}
+
+		public override dynamic Serialize()
+		{
+			return new { Period };
+		}
+
+		public override void Deserialize(dynamic value)
+		{
+			Period = value.Period;
+		}
 	}
 }

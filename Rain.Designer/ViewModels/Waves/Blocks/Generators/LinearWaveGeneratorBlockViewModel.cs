@@ -35,5 +35,16 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 				B = B
 			};
 		}
+
+		public override dynamic Serialize()
+		{
+			return new { A, B };
+		}
+
+		public override void Deserialize(dynamic value)
+		{
+			A = value.A;
+			B = value.B;
+		}
 	}
 }

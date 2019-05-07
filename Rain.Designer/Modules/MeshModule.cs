@@ -20,6 +20,8 @@ namespace Rain.Designer.Modules
 
 			serviceCollection.AddTransient<NodesHelper>();
 			serviceCollection.AddTransient<ConnectionsHelper>();
+			serviceCollection.AddTransient<WaveHelper>();
+			serviceCollection.AddTransient<SerializationHelper>();
 		}
 	}
 }

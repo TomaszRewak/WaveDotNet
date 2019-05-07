@@ -20,5 +20,13 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Combiners
 				Waves = inputs
 			};
 		}
+
+		public override dynamic Serialize()
+		{
+			return new { };
+		}
+
+		public override void Deserialize(dynamic value)
+		{ }
 	}
 }

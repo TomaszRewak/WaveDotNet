@@ -20,7 +20,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 		{
 			get => _frequency;
 			set => Set(ref _frequency, value)
-				.Then(UpdateLaseWave);
+				.Then(UpdateLastWave);
 		}
 
 		private double _amplitude = 1.0;
@@ -28,10 +28,10 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 		{
 			get => _amplitude;
 			set => Set(ref _amplitude, value)
-				.Then(UpdateLaseWave);
+				.Then(UpdateLastWave);
 		}
 
-		private void UpdateLaseWave()
+		private void UpdateLastWave()
 		{
 			if (_lastWave == null)
 				return;
@@ -47,6 +47,17 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 				Frequency = Frequency,
 				Amplitude = Amplitude
 			};
+		}
+
+		public override dynamic Serialize()
+		{
+			return new { Frequency, Amplitude };
+		}
+
+		public override void Deserialize(dynamic value)
+		{
+			Frequency = value.Frequency;
+			Amplitude = value.Amplitude;
 		}
 	}
 }

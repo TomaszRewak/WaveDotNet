@@ -89,7 +89,8 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh
 					{
 						Input = node.Input.HasValue ? inputs[node.Input.Value] : null,
 						IsOutput = node.IsOutput,
-						Mass = node.Mass
+						Mass = node.Mass,
+						InitialVelocity = node.InitialVelocity
 					});
 
 			foreach (var node in nodes)

@@ -31,11 +31,18 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh
 			set => Set(ref _isOutput, value);
 		}
 
-		private double _mass;
+		private double _mass = 0.000001;
 		public double Mass
 		{
 			get => _mass;
 			set => Set(ref _mass, value);
+		}
+
+		private double _initialVelocity;
+		public double InitialVelocity
+		{
+			get => _initialVelocity;
+			set => Set(ref _initialVelocity, value);
 		}
 	}
 }

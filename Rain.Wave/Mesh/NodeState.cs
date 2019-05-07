@@ -6,7 +6,13 @@ namespace Rain.Wave.Mesh
 {
 	internal struct NodeState
 	{
-		public double Position { get; set; }
-		public double Velocity { get; set; }
+		public NodeState(double position, double velocity)
+		{
+			Position = position;
+			Velocity = velocity;
+		}
+
+		public double Position { get; }
+		public double Velocity { get; }
 	}
 }

@@ -15,6 +15,7 @@ namespace Rain.Wave.Mesh
 
 		public bool IsOutput { get; set; }
 		public double Mass { get; set; }
+		public double InitialVelocity { get; set; }
 
 		public Connection[] Connections { get; set; }
 
@@ -25,22 +26,26 @@ namespace Rain.Wave.Mesh
 			_currentState = _nextState;
 		}
 
+		public void Initialize(double time)
+		{
+			if (_lastProbeTime.HasValue && _lastProbeTime <= time)
+				return;
+
+			_currentState = new NodeState(
+				position: 0, 
+				velocity: InitialVelocity);
+
+			_lastProbeTime = time;
+		}
+
 		internal void PrepareNextState(double time)
 		{
-			InitializeProbeTimestamp(time);
-
 			if (Input != null)
 				PrepareNextInputState(time);
 			else
 				PrepareNextFreeFloatingState(time - _lastProbeTime.Value);
 
 			UpdateProbeTimestamp(time);
-		}
-
-		private void InitializeProbeTimestamp(double time)
-		{
-			if (!_lastProbeTime.HasValue)
-				_lastProbeTime = time;
 		}
 
 		private void UpdateProbeTimestamp(double time)
@@ -50,11 +55,9 @@ namespace Rain.Wave.Mesh
 
 		private void PrepareNextInputState(double time)
 		{
-			_nextState = new NodeState
-			{
-				Position = Input?.Probe(time) ?? 1.0d,
-				Velocity = 0
-			};
+			_currentState = new NodeState(
+				position: Input?.Probe(time) ?? 1.0d, 
+				velocity: 0);
 		}
 
 		private void PrepareNextFreeFloatingState(double timeDifference)
@@ -66,11 +69,9 @@ namespace Rain.Wave.Mesh
 			var acceleration = force / Mass;
 			var velocity = _currentState.Velocity + acceleration * timeDifference;
 
-			_nextState = new NodeState
-			{
-				Position = _currentState.Position + velocity * timeDifference,
-				Velocity = velocity
-			};
+			_nextState = new NodeState(
+				position: _currentState.Position + velocity * timeDifference,
+				velocity: velocity);
 		}
 	}
 }

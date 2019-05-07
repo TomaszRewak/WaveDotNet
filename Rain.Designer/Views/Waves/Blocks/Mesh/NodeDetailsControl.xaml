@@ -23,8 +23,13 @@
 		</Button>
 		<TextBlock Text="{Binding Position.X}" />
 		<TextBlock Text="{Binding Position.Y}" />
+		<TextBlock Text="Input" />
 		<TextBox Text="{Binding Input}" />
+		<TextBlock Text="Is output" />
 		<CheckBox IsChecked="{Binding IsOutput}" />
+		<TextBlock Text="Mass" />
 		<TextBox Text="{Binding Mass}" />
+		<TextBlock Text="Initial speed" />
+		<TextBox Text="{Binding InitialVelocity}" />
 	</StackPanel>
 </UserControl>

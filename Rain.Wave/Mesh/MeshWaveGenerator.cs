@@ -13,6 +13,9 @@ namespace Rain.Wave.Mesh
 		public double Probe(double time)
 		{
 			foreach (var node in Nodes)
+				node.Initialize(time);
+
+			foreach (var node in Nodes)
 				node.PrepareNextState(time);
 
 			foreach (var node in Nodes)

@@ -14,19 +14,19 @@ namespace Rain.Designer.ViewModels.WaveDesigner.Helpers
 {
 	internal class FileHelper
 	{
-		private readonly Func<NodeViewModel> _nodeFactory;
+		private readonly SerializationHelper _serializationHelper;
 
-		public FileHelper(Func<NodeViewModel> nodeFactory)
+		public FileHelper(SerializationHelper serializationHelper)
 		{
-			_nodeFactory = nodeFactory;
+			_serializationHelper = serializationHelper;
 		}
 
-		public void Save(IReadOnlyCollection<NodeViewModel> nodes)
+		public void Save(WaveDesignerViewModel waveDesigner)
 		{
 			if (!AskUserToSave(out string fileName))
 				return;
 
-			var fileContent = ConvertToJson(nodes);
+			var fileContent = ConvertToJson(waveDesigner);
 
 			File.WriteAllText(fileName, fileContent);
 		}
@@ -46,28 +46,21 @@ namespace Rain.Designer.ViewModels.WaveDesigner.Helpers
 			}
 		}
 
-		private string ConvertToJson(IReadOnlyCollection<NodeViewModel> nodes)
+		private string ConvertToJson(WaveDesignerViewModel waveDesigner)
 		{
-			var payload = new
-			{
-				Nodes = nodes.Select(node => node.Serialize())
-			};
+			var payload = _serializationHelper.Serialize(waveDesigner);
 
 			return JsonConvert.SerializeObject(payload, Formatting.Indented);
 		}
 
-		public bool Load(out IReadOnlyCollection<NodeViewModel> nodes)
+		public void Load(WaveDesignerViewModel viewModel)
 		{
-			nodes = null;
-
 			if (!AskUserToLoad(out string fileName))
-				return false;
+				return;
 
 			var fileContent = File.ReadAllText(fileName);
 
-			nodes = ConvertFromJson(fileContent);
-
-			return true;
+			ReadFromJson(viewModel, fileContent);
 		}
 
 		private bool AskUserToLoad(out string fileName)
@@ -85,16 +78,11 @@ namespace Rain.Designer.ViewModels.WaveDesigner.Helpers
 			}
 		}
 
-		public IReadOnlyCollection<NodeViewModel> ConvertFromJson(string json)
+		private void ReadFromJson(WaveDesignerViewModel waveDesigner, string json)
 		{
 			dynamic value = JObject.Parse(json);
 
-			return (value.Nodes as IEnumerable<dynamic>).Select(nodeDescription =>
-			{
-				var node = _nodeFactory();
-				node.Deserialize(nodeDescription);
-				return node;
-			}).ToList();
+			_serializationHelper.Deserialize(waveDesigner, value);
 		}
 	}
 }

@@ -16,6 +16,7 @@ namespace Rain.Designer.Modules
 			serviceCollection.AddTransient<WaveDesignerViewModel>();
 
 			serviceCollection.AddTransient<FileHelper>();
+			serviceCollection.AddTransient<SerializationHelper>();
 		}
 	}
 }

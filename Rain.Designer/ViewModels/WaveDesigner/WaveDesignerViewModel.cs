@@ -36,13 +36,12 @@ namespace Rain.Designer.ViewModels.WaveDesigner
 
 		private void Save()
 		{
-			_fileHelper.Save(TreeDesigner.Nodes);
+			_fileHelper.Save(this);
 		}
 
 		private void Load()
 		{
-			if (_fileHelper.Load(out IReadOnlyCollection<NodeViewModel> nodes))
-				TreeDesigner.Nodes = nodes;
+			_fileHelper.Load(this);
 		}
 
 		public ICommand SaveCommand => new Command(Save);

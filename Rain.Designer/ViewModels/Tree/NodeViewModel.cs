@@ -86,14 +86,14 @@ namespace Rain.Designer.ViewModels.Tree
 			set => Set(ref _position, value);
 		}
 
-		private void AddInput(NodeViewModel input)
+		public void AddInput(NodeViewModel input)
 		{
 			Inputs = Inputs
 				.Concat(new[] { input })
 				.ToList();
 		}
 
-		private void RemoveInput(int index)
+		public void RemoveInput(int index)
 		{
 			var inputsBefore = Inputs.Take(index);
 			var inputsAfter = Inputs.Skip(index + 1);

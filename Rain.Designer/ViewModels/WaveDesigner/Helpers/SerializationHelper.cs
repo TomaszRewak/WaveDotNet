@@ -16,17 +16,29 @@ namespace Rain.Designer.ViewModels.WaveDesigner.Helpers
 			_nodeFactory = nodeFactory;
 		}
 
-		public dynamic Serialize(WaveDesignerViewModel viewModel)
+		public dynamic Serialize(WaveDesignerViewModel waveDesigner)
 		{
 			return new
 			{
-				Nodes = viewModel.TreeDesigner.Nodes.Select(node => node.Serialize())
+				Nodes = SerializeNodes(waveDesigner.TreeDesigner),
+				Connections = SerializeConnections(waveDesigner.TreeDesigner)
 			};
 		}
 
-		private dynamic SerializeNodes(TreeDesignerViewModel tree)
+		private IEnumerable<dynamic> SerializeNodes(TreeDesignerViewModel tree)
 		{
 			return tree.Nodes.Select(node => node.Serialize());
+		}
+
+		private IEnumerable<dynamic> SerializeConnections(TreeDesignerViewModel tree)
+		{
+			var nodes = tree.Nodes.ToList();
+
+			return nodes.SelectMany(node => node.Inputs.Select(connectedNode => new
+			{
+				From = nodes.IndexOf(node),
+				To = nodes.IndexOf(connectedNode)
+			}));
 		}
 
 		public void Deserialize(WaveDesignerViewModel viewModel, dynamic value)
@@ -34,6 +46,9 @@ namespace Rain.Designer.ViewModels.WaveDesigner.Helpers
 			viewModel.TreeDesigner.Nodes = (value.Nodes as IEnumerable<dynamic>)
 				.Select(nodeDescription => (NodeViewModel)DeserializeNode(nodeDescription))
 				.ToList();
+
+			foreach (var connection in value.Connections)
+				viewModel.TreeDesigner.Nodes.ElementAt((int)connection.From).AddInput(viewModel.TreeDesigner.Nodes.ElementAt((int)connection.To));
 		}
 
 		private NodeViewModel DeserializeNode(dynamic value)

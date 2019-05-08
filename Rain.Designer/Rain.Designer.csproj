@@ -162,6 +162,12 @@
     <Compile Include="Views\Markups\DataContextBinding.cs" />
     <Compile Include="Views\Markups\DivideDouble.cs" />
     <Compile Include="Views\Markups\MultiplyDouble.cs" />
+    <Compile Include="Views\Tree\ConnectionHandlesControl.xaml.cs">
+      <DependentUpon>ConnectionHandlesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\Controls\ConnectionHandleControl.xaml.cs">
+      <DependentUpon>ConnectionHandleControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Waves\Blocks\Mesh\ConnectionContainerControl.xaml.cs">
       <DependentUpon>ConnectionContainerControl.xaml</DependentUpon>
     </Compile>
@@ -226,6 +232,14 @@
     <Compile Include="Views\Waves\WaveBlockControl.xaml.cs">
       <DependentUpon>WaveBlockControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Tree\ConnectionHandlesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tree\Controls\ConnectionHandleControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Waves\Blocks\Mesh\ConnectionContainerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -55,8 +55,8 @@ namespace Rain.Wave.Mesh
 
 		private void PrepareNextInputState(double time)
 		{
-			_currentState = new NodeState(
-				position: Input?.Probe(time) ?? 1.0d, 
+			_nextState = new NodeState(
+				position: Input.Probe(time), 
 				velocity: 0);
 		}
 

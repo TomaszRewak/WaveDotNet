@@ -93,12 +93,12 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh
 
 		public override dynamic Serialize()
 		{
-			return _serializationHelper.Save(this);
+			return _serializationHelper.Serialize(this);
 		}
 
 		public override void Deserialize(dynamic value)
 		{
-			_serializationHelper.Load(this, value);
+			_serializationHelper.Deserialize(this, value);
 		}
 
 		public ICommand AddNodeCommand => new Command<MeshPoint>(AddNode);

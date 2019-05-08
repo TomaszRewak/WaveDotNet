@@ -16,7 +16,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh.Helpers
 			_nodeFactory = nodeFactory;
 		}
 
-		public dynamic Save(MeshBlockViewModel mesh)
+		public dynamic Serialize(MeshBlockViewModel mesh)
 		{
 			return new
 			{
@@ -26,34 +26,43 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh.Helpers
 					node.Input,
 					node.IsOutput,
 					node.Mass,
-					node.Position.X,
-					node.Position.Y
+					Point = new
+					{
+						node.Position.X,
+						node.Position.Y
+					}
 				}),
 				Connections = mesh.Connections.Select(connection => new
 				{
-					X1 = connection.PointA.X,
-					Y1 = connection.PointA.Y,
-					X2 = connection.PointA.X,
-					Y2 = connection.PointA.Y,
+					PointA = new
+					{
+						connection.PointA.X,
+						connection.PointA.Y
+					},
+					PointB = new
+					{
+						connection.PointA.X,
+						connection.PointA.Y
+					},
 					connection.Stiffness
 				})
 			};
 		}
 
-		public void Load(MeshBlockViewModel mesh, dynamic value)
+		public void Deserialize(MeshBlockViewModel mesh, dynamic value)
 		{
 			mesh.Nodes = (value.Nodes as IEnumerable<dynamic>)
-				.Select(LoadNode)
+				.Select(DeserializeNode)
 				.ToList();
 
 			foreach (var connection in value.Connections)
 				mesh.Connections
-					.Where(c => c.Ends.Contains(new MeshPoint((int)connection.X1, (int)connection.Y1)) && c.Ends.Contains(new MeshPoint((int)connection.X2, (int)connection.Y2)))
+					.Where(c => c.Ends.Contains((MeshPoint)DeserializePoint(connection.PointA)) && c.Ends.Contains((MeshPoint)DeserializePoint(connection.PointB)))
 					.First()
 					.Stiffness = connection.Stiffness;
 		}
 
-		private NodeViewModel LoadNode(dynamic value)
+		private NodeViewModel DeserializeNode(dynamic value)
 		{
 			var node = _nodeFactory();
 
@@ -61,9 +70,14 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Mesh.Helpers
 			node.Input = value.Input;
 			node.IsOutput = value.IsOutput;
 			node.Mass = value.Mass;
-			node.Position = new MeshPoint((int)value.X, (int)value.Y);
+			node.Position = DeserializePoint(value.Point);
 
 			return node;
+		}
+
+		private MeshPoint DeserializePoint(dynamic value)
+		{
+			return new MeshPoint((int)value.X, (int)value.Y);
 		}
 	}
 }

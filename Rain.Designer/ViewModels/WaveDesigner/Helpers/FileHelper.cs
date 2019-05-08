@@ -23,38 +23,78 @@ namespace Rain.Designer.ViewModels.WaveDesigner.Helpers
 
 		public void Save(IReadOnlyCollection<NodeViewModel> nodes)
 		{
-			var saveFileDialog = new SaveFileDialog();
-			if (saveFileDialog.ShowDialog() != DialogResult.OK)
+			if (!AskUserToSave(out string fileName))
 				return;
 
-			var serializedNodes = new
+			var fileContent = ConvertToJson(nodes);
+
+			File.WriteAllText(fileName, fileContent);
+		}
+
+		private bool AskUserToSave(out string fileName)
+		{
+			var saveFileDialog = new SaveFileDialog();
+
+			switch (saveFileDialog.ShowDialog())
+			{
+				case DialogResult.OK:
+					fileName = saveFileDialog.FileName;
+					return true;
+				default:
+					fileName = null;
+					return false;
+			}
+		}
+
+		private string ConvertToJson(IReadOnlyCollection<NodeViewModel> nodes)
+		{
+			var payload = new
 			{
 				Nodes = nodes.Select(node => node.Serialize())
 			};
-			var fileContent = JsonConvert.SerializeObject(serializedNodes, Formatting.Indented);
 
-			File.WriteAllText(saveFileDialog.FileName, fileContent);
+			return JsonConvert.SerializeObject(payload, Formatting.Indented);
 		}
 
 		public bool Load(out IReadOnlyCollection<NodeViewModel> nodes)
 		{
-			nodes = new List<NodeViewModel>();
+			nodes = null;
 
-			var openFileDialog = new OpenFileDialog();
-			if (openFileDialog.ShowDialog() != DialogResult.OK)
+			if (!AskUserToLoad(out string fileName))
 				return false;
 
-			var fileContent = File.ReadAllText(openFileDialog.FileName);
-			dynamic json = JObject.Parse(fileContent);
+			var fileContent = File.ReadAllText(fileName);
 
-			nodes = (json.Nodes as IEnumerable<dynamic>).Select(nodeDescription =>
+			nodes = ConvertFromJson(fileContent);
+
+			return true;
+		}
+
+		private bool AskUserToLoad(out string fileName)
+		{
+			var openFileDialog = new OpenFileDialog();
+
+			switch (openFileDialog.ShowDialog())
+			{
+				case DialogResult.OK:
+					fileName = openFileDialog.FileName;
+					return true;
+				default:
+					fileName = null;
+					return false;
+			}
+		}
+
+		public IReadOnlyCollection<NodeViewModel> ConvertFromJson(string json)
+		{
+			dynamic value = JObject.Parse(json);
+
+			return (value.Nodes as IEnumerable<dynamic>).Select(nodeDescription =>
 			{
 				var node = _nodeFactory();
 				node.Deserialize(nodeDescription);
 				return node;
 			}).ToList();
-
-			return true;
 		}
 	}
 }

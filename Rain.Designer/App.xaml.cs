@@ -29,8 +29,7 @@ namespace Rain.Designer
 		private ServiceProvider PrepareServiceProvider()
 		{
 			var serviceCollection = new ServiceCollection();
-
-			MeshModule.Register(serviceCollection);
+			
 			WaveDesignerModule.Register(serviceCollection);
 			TreeModule.Register(serviceCollection);
 			TracksModule.Register(serviceCollection);

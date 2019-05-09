@@ -2,7 +2,6 @@
 using Rain.Designer.ViewModels.Waves.Blocks.Combiners;
 using Rain.Designer.ViewModels.Waves.Blocks.Filters;
 using Rain.Designer.ViewModels.Waves.Blocks.Generators;
-using Rain.Designer.ViewModels.Waves.Blocks.Mesh;
 using Rain.Designer.ViewModels.Waves.Blocks.Transformers;
 using System;
 using System.Collections.Generic;
@@ -48,9 +47,7 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 
 			Func<AmplitudeWaveTransformerBlockViewModel> amplitudeWaveTransformerBlockFactory,
 			Func<FrequencyWaveTransformerBlockViewModel> frequencyWaveTransformerBlockFactory,
-			Func<LoopWaveTransformerBlockViewModel> loopWaveTransformerBlockFactory,
-
-			Func<MeshBlockViewModel> meshFactory)
+			Func<LoopWaveTransformerBlockViewModel> loopWaveTransformerBlockFactory)
 		{
 			AvailableFactories = new List<WaveBlockFactory>
 			{
@@ -70,9 +67,7 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 
 				new WaveBlockFactory("Amplitude", amplitudeWaveTransformerBlockFactory),
 				new WaveBlockFactory("Frequency", frequencyWaveTransformerBlockFactory),
-				new WaveBlockFactory("Loop", loopWaveTransformerBlockFactory),
-
-				new WaveBlockFactory("Mesh", meshFactory)
+				new WaveBlockFactory("Loop", loopWaveTransformerBlockFactory)
 			};
 		}
 

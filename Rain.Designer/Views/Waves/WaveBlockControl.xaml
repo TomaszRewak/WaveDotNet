@@ -10,9 +10,7 @@
 	xmlns:gvm="clr-namespace:Rain.Designer.ViewModels.Waves.Blocks.Generators"
 	xmlns:local="clr-namespace:Rain.Designer.Views.Waves"
 	xmlns:markups="clr-namespace:Rain.Designer.Views.Markups"
-	xmlns:mc="clr-namespace:Rain.Designer.Views.Waves.Blocks.Mesh"
 	xmlns:mcx="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:mvm="clr-namespace:Rain.Designer.ViewModels.Waves.Blocks.Mesh"
 	xmlns:tc="clr-namespace:Rain.Designer.Views.Waves.Blocks.Transformers"
 	xmlns:tvm="clr-namespace:Rain.Designer.ViewModels.Waves.Blocks.Transformers"
 	d:DesignHeight="450"
@@ -37,8 +35,6 @@
 							<c:CaseConverter Case="{x:Type tvm:AmplitudeWaveTransformerBlockViewModel}" Value="{x:Type tc:AmplitudeWaveTransformerBlockControl}" />
 							<c:CaseConverter Case="{x:Type tvm:FrequencyWaveTransformerBlockViewModel}" Value="{x:Type tc:FrequencyWaveTransformerBlockControl}" />
 							<c:CaseConverter Case="{x:Type tvm:LoopWaveTransformerBlockViewModel}" Value="{x:Type tc:LoopWaveTransformerBlockControl}" />
-
-							<c:CaseConverter Case="{x:Type mvm:MeshBlockViewModel}" Value="{x:Type mc:MeshBlockControl}" />
 						</c:SwitchConverter>
 					</c:ChainedConverter>
 					<c:ChainedConverter Converter="{c:TypeToDataTemplateConverter DataContextSource={markups:DataContextBinding ControlType=local:WaveBlockControl}}" />

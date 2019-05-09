@@ -12,7 +12,6 @@
 	xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
 	xmlns:m="clr-namespace:Rain.Designer.Views.Markups"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-	xmlns:mesh="clr-namespace:Rain.Designer.ViewModels.Waves.Blocks.Mesh"
 	xmlns:s="clr-namespace:System;assembly=mscorlib"
 	xmlns:transformers="clr-namespace:Rain.Designer.ViewModels.Waves.Blocks.Transformers"
 	d:DesignHeight="450"
@@ -111,8 +110,6 @@
 										<c:CaseConverter Case="{x:Type transformers:AmplitudeWaveTransformerBlockViewModel}" Value="↥" />
 										<c:CaseConverter Case="{x:Type transformers:FrequencyWaveTransformerBlockViewModel}" Value="↝" />
 										<c:CaseConverter Case="{x:Type transformers:LoopWaveTransformerBlockViewModel}" Value="↻" />
-
-										<c:CaseConverter Case="{x:Type mesh:MeshBlockViewModel}" Value="⊡" />
 									</c:SwitchConverter>
 								</c:ChainedConverter>
 							</c:ChainConverter>

@@ -96,10 +96,11 @@
 										<c:CaseConverter Case="{x:Type combiners:AdditiveWaveCombinerBlockViewModel}" Value="+" />
 										<c:CaseConverter Case="{x:Type combiners:MaxWaveCombinerBlockViewModel}" Value="max" />
 										<c:CaseConverter Case="{x:Type combiners:MinWaveCombinerBlockViewModel}" Value="min" />
-										<c:CaseConverter Case="{x:Type combiners:MultiplicationWaveCombinerBlockViewModel}" Value="x" />
+										<c:CaseConverter Case="{x:Type combiners:MultiplicationWaveCombinerBlockViewModel}" Value="ｘ" />
 
 										<c:CaseConverter Case="{x:Type filters:AmplitudeWaveFilterBlockViewModel}" Value="=" />
 										<c:CaseConverter Case="{x:Type filters:PowerWaveFilterBlockViewModel}" Value="√" />
+										<c:CaseConverter Case="{x:Type filters:LowPassWaveFilterBlockViewModel}" Value="〜" />
 
 										<c:CaseConverter Case="{x:Type generators:LinearWaveGeneratorBlockViewModel}" Value="╱" />
 										<c:CaseConverter Case="{x:Type generators:SinWaveGeneratorBlockViewModel}" Value="∿" />

@@ -38,6 +38,7 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 
 			Func<AmplitudeWaveFilterBlockViewModel> amplitudeWaveFilterBlockFactory,
 			Func<PowerWaveFilterBlockViewModel> powerWaveFilterBlockFactory,
+			Func<LowPassWaveFilterBlockViewModel> lowPassWaveFilterBlockFactory,
 
 			Func<LinearWaveGeneratorBlockViewModel> linearWaveGeneratorBlockFactory,
 			Func<SinWaveGeneratorBlockViewModel> sinWaveGeneratorBlockFactory,
@@ -58,6 +59,7 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 
 				new WaveBlockFactory("Amplitude filter", amplitudeWaveFilterBlockFactory),
 				new WaveBlockFactory("Power filter", powerWaveFilterBlockFactory),
+				new WaveBlockFactory("Low pass filter", lowPassWaveFilterBlockFactory),
 
 				new WaveBlockFactory("Linear function", linearWaveGeneratorBlockFactory),
 				new WaveBlockFactory("Sin function", sinWaveGeneratorBlockFactory),

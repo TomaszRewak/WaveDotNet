@@ -112,6 +112,7 @@
     <Compile Include="ViewModels\Waves\Blocks\Combiners\MinWaveCombinerBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Combiners\MultiplicationWaveCombinerBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Filters\AmplitudeWaveFilterBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Filters\LowPassWaveFilterBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Filters\PowerWaveFilterBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Generators\LinearWaveGeneratorBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Generators\SinWaveGeneratorBlockViewModel.cs" />
@@ -178,6 +179,9 @@
     </Compile>
     <Compile Include="Views\Waves\Blocks\Filters\AmplitudeWaveFilterBlockControl.xaml.cs">
       <DependentUpon>AmplitudeWaveFilterBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Filters\LowPassWaveFilterBlockControl.xaml.cs">
+      <DependentUpon>LowPassWaveFilterBlockControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Waves\Blocks\Filters\PowerWaveFilterBlockControl.xaml.cs">
       <DependentUpon>PowerWaveFilterBlockControl.xaml</DependentUpon>
@@ -281,6 +285,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Waves\Blocks\Filters\AmplitudeWaveFilterBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Filters\LowPassWaveFilterBlockControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -25,6 +25,7 @@
 						<c:SwitchConverter>
 							<c:CaseConverter Case="{x:Type fvm:AmplitudeWaveFilterBlockViewModel}" Value="{x:Type fc:AmplitudeWaveFilterBlockControl}" />
 							<c:CaseConverter Case="{x:Type fvm:PowerWaveFilterBlockViewModel}" Value="{x:Type fc:PowerWaveFilterBlockControl}" />
+							<c:CaseConverter Case="{x:Type fvm:LowPassWaveFilterBlockViewModel}" Value="{x:Type fc:LowPassWaveFilterBlockControl}" />
 
 							<c:CaseConverter Case="{x:Type gvm:LinearWaveGeneratorBlockViewModel}" Value="{x:Type gc:LinearWaveGeneratorBlockControl}" />
 							<c:CaseConverter Case="{x:Type gvm:SinWaveGeneratorBlockViewModel}" Value="{x:Type gc:SinWaveGeneratorBlockControl}" />

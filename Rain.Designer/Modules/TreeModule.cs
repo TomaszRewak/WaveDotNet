@@ -29,6 +29,7 @@ namespace Rain.Designer.Modules
 
 			serviceCollection.AddFactory<AmplitudeWaveFilterBlockViewModel>();
 			serviceCollection.AddFactory<PowerWaveFilterBlockViewModel>();
+			serviceCollection.AddFactory<LowPassWaveFilterBlockViewModel>();
 
 			serviceCollection.AddFactory<LinearWaveGeneratorBlockViewModel>();
 			serviceCollection.AddFactory<SinWaveGeneratorBlockViewModel>();

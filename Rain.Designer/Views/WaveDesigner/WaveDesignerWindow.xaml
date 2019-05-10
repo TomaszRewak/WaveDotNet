@@ -16,10 +16,7 @@
 	<DockPanel>
 		<tracks:TracksControl DataContext="{Binding Tracks}" DockPanel.Dock="Bottom" />
 		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-			<Button
-				Command="{Binding SaveCommand}"
-				Content="Save"
-				IsEnabled="{Binding TreeDesigner.Tree.CanPlay}" />
+			<Button Command="{Binding SaveCommand}" Content="Save" />
 			<Button Command="{Binding LoadCommand}" Content="Load" />
 		</StackPanel>
 		<tree:TreeDesignerControl DataContext="{Binding TreeDesigner}" DockPanel.Dock="Left" />

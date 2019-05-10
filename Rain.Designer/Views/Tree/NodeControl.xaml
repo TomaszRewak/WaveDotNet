@@ -67,7 +67,8 @@
 				Width="25"
 				Height="25"
 				HorizontalAlignment="Center"
-				FontFamily="Cambria">
+				FontFamily="Cambria"
+				Text="{Binding SelectedWaveBlockFactory.Icon}">
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="MouseDown">
 						<i:InvokeCommandAction Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}" CommandParameter="{Binding}" />
@@ -84,39 +85,6 @@
 						</Binding.Converter>
 					</Binding>
 				</controls:NodePartControl.Background>
-				<controls:NodePartControl.Text>
-					<Binding Path="WaveBlock">
-						<Binding.Converter>
-							<c:ChainConverter>
-								<c:ChainedConverter Converter="{c:ObjectToTypeConverter}" />
-								<c:ChainedConverter>
-									<c:SwitchConverter Default="">
-										<c:CaseConverter Case="{x:Null}" Value="✏" />
-
-										<c:CaseConverter Case="{x:Type combiners:AdditiveWaveCombinerBlockViewModel}" Value="+" />
-										<c:CaseConverter Case="{x:Type combiners:MaxWaveCombinerBlockViewModel}" Value="max" />
-										<c:CaseConverter Case="{x:Type combiners:MinWaveCombinerBlockViewModel}" Value="min" />
-										<c:CaseConverter Case="{x:Type combiners:MultiplicationWaveCombinerBlockViewModel}" Value="ｘ" />
-
-										<c:CaseConverter Case="{x:Type filters:AmplitudeWaveFilterBlockViewModel}" Value="=" />
-										<c:CaseConverter Case="{x:Type filters:PowerWaveFilterBlockViewModel}" Value="√" />
-										<c:CaseConverter Case="{x:Type filters:LowPassWaveFilterBlockViewModel}" Value="〜" />
-
-										<c:CaseConverter Case="{x:Type generators:LinearWaveGeneratorBlockViewModel}" Value="╱" />
-										<c:CaseConverter Case="{x:Type generators:SinWaveGeneratorBlockViewModel}" Value="∿" />
-										<c:CaseConverter Case="{x:Type generators:SquareWaveGeneratorBlockViewModel}" Value="⊓" />
-										<c:CaseConverter Case="{x:Type generators:TriangleWaveGeneratorBlockViewModel}" Value="Λ" />
-										<c:CaseConverter Case="{x:Type generators:WhiteNoiseWaveGeneratorBlockViewModel}" Value="▩" />
-
-										<c:CaseConverter Case="{x:Type transformers:AmplitudeWaveTransformerBlockViewModel}" Value="↥" />
-										<c:CaseConverter Case="{x:Type transformers:FrequencyWaveTransformerBlockViewModel}" Value="↝" />
-										<c:CaseConverter Case="{x:Type transformers:LoopWaveTransformerBlockViewModel}" Value="↻" />
-									</c:SwitchConverter>
-								</c:ChainedConverter>
-							</c:ChainConverter>
-						</Binding.Converter>
-					</Binding>
-				</controls:NodePartControl.Text>
 			</controls:NodePartControl>
 		</Border>
 		<controls:NodePartControl

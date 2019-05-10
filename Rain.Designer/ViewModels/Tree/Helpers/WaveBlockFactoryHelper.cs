@@ -17,15 +17,17 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 		{
 			private readonly Func<WaveBlockViewModel> _factory;
 
-			public WaveBlockFactory(string name, Func<WaveBlockViewModel> factory)
+			public WaveBlockFactory(string icon, string name, Func<WaveBlockViewModel> factory)
 			{
 				_factory = factory;
 
+				Icon = icon;
 				Name = name;
 			}
 
 			public WaveBlockViewModel Create() => _factory();
 
+			public string Icon { get; }
 			public string Name { get; }
 			public Type Type => _factory.Method.ReturnType;
 		}
@@ -52,24 +54,24 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 		{
 			AvailableFactories = new List<WaveBlockFactory>
 			{
-				new WaveBlockFactory("Add", additiveWaveCombinerBlockFactory),
-				new WaveBlockFactory("Max", maxWaveCombinerBlockFactory),
-				new WaveBlockFactory("Min", minWaveCombinerBlockFactory),
-				new WaveBlockFactory("Multiply", multiplicationWaveCombinerBlockFactory),
+				new WaveBlockFactory("+", "Add", additiveWaveCombinerBlockFactory),
+				new WaveBlockFactory("max", "Max", maxWaveCombinerBlockFactory),
+				new WaveBlockFactory("min", "Min", minWaveCombinerBlockFactory),
+				new WaveBlockFactory("ｘ", "Multiply", multiplicationWaveCombinerBlockFactory),
 
-				new WaveBlockFactory("Amplitude filter", amplitudeWaveFilterBlockFactory),
-				new WaveBlockFactory("Power filter", powerWaveFilterBlockFactory),
-				new WaveBlockFactory("Low pass filter", lowPassWaveFilterBlockFactory),
+				new WaveBlockFactory("=", "Amplitude filter", amplitudeWaveFilterBlockFactory),
+				new WaveBlockFactory("√", "Power filter", powerWaveFilterBlockFactory),
+				new WaveBlockFactory("〜", "Low pass filter", lowPassWaveFilterBlockFactory),
 
-				new WaveBlockFactory("Linear function", linearWaveGeneratorBlockFactory),
-				new WaveBlockFactory("Sin function", sinWaveGeneratorBlockFactory),
-				new WaveBlockFactory("Square function", squareWaveGeneratorBlockFactory),
-				new WaveBlockFactory("Triangle function", triangleWaveGeneratorBlockFactory),
-				new WaveBlockFactory("WhiteNoise", whiteNoiseWaveTransformerBlockFactory),
+				new WaveBlockFactory("╱", "Linear function", linearWaveGeneratorBlockFactory),
+				new WaveBlockFactory("∿", "Sin function", sinWaveGeneratorBlockFactory),
+				new WaveBlockFactory("⊓", "Square function", squareWaveGeneratorBlockFactory),
+				new WaveBlockFactory("Λ", "Triangle function", triangleWaveGeneratorBlockFactory),
+				new WaveBlockFactory("▩", "WhiteNoise", whiteNoiseWaveTransformerBlockFactory),
 
-				new WaveBlockFactory("Amplitude", amplitudeWaveTransformerBlockFactory),
-				new WaveBlockFactory("Frequency", frequencyWaveTransformerBlockFactory),
-				new WaveBlockFactory("Loop", loopWaveTransformerBlockFactory)
+				new WaveBlockFactory("↥", "Amplitude", amplitudeWaveTransformerBlockFactory),
+				new WaveBlockFactory("↝", "Frequency", frequencyWaveTransformerBlockFactory),
+				new WaveBlockFactory("↻", "Loop", loopWaveTransformerBlockFactory)
 			};
 		}
 

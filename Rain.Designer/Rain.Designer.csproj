@@ -145,6 +145,7 @@
     <Compile Include="Views\Converters\IntToDoubleConverter.cs" />
     <Compile Include="Views\Converters\MultiValueChainConverter.cs" />
     <Compile Include="Views\Converters\MultiValueComparisonConverter.cs" />
+    <Compile Include="Views\Converters\MultiValueConnectionValidationConverter.cs" />
     <Compile Include="Views\Converters\MultiValueCoordinatesToPointConverter.cs" />
     <Compile Include="Views\Converters\MultiValueDoubleAddConverter.cs" />
     <Compile Include="Views\Converters\MultiValueIntOrderCheckConverter.cs" />

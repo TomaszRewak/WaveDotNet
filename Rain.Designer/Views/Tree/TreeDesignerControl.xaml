@@ -15,10 +15,7 @@
 			<ColumnDefinition Width="5" />
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
-		<local:NodesControl
-			Grid.Column="0"
-			Background="WhiteSmoke"
-			DataContext="{Binding}" />
+		<local:NodesControl Grid.Column="0" DataContext="{Binding}" />
 		<GridSplitter
 			Grid.Column="1"
 			Width="5"

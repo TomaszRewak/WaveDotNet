@@ -90,13 +90,19 @@
 		<controls:NodePartControl
 			Width="25"
 			Height="25"
-			Margin="0,-14,0,0"
+			Margin="0,-15,0,0"
 			HorizontalAlignment="Center"
 			VerticalAlignment="Top"
-			Background="Goldenrod"
+			Background="{Binding IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={c:BooleanToSolidColorBrushConverter True=Goldenrod, False=LightGray}}"
 			MouseDown="TriggerStartConnection"
 			MouseUp="TriggerEndConnection"
 			Text="⊙">
+			<controls:NodePartControl.IsEnabled>
+				<MultiBinding Converter="{c:MultiValueChainConverter MultiValueConverter={c:MultiValueConnectionValidationConverter}}">
+					<Binding Path="ConnectionNode" RelativeSource="{RelativeSource AncestorType=local:NodesControl}" />
+					<Binding />
+				</MultiBinding>
+			</controls:NodePartControl.IsEnabled>
 			<controls:NodePartControl.Style>
 				<Style TargetType="controls:NodePartControl">
 					<Setter Property="Opacity" Value="0" />
@@ -136,7 +142,7 @@
 		</controls:NodePartControl>
 		<Canvas
 			Height="25"
-			Margin="20,0,0,-10"
+			Margin="21,0,0,-10"
 			HorizontalAlignment="Left"
 			VerticalAlignment="Bottom">
 			<local:ConnectionHandlesControl DataContext="{Binding}" StartConnection="TriggerStartConnection" />
@@ -144,7 +150,7 @@
 		<controls:NodePartControl
 			Width="25"
 			Height="25"
-			Margin="-5,0,0,-10"
+			Margin="-6,0,0,-10"
 			HorizontalAlignment="Left"
 			VerticalAlignment="Bottom"
 			Background="{Binding CanPlay, Converter={c:BooleanToSolidColorBrushConverter True=DarkGreen, False=LightGray}}"

@@ -36,13 +36,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Transformers
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new AmplitudeWaveTransformer
-			{
-				Multiplier = Multiplier,
-				HorizontalOffset = HorizontalOffset,
-				VerticalOffset = VerticalOffset,
-				BaseWave = inputs.First()
-			};
+			return new AmplitudeWaveTransformer(baseWave: inputs.First(), multiplier: Multiplier, horizontalOffset: HorizontalOffset, verticalOffset: VerticalOffset);
 		}
 
 		public override dynamic Serialize()

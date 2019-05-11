@@ -22,11 +22,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Transformers
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new FrequencyWaveTransformer
-			{
-				Frequency = Frequency,
-				BaseWave = inputs.First()
-			};
+			return new FrequencyWaveTransformer(frequency: Frequency, baseWave: inputs.First());
 		}
 
 		public override dynamic Serialize()

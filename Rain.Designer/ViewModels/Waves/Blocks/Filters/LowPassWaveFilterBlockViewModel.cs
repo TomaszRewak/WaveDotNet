@@ -17,11 +17,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Filters
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new LowPassWaveFilter
-			{
-				Alpha = Alpha,
-				BaseWave = inputs.First()
-			};
+			return new LowPassWaveFilter(alpha: Alpha, baseWave: inputs.First());
 		}
 
 		public override dynamic Serialize()

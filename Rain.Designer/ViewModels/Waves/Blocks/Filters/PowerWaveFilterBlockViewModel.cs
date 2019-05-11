@@ -22,11 +22,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Filters
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new PowerWaveFilter
-			{
-				BaseWave = inputs.First(),
-				Power = Power
-			};
+			return new PowerWaveFilter(baseWave: inputs.First(), power: Power);
 		}
 
 		public override dynamic Serialize()

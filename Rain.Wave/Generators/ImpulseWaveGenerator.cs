@@ -8,7 +8,12 @@ namespace Rain.Wave.Generators
 	{
 		private double _lastProbeTime;
 
-		public double Amplitude { get; set; }
+		private readonly double _amplitude;
+
+		public ImpulseWaveGenerator(double amplitude)
+		{
+			_amplitude = amplitude;
+		}
 
 		public double Probe(double time)
 		{
@@ -17,7 +22,7 @@ namespace Rain.Wave.Generators
 
 			_lastProbeTime = time;
 
-			return Amplitude;
+			return _amplitude;
 		}
 	}
 }

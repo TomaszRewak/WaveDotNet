@@ -29,11 +29,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new SquareWaveGenerator
-			{
-				Amplitude = Amplitude,
-				Frequency = Frequency
-			};
+			return new SquareWaveGenerator(amplitude: Amplitude, frequency: Frequency);
 		}
 
 		public override dynamic Serialize()

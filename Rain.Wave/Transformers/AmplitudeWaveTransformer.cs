@@ -6,15 +6,22 @@ namespace Rain.Wave.Transformers
 {
 	public sealed class AmplitudeWaveTransformer : IWave
 	{
-		public double Multiplier { get; set; }
-		public double HorizontalOffset { get; set; }
-		public double VerticalOffset { get; set; }
+		private readonly IWave _baseWave;
+		private readonly double _multiplier;
+		private readonly double _horizontalOffset;
+		private readonly double _verticalOffset;
 
-		public IWave BaseWave { get; set; }
+		public AmplitudeWaveTransformer(IWave baseWave, double multiplier, double horizontalOffset, double verticalOffset)
+		{
+			_baseWave = baseWave;
+			_multiplier = multiplier;
+			_horizontalOffset = horizontalOffset;
+			_verticalOffset = verticalOffset;
+		}
 
 		public double Probe(double time)
 		{
-			return BaseWave.Probe(time + HorizontalOffset) * Multiplier + VerticalOffset;
+			return _baseWave.Probe(time + _horizontalOffset) * _multiplier + _verticalOffset;
 		}
 	}
 }

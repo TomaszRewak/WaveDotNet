@@ -15,10 +15,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Combiners
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new AdditiveWaveCombiner()
-			{
-				Waves = inputs
-			};
+			return new AdditiveWaveCombiner(waves: inputs);
 		}
 
 		public override dynamic Serialize()

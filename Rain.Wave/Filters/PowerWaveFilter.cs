@@ -6,15 +6,20 @@ namespace Rain.Wave.Filters
 {
 	public sealed class PowerWaveFilter : IWave
 	{
-		public IWave BaseWave { get; set; }
+		private readonly IWave _baseWave;
+		private readonly double _power;
 
-		public double Power { get; set; }
+		public PowerWaveFilter(IWave baseWave, double power)
+		{
+			_baseWave = baseWave;
+			_power = power;
+		}
 
 		public double Probe(double time)
 		{
-			var value = BaseWave.Probe(time);
+			var value = _baseWave.Probe(time);
 
-			return Math.Pow(value, Power);
+			return Math.Pow(value, _power);
 		}
 	}
 }

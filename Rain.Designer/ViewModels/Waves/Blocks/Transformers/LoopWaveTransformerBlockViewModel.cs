@@ -22,11 +22,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Transformers
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new LoopWaveTransformer
-			{
-				BaseWave = inputs.First(),
-				Period = Period
-			};
+			return new LoopWaveTransformer(baseWave: inputs.First(), period: Period);
 		}
 
 		public override dynamic Serialize()

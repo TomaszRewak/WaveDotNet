@@ -6,12 +6,18 @@ namespace Rain.Wave.Generators
 {
 	public sealed class SquareWaveGenerator : IWave
 	{
-		public double Frequency { get; set; }
-		public double Amplitude { get; set; }
+		private readonly double _frequency;
+		private readonly double _amplitude;
+
+		public SquareWaveGenerator(double frequency, double amplitude)
+		{
+			_frequency = frequency;
+			_amplitude = amplitude;
+		}
 
 		public double Probe(double time)
 		{
-			return (time * Frequency) % 1f < 0.5 ? -Amplitude : Amplitude;
+			return (time * _frequency) % 1f < 0.5 ? -_amplitude : _amplitude;
 		}
 	}
 }

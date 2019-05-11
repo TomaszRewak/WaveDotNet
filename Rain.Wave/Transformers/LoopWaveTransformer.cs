@@ -6,12 +6,18 @@ namespace Rain.Wave.Transformers
 {
 	public class LoopWaveTransformer : IWave
 	{
-		public double Period { get; set; }
-		public IWave BaseWave { get; set; }
+		private readonly IWave _baseWave;
+		private readonly double _period;
+
+		public LoopWaveTransformer(IWave baseWave, double period)
+		{
+			_baseWave = baseWave;
+			_period = period;
+		}
 
 		public double Probe(double time)
 		{
-			return BaseWave.Probe(time % Period);
+			return _baseWave.Probe(time % _period);
 		}
 	}
 }

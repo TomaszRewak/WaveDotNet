@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 {
-    internal class TriangleWaveGeneratorBlockViewModel : WaveBlockViewModel
+	internal class TriangleWaveGeneratorBlockViewModel : WaveBlockViewModel
 	{
 		public TriangleWaveGeneratorBlockViewModel() : base(0, 0)
 		{ }
@@ -29,11 +29,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new TriangleWaveGenerator
-			{
-				Amplitude = Amplitude,
-				Frequency = Frequency
-			};
+			return new TriangleWaveGenerator(amplitude: Amplitude, frequency: Frequency);
 		}
 
 		public override dynamic Serialize()

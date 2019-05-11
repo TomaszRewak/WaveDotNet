@@ -7,11 +7,16 @@ namespace Rain.Wave.Combiners
 {
 	public sealed class MinWaveCombiner : IWave
 	{
-		public IWave[] Waves { get; set; }
+		private readonly IWave[] _waves;
+
+		public MinWaveCombiner(IWave[] waves)
+		{
+			_waves = waves;
+		}
 
 		public double Probe(double time)
 		{
-			return Waves.Min(wave => wave.Probe(time));
+			return _waves.Min(wave => wave.Probe(time));
 		}
 	}
 }

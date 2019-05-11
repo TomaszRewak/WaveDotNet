@@ -22,11 +22,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Filters
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new AmplitudeWaveFilter()
-			{
-				MaxAmplitude = _maxAmplitude,
-				BaseWave = inputs.First()
-			};
+			return new AmplitudeWaveFilter(maxAmplitude: _maxAmplitude, baseWave: inputs.First());
 		}
 
 		public override dynamic Serialize()

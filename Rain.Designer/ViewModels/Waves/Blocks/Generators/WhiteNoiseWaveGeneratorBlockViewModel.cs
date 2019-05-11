@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 {
-    internal class WhiteNoiseWaveGeneratorBlockViewModel : WaveBlockViewModel
+	internal class WhiteNoiseWaveGeneratorBlockViewModel : WaveBlockViewModel
 	{
 		public WhiteNoiseWaveGeneratorBlockViewModel() : base(0, 0)
 		{ }
@@ -22,10 +22,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new WhiteNoiseWaveGenerator
-			{
-				Amplitude = Amplitude
-			};
+			return new WhiteNoiseWaveGenerator(amplitude: Amplitude);
 		}
 
 		public override dynamic Serialize()

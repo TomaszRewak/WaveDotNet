@@ -18,11 +18,7 @@ namespace Rain.Generator
 		{
 			WaveFormat = WaveFormat.CreateIeeeFloatWaveFormat(sampleRate, channels.Length);
 			Channels = channels
-				.Select(wave => new FrequencyWaveTransformer
-				{
-					BaseWave = wave,
-					Frequency = 1.0 / sampleRate
-				})
+				.Select(wave => new FrequencyWaveTransformer(baseWave: wave, frequency: 1.0 / sampleRate))
 				.ToArray();
 		}
 

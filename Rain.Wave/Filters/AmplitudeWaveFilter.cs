@@ -6,12 +6,18 @@ namespace Rain.Wave.Filters
 {
 	public sealed class AmplitudeWaveFilter : IWave
 	{
-		public double MaxAmplitude { get; set; }
-		public IWave BaseWave { get; set; }
+		private readonly IWave _baseWave;
+		private readonly double _maxAmplitude;
+
+		public AmplitudeWaveFilter(IWave baseWave, double maxAmplitude)
+		{
+			_baseWave = baseWave;
+			_maxAmplitude = maxAmplitude;
+		}
 
 		public double Probe(double time)
 		{
-			return Math.Max(-MaxAmplitude, Math.Min(MaxAmplitude, BaseWave.Probe(time)));
+			return Math.Max(-_maxAmplitude, Math.Min(_maxAmplitude, _baseWave.Probe(time)));
 		}
 	}
 }

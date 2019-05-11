@@ -8,11 +8,16 @@ namespace Rain.Wave.Generators
 	{
 		private Random _randomGenerator = new Random();
 
-		public double Amplitude { get; set; }
+		private readonly double _amplitude;
+
+		public WhiteNoiseWaveGenerator(double amplitude)
+		{
+			_amplitude = amplitude;
+		}
 
 		public double Probe(double time)
 		{
-			return (_randomGenerator.NextDouble() * 2.0 - 1.0) * Amplitude;
+			return (_randomGenerator.NextDouble() * 2.0 - 1.0) * _amplitude;
 		}
 	}
 }

@@ -10,8 +10,6 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 {
 	internal class SinWaveGeneratorBlockViewModel : WaveBlockViewModel
 	{
-		private SinWaveGenerator _lastWave;
-
 		public SinWaveGeneratorBlockViewModel() : base(0, 0)
 		{ }
 
@@ -19,34 +17,19 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 		public double Frequency
 		{
 			get => _frequency;
-			set => Set(ref _frequency, value)
-				.Then(UpdateLastWave);
+			set => Set(ref _frequency, value);
 		}
 
 		private double _amplitude = 1.0;
 		public double Amplitude
 		{
 			get => _amplitude;
-			set => Set(ref _amplitude, value)
-				.Then(UpdateLastWave);
-		}
-
-		private void UpdateLastWave()
-		{
-			if (_lastWave == null)
-				return;
-
-			_lastWave.Amplitude = Amplitude;
-			_lastWave.Frequency = Frequency;
+			set => Set(ref _amplitude, value);
 		}
 
 		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return _lastWave = new SinWaveGenerator
-			{
-				Frequency = Frequency,
-				Amplitude = Amplitude
-			};
+			return new SinWaveGenerator(frequency: Frequency, amplitude: Amplitude);
 		}
 
 		public override dynamic Serialize()

@@ -6,19 +6,25 @@ namespace Rain.Wave.Generators
 {
 	public sealed class TriangleWaveGenerator : IWave
 	{
-		public double Frequency { get; set; }
-		public double Amplitude { get; set; }
+		private readonly double _frequency;
+		private readonly double _amplitude;
+
+		public TriangleWaveGenerator(double frequency, double amplitude)
+		{
+			_frequency = frequency;
+			_amplitude = amplitude;
+		}
 
 		public double Probe(double time)
 		{
-			var modulo = (time * Frequency) % 1.0;
+			var modulo = (time * _frequency) % 1.0;
 
 			return
 				modulo < 0.5
 				?
-				(4.0 * modulo - 1.0) * Amplitude
+				(4.0 * modulo - 1.0) * _amplitude
 				:
-				(-4.0 * modulo + 3.0) * Amplitude;
+				(-4.0 * modulo + 3.0) * _amplitude;
 		}
 	}
 }

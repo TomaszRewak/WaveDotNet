@@ -7,11 +7,16 @@ namespace Rain.Wave.Combiners
 {
 	public sealed class MaxWaveCombiner : IWave
 	{
-		public IWave[] Waves { get; set; }
+		private readonly IWave[] _waves;
+
+		public MaxWaveCombiner(IWave[] waves)
+		{
+			_waves = waves;
+		}
 
 		public double Probe(double time)
 		{
-			return Waves.Max(wave => wave.Probe(time));
+			return _waves.Max(wave => wave.Probe(time));
 		}
 	}
 }

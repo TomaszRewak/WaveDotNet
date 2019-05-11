@@ -47,7 +47,7 @@ namespace Rain.Sandbox
 			//			new PhaseWaveTransformer(0.5f, new AmplitudeWaveTransformer(1.0f, 0.0f, backgroundRainWave)))
 			//	});
 
-			var wave = new WhiteNoiseWaveGenerator();
+			var wave = new WhiteNoiseWaveGenerator(1);
 
 			using (var wo = new WavePlayer(wave))
 			{

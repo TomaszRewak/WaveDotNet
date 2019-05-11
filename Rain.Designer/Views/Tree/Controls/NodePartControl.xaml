@@ -19,9 +19,9 @@
 				CornerRadius="100">
 				<Border Background="{Binding Background, ElementName=Self}" CornerRadius="100">
 					<TextBlock
+						Margin="0,-2,0,0"
 						HorizontalAlignment="Center"
 						VerticalAlignment="Center"
-						FontSize="9"
 						Foreground="White"
 						Text="{Binding Text, ElementName=Self}"
 						TextAlignment="Center" />

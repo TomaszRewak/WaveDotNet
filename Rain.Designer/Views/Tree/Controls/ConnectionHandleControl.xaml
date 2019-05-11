@@ -20,8 +20,8 @@
 					<Storyboard>
 						<DoubleAnimation
 							Storyboard.Target="{Binding ElementName=ConnectionNode}"
-							Storyboard.TargetProperty="(Canvas.Top)"
-							To="20"
+							Storyboard.TargetProperty="Opacity"
+							To="1"
 							Duration="00:00:00.2" />
 					</Storyboard>
 				</BeginStoryboard>
@@ -31,34 +31,30 @@
 					<Storyboard>
 						<DoubleAnimation
 							Storyboard.Target="{Binding ElementName=ConnectionNode}"
-							Storyboard.TargetProperty="(Canvas.Top)"
+							Storyboard.TargetProperty="Opacity"
 							To="0"
 							Duration="00:00:00.2" />
 					</Storyboard>
 				</BeginStoryboard>
 			</EventTrigger>
 		</Grid.Triggers>
-		<Canvas>
+		<Grid Margin="0,0,-3,0">
+			<local:NodePartControl Width="25" Height="25">
+				<local:NodePartControl.Background>
+					<MultiBinding Converter="{c:MultiValueChainConverter MultiValueConverter={c:MultiValueIntOrderCheckConverter Strict=True}, PostProcessing={c:BooleanToSolidColorBrushConverter True=LightSlateGray, False=DarkRed}}">
+						<Binding ElementName="Self" Path="Index" />
+						<m:DataContextBinding ControlType="{x:Type tree:NodeControl}" Path="WaveBlock.MaxInputs" />
+					</MultiBinding>
+				</local:NodePartControl.Background>
+			</local:NodePartControl>
 			<local:NodePartControl
 				x:Name="ConnectionNode"
-				Canvas.Top="0"
 				Width="25"
 				Height="25"
 				Background="DarkRed"
 				MouseUp="MouseUpOverDeleteConnection"
+				Opacity="0"
 				Text="ꭗ" />
-		</Canvas>
-		<local:NodePartControl
-			Width="25"
-			Height="25"
-			Margin="0,0,-3,0"
-			Text="{Binding Index, ElementName=Self}">
-			<local:NodePartControl.Background>
-				<MultiBinding Converter="{c:MultiValueChainConverter MultiValueConverter={c:MultiValueIntOrderCheckConverter Strict=True}, PostProcessing={c:BooleanToSolidColorBrushConverter True=LightSlateGray, False=DarkRed}}">
-					<Binding ElementName="Self" Path="Index" />
-					<m:DataContextBinding ControlType="{x:Type tree:NodeControl}" Path="WaveBlock.MaxInputs" />
-				</MultiBinding>
-			</local:NodePartControl.Background>
-		</local:NodePartControl>
+		</Grid>
 	</Grid>
 </local:ConnectionHandleControlBase>

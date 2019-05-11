@@ -67,14 +67,14 @@
 				Width="25"
 				Height="25"
 				HorizontalAlignment="Center"
-				FontFamily="Cambria"
+				Background="{Binding SelectedWaveBlockFactory.Color, Converter={c:ColorToBrushConverter}}"
 				Text="{Binding SelectedWaveBlockFactory.Icon}">
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="MouseDown">
 						<i:InvokeCommandAction Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}" CommandParameter="{Binding}" />
 					</i:EventTrigger>
 				</i:Interaction.Triggers>
-				<controls:NodePartControl.Background>
+				<!--<controls:NodePartControl.Background>
 					<Binding Path="WaveBlock">
 						<Binding.Converter>
 							<c:ChainConverter>
@@ -84,7 +84,7 @@
 							</c:ChainConverter>
 						</Binding.Converter>
 					</Binding>
-				</controls:NodePartControl.Background>
+				</controls:NodePartControl.Background>-->
 			</controls:NodePartControl>
 		</Border>
 		<controls:NodePartControl
@@ -145,7 +145,10 @@
 			Margin="21,0,0,-10"
 			HorizontalAlignment="Left"
 			VerticalAlignment="Bottom">
-			<local:ConnectionHandlesControl DataContext="{Binding}" StartConnection="TriggerStartConnection" />
+			<local:ConnectionHandlesControl
+				DataContext="{Binding}"
+				FontSize="10"
+				StartConnection="TriggerStartConnection" />
 		</Canvas>
 		<controls:NodePartControl
 			Width="25"
@@ -154,7 +157,8 @@
 			HorizontalAlignment="Left"
 			VerticalAlignment="Bottom"
 			Background="{Binding CanPlay, Converter={c:BooleanToSolidColorBrushConverter True=DarkGreen, False=LightGray}}"
-			Text="▶">
+			FontSize="13"
+			Text="⯈">
 			<i:Interaction.Triggers>
 				<i:EventTrigger EventName="MouseUp">
 					<i:InvokeCommandAction Command="{Binding PlayCommand}" />

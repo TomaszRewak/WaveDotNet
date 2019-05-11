@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace Rain.Designer.ViewModels.Tree.Helpers
 {
@@ -17,16 +18,18 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 		{
 			private readonly Func<WaveBlockViewModel> _factory;
 
-			public WaveBlockFactory(string icon, string name, Func<WaveBlockViewModel> factory)
+			public WaveBlockFactory(Color color, string icon, string name, Func<WaveBlockViewModel> factory)
 			{
 				_factory = factory;
 
 				Icon = icon;
+				Color = color;
 				Name = name;
 			}
 
 			public WaveBlockViewModel Create() => _factory();
 
+			public Color Color { get; }
 			public string Icon { get; }
 			public string Name { get; }
 			public Type Type => _factory.Method.ReturnType;
@@ -54,24 +57,24 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 		{
 			AvailableFactories = new List<WaveBlockFactory>
 			{
-				new WaveBlockFactory("+", "Add", additiveWaveCombinerBlockFactory),
-				new WaveBlockFactory("max", "Max", maxWaveCombinerBlockFactory),
-				new WaveBlockFactory("min", "Min", minWaveCombinerBlockFactory),
-				new WaveBlockFactory("ｘ", "Multiply", multiplicationWaveCombinerBlockFactory),
+				new WaveBlockFactory(Colors.CornflowerBlue, "+", "Add", additiveWaveCombinerBlockFactory),
+				new WaveBlockFactory(Colors.CornflowerBlue, "↑", "Max", maxWaveCombinerBlockFactory),
+				new WaveBlockFactory(Colors.CornflowerBlue, "↓", "Min", minWaveCombinerBlockFactory),
+				new WaveBlockFactory(Colors.CornflowerBlue, "ｘ", "Multiply", multiplicationWaveCombinerBlockFactory),
 
-				new WaveBlockFactory("=", "Amplitude filter", amplitudeWaveFilterBlockFactory),
-				new WaveBlockFactory("√", "Power filter", powerWaveFilterBlockFactory),
-				new WaveBlockFactory("〜", "Low pass filter", lowPassWaveFilterBlockFactory),
+				new WaveBlockFactory(Colors.Goldenrod, "=", "Amplitude filter", amplitudeWaveFilterBlockFactory),
+				new WaveBlockFactory(Colors.Goldenrod, "√", "Power filter", powerWaveFilterBlockFactory),
+				new WaveBlockFactory(Colors.Goldenrod, "〜", "Low pass filter", lowPassWaveFilterBlockFactory),
 
-				new WaveBlockFactory("╱", "Linear function", linearWaveGeneratorBlockFactory),
-				new WaveBlockFactory("∿", "Sin function", sinWaveGeneratorBlockFactory),
-				new WaveBlockFactory("⊓", "Square function", squareWaveGeneratorBlockFactory),
-				new WaveBlockFactory("Λ", "Triangle function", triangleWaveGeneratorBlockFactory),
-				new WaveBlockFactory("▩", "WhiteNoise", whiteNoiseWaveTransformerBlockFactory),
+				new WaveBlockFactory(Colors.Purple, "⟋", "Linear function", linearWaveGeneratorBlockFactory),
+				new WaveBlockFactory(Colors.Purple, "∿", "Sin function", sinWaveGeneratorBlockFactory),
+				new WaveBlockFactory(Colors.Purple, "⊓", "Square function", squareWaveGeneratorBlockFactory),
+				new WaveBlockFactory(Colors.Purple, "Λ", "Triangle function", triangleWaveGeneratorBlockFactory),
+				new WaveBlockFactory(Colors.Purple, "▩", "White noise", whiteNoiseWaveTransformerBlockFactory),
 
-				new WaveBlockFactory("↥", "Amplitude", amplitudeWaveTransformerBlockFactory),
-				new WaveBlockFactory("↝", "Frequency", frequencyWaveTransformerBlockFactory),
-				new WaveBlockFactory("↻", "Loop", loopWaveTransformerBlockFactory)
+				new WaveBlockFactory(Colors.Gray, "↥", "Amplitude and offset", amplitudeWaveTransformerBlockFactory),
+				new WaveBlockFactory(Colors.Gray, "↝", "Frequency", frequencyWaveTransformerBlockFactory),
+				new WaveBlockFactory(Colors.Gray, "↻", "Loop", loopWaveTransformerBlockFactory)
 			};
 		}
 

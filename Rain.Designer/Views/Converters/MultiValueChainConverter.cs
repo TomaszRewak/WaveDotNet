@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Markup;
 
 namespace Rain.Designer.Views.Converters
 {
-	internal class MultiValueChainConverter : IMultiValueConverter
+	internal class MultiValueChainConverter : MarkupExtension, IMultiValueConverter
 	{
 		public IValueConverter PreProcessing { get; set; } = new ChainConverter();
 		public IMultiValueConverter MultiValueConverter { get; set; }
@@ -35,6 +36,11 @@ namespace Rain.Designer.Views.Converters
 				values[i] = PreProcessing.ConvertBack(values[i], null, null, culture);
 
 			return values;
+		}
+
+		public override object ProvideValue(IServiceProvider serviceProvider)
+		{
+			return this;
 		}
 	}
 }

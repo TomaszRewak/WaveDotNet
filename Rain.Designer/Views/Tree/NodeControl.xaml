@@ -97,16 +97,42 @@
 			MouseDown="TriggerStartConnection"
 			MouseUp="TriggerEndConnection"
 			Text="⊙">
-			<controls:NodePartControl.Visibility>
-				<Binding Path="ConnectionNode" RelativeSource="{RelativeSource AncestorType=local:NodesControl}">
-					<Binding.Converter>
-						<c:ChainConverter>
-							<c:ChainedConverter Converter="{c:NullableToBooleanConverter}" />
-							<c:ChainedConverter Converter="{c:BooleanToVisibilityConverter True=Visible, False=Collapsed}" />
-						</c:ChainConverter>
-					</Binding.Converter>
-				</Binding>
-			</controls:NodePartControl.Visibility>
+			<controls:NodePartControl.Style>
+				<Style TargetType="controls:NodePartControl">
+					<Setter Property="Opacity" Value="0" />
+					<Setter Property="Visibility" Value="Collapsed" />
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding ConnectionNode, RelativeSource={RelativeSource AncestorType=local:NodesControl}, Converter={c:NullableToBooleanConverter}}" Value="True">
+							<DataTrigger.EnterActions>
+								<BeginStoryboard>
+									<Storyboard>
+										<DoubleAnimation
+											Storyboard.TargetProperty="Opacity"
+											To="1"
+											Duration="00:00:00.25" />
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="00:00:00.00" Value="{x:Static Visibility.Visible}" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</BeginStoryboard>
+							</DataTrigger.EnterActions>
+							<DataTrigger.ExitActions>
+								<BeginStoryboard>
+									<Storyboard>
+										<DoubleAnimation
+											Storyboard.TargetProperty="Opacity"
+											To="0"
+											Duration="00:00:00.15" />
+										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility">
+											<DiscreteObjectKeyFrame KeyTime="00:00:00.15" Value="{x:Static Visibility.Collapsed}" />
+										</ObjectAnimationUsingKeyFrames>
+									</Storyboard>
+								</BeginStoryboard>
+							</DataTrigger.ExitActions>
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</controls:NodePartControl.Style>
 		</controls:NodePartControl>
 		<Canvas
 			Height="25"

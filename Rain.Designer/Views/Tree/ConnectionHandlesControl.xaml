@@ -44,7 +44,7 @@
 				</MultiBinding>
 			</controls:NodePartControl.Visibility>
 			<controls:NodePartControl.Background>
-				<MultiBinding Converter="{c:MultiValueChainConverter MultiValueConverter={c:MultiValueIntOrderCheckConverter}, PostProcessing={c:BooleanToSolidColorBrushConverter True=LightSlateGray, False=ForestGreen}}">
+				<MultiBinding Converter="{c:MultiValueChainConverter MultiValueConverter={c:MultiValueIntOrderCheckConverter}, PostProcessing={c:BooleanToSolidColorBrushConverter True=#556677, False=#b88300}}">
 					<m:DataContextBinding ControlType="{x:Type local:NodeControl}" Path="WaveBlock.MinInputs" />
 					<m:DataContextBinding ControlType="{x:Type local:NodeControl}" Path="Inputs.Count" />
 				</MultiBinding>

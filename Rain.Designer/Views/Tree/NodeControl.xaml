@@ -93,7 +93,7 @@
 			Margin="0,-15,0,0"
 			HorizontalAlignment="Center"
 			VerticalAlignment="Top"
-			Background="{Binding IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={c:BooleanToSolidColorBrushConverter True=Goldenrod, False=LightGray}}"
+			Background="{Binding IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={c:BooleanToSolidColorBrushConverter True=#b88300, False=LightGray}}"
 			MouseDown="TriggerStartConnection"
 			MouseUp="TriggerEndConnection"
 			Text="⊙">

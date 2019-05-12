@@ -40,7 +40,7 @@
 			<Border.Background>
 				<MultiBinding>
 					<Binding />
-					<m:DataContextBinding ControlType="{x:Type local:TreeDesignerControl}" Path="SelectedNode" />
+					<m:DataContextBinding ControlType="{x:Type local:NodesControl}" Path="SelectedNode" />
 					<MultiBinding.Converter>
 						<c:MultiValueChainConverter>
 							<c:MultiValueChainConverter.MultiValueConverter>
@@ -71,20 +71,9 @@
 				Text="{Binding SelectedWaveBlockFactory.Icon}">
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="MouseDown">
-						<i:InvokeCommandAction Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeDesignerControl}" CommandParameter="{Binding}" />
+						<i:InvokeCommandAction Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:NodesControl}" CommandParameter="{Binding}" />
 					</i:EventTrigger>
 				</i:Interaction.Triggers>
-				<!--<controls:NodePartControl.Background>
-					<Binding Path="WaveBlock">
-						<Binding.Converter>
-							<c:ChainConverter>
-								<c:ChainedConverter Converter="{c:ComparisonConverter Value={x:Null}}" />
-								<c:ChainedConverter Converter="{c:BooleanToColorConverter True=DarkRed, False=ForestGreen}" />
-								<c:ChainedConverter Converter="{c:ColorToBrushConverter}" />
-							</c:ChainConverter>
-						</Binding.Converter>
-					</Binding>
-				</controls:NodePartControl.Background>-->
 			</controls:NodePartControl>
 		</Border>
 		<controls:NodePartControl

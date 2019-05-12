@@ -8,17 +8,56 @@
 	xmlns:tracks="clr-namespace:Rain.Designer.Views.Tracks"
 	xmlns:tree="clr-namespace:Rain.Designer.Views.Tree"
 	xmlns:vm="clr-namespace:Rain.Designer.ViewModels.WaveDesigner"
-	Title="MainWindow"
+	Title="Rain.NET"
 	Width="800"
 	Height="450"
 	d:DataContext="{d:DesignInstance vm:WaveDesignerViewModel}"
 	mc:Ignorable="d">
+	<Window.Resources>
+		<ResourceDictionary Source="WaveDesignerWindow.Resources.xaml" />
+	</Window.Resources>
 	<DockPanel>
-		<tracks:TracksControl DataContext="{Binding Tracks}" DockPanel.Dock="Bottom" />
-		<StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-			<Button Command="{Binding SaveCommand}" Content="Save" />
-			<Button Command="{Binding LoadCommand}" Content="Load" />
-		</StackPanel>
-		<tree:TreeDesignerControl DataContext="{Binding TreeDesigner}" DockPanel.Dock="Left" />
+		<Border
+			BorderThickness="0,0,0,1"
+			DockPanel.Dock="Top"
+			Style="{StaticResource PanelPartStyle}">
+			<StackPanel Orientation="Horizontal">
+				<StackPanel.Resources />
+				<Button
+					Command="{Binding SaveCommand}"
+					Content="Save"
+					Style="{DynamicResource PanelButtonStyle}" />
+				<Button
+					Command="{Binding LoadCommand}"
+					Content="Load"
+					Style="{DynamicResource PanelButtonStyle}" />
+			</StackPanel>
+		</Border>
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="Auto" />
+				<ColumnDefinition Width="400" />
+			</Grid.ColumnDefinitions>
+			<GridSplitter
+				Grid.Column="1"
+				Width="5"
+				Margin="0,-1,0,0"
+				HorizontalAlignment="Stretch"
+				Background="#bbccdd"
+				BorderBrush="#778899"
+				BorderThickness="1,0,1,0" />
+			<DockPanel>
+				<Border
+					Margin="0,0,-1,0"
+					BorderThickness="0,1,0,0"
+					DockPanel.Dock="Bottom"
+					Style="{StaticResource PanelPartStyle}">
+					<tracks:TracksControl DataContext="{Binding Tracks}" />
+				</Border>
+				<tree:NodesControl Grid.Column="0" DataContext="{Binding TreeDesigner}" />
+			</DockPanel>
+			<tree:NodeEditorControl Grid.Column="2" DataContext="{Binding TreeDesigner.SelectedNode}" />
+		</Grid>
 	</DockPanel>
 </Window>

@@ -11,8 +11,8 @@ namespace Rain.Designer.Views.Markups
 	internal class DataContextBinding : MarkupExtension
 	{
 		public string Path { get; set; }
-
 		public Type ControlType { get; set; }
+		public IValueConverter Converter { get; set; }
 
 		public DataContextBinding()
 		{ }
@@ -33,7 +33,8 @@ namespace Rain.Designer.Views.Markups
 				RelativeSource = new RelativeSource
 				{
 					AncestorType = ControlType
-				}
+				},
+				Converter = Converter
 			};
 
 			return binding.ProvideValue(serviceProvider);

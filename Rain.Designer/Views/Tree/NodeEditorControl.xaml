@@ -12,7 +12,20 @@
 	d:DesignWidth="800"
 	mc:Ignorable="d">
 	<DockPanel>
+		<DockPanel.Background>
+			<Binding Path="SelectedWaveBlockFactory.Color">
+				<Binding.Converter>
+					<c:ChainConverter>
+						<c:ChainedConverter Converter="{c:ColorBrightnessConverter Brightness=0.5}" />
+						<c:ChainedConverter Converter="{c:ColorToBrushConverter}" />
+					</c:ChainConverter>
+				</Binding.Converter>
+			</Binding>
+		</DockPanel.Background>
 		<ComboBox
+			Height="30"
+			Margin="5"
+			VerticalContentAlignment="Center"
 			DockPanel.Dock="Top"
 			ItemsSource="{Binding AvailableWaveBlockFactories}"
 			SelectedItem="{Binding SelectedWaveBlockFactory}">

@@ -12,15 +12,18 @@
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*" />
-			<ColumnDefinition Width="5" />
-			<ColumnDefinition Width="*" />
+			<ColumnDefinition Width="Auto" />
+			<ColumnDefinition Width="400" />
 		</Grid.ColumnDefinitions>
 		<local:NodesControl Grid.Column="0" DataContext="{Binding}" />
 		<GridSplitter
 			Grid.Column="1"
 			Width="5"
+			Margin="0,-1,0,-1"
 			HorizontalAlignment="Stretch"
-			Background="DarkGray" />
+			Background="#99aabb"
+			BorderBrush="#778899"
+			BorderThickness="1,0,1,0" />
 		<local:NodeEditorControl Grid.Column="2" DataContext="{Binding SelectedNode}" />
 	</Grid>
 </UserControl>

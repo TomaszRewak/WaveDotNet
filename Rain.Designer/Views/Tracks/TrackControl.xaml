@@ -8,10 +8,26 @@
 	d:DesignHeight="450"
 	d:DesignWidth="800"
 	mc:Ignorable="d">
-	<Grid>
+	<StackPanel Orientation="Horizontal">
 		<Button
-			Width="100"
+			Width="50"
 			Command="{Binding StopCommand}"
-			Content="Stop" />
-	</Grid>
+			Content="▶"
+			Style="{DynamicResource PanelButtonStyle}" />
+		<Button
+			Width="50"
+			Command="{Binding StopCommand}"
+			Content="❚❚"
+			Style="{DynamicResource PanelButtonStyle}" />
+		<Button
+			Width="50"
+			Command="{Binding StopCommand}"
+			Content="■"
+			Foreground="DarkRed"
+			Style="{DynamicResource PanelButtonStyle}" />
+		<TextBlock
+			Margin="10,0,0,0"
+			VerticalAlignment="Center"
+			Text="00:00:00:00" />
+	</StackPanel>
 </UserControl>

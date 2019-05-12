@@ -10,20 +10,22 @@
 	d:DesignWidth="800"
 	x:ClassModifier="internal"
 	mc:Ignorable="d">
-	<Grid Background="#333355">
+	<Grid>
 		<Border
 			Width="200"
 			MinHeight="20"
-			Padding="30"
+			Padding="30,10,30,30"
 			HorizontalAlignment="Center"
 			VerticalAlignment="Center"
 			Background="White"
+			BorderBrush="#44000000"
+			BorderThickness="1.5"
 			CornerRadius="20">
 			<ItemsControl ItemsSource="{Binding Fields, ElementName=Self}">
 				<ItemsControl.ItemTemplate>
 					<DataTemplate>
 						<StackPanel>
-							<TextBlock Text="{Binding Name}" />
+							<TextBlock Margin="5,10,0,5" Text="{Binding Name}" />
 							<ContentControl Content="{Binding DataContext.Input, RelativeSource={RelativeSource Mode=TemplatedParent}}" DataContext="{Binding DataContext, ElementName=Self}" />
 						</StackPanel>
 					</DataTemplate>

@@ -14,7 +14,7 @@
 	mc:Ignorable="d">
 	<DockPanel>
 		<DockPanel.Background>
-			<Binding Path="SelectedWaveBlockFactory.Color">
+			<Binding Path="WaveBlockFactory.Color">
 				<Binding.Converter>
 					<c:ChainConverter>
 						<c:ChainedConverter Converter="{c:ColorBrightnessConverter Brightness=0.75}" />
@@ -29,7 +29,7 @@
 			VerticalContentAlignment="Center"
 			DockPanel.Dock="Top"
 			ItemsSource="{Binding AvailableWaveBlockFactories}"
-			SelectedItem="{Binding SelectedWaveBlockFactory}">
+			SelectedItem="{Binding WaveBlockFactory}">
 			<ComboBox.ItemTemplate>
 				<DataTemplate>
 					<StackPanel Orientation="Horizontal">

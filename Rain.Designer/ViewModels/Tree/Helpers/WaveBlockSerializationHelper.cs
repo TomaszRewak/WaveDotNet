@@ -40,7 +40,7 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 
 			if (factory != null)
 			{
-				node.SelectedWaveBlockFactory = factory;
+				node.WaveBlockFactory = factory;
 				node.WaveBlock.Deserialize(value.WaveBlock.Parameters);
 			}
 

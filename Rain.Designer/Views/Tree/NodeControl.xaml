@@ -67,8 +67,8 @@
 				Width="25"
 				Height="25"
 				HorizontalAlignment="Center"
-				Background="{Binding SelectedWaveBlockFactory.Color, Converter={c:ColorToBrushConverter}}"
-				Text="{Binding SelectedWaveBlockFactory.Icon}">
+				Background="{Binding WaveBlockFactory.Color, Converter={c:ColorToBrushConverter}}"
+				Text="{Binding WaveBlockFactory.Icon}">
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="MouseDown">
 						<i:InvokeCommandAction Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:NodesControl}" CommandParameter="{Binding}" />
@@ -145,9 +145,19 @@
 			Margin="-6,0,0,-10"
 			HorizontalAlignment="Left"
 			VerticalAlignment="Bottom"
-			Background="{Binding CanPlay, Converter={c:BooleanToSolidColorBrushConverter True=#4a9142, False=LightGray}}"
 			FontSize="13"
 			Text="⯈">
+			<controls:NodePartControl.Background>
+				<Binding Path="Wave">
+					<Binding.Converter>
+						<c:ChainConverter>
+							<c:ChainedConverter Converter="{c:NullableToBooleanConverter}" />
+							<c:ChainedConverter Converter="{c:BooleanToColorConverter True=#4a9142, False=LightGray}" />
+							<c:ChainedConverter Converter="{c:ColorToBrushConverter}" />
+						</c:ChainConverter>
+					</Binding.Converter>
+				</Binding>
+			</controls:NodePartControl.Background>
 			<i:Interaction.Triggers>
 				<i:EventTrigger EventName="MouseUp">
 					<i:InvokeCommandAction Command="{Binding PlayCommand}" />

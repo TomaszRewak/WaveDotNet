@@ -2,6 +2,7 @@
 using Rain.Designer.ViewModels.Common;
 using Rain.Designer.ViewModels.Tree.Helpers;
 using Rain.Designer.ViewModels.Waves;
+using Rain.Wave;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,10 +37,15 @@ namespace Rain.Designer.ViewModels.Tree
 		{
 			switch (args.PropertyName)
 			{
-				case nameof(CanPlay):
-					this.UpdateCanPlay();
+				case nameof(Wave):
+					UpdateWave();
 					break;
 			}
+		}
+
+		private void WaveBlockChanged(object subTree, PropertyChangedEventArgs args)
+		{
+			UpdateWave();
 		}
 
 		private IReadOnlyCollection<NodeViewModel> _inputs = new List<NodeViewModel>();
@@ -48,7 +54,7 @@ namespace Rain.Designer.ViewModels.Tree
 			get => _inputs;
 			set => Set(ref _inputs, value)
 				.ObserveChildren(InputChanged)
-				.Then(UpdateCanPlay);
+				.Then(UpdateWave);
 		}
 
 		public IReadOnlyCollection<WaveBlockFactory> AvailableWaveBlockFactories
@@ -56,11 +62,11 @@ namespace Rain.Designer.ViewModels.Tree
 			get => _waveBlockFactoryHelper.AvailableFactories;
 		}
 
-		private WaveBlockFactory _selectedWaveBlockFactory;
-		public WaveBlockFactory SelectedWaveBlockFactory
+		private WaveBlockFactory _waveBlockFactory;
+		public WaveBlockFactory WaveBlockFactory
 		{
-			get => _selectedWaveBlockFactory;
-			set => Set(ref _selectedWaveBlockFactory, value)
+			get => _waveBlockFactory;
+			set => Set(ref _waveBlockFactory, value)
 				.Then(UpdateWaveBlock);
 		}
 
@@ -69,14 +75,15 @@ namespace Rain.Designer.ViewModels.Tree
 		{
 			get => _waveBlock;
 			set => Set(ref _waveBlock, value)
-				.Then(UpdateCanPlay);
+				.Then(UpdateWave)
+				.Observe(WaveBlockChanged);
 		}
 
-		private bool _canPlay;
-		public bool CanPlay
+		private IWave _wave;
+		public IWave Wave
 		{
-			get => _canPlay;
-			set => Set(ref _canPlay, value);
+			get => _wave;
+			set => Set(ref _wave, value);
 		}
 
 		private Position _position;
@@ -105,25 +112,23 @@ namespace Rain.Designer.ViewModels.Tree
 
 		private void UpdateWaveBlock()
 		{
-			WaveBlock = SelectedWaveBlockFactory.Create();
+			WaveBlock = WaveBlockFactory.Create();
 		}
 
-		private void UpdateCanPlay()
+		private void UpdateWave()
 		{
-			this.CanPlay =
-				this.WaveBlock != null &&
-				this.Inputs.All(subTree => subTree.CanPlay) &&
-				this.WaveBlock.CanGenerate(this.Inputs.Count);
+			if (_waveBuilderHelper.CanBuildWave(this))
+				Wave = _waveBuilderHelper.BuildWave(this);
+			else
+				Wave = null;
 		}
 
 		private void Play()
 		{
-			if (!CanPlay)
+			if (Wave == null)
 				return;
 
-			var wave = _waveBuilderHelper.BuildWave(this);
-
-			_wavePlayerHelper.PlayWave(wave);
+			_wavePlayerHelper.PlayWave(Wave);
 		}
 
 		public dynamic Serialize()

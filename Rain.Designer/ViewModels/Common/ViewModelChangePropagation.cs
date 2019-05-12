@@ -23,6 +23,30 @@ namespace Rain.Designer.ViewModels.Common
 
 			return this;
 		}
+
+		internal void Observe()
+		{
+			throw new NotImplementedException();
+		}
+	}
+
+	internal static class ViewModelChangePropagationObservableSpecialization
+	{
+		public static ViewModelChangePropagation<T> Observe<T>(
+			this ViewModelChangePropagation<T> self,
+			PropertyChangedEventHandler callback) where T : INotifyPropertyChanged
+		{
+			if (self.Change.Changed)
+			{
+				if (self.Change.OldValue != null)
+					self.Change.OldValue.PropertyChanged -= callback;
+
+				if (self.Change.NewValue != null)
+					self.Change.NewValue.PropertyChanged += callback;
+			}
+
+			return self;
+		}
 	}
 
 	internal static class ViewModelChangePropagationCollectionSpecialization

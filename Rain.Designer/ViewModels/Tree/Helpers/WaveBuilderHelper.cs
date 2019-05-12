@@ -18,5 +18,13 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 
 			return tree.WaveBlock.GenerateWave(subWaves);
 		}
-    }
+
+		public bool CanBuildWave(NodeViewModel tree)
+		{
+			return
+				tree.WaveBlock != null &&
+				tree.Inputs.All(subTree => subTree.Wave != null) &&
+				tree.WaveBlock.CanGenerate(tree.Inputs.Count);
+		}
+	}
 }

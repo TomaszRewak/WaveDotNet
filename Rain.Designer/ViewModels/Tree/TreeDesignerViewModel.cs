@@ -1,5 +1,6 @@
 ﻿using Rain.Designer.DataStructures;
 using Rain.Designer.ViewModels.Common;
+using Rain.Designer.ViewModels.Tree.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,14 @@ namespace Rain.Designer.ViewModels.Tree
     internal class TreeDesignerViewModel : ViewModel
     {
 		private Func<NodeViewModel> _nodeFactory;
+		private ConnectionsHelper _connectionsHelper;
 
-		public TreeDesignerViewModel(Func<NodeViewModel> nodeFactory)
+		public TreeDesignerViewModel(
+			Func<NodeViewModel> nodeFactory,
+			ConnectionsHelper connectionsHelper)
 		{
 			_nodeFactory = nodeFactory;
+			_connectionsHelper = connectionsHelper;
 		}
 
 		private IReadOnlyCollection<NodeViewModel> _nodes = new List<NodeViewModel>();
@@ -23,6 +28,7 @@ namespace Rain.Designer.ViewModels.Tree
 		{
 			get => _nodes;
 			set => Set(ref _nodes, value)
+				.Then(UpdateConnections)
 				.Then(UpdateSelectedNode);
 		}
 
@@ -37,6 +43,11 @@ namespace Rain.Designer.ViewModels.Tree
 		{
 			if (!Nodes.Contains(SelectedNode))
 				SelectedNode = null;
+		}
+
+		private void UpdateConnections()
+		{
+			_connectionsHelper.UpdateConnections(this);
 		}
 
 		private void AddNode(Position position)

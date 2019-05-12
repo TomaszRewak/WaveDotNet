@@ -45,6 +45,7 @@ namespace Rain.Designer.Modules
 			serviceCollection.AddSingleton<WavePlayerHelper>();
 			serviceCollection.AddSingleton<WaveBuilderHelper>();
 			serviceCollection.AddSingleton<WaveBlockSerializationHelper>();
+			serviceCollection.AddSingleton<ConnectionsHelper>();
 		}
 	}
 }

@@ -99,6 +99,7 @@
     <Compile Include="ViewModels\Common\ViewModel.cs" />
     <Compile Include="ViewModels\Common\ViewModelChange.cs" />
     <Compile Include="ViewModels\Common\ViewModelChangePropagation.cs" />
+    <Compile Include="ViewModels\Tree\Helpers\ConnectionsHelper.cs" />
     <Compile Include="ViewModels\Tree\Helpers\WaveBlockSerializationHelper.cs" />
     <Compile Include="ViewModels\WaveDesigner\Helpers\SerializationHelper.cs" />
     <Compile Include="ViewModels\Tracks\TracksViewModel.cs" />

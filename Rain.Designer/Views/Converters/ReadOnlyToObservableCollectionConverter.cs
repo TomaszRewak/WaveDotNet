@@ -20,8 +20,8 @@ namespace Rain.Designer.Views.Converters
 
 		public override ObservableCollection<object> Convert(IReadOnlyCollection<object> values)
 		{
-			var oldItems = _collection.Except(values);
-			var newItems = values.Except(_collection);
+			var oldItems = _collection.Except(values).ToList();
+			var newItems = values.Except(_collection).ToList();
 
 			foreach (var oldItem in oldItems)
 				_collection.Remove(oldItem);

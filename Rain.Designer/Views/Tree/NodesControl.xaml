@@ -44,7 +44,7 @@
 					</Binding>
 				</local:ConnectionControl.Visibility>
 			</local:ConnectionControl>
-			<ItemsControl ItemsSource="{Binding Nodes}">
+			<ItemsControl ItemsSource="{Binding Nodes, Converter={c:ReadOnlyToObservableCollectionConverter}}">
 				<ItemsControl.ItemsPanel>
 					<ItemsPanelTemplate>
 						<Canvas />

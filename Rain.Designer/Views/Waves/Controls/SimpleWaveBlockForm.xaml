@@ -19,7 +19,7 @@
 			VerticalAlignment="Center"
 			Background="White"
 			BorderBrush="#44000000"
-			BorderThickness="1.5"
+			BorderThickness="1"
 			CornerRadius="20">
 			<ItemsControl ItemsSource="{Binding Fields, ElementName=Self}">
 				<ItemsControl.ItemTemplate>

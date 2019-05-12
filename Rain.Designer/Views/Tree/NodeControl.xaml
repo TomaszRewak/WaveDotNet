@@ -48,7 +48,7 @@
 							</c:MultiValueChainConverter.MultiValueConverter>
 							<c:MultiValueChainConverter.PostProcessing>
 								<c:ChainConverter>
-									<c:ChainedConverter Converter="{c:BooleanToDoubleConverter True=1., False=0.2}" />
+									<c:ChainedConverter Converter="{c:BooleanToDoubleConverter True=0.7, False=0.2}" />
 									<c:ChainedConverter Converter="{c:ColorInterpolationConverter From=White, To=ForestGreen}" />
 									<c:ChainedConverter Converter="{c:ColorToBrushConverter}" />
 								</c:ChainConverter>

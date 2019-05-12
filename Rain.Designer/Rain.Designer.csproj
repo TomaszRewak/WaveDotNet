@@ -136,6 +136,7 @@
     <Compile Include="Views\Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Views\Converters\ChainConverter.cs" />
     <Compile Include="Views\Converters\ColorBrightnessConverter.cs" />
+    <Compile Include="Views\Converters\ColorDarknessConverter.cs" />
     <Compile Include="Views\Converters\ColorInterpolationConverter.cs" />
     <Compile Include="Views\Converters\ColorToBrushConverter.cs" />
     <Compile Include="Views\Converters\ComparisonConverter.cs" />
@@ -151,6 +152,8 @@
     <Compile Include="Views\Converters\MultiValueDoubleAddConverter.cs" />
     <Compile Include="Views\Converters\MultiValueIntOrderCheckConverter.cs" />
     <Compile Include="Views\Converters\NullableToBooleanConverter.cs" />
+    <Compile Include="Views\Converters\ReadOnlyToObservableCollectionConverter.cs" />
+    <Compile Include="Views\Converters\SolidColorBrushToColorConverter.cs" />
     <Compile Include="Views\Converters\TypeToDataTemplateConverter.cs" />
     <Compile Include="Views\Converters\ObjectToTypeConverter.cs" />
     <Compile Include="Views\Converters\SwitchConverter.cs" />

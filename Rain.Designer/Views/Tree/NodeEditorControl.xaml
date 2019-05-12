@@ -17,7 +17,7 @@
 			<Binding Path="SelectedWaveBlockFactory.Color">
 				<Binding.Converter>
 					<c:ChainConverter>
-						<c:ChainedConverter Converter="{c:ColorBrightnessConverter Brightness=0.5}" />
+						<c:ChainedConverter Converter="{c:ColorBrightnessConverter Brightness=0.75}" />
 						<c:ChainedConverter Converter="{c:ColorToBrushConverter}" />
 					</c:ChainConverter>
 				</Binding.Converter>

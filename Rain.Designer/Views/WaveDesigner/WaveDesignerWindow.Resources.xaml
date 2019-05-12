@@ -7,9 +7,12 @@
 			<Setter.Value>
 				<ControlTemplate>
 					<Border
-						Margin="5,2,0,2"
+						Margin="2,2,0,2"
 						Padding="10,2"
-						Background="#66ffffff">
+						Background="#66ffffff"
+						BorderBrush="#33000000"
+						BorderThickness="1"
+						SnapsToDevicePixels="True">
 						<Border.Triggers>
 							<EventTrigger RoutedEvent="MouseEnter">
 								<BeginStoryboard>
@@ -43,6 +46,6 @@
 	</Style>
 	<Style x:Key="PanelPartStyle" TargetType="Border">
 		<Setter Property="Background" Value="#bbccdd" />
-		<Setter Property="BorderBrush" Value="#778899" />
+		<Setter Property="BorderBrush" Value="#99aabb" />
 	</Style>
 </ResourceDictionary>

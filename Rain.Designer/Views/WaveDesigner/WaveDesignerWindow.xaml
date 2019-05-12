@@ -45,7 +45,7 @@
 				Margin="0,-1,0,0"
 				HorizontalAlignment="Stretch"
 				Background="#bbccdd"
-				BorderBrush="#778899"
+				BorderBrush="#99aabb"
 				BorderThickness="1,0,1,0" />
 			<DockPanel>
 				<Border

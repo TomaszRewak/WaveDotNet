@@ -22,7 +22,8 @@ namespace Rain.Designer.ViewModels.Tree
 		public IReadOnlyCollection<NodeViewModel> Nodes
 		{
 			get => _nodes;
-			set => Set(ref _nodes, value);
+			set => Set(ref _nodes, value)
+				.Then(UpdateSelectedNode);
 		}
 
 		private NodeViewModel _selectedNode;
@@ -30,6 +31,12 @@ namespace Rain.Designer.ViewModels.Tree
 		{
 			get => _selectedNode;
 			set => Set(ref _selectedNode, value);
+		}
+
+		private void UpdateSelectedNode()
+		{
+			if (!Nodes.Contains(SelectedNode))
+				SelectedNode = null;
 		}
 
 		private void AddNode(Position position)
@@ -49,7 +56,15 @@ namespace Rain.Designer.ViewModels.Tree
 			this.SelectedNode = node;
 		}
 
+		private void RemoveNode(NodeViewModel node)
+		{
+			this.Nodes = Nodes
+				.Except(new[] { node })
+				.ToList();
+		}
+
 		public ICommand AddNodeCommand => new Command<Position>(AddNode);
 		public ICommand SelectNodeCommand => new Command<NodeViewModel>(SelectNode);
+		public ICommand RemoveNodeCommand => new Command<NodeViewModel>(RemoveNode);
     }
 }

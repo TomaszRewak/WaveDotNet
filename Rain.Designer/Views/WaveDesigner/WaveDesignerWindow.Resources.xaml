@@ -32,7 +32,10 @@
 								</BeginStoryboard>
 							</EventTrigger>
 						</Border.Triggers>
-						<TextBlock Text="{Binding Content, RelativeSource={RelativeSource AncestorType=Button}}" TextAlignment="Center" />
+						<TextBlock
+							VerticalAlignment="Center"
+							Text="{Binding Content, RelativeSource={RelativeSource AncestorType=Button}}"
+							TextAlignment="Center" />
 					</Border>
 				</ControlTemplate>
 			</Setter.Value>

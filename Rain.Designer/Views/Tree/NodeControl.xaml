@@ -145,7 +145,7 @@
 			Margin="-6,0,0,-10"
 			HorizontalAlignment="Left"
 			VerticalAlignment="Bottom"
-			Background="{Binding CanPlay, Converter={c:BooleanToSolidColorBrushConverter True=DarkGreen, False=LightGray}}"
+			Background="{Binding CanPlay, Converter={c:BooleanToSolidColorBrushConverter True=#4a9142, False=LightGray}}"
 			FontSize="13"
 			Text="⯈">
 			<i:Interaction.Triggers>

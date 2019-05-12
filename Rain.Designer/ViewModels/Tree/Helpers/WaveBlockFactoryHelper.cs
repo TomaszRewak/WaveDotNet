@@ -66,11 +66,11 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 				new WaveBlockFactory(Colors.Goldenrod, "√", "Power filter", powerWaveFilterBlockFactory),
 				new WaveBlockFactory(Colors.Goldenrod, "〜", "Low pass filter", lowPassWaveFilterBlockFactory),
 
-				new WaveBlockFactory(Colors.Purple, "⟋", "Linear function", linearWaveGeneratorBlockFactory),
-				new WaveBlockFactory(Colors.Purple, "∿", "Sin function", sinWaveGeneratorBlockFactory),
-				new WaveBlockFactory(Colors.Purple, "⊓", "Square function", squareWaveGeneratorBlockFactory),
-				new WaveBlockFactory(Colors.Purple, "Λ", "Triangle function", triangleWaveGeneratorBlockFactory),
-				new WaveBlockFactory(Colors.Purple, "▩", "White noise", whiteNoiseWaveTransformerBlockFactory),
+				new WaveBlockFactory(Color.FromRgb(105, 186, 96), "⟋", "Linear function", linearWaveGeneratorBlockFactory),
+				new WaveBlockFactory(Color.FromRgb(105, 186, 96), "∿", "Sin function", sinWaveGeneratorBlockFactory),
+				new WaveBlockFactory(Color.FromRgb(105, 186, 96), "⊓", "Square function", squareWaveGeneratorBlockFactory),
+				new WaveBlockFactory(Color.FromRgb(105, 186, 96), "Λ", "Triangle function", triangleWaveGeneratorBlockFactory),
+				new WaveBlockFactory(Color.FromRgb(105, 186, 96), "▩", "White noise", whiteNoiseWaveTransformerBlockFactory),
 
 				new WaveBlockFactory(Colors.Gray, "↥", "Amplitude and offset", amplitudeWaveTransformerBlockFactory),
 				new WaveBlockFactory(Colors.Gray, "↝", "Frequency", frequencyWaveTransformerBlockFactory),

@@ -8,13 +8,13 @@ namespace Rain.Designer.ViewModels.Tree.Helpers
 {
 	internal class ConnectionsHelper
 	{
-		public void UpdateConnections(TreeDesignerViewModel tree)
+		public void UpdateConnections(TreeViewModel tree)
 		{
 			foreach (var node in tree.Nodes)
 				UpdateConnections(tree, node);
 		}
 
-		private void UpdateConnections(TreeDesignerViewModel tree, NodeViewModel node)
+		private void UpdateConnections(TreeViewModel tree, NodeViewModel node)
 		{
 			node.Inputs = node
 				.Inputs

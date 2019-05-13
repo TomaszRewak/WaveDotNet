@@ -29,7 +29,7 @@
 			<Border.Background>
 				<MultiBinding>
 					<Binding />
-					<m:DataContextBinding ControlType="{x:Type local:NodesControl}" Path="SelectedNode" />
+					<m:DataContextBinding ControlType="{x:Type local:TreeControl}" Path="SelectedNode" />
 					<MultiBinding.Converter>
 						<c:MultiValueChainConverter>
 							<c:MultiValueChainConverter.MultiValueConverter>
@@ -60,7 +60,7 @@
 				Text="{Binding WaveBlockFactory.Icon}">
 				<i:Interaction.Triggers>
 					<i:EventTrigger EventName="MouseDown">
-						<i:InvokeCommandAction Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:NodesControl}" CommandParameter="{Binding}" />
+						<i:InvokeCommandAction Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeControl}" CommandParameter="{Binding}" />
 					</i:EventTrigger>
 				</i:Interaction.Triggers>
 			</controls:NodePartControl>
@@ -77,7 +77,7 @@
 			Text="⊙">
 			<controls:NodePartControl.IsEnabled>
 				<MultiBinding Converter="{c:MultiValueChainConverter MultiValueConverter={c:MultiValueConnectionValidationConverter}}">
-					<Binding Path="ConnectionNode" RelativeSource="{RelativeSource AncestorType=local:NodesControl}" />
+					<Binding Path="ConnectionNode" RelativeSource="{RelativeSource AncestorType=local:TreeControl}" />
 					<Binding />
 				</MultiBinding>
 			</controls:NodePartControl.IsEnabled>

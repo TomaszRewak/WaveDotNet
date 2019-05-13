@@ -18,7 +18,7 @@ namespace Rain.Designer.Modules
 	{
 		public static void Register(ServiceCollection serviceCollection)
 		{
-			serviceCollection.AddTransient<TreeDesignerViewModel>();
+			serviceCollection.AddTransient<TreeViewModel>();
 
 			serviceCollection.AddFactory<NodeViewModel>();
 

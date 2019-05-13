@@ -124,7 +124,7 @@
     <Compile Include="ViewModels\Waves\Blocks\Transformers\FrequencyWaveTransformerBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\Blocks\Transformers\LoopWaveTransformerBlockViewModel.cs" />
     <Compile Include="ViewModels\Waves\WaveBlockViewModel.cs" />
-    <Compile Include="ViewModels\Tree\TreeDesignerViewModel.cs" />
+    <Compile Include="ViewModels\Tree\TreeViewModel.cs" />
     <Compile Include="ViewModels\Tree\NodeViewModel.cs" />
     <Compile Include="ViewModels\WaveDesigner\WaveDesignerViewModel.cs" />
     <Compile Include="Views\Common\DependencyObject.cs" />
@@ -260,11 +260,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Tree\NodesControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Tree\TreeDesignerControl.xaml">
+    <Page Include="Views\Tree\TreeControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -286,11 +282,8 @@
     <Compile Include="Views\Tree\NodeControl.xaml.cs">
       <DependentUpon>NodeControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Tree\NodesControl.xaml.cs">
-      <DependentUpon>NodesControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Tree\TreeDesignerControl.xaml.cs">
-      <DependentUpon>TreeDesignerControl.xaml</DependentUpon>
+    <Compile Include="Views\Tree\TreeControl.xaml.cs">
+      <DependentUpon>TreeControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WaveDesigner\WaveDesignerWindow.xaml.cs">
       <DependentUpon>WaveDesignerWindow.xaml</DependentUpon>

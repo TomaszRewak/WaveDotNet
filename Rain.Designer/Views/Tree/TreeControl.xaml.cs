@@ -18,12 +18,12 @@ using System.Windows.Shapes;
 
 namespace Rain.Designer.Views.Tree
 {
-	internal class NodesControlBase : UserControl<NodesControl>
+	internal class TreeControlBase : UserControl<TreeControl>
 	{ }
 
-	internal partial class NodesControl : NodesControlBase
+	internal partial class TreeControl : TreeControlBase
 	{
-		public NodesControl()
+		public TreeControl()
 		{
 			InitializeComponent();
 		}
@@ -141,7 +141,7 @@ namespace Rain.Designer.Views.Tree
 		private void MouseLeftButtonUpOverCanvas(object sender, MouseButtonEventArgs e)
 		{
 			if (IsPressing && DraggedDistance < 5)
-				(DataContext as TreeDesignerViewModel)?.AddNodeCommand.Execute(MousePosition);
+				(DataContext as TreeViewModel)?.AddNodeCommand.Execute(MousePosition);
 
 			NodesContainer.ReleaseMouseCapture();
 			IsPressing = false;

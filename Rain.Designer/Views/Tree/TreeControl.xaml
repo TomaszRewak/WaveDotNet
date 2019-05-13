@@ -1,5 +1,5 @@
-﻿<local:NodesControlBase
-	x:Class="Rain.Designer.Views.Tree.NodesControl"
+﻿<local:TreeControlBase
+	x:Class="Rain.Designer.Views.Tree.TreeControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:c="clr-namespace:Rain.Designer.Views.Converters"
@@ -67,6 +67,17 @@
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
+			<Canvas>
+				<Border
+					Canvas.Left="{Binding SelectedNode.Position.X}"
+					Canvas.Top="{Binding SelectedNode.Position.Y}"
+					Margin="-10"
+					Background="Red"
+					ClipToBounds="True"
+					CornerRadius="5">
+					<local:NodeEditorControl DataContext="{Binding SelectedNode}" />
+				</Border>
+			</Canvas>
 		</Grid>
 	</Border>
-</local:NodesControlBase>
+</local:TreeControlBase>

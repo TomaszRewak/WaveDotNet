@@ -25,12 +25,12 @@ namespace Rain.Designer.ViewModels.WaveDesigner.Helpers
 			};
 		}
 
-		private IEnumerable<dynamic> SerializeNodes(TreeDesignerViewModel tree)
+		private IEnumerable<dynamic> SerializeNodes(TreeViewModel tree)
 		{
 			return tree.Nodes.Select(node => node.Serialize());
 		}
 
-		private IEnumerable<dynamic> SerializeConnections(TreeDesignerViewModel tree)
+		private IEnumerable<dynamic> SerializeConnections(TreeViewModel tree)
 		{
 			var nodes = tree.Nodes.ToList();
 

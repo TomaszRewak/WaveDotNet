@@ -18,13 +18,13 @@ namespace Rain.Designer.ViewModels.WaveDesigner
 		private readonly FileHelper _fileHelper;
 		private readonly WaveBuilderHelper _waveBuilderHelper;
 		
-		public TreeDesignerViewModel TreeDesigner { get; }
+		public TreeViewModel TreeDesigner { get; }
 		public TracksViewModel Tracks { get; }
 
 		public WaveDesignerViewModel(
 			FileHelper fileHelper,
 			WaveBuilderHelper waveBuilderHelper,
-			TreeDesignerViewModel treeDesigner,
+			TreeViewModel treeDesigner,
 			TracksViewModel tracks)
 		{
 			_fileHelper = fileHelper;

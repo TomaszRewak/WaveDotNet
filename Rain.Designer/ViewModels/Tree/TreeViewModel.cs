@@ -10,12 +10,12 @@ using System.Windows.Input;
 
 namespace Rain.Designer.ViewModels.Tree
 {
-    internal class TreeDesignerViewModel : ViewModel
+    internal class TreeViewModel : ViewModel
     {
 		private Func<NodeViewModel> _nodeFactory;
 		private ConnectionsHelper _connectionsHelper;
 
-		public TreeDesignerViewModel(
+		public TreeViewModel(
 			Func<NodeViewModel> nodeFactory,
 			ConnectionsHelper connectionsHelper)
 		{

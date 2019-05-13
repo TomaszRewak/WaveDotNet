@@ -16,10 +16,13 @@
 	<Window.Resources>
 		<ResourceDictionary Source="WaveDesignerWindow.Resources.xaml" />
 	</Window.Resources>
-	<DockPanel Background="#2d333a">
-		<Border BorderThickness="0,0,0,1" DockPanel.Dock="Top">
+	<Grid Background="#2d333a">
+		<tree:TreeControl DataContext="{Binding TreeDesigner}" />
+		<Border
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			BorderThickness="0,0,0,1">
 			<StackPanel Orientation="Horizontal">
-				<StackPanel.Resources />
 				<Button
 					Command="{Binding SaveCommand}"
 					Content="Save"
@@ -30,27 +33,12 @@
 					Style="{DynamicResource PanelButtonStyle}" />
 			</StackPanel>
 		</Border>
-		<Grid>
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="Auto" />
-				<ColumnDefinition Width="400" />
-			</Grid.ColumnDefinitions>
-			<GridSplitter
-				Grid.Column="1"
-				Width="5"
-				HorizontalAlignment="Stretch"
-				Background="#2d333a" />
-			<DockPanel>
-				<Border
-					Margin="0,0,-1,0"
-					BorderThickness="0,1,0,0"
-					DockPanel.Dock="Bottom">
-					<tracks:TracksControl DataContext="{Binding Tracks}" />
-				</Border>
-				<tree:NodesControl Grid.Column="0" DataContext="{Binding TreeDesigner}" />
-			</DockPanel>
-			<tree:NodeEditorControl Grid.Column="2" DataContext="{Binding TreeDesigner.SelectedNode}" />
-		</Grid>
-	</DockPanel>
+		<Border
+			Margin="0,0,-1,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Bottom"
+			BorderThickness="0,1,0,0">
+			<tracks:TracksControl DataContext="{Binding Tracks}" />
+		</Border>
+	</Grid>
 </Window>

@@ -28,6 +28,7 @@
 		<TextBlock
 			Margin="10,0,0,0"
 			VerticalAlignment="Center"
+			Foreground="#d9dbdd"
 			Text="00:00:00:00" />
 	</StackPanel>
 </UserControl>

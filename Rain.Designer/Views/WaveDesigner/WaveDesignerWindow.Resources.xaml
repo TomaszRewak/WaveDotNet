@@ -3,14 +3,14 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:local="clr-namespace:Rain.Designer.Views.WaveDesigner">
 	<Style x:Key="PanelButtonStyle" TargetType="Button">
+		<Setter Property="Foreground" Value="#d9dbdd" />
 		<Setter Property="Template">
 			<Setter.Value>
 				<ControlTemplate>
 					<Border
 						Margin="2,2,0,2"
 						Padding="10,2"
-						Background="#66ffffff"
-						BorderBrush="#33000000"
+						Background="#00ffffff"
 						BorderThickness="1"
 						SnapsToDevicePixels="True">
 						<Border.Triggers>
@@ -19,7 +19,7 @@
 									<Storyboard>
 										<ColorAnimation
 											Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
-											To="#22000000"
+											To="#22ffffff"
 											Duration="00:00:00.1" />
 									</Storyboard>
 								</BeginStoryboard>
@@ -29,7 +29,7 @@
 									<Storyboard>
 										<ColorAnimation
 											Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
-											To="#66ffffff"
+											To="#00ffffff"
 											Duration="00:00:00.1" />
 									</Storyboard>
 								</BeginStoryboard>
@@ -43,9 +43,5 @@
 				</ControlTemplate>
 			</Setter.Value>
 		</Setter>
-	</Style>
-	<Style x:Key="PanelPartStyle" TargetType="Border">
-		<Setter Property="Background" Value="#bbccdd" />
-		<Setter Property="BorderBrush" Value="#99aabb" />
 	</Style>
 </ResourceDictionary>

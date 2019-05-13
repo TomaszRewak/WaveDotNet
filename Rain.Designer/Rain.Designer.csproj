@@ -153,6 +153,7 @@
     <Compile Include="Views\Converters\MultiValueDoubleAddConverter.cs" />
     <Compile Include="Views\Converters\MultiValueIntOrderCheckConverter.cs" />
     <Compile Include="Views\Converters\NullableToBooleanConverter.cs" />
+    <Compile Include="Views\Converters\PositionOffsetConverter.cs" />
     <Compile Include="Views\Converters\ReadOnlyToObservableCollectionConverter.cs" />
     <Compile Include="Views\Converters\SolidColorBrushToColorConverter.cs" />
     <Compile Include="Views\Converters\TypeToDataTemplateConverter.cs" />

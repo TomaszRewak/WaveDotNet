@@ -16,7 +16,7 @@
 		<ControlTemplate>
 			<Border
 				Padding="3"
-				Background="White"
+				Background="#e5e8ea"
 				CornerRadius="100">
 				<Border Padding="1px" CornerRadius="100">
 					<Border.Background>

@@ -23,7 +23,7 @@
 			Width="50"
 			Command="{Binding StopCommand}"
 			Content="■"
-			Foreground="DarkRed"
+			Foreground="#ed4e4e"
 			Style="{DynamicResource PanelButtonStyle}" />
 		<TextBlock
 			Margin="10,0,0,0"

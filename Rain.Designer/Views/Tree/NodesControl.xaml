@@ -32,7 +32,7 @@
 			<local:ConnectionControl
 				Begin="{Binding ConnectionNode.Position, ElementName=Self}"
 				ConnectionIndex="{Binding ConnectionNode.Inputs.Count, ElementName=Self}"
-				End="{Binding MousePosition, ElementName=Self}">
+				End="{Binding MousePosition, ElementName=Self, Converter={c:PositionOffsetConverter OffsetY=22}}">
 				<local:ConnectionControl.Visibility>
 					<Binding ElementName="Self" Path="ConnectionNode">
 						<Binding.Converter>

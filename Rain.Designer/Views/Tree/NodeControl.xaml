@@ -19,23 +19,12 @@
 	x:ClassModifier="internal"
 	MouseDown="MouseDownWithin"
 	mc:Ignorable="d">
-	<UserControl.Resources>
-		<s:Double x:Key="NodeSize">40</s:Double>
-		<s:Double x:Key="NodeMarginSize">-20</s:Double>
-		<Thickness
-			x:Key="NodeMargin"
-			Bottom="{StaticResource NodeMarginSize}"
-			Left="{StaticResource NodeMarginSize}"
-			Right="{StaticResource NodeMarginSize}"
-			Top="{StaticResource NodeMarginSize}" />
-	</UserControl.Resources>
 	<Grid Margin="-20">
 		<Border
-			Width="{StaticResource NodeSize}"
-			Height="{StaticResource NodeSize}"
+			Width="36"
+			Height="36"
 			HorizontalAlignment="Center"
-			BorderBrush="White"
-			BorderThickness="3"
+			BorderBrush="#e5e8ea"
 			CornerRadius="25">
 			<Border.Background>
 				<MultiBinding>
@@ -82,7 +71,7 @@
 			Margin="0,-15,0,0"
 			HorizontalAlignment="Center"
 			VerticalAlignment="Top"
-			Background="{Binding IsEnabled, RelativeSource={RelativeSource Mode=Self}, Converter={c:BooleanToSolidColorBrushConverter True=#b88300, False=LightGray}}"
+			Background="LightGray"
 			MouseDown="TriggerStartConnection"
 			MouseUp="TriggerEndConnection"
 			Text="⊙">
@@ -94,33 +83,25 @@
 			</controls:NodePartControl.IsEnabled>
 			<controls:NodePartControl.Style>
 				<Style TargetType="controls:NodePartControl">
-					<Setter Property="Opacity" Value="0" />
-					<Setter Property="Visibility" Value="Collapsed" />
 					<Style.Triggers>
-						<DataTrigger Binding="{Binding ConnectionNode, RelativeSource={RelativeSource AncestorType=local:NodesControl}, Converter={c:NullableToBooleanConverter}}" Value="True">
+						<DataTrigger Binding="{Binding IsEnabled, RelativeSource={RelativeSource Mode=Self}}" Value="True">
 							<DataTrigger.EnterActions>
 								<BeginStoryboard>
 									<Storyboard>
-										<DoubleAnimation
-											Storyboard.TargetProperty="Opacity"
-											To="1"
-											Duration="00:00:00.25" />
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility">
-											<DiscreteObjectKeyFrame KeyTime="00:00:00.00" Value="{x:Static Visibility.Visible}" />
-										</ObjectAnimationUsingKeyFrames>
+										<ColorAnimation
+											Storyboard.TargetProperty="Background.Color"
+											To="#b88300"
+											Duration="00:00:00.15" />
 									</Storyboard>
 								</BeginStoryboard>
 							</DataTrigger.EnterActions>
 							<DataTrigger.ExitActions>
 								<BeginStoryboard>
 									<Storyboard>
-										<DoubleAnimation
-											Storyboard.TargetProperty="Opacity"
-											To="0"
+										<ColorAnimation
+											Storyboard.TargetProperty="Background.Color"
+											To="LightGray"
 											Duration="00:00:00.15" />
-										<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Visibility">
-											<DiscreteObjectKeyFrame KeyTime="00:00:00.15" Value="{x:Static Visibility.Collapsed}" />
-										</ObjectAnimationUsingKeyFrames>
 									</Storyboard>
 								</BeginStoryboard>
 							</DataTrigger.ExitActions>

@@ -15,7 +15,7 @@
 	<Grid>
 		<Path Stroke="CornflowerBlue" StrokeThickness="2">
 			<Path.Data>
-				<MultiBinding Converter="{converters1:BezierCurveConverter InputsXOffset=13, InputsDistance=22, InputsYOffset=25}">
+				<MultiBinding Converter="{converters1:BezierCurveConverter InputsXOffset=13, InputsDistance=22, InputsYOffset=18, OutputYOffset=-22}">
 					<Binding ElementName="Self" Path="Begin" />
 					<Binding ElementName="Self" Path="End" />
 					<Binding ElementName="Self" Path="ConnectionIndex" />

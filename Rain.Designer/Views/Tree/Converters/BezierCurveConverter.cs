@@ -16,6 +16,8 @@ namespace Rain.Designer.Views.Tree.Converters
 		public double InputsXOffset { get; set; }
 		public double InputsYOffset { get; set; }
 
+		public double OutputYOffset { get; set; }
+
 		protected override Geometry Convert(MultiValueConverterProvider valueProvider)
 		{
 			var begin = valueProvider.Get<Position>(0);
@@ -25,6 +27,10 @@ namespace Rain.Designer.Views.Tree.Converters
 			begin = new Position(
 				begin.X + InputsXOffset + index * InputsDistance,
 				begin.Y + InputsYOffset);
+
+			end = new Position(
+				end.X,
+				end.Y + OutputYOffset);
 
 			return new PathGeometry
 			{

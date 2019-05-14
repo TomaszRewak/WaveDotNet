@@ -23,10 +23,17 @@ namespace Rain.Designer.Views.Tree
 
 	internal partial class TreeControl : TreeControlBase
 	{
+		private Position _dragStartPosition;
+		private bool _dragRemovedSelection;
+		private bool _dragging;
+		private bool _dragged;
+
 		public TreeControl()
 		{
 			InitializeComponent();
 		}
+
+		private TreeViewModel Tree => DataContext as TreeViewModel;
 
 		private static readonly DependencyProperty ConnectionNodeProperty = Register<NodeViewModel>(nameof(ConnectionNode));
 		public NodeViewModel ConnectionNode
@@ -40,27 +47,6 @@ namespace Rain.Designer.Views.Tree
 		{
 			get => GetValue<Position>(MousePositionProperty.DependencyProperty);
 			set => SetValue(MousePositionProperty, value);
-		}
-
-		private readonly DependencyPropertyKey MouseDownPositionProperty = RegisterReadOnly<Position>(nameof(MouseDownPosition));
-		public Position MouseDownPosition
-		{
-			get => GetValue<Position>(MouseDownPositionProperty.DependencyProperty);
-			set => SetValue(MouseDownPositionProperty, value);
-		}
-
-		private readonly DependencyPropertyKey DraggedDistanceProperty = RegisterReadOnly<double>(nameof(DraggedDistance));
-		public double DraggedDistance
-		{
-			get => GetValue<double>(DraggedDistanceProperty.DependencyProperty);
-			set => SetValue(DraggedDistanceProperty, value);
-		}
-
-		private readonly DependencyPropertyKey IsPressingProperty = RegisterReadOnly<bool>(nameof(IsPressing));
-		public bool IsPressing
-		{
-			get => GetValue<bool>(IsPressingProperty.DependencyProperty);
-			set => SetValue(IsPressingProperty, value);
 		}
 
 		private readonly DependencyPropertyKey ZoomProperty = RegisterReadOnly<double>(nameof(Zoom), 1);
@@ -78,15 +64,13 @@ namespace Rain.Designer.Views.Tree
 
 		private void Drag()
 		{
-			DraggedDistance += 
-				Math.Abs(MouseDownPosition.X - MousePosition.X) + 
-				Math.Abs(MouseDownPosition.Y - MousePosition.Y);
-
 			NodesContainer.Margin = new Thickness()
 			{
-				Left = NodesContainer.Margin.Left - MouseDownPosition.X + MousePosition.X,
-				Top = NodesContainer.Margin.Top - MouseDownPosition.Y + MousePosition.Y,
+				Left = NodesContainer.Margin.Left - _dragStartPosition.X + MousePosition.X,
+				Top = NodesContainer.Margin.Top - _dragStartPosition.Y + MousePosition.Y,
 			};
+
+			_dragged = true;
 		}
 
 		private void ZoomIn(double factor)
@@ -110,7 +94,7 @@ namespace Rain.Designer.Views.Tree
 			if (e.LeftButton != MouseButtonState.Pressed)
 				ConnectionNode = null;
 
-			if (IsPressing)
+			if (_dragging)
 				Drag();
 		}
 
@@ -133,18 +117,26 @@ namespace Rain.Designer.Views.Tree
 		private void MouseLeftButtonDownOverCanvas(object sender, MouseButtonEventArgs e)
 		{
 			NodesContainer.CaptureMouse();
-			IsPressing = true;
-			DraggedDistance = 0;
-			MouseDownPosition = MousePosition;
+
+			_dragging = true;
+			_dragged = false;
+			_dragStartPosition = MousePosition;
+			_dragRemovedSelection = Tree.SelectedNode != null;
+
+			Tree.SelectedNode = null;
 		}
 
 		private void MouseLeftButtonUpOverCanvas(object sender, MouseButtonEventArgs e)
 		{
-			if (IsPressing && DraggedDistance < 5)
-				(DataContext as TreeViewModel)?.AddNodeCommand.Execute(MousePosition);
+			if (!_dragging)
+				return;
+
+			if (!_dragRemovedSelection && !_dragged)
+				Tree.AddNodeCommand.Execute(MousePosition);
+
+			_dragging = false;
 
 			NodesContainer.ReleaseMouseCapture();
-			IsPressing = false;
 		}
 
 		private void MouseWheelOverCanvas(object sender, MouseWheelEventArgs e)

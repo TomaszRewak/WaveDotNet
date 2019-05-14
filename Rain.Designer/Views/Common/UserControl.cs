@@ -34,6 +34,14 @@ namespace Rain.Designer.Views.Common
 			typeof(Owner),
 			new PropertyMetadata(defaultValue));
 
+		protected static RoutedEvent RegisterEvent(string name, RoutingStrategy routingStrategy) => EventManager.RegisterRoutedEvent(
+			name,
+			routingStrategy,
+			typeof(RoutedEventArgs),
+			typeof(Owner));
+
 		protected T GetValue<T>(DependencyProperty property) => (T)GetValue(property);
+
+		protected void RaiseEvent(RoutedEvent eventToRise) => RaiseEvent(new RoutedEventArgs(eventToRise));
 	}
 }

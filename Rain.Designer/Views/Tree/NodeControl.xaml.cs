@@ -26,10 +26,18 @@ namespace Rain.Designer.Views.Tree
 		private Point _dragStartPoint;
 		private Position _dragStartPosition;
 		private bool _dragging;
+		private bool _dragged;
 
 		public NodeControl()
 		{
 			InitializeComponent();
+		}
+
+		public static readonly RoutedEvent SelectEvent = RegisterEvent(nameof(Select), RoutingStrategy.Bubble);
+		public event RoutedEventHandler Select
+		{
+			add => AddHandler(SelectEvent, value);
+			remove => RemoveHandler(SelectEvent, value);
 		}
 
 		private NodeViewModel Node => DataContext as NodeViewModel;
@@ -37,10 +45,12 @@ namespace Rain.Designer.Views.Tree
 		private void StartDrag(object sender, MouseButtonEventArgs e)
 		{
 			_dragging = true;
+			_dragged = false;
 			_dragStartPoint = Mouse.GetPosition(null);
 			_dragStartPosition = Node.Position;
 
 			DragHandle.CaptureMouse();
+
 			e.Handled = true;
 		}
 
@@ -48,7 +58,11 @@ namespace Rain.Designer.Views.Tree
 		{
 			_dragging = false;
 
+			if (!_dragged)
+				RaiseEvent(SelectEvent);
+
 			DragHandle.ReleaseMouseCapture();
+
 			e.Handled = true;
 		}
 
@@ -64,7 +78,7 @@ namespace Rain.Designer.Views.Tree
 				_dragStartPosition.X + (dragCurrentPoint.X - _dragStartPoint.X) / scale,
 				_dragStartPosition.Y + (dragCurrentPoint.Y - _dragStartPoint.Y) / scale);
 
-			e.Handled = true;
+			_dragged |= _dragStartPoint.X != dragCurrentPoint.X || _dragStartPoint.Y != dragCurrentPoint.Y;
 		}
 
 		private void MouseDownWithin(object sender, MouseButtonEventArgs e)

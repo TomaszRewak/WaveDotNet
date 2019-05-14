@@ -63,34 +63,34 @@
 							Canvas.Top="{Binding Position.Y}"
 							DataContext="{Binding}"
 							EndConnection="EndConnection"
-							StartConnection="StartConnection" />
+							StartConnection="StartConnection">
+							<i:Interaction.Triggers>
+								<i:EventTrigger EventName="Select">
+									<i:InvokeCommandAction Command="{m:DataContextBinding SelectNodeCommand, ControlType=local:TreeControl}" CommandParameter="{Binding}" />
+								</i:EventTrigger>
+							</i:Interaction.Triggers>
+						</local:NodeControl>
 					</DataTemplate>
 				</ItemsControl.ItemTemplate>
 			</ItemsControl>
 			<Canvas>
+				<Canvas.Visibility>
+					<m:DataContextBinding ControlType="{x:Type local:TreeControl}" Path="SelectedNode">
+						<m:DataContextBinding.Converter>
+							<c:ChainConverter>
+								<c:ChainedConverter Converter="{c:NullableToBooleanConverter}" />
+								<c:ChainedConverter Converter="{c:BooleanToVisibilityConverter True=Visible, False=Collapsed}" />
+							</c:ChainConverter>
+						</m:DataContextBinding.Converter>
+					</m:DataContextBinding>
+				</Canvas.Visibility>
 				<local:NodeEditorControl
 					Canvas.Left="{m:DataContextBinding SelectedNode.Position.X, ControlType=local:TreeControl}"
 					Canvas.Top="{m:DataContextBinding SelectedNode.Position.Y, ControlType=local:TreeControl}"
 					Margin="-10"
 					Background="Red"
 					ClipToBounds="True"
-					DataContext="{Binding SelectedNode}">
-					<i:Interaction.Triggers>
-						<i:EventTrigger EventName="MouseLeave">
-							<i:InvokeCommandAction Command="{m:DataContextBinding UnselectNodeCommand, ControlType=local:TreeControl}" />
-						</i:EventTrigger>
-					</i:Interaction.Triggers>
-					<local:NodeEditorControl.Visibility>
-						<m:DataContextBinding ControlType="{x:Type local:TreeControl}" Path="SelectedNode">
-							<m:DataContextBinding.Converter>
-								<c:ChainConverter>
-									<c:ChainedConverter Converter="{c:NullableToBooleanConverter}" />
-									<c:ChainedConverter Converter="{c:BooleanToVisibilityConverter True=Visible, False=Collapsed}" />
-								</c:ChainConverter>
-							</m:DataContextBinding.Converter>
-						</m:DataContextBinding>
-					</local:NodeEditorControl.Visibility>
-				</local:NodeEditorControl>
+					DataContext="{Binding SelectedNode}" />
 			</Canvas>
 		</Grid>
 	</Border>

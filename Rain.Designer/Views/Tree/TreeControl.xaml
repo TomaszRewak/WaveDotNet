@@ -75,6 +75,11 @@
 					Background="Red"
 					ClipToBounds="True"
 					DataContext="{Binding SelectedNode}">
+					<i:Interaction.Triggers>
+						<i:EventTrigger EventName="MouseLeave">
+							<i:InvokeCommandAction Command="{m:DataContextBinding UnselectNodeCommand, ControlType=local:TreeControl}" />
+						</i:EventTrigger>
+					</i:Interaction.Triggers>
 					<local:NodeEditorControl.Visibility>
 						<m:DataContextBinding ControlType="{x:Type local:TreeControl}" Path="SelectedNode">
 							<m:DataContextBinding.Converter>

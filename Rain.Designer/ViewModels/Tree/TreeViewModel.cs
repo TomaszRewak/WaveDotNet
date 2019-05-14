@@ -64,7 +64,12 @@ namespace Rain.Designer.ViewModels.Tree
 
 		private void SelectNode(NodeViewModel node)
 		{
-			this.SelectedNode = node;
+			SelectedNode = node;
+		}
+
+		private void UnselectNode()
+		{
+			SelectedNode = null;
 		}
 
 		private void RemoveNode(NodeViewModel node)
@@ -76,6 +81,7 @@ namespace Rain.Designer.ViewModels.Tree
 
 		public ICommand AddNodeCommand => new Command<Position>(AddNode);
 		public ICommand SelectNodeCommand => new Command<NodeViewModel>(SelectNode);
+		public ICommand UnselectNodeCommand => new Command(UnselectNode);
 		public ICommand RemoveNodeCommand => new Command<NodeViewModel>(RemoveNode);
     }
 }

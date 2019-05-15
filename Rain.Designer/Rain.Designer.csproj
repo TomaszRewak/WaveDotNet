@@ -141,6 +141,7 @@
     <Compile Include="Views\Converters\ColorInterpolationConverter.cs" />
     <Compile Include="Views\Converters\ColorToBrushConverter.cs" />
     <Compile Include="Views\Converters\ComparisonConverter.cs" />
+    <Compile Include="Views\Converters\DefaultValueConverter.cs" />
     <Compile Include="Views\Converters\DoubleAddConverter.cs" />
     <Compile Include="Views\Converters\DoubleMultiplyConverter.cs" />
     <Compile Include="Views\Converters\IntMultiplyConverter.cs" />

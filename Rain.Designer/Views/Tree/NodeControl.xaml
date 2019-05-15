@@ -24,29 +24,9 @@
 			Width="36"
 			Height="36"
 			HorizontalAlignment="Center"
+			Background="#e5e8ea"
 			BorderBrush="#e5e8ea"
-			CornerRadius="25">
-			<Border.Background>
-				<MultiBinding>
-					<Binding />
-					<m:DataContextBinding ControlType="{x:Type local:TreeControl}" Path="SelectedNode" />
-					<MultiBinding.Converter>
-						<c:MultiValueChainConverter>
-							<c:MultiValueChainConverter.MultiValueConverter>
-								<c:MultiValueComparisonConverter />
-							</c:MultiValueChainConverter.MultiValueConverter>
-							<c:MultiValueChainConverter.PostProcessing>
-								<c:ChainConverter>
-									<c:ChainedConverter Converter="{c:BooleanToDoubleConverter True=0.7, False=0.2}" />
-									<c:ChainedConverter Converter="{c:ColorInterpolationConverter From=White, To=ForestGreen}" />
-									<c:ChainedConverter Converter="{c:ColorToBrushConverter}" />
-								</c:ChainConverter>
-							</c:MultiValueChainConverter.PostProcessing>
-						</c:MultiValueChainConverter>
-					</MultiBinding.Converter>
-				</MultiBinding>
-			</Border.Background>
-		</Border>
+			CornerRadius="25" />
 		<Border
 			x:Name="DragHandle"
 			MouseLeftButtonDown="StartDrag"

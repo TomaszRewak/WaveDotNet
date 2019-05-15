@@ -87,9 +87,7 @@
 				<local:NodeEditorControl
 					Canvas.Left="{m:DataContextBinding SelectedNode.Position.X, ControlType=local:TreeControl}"
 					Canvas.Top="{m:DataContextBinding SelectedNode.Position.Y, ControlType=local:TreeControl}"
-					Margin="-23.5,-20.5,0,0"
-					Background="LightGray"
-					ClipToBounds="True"
+					Margin="-18.5,-15.5,0,0"
 					DataContext="{Binding SelectedNode}" />
 			</Canvas>
 		</Grid>

@@ -11,11 +11,13 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Combiners
 	internal class MaxWaveCombinerBlockViewModel : WaveBlockViewModel
 	{
 		public MaxWaveCombinerBlockViewModel() : base(1, Int32.MaxValue)
-		{ }
-
-		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new MaxWaveCombiner(waves: inputs);
+			UpdateWaveFactory();
+		}
+
+		public void UpdateWaveFactory()
+		{
+			WaveFactory = (IWave[] inputs) => new MaxWaveCombiner(waves: inputs);
 		}
 
 		public override dynamic Serialize()

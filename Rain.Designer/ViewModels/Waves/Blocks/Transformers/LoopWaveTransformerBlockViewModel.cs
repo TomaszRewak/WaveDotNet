@@ -11,18 +11,23 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Transformers
 	internal class LoopWaveTransformerBlockViewModel : WaveBlockViewModel
 	{
 		public LoopWaveTransformerBlockViewModel() : base(1, 1)
-		{ }
+		{
+			UpdateWaveFactory();
+		}
 
 		private double _period = 1;
 		public double Period
 		{
 			get => _period;
-			set => Set(ref _period, value);
+			set => Set(ref _period, value)
+				.Then(UpdateWaveFactory);
 		}
 
-		public override IWave GenerateWave(IWave[] inputs)
+		public void UpdateWaveFactory()
 		{
-			return new LoopWaveTransformer(baseWave: inputs.First(), period: Period);
+			var period = Period;
+
+			WaveFactory = (IWave[] inputs) => new LoopWaveTransformer(baseWave: inputs.First(), period: period);
 		}
 
 		public override dynamic Serialize()

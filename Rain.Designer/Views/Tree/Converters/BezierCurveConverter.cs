@@ -54,7 +54,7 @@ namespace Rain.Designer.Views.Tree.Converters
 
 		protected override object[] ConvertBack(Geometry value)
 		{
-			throw new NotImplementedException();
+			throw new NotSupportedException();
 		}
 	}
 }

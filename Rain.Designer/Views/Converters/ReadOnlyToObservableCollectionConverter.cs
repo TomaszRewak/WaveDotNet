@@ -34,7 +34,7 @@ namespace Rain.Designer.Views.Converters
 
 		public override IReadOnlyCollection<object> ConvertBack(ObservableCollection<object> value)
 		{
-			throw new NotImplementedException();
+			throw new NotSupportedException();
 		}
 	}
 

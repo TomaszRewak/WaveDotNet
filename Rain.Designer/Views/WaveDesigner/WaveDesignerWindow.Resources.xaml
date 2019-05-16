@@ -8,7 +8,7 @@
 			<Setter.Value>
 				<ControlTemplate>
 					<Border
-						Margin="2,2,0,2"
+						Margin="2"
 						Padding="10,2"
 						Background="#00ffffff"
 						BorderThickness="1"

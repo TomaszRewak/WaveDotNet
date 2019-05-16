@@ -11,18 +11,23 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 	internal class WhiteNoiseWaveGeneratorBlockViewModel : WaveBlockViewModel
 	{
 		public WhiteNoiseWaveGeneratorBlockViewModel() : base(0, 0)
-		{ }
+		{
+			UpdateWaveFactory();
+		}
 
 		private double _amplitude = 1.0;
 		public double Amplitude
 		{
 			get => _amplitude;
-			set => Set(ref _amplitude, value);
+			set => Set(ref _amplitude, value)
+				.Then(UpdateWaveFactory);
 		}
 
-		public override IWave GenerateWave(IWave[] inputs)
+		public void UpdateWaveFactory()
 		{
-			return new WhiteNoiseWaveGenerator(amplitude: Amplitude);
+			var amplitude = Amplitude;
+
+			WaveFactory = (IWave[] inputs) => new WhiteNoiseWaveGenerator(amplitude: amplitude);
 		}
 
 		public override dynamic Serialize()

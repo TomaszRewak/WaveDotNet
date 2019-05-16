@@ -28,7 +28,7 @@ namespace Rain.Designer.Views.Converters
 
 		protected override object[] ConvertBack(bool value)
 		{
-			throw new NotImplementedException();
+			throw new NotSupportedException();
 		}
 	}
 }

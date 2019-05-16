@@ -22,7 +22,7 @@ namespace Rain.Designer.Views.Converters
 
 		public override bool ConvertBack(Brush value)
 		{
-			throw new NotImplementedException();
+			throw new NotSupportedException();
 		}
 	}
 }

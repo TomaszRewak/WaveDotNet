@@ -8,6 +8,7 @@
 	xmlns:local="clr-namespace:Rain.Designer.Views.Tree"
 	xmlns:m="clr-namespace:Rain.Designer.Views.Markups"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:plots="clr-namespace:Rain.Designer.Views.Plots"
 	xmlns:wave="clr-namespace:Rain.Designer.Views.WaveDesigner"
 	xmlns:waves="clr-namespace:Rain.Designer.Views.Waves"
 	d:DesignHeight="450"
@@ -53,5 +54,6 @@
 				</Border>
 			</StackPanel>
 		</Border>
+		<plots:PlotControl DataContext="{Binding WaveFactory}" />
 	</StackPanel>
 </UserControl>

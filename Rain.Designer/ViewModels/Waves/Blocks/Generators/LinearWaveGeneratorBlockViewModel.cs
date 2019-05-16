@@ -11,25 +11,32 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 	internal class LinearWaveGeneratorBlockViewModel : WaveBlockViewModel
 	{
 		public LinearWaveGeneratorBlockViewModel() : base(0, 0)
-		{ }
+		{
+			UpdateWaveFactory();
+		}
 
 		private double _a = 1;
 		public double A
 		{
 			get => _a;
-			set => Set(ref _a, value);
+			set => Set(ref _a, value)
+				.Then(UpdateWaveFactory);
 		}
 
 		private double _b = 0;
 		public double B
 		{
 			get => _b;
-			set => Set(ref _b, value);
+			set => Set(ref _b, value)
+				.Then(UpdateWaveFactory);
 		}
 
-		public override IWave GenerateWave(IWave[] inputs)
+		public void UpdateWaveFactory()
 		{
-			return new LinearWaveGenerator(a: A, b: B);
+			var a = A;
+			var b = B;
+
+			WaveFactory = (IWave[] inputs) => new LinearWaveGenerator(a: a, b: b);
 		}
 
 		public override dynamic Serialize()

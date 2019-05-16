@@ -37,15 +37,20 @@ namespace Rain.Designer.ViewModels.Tree
 		{
 			switch (args.PropertyName)
 			{
-				case nameof(Wave):
-					UpdateWave();
+				case nameof(WaveFactory):
+					UpdateWaveFactory();
 					break;
 			}
 		}
 
 		private void WaveBlockChanged(object subTree, PropertyChangedEventArgs args)
 		{
-			UpdateWave();
+			switch (args.PropertyName)
+			{
+				case nameof(WaveBlock.WaveFactory):
+					UpdateWaveFactory();
+					break;
+			}
 		}
 
 		private IReadOnlyCollection<NodeViewModel> _inputs = new List<NodeViewModel>();
@@ -54,7 +59,7 @@ namespace Rain.Designer.ViewModels.Tree
 			get => _inputs;
 			set => Set(ref _inputs, value)
 				.ObserveChildren(InputChanged)
-				.Then(UpdateWave);
+				.Then(UpdateWaveFactory);
 		}
 
 		public IReadOnlyCollection<WaveBlockFactory> AvailableWaveBlockFactories
@@ -75,15 +80,15 @@ namespace Rain.Designer.ViewModels.Tree
 		{
 			get => _waveBlock;
 			set => Set(ref _waveBlock, value)
-				.Then(UpdateWave)
+				.Then(UpdateWaveFactory)
 				.Observe(WaveBlockChanged);
 		}
 
-		private IWave _wave;
-		public IWave Wave
+		private Func<IWave> _waveFactory;
+		public Func<IWave> WaveFactory
 		{
-			get => _wave;
-			set => Set(ref _wave, value);
+			get => _waveFactory;
+			set => Set(ref _waveFactory, value);
 		}
 
 		private Position _position;
@@ -115,20 +120,17 @@ namespace Rain.Designer.ViewModels.Tree
 			WaveBlock = WaveBlockFactory.Create();
 		}
 
-		private void UpdateWave()
+		private void UpdateWaveFactory()
 		{
-			if (_waveBuilderHelper.CanBuildWave(this))
-				Wave = _waveBuilderHelper.BuildWave(this);
-			else
-				Wave = null;
+			WaveFactory = _waveBuilderHelper.BuildWaveFactory(this);
 		}
 
 		private void Play()
 		{
-			if (Wave == null)
+			if (WaveFactory == null)
 				return;
-
-			_wavePlayerHelper.PlayWave(Wave);
+			
+			_wavePlayerHelper.PlayWave(WaveFactory());
 		}
 
 		public dynamic Serialize()

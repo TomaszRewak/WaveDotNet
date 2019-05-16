@@ -14,15 +14,20 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Filters
 		public double MaxAmplitude
 		{
 			get => _maxAmplitude;
-			set => Set(ref _maxAmplitude, value);
+			set => Set(ref _maxAmplitude, value)
+				.Then(UpdateWaveFactory);
 		}
 
 		public AmplitudeWaveFilterBlockViewModel() : base(1, 1)
-		{ }
-
-		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new AmplitudeWaveFilter(maxAmplitude: _maxAmplitude, baseWave: inputs.First());
+			UpdateWaveFactory();
+		}
+
+		public void UpdateWaveFactory()
+		{
+			var maxAmplitude = MaxAmplitude;
+
+			WaveFactory = (IWave[] inputs) => new AmplitudeWaveFilter(maxAmplitude: maxAmplitude, baseWave: inputs.First());
 		}
 
 		public override dynamic Serialize()

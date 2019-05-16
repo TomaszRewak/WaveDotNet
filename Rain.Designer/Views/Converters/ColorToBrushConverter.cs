@@ -17,7 +17,7 @@ namespace Rain.Designer.Views.Converters
 
 		public override Color ConvertBack(Brush value)
 		{
-			throw new NotImplementedException();
+			throw new NotSupportedException();
 		}
 	}
 }

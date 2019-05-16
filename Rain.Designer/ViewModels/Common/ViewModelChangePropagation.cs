@@ -23,11 +23,6 @@ namespace Rain.Designer.ViewModels.Common
 
 			return this;
 		}
-
-		internal void Observe()
-		{
-			throw new NotImplementedException();
-		}
 	}
 
 	internal static class ViewModelChangePropagationObservableSpecialization

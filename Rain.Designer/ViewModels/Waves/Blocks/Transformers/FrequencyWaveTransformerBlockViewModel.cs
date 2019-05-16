@@ -11,18 +11,23 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Transformers
 	internal class FrequencyWaveTransformerBlockViewModel : WaveBlockViewModel
 	{
 		public FrequencyWaveTransformerBlockViewModel() : base(1, 1)
-		{ }
+		{
+			UpdateWaveFactory();
+		}
 
 		private double _frequency = 1;
 		public double Frequency
 		{
 			get => _frequency;
-			set => Set(ref _frequency, value);
+			set => Set(ref _frequency, value)
+				.Then(UpdateWaveFactory);
 		}
 
-		public override IWave GenerateWave(IWave[] inputs)
+		public void UpdateWaveFactory()
 		{
-			return new FrequencyWaveTransformer(frequency: Frequency, baseWave: inputs.First());
+			var frequency = Frequency;
+
+			WaveFactory = (IWave[] inputs) => new FrequencyWaveTransformer(frequency: frequency, baseWave: inputs.First());
 		}
 
 		public override dynamic Serialize()

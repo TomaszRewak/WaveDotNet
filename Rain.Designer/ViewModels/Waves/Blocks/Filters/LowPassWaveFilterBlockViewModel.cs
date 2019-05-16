@@ -14,15 +14,20 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Filters
 		public double Alpha
 		{
 			get => _alpha;
-			set => Set(ref _alpha, value);
+			set => Set(ref _alpha, value)
+				.Then(UpdateWaveFactory);
 		}
 
 		public LowPassWaveFilterBlockViewModel() : base(1, 1)
-		{ }
-
-		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new LowPassWaveFilter(alpha: Alpha, baseWave: inputs.First());
+			UpdateWaveFactory();
+		}
+
+		public void UpdateWaveFactory()
+		{
+			var alpha = Alpha;
+
+			WaveFactory = (IWave[] inputs) => new LowPassWaveFilter(alpha: alpha, baseWave: inputs.First());
 		}
 
 		public override dynamic Serialize()

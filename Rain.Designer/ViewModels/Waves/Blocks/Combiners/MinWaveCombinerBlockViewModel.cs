@@ -11,11 +11,13 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Combiners
 	internal class MinWaveCombinerBlockViewModel : WaveBlockViewModel
 	{
 		public MinWaveCombinerBlockViewModel() : base(1, Int32.MaxValue)
-		{ }
-
-		public override IWave GenerateWave(IWave[] inputs)
 		{
-			return new MinWaveCombiner(waves: inputs);
+			UpdateWaveFactory();
+		}
+
+		public void UpdateWaveFactory()
+		{
+			WaveFactory = (IWave[] inputs) => new MinWaveCombiner(waves: inputs);
 		}
 
 		public override dynamic Serialize()

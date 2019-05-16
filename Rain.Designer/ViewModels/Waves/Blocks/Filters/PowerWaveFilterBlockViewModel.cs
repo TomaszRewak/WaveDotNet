@@ -11,18 +11,23 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Filters
 	internal class PowerWaveFilterBlockViewModel : WaveBlockViewModel
 	{
 		public PowerWaveFilterBlockViewModel() : base(1, 1)
-		{ }
+		{
+			UpdateWaveFactory();
+		}
 
 		private double _power = 2;
 		public double Power
 		{
 			get => _power;
-			set => Set(ref _power, value);
+			set => Set(ref _power, value)
+				.Then(UpdateWaveFactory);
 		}
 
-		public override IWave GenerateWave(IWave[] inputs)
+		public void UpdateWaveFactory()
 		{
-			return new PowerWaveFilter(baseWave: inputs.First(), power: Power);
+			var power = Power;
+
+			WaveFactory = (IWave[] inputs) => new PowerWaveFilter(baseWave: inputs.First(), power: power);
 		}
 
 		public override dynamic Serialize()

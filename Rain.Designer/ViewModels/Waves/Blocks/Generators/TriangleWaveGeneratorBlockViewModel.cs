@@ -11,25 +11,32 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Generators
 	internal class TriangleWaveGeneratorBlockViewModel : WaveBlockViewModel
 	{
 		public TriangleWaveGeneratorBlockViewModel() : base(0, 0)
-		{ }
+		{
+			UpdateWaveFactory();
+		}
 
 		private double _frequency = 200.0;
 		public double Frequency
 		{
 			get => _frequency;
-			set => Set(ref _frequency, value);
+			set => Set(ref _frequency, value)
+				.Then(UpdateWaveFactory);
 		}
 
 		private double _amplitude = 1.0;
 		public double Amplitude
 		{
 			get => _amplitude;
-			set => Set(ref _amplitude, value);
+			set => Set(ref _amplitude, value)
+				.Then(UpdateWaveFactory);
 		}
 
-		public override IWave GenerateWave(IWave[] inputs)
+		public void UpdateWaveFactory()
 		{
-			return new TriangleWaveGenerator(amplitude: Amplitude, frequency: Frequency);
+			var amplitude = Amplitude;
+			var frequency = Frequency;
+
+			WaveFactory = (IWave[] inputs) => new TriangleWaveGenerator(amplitude: amplitude, frequency: frequency);
 		}
 
 		public override dynamic Serialize()

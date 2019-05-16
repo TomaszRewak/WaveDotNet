@@ -33,7 +33,7 @@ namespace Rain.Designer.Views.Converters
 
 		public override Type ConvertBack(DataTemplate value)
 		{
-			throw new NotImplementedException();
+			throw new NotSupportedException();
 		}
 	}
 }

@@ -23,7 +23,7 @@ namespace Rain.Designer.Views.Converters
 
 		public override double ConvertBack(Color value)
 		{
-			throw new NotImplementedException();
+			throw new NotSupportedException();
 		}
 	}
 }

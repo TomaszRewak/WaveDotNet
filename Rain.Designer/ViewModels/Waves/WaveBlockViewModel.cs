@@ -19,9 +19,12 @@ namespace Rain.Designer.ViewModels.Waves
 			MaxInputs = maxInputs;
 		}
 
-		public bool CanGenerate(int inputsNumber) => inputsNumber >= MinInputs && inputsNumber <= MaxInputs;
-
-		public abstract IWave GenerateWave(IWave[] inputs);
+		private Func<IWave[], IWave> _waveFactory;
+		public Func<IWave[], IWave> WaveFactory
+		{
+			get => _waveFactory;
+			set => Set(ref _waveFactory, value);
+		}
 
 		public abstract dynamic Serialize();
 		public abstract void Deserialize(dynamic value);

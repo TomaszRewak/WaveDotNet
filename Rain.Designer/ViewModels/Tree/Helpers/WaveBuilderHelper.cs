@@ -8,23 +8,28 @@ using System.Threading.Tasks;
 namespace Rain.Designer.ViewModels.Tree.Helpers
 {
     internal class WaveBuilderHelper
-    {
-		public IWave BuildWave(NodeViewModel tree)
+	{
+		public Func<IWave> BuildWaveFactory(NodeViewModel tree)
 		{
-			var subWaves = tree
+			if (!CanBuildWave(tree))
+				return null;
+
+			var subWaveFactories = tree
 				.Inputs
-				.Select(BuildWave)
+				.Select(node => node.WaveFactory)
 				.ToArray();
 
-			return tree.WaveBlock.GenerateWave(subWaves);
+			return () => tree.WaveBlock.WaveFactory(subWaveFactories.Select(factory => factory()).ToArray());
 		}
 
-		public bool CanBuildWave(NodeViewModel tree)
+		private bool CanBuildWave(NodeViewModel tree)
 		{
 			return
 				tree.WaveBlock != null &&
-				tree.Inputs.All(subTree => subTree.Wave != null) &&
-				tree.WaveBlock.CanGenerate(tree.Inputs.Count);
+				tree.WaveBlock.WaveFactory != null &&
+				tree.Inputs.All(subTree => subTree.WaveFactory != null) &&
+				tree.WaveBlock.MinInputs <= tree.Inputs.Count &&
+				tree.WaveBlock.MaxInputs >= tree.Inputs.Count;
 		}
 	}
 }

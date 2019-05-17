@@ -14,6 +14,11 @@
 		<Style TargetType="TextBox">
 			<Setter Property="BorderThickness" Value="0" />
 			<Setter Property="Background" Value="#ccffffff" />
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding IsFocused, RelativeSource={RelativeSource Mode=Self}}" Value="True">
+					<Setter Property="Background" Value="#ffffff" />
+				</DataTrigger>
+			</Style.Triggers>
 		</Style>
 	</local:SimpleWaveBlockFormBase.Resources>
 	<ItemsControl ItemsSource="{Binding Fields, ElementName=Self}">

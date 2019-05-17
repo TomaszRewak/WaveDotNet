@@ -17,7 +17,10 @@ namespace Rain.Designer.Views.Converters
 
 		public override double ConvertBack(string value)
 		{
-			return double.Parse(value.Replace(',', '.'), CultureInfo.InvariantCulture);
+			if (double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var parsedValue))
+				return parsedValue;
+			else
+				return 0;
 		}
 	}
 }

@@ -16,6 +16,14 @@ namespace Rain.Designer.Views.Converters
 	{
 		public IValueConverter Converter { get; set; }
 
+		public AsyncConverter()
+		{ }
+
+		public AsyncConverter(IValueConverter converter)
+		{
+			Converter = converter;
+		}
+
 		public override AsyncConverterResult Convert(object value)
 		{
 			var converterResult = new AsyncConverterResult();

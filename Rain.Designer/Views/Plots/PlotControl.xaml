@@ -12,19 +12,30 @@
 	mc:Ignorable="d">
 	<ContentControl>
 		<ContentControl.DataContext>
-			<Binding>
-				<Binding.Converter>
-					<c:AsyncConverter>
-						<c:AsyncConverter.Converter>
-							<c:ChainConverter>
-								<c:ChainedConverter Converter="{converters:WaveFactoryToWaveConverter}" />
-								<c:ChainedConverter Converter="{converters:WaveToSamplesConverter}" />
-							</c:ChainConverter>
-						</c:AsyncConverter.Converter>
-					</c:AsyncConverter>
-				</Binding.Converter>
-			</Binding>
+			<MultiBinding Converter="{c:AsyncMultiValueConverter {converters:WaveToSamplesConverter SampleRate=48000, Width=200}}">
+				<Binding Converter="{converters:WaveFactoryToWaveConverter}" />
+				<Binding
+					Converter="{c:InvertedConverter {c:DoubleToStringConverter}}"
+					ElementName="From"
+					Path="Text" />
+				<Binding
+					Converter="{c:InvertedConverter {c:DoubleToStringConverter}}"
+					ElementName="To"
+					Path="Text" />
+			</MultiBinding>
 		</ContentControl.DataContext>
-		<TextBlock Text="{Binding Result}" />
+		<ContentControl>
+			<ContentControl.DataContext>
+				<Binding Converter="{c:AsyncConverter {converters:SamplesToBitmapConverter Height=150, BackgroundColor=Gray}}" Path="Result" />
+			</ContentControl.DataContext>
+			<StackPanel>
+				<Image
+					Width="200"
+					Height="150"
+					Source="{Binding Result, Converter={converters:BitmapToImageSourceConverter}}" />
+				<TextBox Name="From" Text="0" />
+				<TextBox Name="To" Text="2" />
+			</StackPanel>
+		</ContentControl>
 	</ContentControl>
 </UserControl>

@@ -132,6 +132,7 @@
     <Compile Include="Views\Common\UserControl.cs" />
     <Compile Include="Views\Common\ValueConverter.cs" />
     <Compile Include="Views\Converters\AsyncConverter.cs" />
+    <Compile Include="Views\Converters\AsyncMultiValueConverter.cs" />
     <Compile Include="Views\Converters\BooleanToColorConverter.cs" />
     <Compile Include="Views\Converters\BooleanToDoubleConverter.cs" />
     <Compile Include="Views\Converters\BooleanToSolidColorBrushConverter.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Views\Converters\IntMultiplyConverter.cs" />
     <Compile Include="Views\Converters\FloatToStringConverter.cs" />
     <Compile Include="Views\Converters\IntToDoubleConverter.cs" />
+    <Compile Include="Views\Converters\InvertedConverter.cs" />
     <Compile Include="Views\Converters\MultiValueChainConverter.cs" />
     <Compile Include="Views\Converters\MultiValueComparisonConverter.cs" />
     <Compile Include="Views\Converters\MultiValueConnectionValidationConverter.cs" />
@@ -165,6 +167,8 @@
     <Compile Include="Views\Markups\DataContextBinding.cs" />
     <Compile Include="Views\Markups\DivideDouble.cs" />
     <Compile Include="Views\Markups\MultiplyDouble.cs" />
+    <Compile Include="Views\Plots\Converters\BitmapToImageSourceConverter.cs" />
+    <Compile Include="Views\Plots\Converters\SamplesToBitmapConverter.cs" />
     <Compile Include="Views\Plots\Converters\WaveFactoryToWaveConverter.cs" />
     <Compile Include="Views\Plots\Converters\WaveToSamplesConverter.cs" />
     <Compile Include="Views\Plots\PlotControl.xaml.cs">

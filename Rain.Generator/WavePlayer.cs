@@ -10,7 +10,7 @@ namespace Rain.Generator
 	{
 		private readonly IWavePlayer _player;
 
-		public WavePlayer(IWave wave, int sampleRate = 16000) :
+		public WavePlayer(IWave wave, int sampleRate = 48000) :
 			this(new WaveProvider(sampleRate, new[] { wave }))
 		{ }
 

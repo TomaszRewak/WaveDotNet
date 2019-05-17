@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Rain.Designer.Views.Plots.Converters
 {
-	internal class NodeToWaveConverter : ValueConverter<Func<IWave>, IWave>
+	internal class WaveFactoryToWaveConverter : ValueConverter<Func<IWave>, IWave>
 	{
 		public override IWave Convert(Func<IWave> value)
 		{

@@ -131,6 +131,7 @@
     <Compile Include="Views\Common\MultiValueConverter.cs" />
     <Compile Include="Views\Common\UserControl.cs" />
     <Compile Include="Views\Common\ValueConverter.cs" />
+    <Compile Include="Views\Converters\AsyncConverter.cs" />
     <Compile Include="Views\Converters\BooleanToColorConverter.cs" />
     <Compile Include="Views\Converters\BooleanToDoubleConverter.cs" />
     <Compile Include="Views\Converters\BooleanToSolidColorBrushConverter.cs" />
@@ -164,7 +165,8 @@
     <Compile Include="Views\Markups\DataContextBinding.cs" />
     <Compile Include="Views\Markups\DivideDouble.cs" />
     <Compile Include="Views\Markups\MultiplyDouble.cs" />
-    <Compile Include="Views\Plots\Converters\NodeToWaveConverter.cs" />
+    <Compile Include="Views\Plots\Converters\WaveFactoryToWaveConverter.cs" />
+    <Compile Include="Views\Plots\Converters\WaveToSamplesConverter.cs" />
     <Compile Include="Views\Plots\PlotControl.xaml.cs">
       <DependentUpon>PlotControl.xaml</DependentUpon>
     </Compile>

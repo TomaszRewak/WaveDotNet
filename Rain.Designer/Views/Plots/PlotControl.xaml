@@ -60,22 +60,22 @@
 							</Style.Triggers>
 						</Style>
 					</Canvas.Style>
-					<Border Canvas.Top="0" Canvas.Right="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Canvas}}">
+					<Border Canvas.Left="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Canvas}}" Canvas.Top="0">
 						<Border
-							Margin="0,0,10,0"
+							Margin="10,0,0,0"
 							Padding="5,2"
 							Background="{Binding Background, ElementName=Self}"
-							CornerRadius="5 0 0 5">
-							<TextBlock Foreground="White" Text="{Binding Result, Converter={converters:MaxSampleConverter}, StringFormat={}{0:#,0.00}}" />
+							CornerRadius="0 5 5 0">
+							<TextBlock Foreground="White" Text="{Binding Result, Converter={converters:MaxSampleConverter}, StringFormat={}{0:+#,0.00;-#,0.00}}" />
 						</Border>
 					</Border>
-					<Border Canvas.Right="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Canvas}}" Canvas.Bottom="0">
+					<Border Canvas.Left="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Canvas}}" Canvas.Bottom="0">
 						<Border
-							Margin="0,0,10,0"
+							Margin="10,0,0,0"
 							Padding="5,2"
 							Background="{Binding Background, ElementName=Self}"
-							CornerRadius="5 0 0 5">
-							<TextBlock Foreground="White" Text="{Binding Result, Converter={converters:MinSampleConverter}, StringFormat={}{0:#,0.00}}" />
+							CornerRadius="0 5 5 0">
+							<TextBlock Foreground="White" Text="{Binding Result, Converter={converters:MinSampleConverter}, StringFormat={}{0:+#,0.00;-#,0.00}}" />
 						</Border>
 					</Border>
 					<Path

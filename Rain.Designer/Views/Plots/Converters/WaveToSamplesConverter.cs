@@ -11,7 +11,8 @@ namespace Rain.Designer.Views.Plots.Converters
 {
 	internal class WaveToSamplesConverter : MultiValueConverter<(double, double)[]>
 	{
-		public int SampleRate { get; set; }
+		private readonly Random _random = new Random();
+
 		public int Width { get; set; }
 
 		protected override (double, double)[] Convert(MultiValueConverterProvider valueProvider)
@@ -28,13 +29,19 @@ namespace Rain.Designer.Views.Plots.Converters
 		{
 			var values = PrepareBuffer();
 
-			for (var time = from; time < to; time += 1.0 / SampleRate)
+			for (int i = 0; i < Width; i++)
 			{
-				var sample = wave.Probe(time);
-				var index = (int)(Width * (time - from) / (to - from));
+				var (min, max) = values[i];
 
-				var (min, max) = values[index];
-				values[index] = (Math.Min(min, sample), Math.Max(max, sample));
+				for (int probe = 0; probe < 500; probe++)
+				{
+					var sample = wave.Probe(from + (i + _random.NextDouble()) / Width * (to - from));
+
+					min = Math.Min(min, sample);
+					max = Math.Max(max, sample);
+				}
+
+				values[i] = (min, max);
 			}
 
 			return values;

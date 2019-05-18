@@ -166,8 +166,9 @@
     <Compile Include="Views\Markups\DataContextBinding.cs" />
     <Compile Include="Views\Markups\DivideDouble.cs" />
     <Compile Include="Views\Markups\MultiplyDouble.cs" />
-    <Compile Include="Views\Plots\Converters\BitmapToImageSourceConverter.cs" />
-    <Compile Include="Views\Plots\Converters\SamplesToBitmapConverter.cs" />
+    <Compile Include="Views\Plots\Converters\MaxSampleConverter.cs" />
+    <Compile Include="Views\Plots\Converters\MinSampleConverter.cs" />
+    <Compile Include="Views\Plots\Converters\SamplesToPathConverter.cs" />
     <Compile Include="Views\Plots\Converters\WaveFactoryToWaveConverter.cs" />
     <Compile Include="Views\Plots\Converters\WaveToSamplesConverter.cs" />
     <Compile Include="Views\Plots\PlotControl.xaml.cs">

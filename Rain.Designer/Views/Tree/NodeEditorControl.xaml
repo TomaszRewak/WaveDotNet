@@ -50,10 +50,9 @@
 						Content="Remove"
 						Foreground="#bbffffff"
 						Style="{DynamicResource PanelButtonStyle}" />
-
 				</Border>
 			</StackPanel>
 		</Border>
-		<plots:PlotControl DataContext="{Binding WaveFactory}" />
+		<plots:PlotControl Margin="0,5,0,0" Background="{Binding WaveBlockFactory.Color, Converter={c:ColorToBrushConverter}, FallbackValue=Gray}" />
 	</StackPanel>
 </UserControl>

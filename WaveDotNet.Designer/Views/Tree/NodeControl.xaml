@@ -1,0 +1,123 @@
+﻿<local:NodeControlBase
+	x:Class="WaveDotNet.Designer.Views.Tree.NodeControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:c="clr-namespace:WaveDotNet.Designer.Views.Converters"
+	xmlns:combiners="clr-namespace:WaveDotNet.Designer.ViewModels.Waves.Blocks.Combiners"
+	xmlns:controls="clr-namespace:WaveDotNet.Designer.Views.Tree.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:filters="clr-namespace:WaveDotNet.Designer.ViewModels.Waves.Blocks.Filters"
+	xmlns:generators="clr-namespace:WaveDotNet.Designer.ViewModels.Waves.Blocks.Generators"
+	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+	xmlns:local="clr-namespace:WaveDotNet.Designer.Views.Tree"
+	xmlns:m="clr-namespace:WaveDotNet.Designer.Views.Markups"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:s="clr-namespace:System;assembly=mscorlib"
+	xmlns:transformers="clr-namespace:WaveDotNet.Designer.ViewModels.Waves.Blocks.Transformers"
+	d:DesignHeight="450"
+	d:DesignWidth="800"
+	x:ClassModifier="internal"
+	MouseDown="MouseDownWithin"
+	mc:Ignorable="d">
+	<Grid Margin="-20">
+		<Border
+			Width="36"
+			Height="36"
+			HorizontalAlignment="Center"
+			Background="#e5e8ea"
+			BorderBrush="#e5e8ea"
+			CornerRadius="25" />
+		<Border
+			x:Name="DragHandle"
+			MouseLeftButtonDown="StartDrag"
+			MouseLeftButtonUp="EndDrag"
+			MouseMove="Drag">
+			<controls:NodePartControl
+				Width="25"
+				Height="25"
+				HorizontalAlignment="Center"
+				Background="{Binding WaveBlockFactory.Color, Converter={c:ColorToBrushConverter}}"
+				Text="{Binding WaveBlockFactory.Icon}" />
+		</Border>
+		<controls:NodePartControl
+			Width="25"
+			Height="25"
+			Margin="0,-15,0,0"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Top"
+			Background="LightGray"
+			MouseDown="TriggerStartConnection"
+			MouseUp="TriggerEndConnection"
+			Text="⊙">
+			<controls:NodePartControl.IsEnabled>
+				<MultiBinding Converter="{c:MultiValueChainConverter MultiValueConverter={c:MultiValueConnectionValidationConverter}}">
+					<Binding Path="ConnectionNode" RelativeSource="{RelativeSource AncestorType=local:TreeControl}" />
+					<Binding />
+				</MultiBinding>
+			</controls:NodePartControl.IsEnabled>
+			<controls:NodePartControl.Style>
+				<Style TargetType="controls:NodePartControl">
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding IsEnabled, RelativeSource={RelativeSource Mode=Self}}" Value="True">
+							<DataTrigger.EnterActions>
+								<BeginStoryboard>
+									<Storyboard>
+										<ColorAnimation
+											Storyboard.TargetProperty="Background.Color"
+											To="#b88300"
+											Duration="00:00:00.15" />
+									</Storyboard>
+								</BeginStoryboard>
+							</DataTrigger.EnterActions>
+							<DataTrigger.ExitActions>
+								<BeginStoryboard>
+									<Storyboard>
+										<ColorAnimation
+											Storyboard.TargetProperty="Background.Color"
+											To="LightGray"
+											Duration="00:00:00.15" />
+									</Storyboard>
+								</BeginStoryboard>
+							</DataTrigger.ExitActions>
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</controls:NodePartControl.Style>
+		</controls:NodePartControl>
+		<Canvas
+			Height="25"
+			Margin="21,0,0,-10"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Bottom">
+			<local:ConnectionHandlesControl
+				DataContext="{Binding}"
+				FontSize="10"
+				StartConnection="TriggerStartConnection" />
+		</Canvas>
+		<controls:NodePartControl
+			Width="25"
+			Height="25"
+			Margin="-6,0,0,-10"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Bottom"
+			FontSize="13"
+			Text="⯈">
+			<controls:NodePartControl.Background>
+				<Binding Path="WaveFactory">
+					<Binding.Converter>
+						<c:ChainConverter>
+							<c:ChainedConverter Converter="{c:NullableToBooleanConverter}" />
+							<c:ChainedConverter Converter="{c:BooleanToColorConverter True=#4a9142, False=LightGray}" />
+							<c:ChainedConverter Converter="{c:ColorToBrushConverter}" />
+						</c:ChainConverter>
+					</Binding.Converter>
+				</Binding>
+			</controls:NodePartControl.Background>
+			<i:Interaction.Triggers>
+				<i:EventTrigger EventName="MouseUp">
+					<i:InvokeCommandAction Command="{Binding PlayCommand}" />
+				</i:EventTrigger>
+			</i:Interaction.Triggers>
+		</controls:NodePartControl>
+	</Grid>
+</local:NodeControlBase>

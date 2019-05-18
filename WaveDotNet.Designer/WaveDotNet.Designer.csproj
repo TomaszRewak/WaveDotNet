@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DF8DE4B4-8CED-435D-8CDE-7244B5431EC7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WaveDotNet.Designer</RootNamespace>
+    <AssemblyName>WaveDotNet.Designer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.1</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.3.0.0-preview3.19153.1\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.0.0-preview3.19153.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="NAudio, Version=1.9.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.9.0-preview2\lib\net35\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.2\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="DataStructures\CanvasPoint.cs" />
+    <Compile Include="DataStructures\MeshPoint.cs" />
+    <Compile Include="DataStructures\UnorderedPair.cs" />
+    <Compile Include="Modules\Helpers\ModuleFactoryHelper.cs" />
+    <Compile Include="Modules\TracksModule.cs" />
+    <Compile Include="Modules\TreeModule.cs" />
+    <Compile Include="Modules\WaveDesignerModule.cs" />
+    <Compile Include="Modules\WavesModule.cs" />
+    <Compile Include="ViewModels\Common\Command.cs" />
+    <Compile Include="ViewModels\Common\ISerializable.cs" />
+    <Compile Include="ViewModels\Common\ViewModel.cs" />
+    <Compile Include="ViewModels\Common\ViewModelChange.cs" />
+    <Compile Include="ViewModels\Common\ViewModelChangePropagation.cs" />
+    <Compile Include="ViewModels\Tree\Helpers\ConnectionsHelper.cs" />
+    <Compile Include="ViewModels\Tree\Helpers\WaveBlockSerializationHelper.cs" />
+    <Compile Include="ViewModels\WaveDesigner\Helpers\SerializationHelper.cs" />
+    <Compile Include="ViewModels\Tracks\TracksViewModel.cs" />
+    <Compile Include="ViewModels\Tracks\TrackViewModel.cs" />
+    <Compile Include="ViewModels\Tree\Helpers\WaveBlockFactoryHelper.cs" />
+    <Compile Include="ViewModels\Tree\Helpers\WaveBuilderHelper.cs" />
+    <Compile Include="ViewModels\Tree\Helpers\WavePlayerHelper.cs" />
+    <Compile Include="ViewModels\WaveDesigner\Helpers\FileHelper.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Combiners\AdditiveWaveCombinerBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Combiners\MaxWaveCombinerBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Combiners\MinWaveCombinerBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Combiners\MultiplicationWaveCombinerBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Filters\AmplitudeWaveFilterBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Filters\AveragingWaveFilterBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Filters\PowerWaveFilterBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Generators\LinearWaveGeneratorBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Generators\SinWaveGeneratorBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Generators\SquareWaveGeneratorBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Generators\TriangleWaveGeneratorBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Transformers\AmplitudeWaveTransformerBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Transformers\FrequencyWaveTransformerBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\Blocks\Transformers\LoopWaveTransformerBlockViewModel.cs" />
+    <Compile Include="ViewModels\Waves\WaveBlockViewModel.cs" />
+    <Compile Include="ViewModels\Tree\TreeViewModel.cs" />
+    <Compile Include="ViewModels\Tree\NodeViewModel.cs" />
+    <Compile Include="ViewModels\WaveDesigner\WaveDesignerViewModel.cs" />
+    <Compile Include="Views\Common\DependencyObject.cs" />
+    <Compile Include="Views\Common\MultiValueConverter.cs" />
+    <Compile Include="Views\Common\UserControl.cs" />
+    <Compile Include="Views\Common\ValueConverter.cs" />
+    <Compile Include="Views\Converters\AsyncConverter.cs" />
+    <Compile Include="Views\Converters\AsyncMultiValueConverter.cs" />
+    <Compile Include="Views\Converters\BooleanToColorConverter.cs" />
+    <Compile Include="Views\Converters\BooleanToDoubleConverter.cs" />
+    <Compile Include="Views\Converters\BooleanToSolidColorBrushConverter.cs" />
+    <Compile Include="Views\Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Views\Converters\ChainConverter.cs" />
+    <Compile Include="Views\Converters\ColorBrightnessConverter.cs" />
+    <Compile Include="Views\Converters\ColorDarknessConverter.cs" />
+    <Compile Include="Views\Converters\ColorInterpolationConverter.cs" />
+    <Compile Include="Views\Converters\ColorToBrushConverter.cs" />
+    <Compile Include="Views\Converters\ComparisonConverter.cs" />
+    <Compile Include="Views\Converters\DefaultValueConverter.cs" />
+    <Compile Include="Views\Converters\DoubleAddConverter.cs" />
+    <Compile Include="Views\Converters\DoubleMultiplyConverter.cs" />
+    <Compile Include="Views\Converters\IntMultiplyConverter.cs" />
+    <Compile Include="Views\Converters\FloatToStringConverter.cs" />
+    <Compile Include="Views\Converters\IntToDoubleConverter.cs" />
+    <Compile Include="Views\Converters\InvertedConverter.cs" />
+    <Compile Include="Views\Converters\MultiValueChainConverter.cs" />
+    <Compile Include="Views\Converters\MultiValueComparisonConverter.cs" />
+    <Compile Include="Views\Converters\MultiValueConnectionValidationConverter.cs" />
+    <Compile Include="Views\Converters\MultiValueCoordinatesToPointConverter.cs" />
+    <Compile Include="Views\Converters\MultiValueDoubleAddConverter.cs" />
+    <Compile Include="Views\Converters\MultiValueIntOrderCheckConverter.cs" />
+    <Compile Include="Views\Converters\NullableToBooleanConverter.cs" />
+    <Compile Include="Views\Converters\PositionOffsetConverter.cs" />
+    <Compile Include="Views\Converters\ReadOnlyToObservableCollectionConverter.cs" />
+    <Compile Include="Views\Converters\SolidColorBrushToColorConverter.cs" />
+    <Compile Include="Views\Converters\TypeToDataTemplateConverter.cs" />
+    <Compile Include="Views\Converters\ObjectToTypeConverter.cs" />
+    <Compile Include="Views\Converters\SwitchConverter.cs" />
+    <Compile Include="Views\Markups\AddDouble.cs" />
+    <Compile Include="Views\Markups\DataContextBinding.cs" />
+    <Compile Include="Views\Markups\DivideDouble.cs" />
+    <Compile Include="Views\Markups\MultiplyDouble.cs" />
+    <Compile Include="Views\Plots\Converters\MaxSampleConverter.cs" />
+    <Compile Include="Views\Plots\Converters\MinSampleConverter.cs" />
+    <Compile Include="Views\Plots\Converters\SamplesToPathConverter.cs" />
+    <Compile Include="Views\Plots\Converters\WaveFactoryToWaveConverter.cs" />
+    <Compile Include="Views\Plots\Converters\WaveToSamplesConverter.cs" />
+    <Compile Include="Views\Plots\PlotControl.xaml.cs">
+      <DependentUpon>PlotControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\ConnectionHandlesControl.xaml.cs">
+      <DependentUpon>ConnectionHandlesControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\Controls\ConnectionHandleControl.xaml.cs">
+      <DependentUpon>ConnectionHandleControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tracks\TrackControl.xaml.cs">
+      <DependentUpon>TrackControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tracks\TracksControl.xaml.cs">
+      <DependentUpon>TracksControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\ConnectionControl.xaml.cs">
+      <DependentUpon>ConnectionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\ConnectionsControl.xaml.cs">
+      <DependentUpon>ConnectionsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\Converters\BezierCurveConverter.cs" />
+    <Compile Include="Views\Tree\NodeEditorControl.xaml.cs">
+      <DependentUpon>NodeEditorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Filters\AmplitudeWaveFilterBlockControl.xaml.cs">
+      <DependentUpon>AmplitudeWaveFilterBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Filters\AveragingWaveFilterBlockControl.xaml.cs">
+      <DependentUpon>AveragingWaveFilterBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Filters\PowerWaveFilterBlockControl.xaml.cs">
+      <DependentUpon>PowerWaveFilterBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Generators\LinearWaveGeneratorBlockControl.xaml.cs">
+      <DependentUpon>LinearWaveGeneratorBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Generators\SquareWaveGeneratorBlockControl.xaml.cs">
+      <DependentUpon>SquareWaveGeneratorBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Generators\SinWaveGeneratorBlockControl.xaml.cs">
+      <DependentUpon>SinWaveGeneratorBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Generators\TriangleWaveGeneratorBlockControl.xaml.cs">
+      <DependentUpon>TriangleWaveGeneratorBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Transformers\AmplitudeWaveTransformerBlockControl.xaml.cs">
+      <DependentUpon>AmplitudeWaveTransformerBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Transformers\FrequencyWaveTransformerBlockControl.xaml.cs">
+      <DependentUpon>FrequencyWaveTransformerBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Blocks\Transformers\LoopWaveTransformerBlockControl.xaml.cs">
+      <DependentUpon>LoopWaveTransformerBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\Controls\SimpleWaveBlockForm.xaml.cs">
+      <DependentUpon>SimpleWaveBlockForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Waves\WaveBlockControl.xaml.cs">
+      <DependentUpon>WaveBlockControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\Plots\PlotControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tree\ConnectionHandlesControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tree\Controls\ConnectionHandleControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tracks\TrackControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tracks\TracksControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tree\ConnectionControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tree\ConnectionsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tree\Controls\NodePartControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tree\NodeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tree\NodeEditorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Tree\TreeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WaveDesigner\WaveDesignerWindow.Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WaveDesigner\WaveDesignerWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\Tree\Controls\NodePartControl.xaml.cs">
+      <DependentUpon>NodePartControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\NodeControl.xaml.cs">
+      <DependentUpon>NodeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tree\TreeControl.xaml.cs">
+      <DependentUpon>TreeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WaveDesigner\WaveDesignerWindow.xaml.cs">
+      <DependentUpon>WaveDesignerWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\Waves\Blocks\Filters\AmplitudeWaveFilterBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Filters\AveragingWaveFilterBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Filters\PowerWaveFilterBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Generators\LinearWaveGeneratorBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Generators\SquareWaveGeneratorBlockControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Generators\SinWaveGeneratorBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Generators\TriangleWaveGeneratorBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Transformers\AmplitudeWaveTransformerBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Transformers\FrequencyWaveTransformerBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Blocks\Transformers\LoopWaveTransformerBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\Controls\SimpleWaveBlockForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Waves\WaveBlockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WaveDotNet.Generator\WaveDotNet.Generator.csproj">
+      <Project>{17233837-5ACD-40CE-9CCF-B282376BB53A}</Project>
+      <Name>WaveDotNet.Generator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WaveDotNet.Wave\WaveDotNet.Wave.csproj">
+      <Project>{BF069839-0A53-41C0-83EE-F4E1C0DD2ABB}</Project>
+      <Name>WaveDotNet.Wave</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

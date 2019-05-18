@@ -1,0 +1,21 @@
+﻿<UserControl
+	x:Class="WaveDotNet.Designer.Views.Waves.Blocks.Generators.SinWaveGeneratorBlockControl"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:c="clr-namespace:WaveDotNet.Designer.Views.Converters"
+	xmlns:controls="clr-namespace:WaveDotNet.Designer.Views.Waves.Controls"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="clr-namespace:WaveDotNet.Designer.Views.Waves.Blocks.Generators"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	d:DesignHeight="450"
+	d:DesignWidth="800"
+	mc:Ignorable="d">
+	<controls:SimpleWaveBlockForm>
+		<controls:SimpleWaveBlockFormField Name="Frequency">
+			<TextBox Text="{Binding Frequency, Converter={c:DoubleToStringConverter}, UpdateSourceTrigger=PropertyChanged}" />
+		</controls:SimpleWaveBlockFormField>
+		<controls:SimpleWaveBlockFormField Name="Amplitude">
+			<TextBox Text="{Binding Amplitude, Converter={c:DoubleToStringConverter}, UpdateSourceTrigger=PropertyChanged}" />
+		</controls:SimpleWaveBlockFormField>
+	</controls:SimpleWaveBlockForm>
+</UserControl>

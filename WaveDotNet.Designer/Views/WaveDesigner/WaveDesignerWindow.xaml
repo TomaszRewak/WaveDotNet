@@ -1,0 +1,44 @@
+﻿<Window
+	x:Class="WaveDotNet.Designer.Views.WaveDesigner.WaveDesignerWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:local="clr-namespace:WaveDotNet.Designer"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:tracks="clr-namespace:WaveDotNet.Designer.Views.Tracks"
+	xmlns:tree="clr-namespace:WaveDotNet.Designer.Views.Tree"
+	xmlns:vm="clr-namespace:WaveDotNet.Designer.ViewModels.WaveDesigner"
+	Title="WaveDotNet.NET"
+	Width="800"
+	Height="450"
+	d:DataContext="{d:DesignInstance vm:WaveDesignerViewModel}"
+	mc:Ignorable="d">
+	<Window.Resources>
+		<ResourceDictionary Source="WaveDesignerWindow.Resources.xaml" />
+	</Window.Resources>
+	<Grid Background="#2d333a">
+		<tree:TreeControl DataContext="{Binding TreeDesigner}" />
+		<Border
+			HorizontalAlignment="Left"
+			VerticalAlignment="Top"
+			BorderThickness="0,0,0,1">
+			<StackPanel Orientation="Horizontal">
+				<Button
+					Command="{Binding SaveCommand}"
+					Content="Save"
+					Style="{DynamicResource PanelButtonStyle}" />
+				<Button
+					Command="{Binding LoadCommand}"
+					Content="Load"
+					Style="{DynamicResource PanelButtonStyle}" />
+			</StackPanel>
+		</Border>
+		<Border
+			Margin="0,0,-1,0"
+			HorizontalAlignment="Left"
+			VerticalAlignment="Bottom"
+			BorderThickness="0,1,0,0">
+			<tracks:TracksControl DataContext="{Binding Tracks}" />
+		</Border>
+	</Grid>
+</Window>

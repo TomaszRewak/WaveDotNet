@@ -8,19 +8,21 @@ using System.Threading.Tasks;
 
 namespace Rain.Designer.Views.Converters
 {
-	internal class DoubleToStringConverter : ValueConverter<double, string>
+	internal class DoubleToStringConverter : ValueConverter<double?, string>
 	{
-		public override string Convert(double value)
+		public override string Convert(double? value)
 		{
-			return value.ToString();
+			return value?.ToString(CultureInfo.InvariantCulture);
 		}
 
-		public override double ConvertBack(string value)
+		public override double? ConvertBack(string value)
 		{
+			if (value.EndsWith("."))
+				return null;
 			if (double.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out var parsedValue))
 				return parsedValue;
 			else
-				return 0;
+				return null;
 		}
 	}
 }

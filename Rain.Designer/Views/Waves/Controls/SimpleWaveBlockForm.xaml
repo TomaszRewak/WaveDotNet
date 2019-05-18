@@ -25,14 +25,22 @@
 		<ItemsControl.ItemTemplate>
 			<DataTemplate>
 				<StackPanel>
-					<StackPanel Margin="0,10,0,5" Orientation="Horizontal">
+					<DockPanel Margin="0,10,0,5" LastChildFill="False">
 						<Rectangle
 							Width="10"
 							Margin="0,0,5,0"
+							DockPanel.Dock="Left"
 							Fill="Black"
 							Opacity="0.2" />
-						<TextBlock Foreground="#bbffffff" Text="{Binding Name}" />
-					</StackPanel>
+						<TextBlock
+							DockPanel.Dock="Left"
+							Foreground="#bbffffff"
+							Text="{Binding Name}" />
+						<TextBlock
+							DockPanel.Dock="Right"
+							Foreground="#55ffffff"
+							Text="{Binding Description}" />
+					</DockPanel>
 					<ContentControl Content="{Binding DataContext.Input, RelativeSource={RelativeSource Mode=TemplatedParent}}" DataContext="{Binding DataContext, ElementName=Self}" />
 				</StackPanel>
 			</DataTemplate>

@@ -10,7 +10,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Filters
 {
 	internal class LowPassWaveFilterBlockViewModel : WaveBlockViewModel
 	{
-		private double _alpha = 0.9;
+		private double _alpha = 1000;
 		public double Alpha
 		{
 			get => _alpha;

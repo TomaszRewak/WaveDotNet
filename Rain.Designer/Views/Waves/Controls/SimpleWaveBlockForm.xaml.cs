@@ -30,6 +30,13 @@ namespace Rain.Designer.Views.Waves.Controls
 			set => SetValue(NameProperty, value);
 		}
 
+		private static readonly DependencyProperty DescriptionProperty = Register<string>(nameof(Description));
+		public string Description
+		{
+			get => GetValue<string>(DescriptionProperty);
+			set => SetValue(DescriptionProperty, value);
+		}
+
 		private static readonly DependencyProperty InputProperty = Register<UIElement>(nameof(Input));
 		public UIElement Input
 		{

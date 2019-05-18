@@ -11,8 +11,8 @@
 	d:DesignWidth="800"
 	mc:Ignorable="d">
 	<controls:SimpleWaveBlockForm>
-		<controls:SimpleWaveBlockFormField Name="Power">
-			<TextBox Text="{Binding Power, Converter={c:DoubleToStringConverter}}" />
+		<controls:SimpleWaveBlockFormField Name="Power" Description="sign(x) * |x|^p">
+			<TextBox Text="{Binding Power, Converter={c:DoubleToStringConverter}, UpdateSourceTrigger=PropertyChanged}" />
 		</controls:SimpleWaveBlockFormField>
 	</controls:SimpleWaveBlockForm>
 </UserControl>

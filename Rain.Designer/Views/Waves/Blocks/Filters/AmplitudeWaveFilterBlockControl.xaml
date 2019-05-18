@@ -12,7 +12,7 @@
 	mc:Ignorable="d">
 	<controls:SimpleWaveBlockForm>
 		<controls:SimpleWaveBlockFormField Name="Max. amplitude">
-			<TextBox Text="{Binding MaxAmplitude, Converter={c:DoubleToStringConverter}}" />
+			<TextBox Text="{Binding MaxAmplitude, Converter={c:DoubleToStringConverter}, UpdateSourceTrigger=PropertyChanged}" />
 		</controls:SimpleWaveBlockFormField>
 	</controls:SimpleWaveBlockForm>
 </UserControl>

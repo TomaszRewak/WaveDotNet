@@ -12,13 +12,13 @@
 	mc:Ignorable="d">
 	<controls:SimpleWaveBlockForm>
 		<controls:SimpleWaveBlockFormField Name="Multiplier">
-			<TextBox Text="{Binding Multiplier, Converter={c:DoubleToStringConverter}}" />
+			<TextBox Text="{Binding Multiplier, Converter={c:DoubleToStringConverter}, UpdateSourceTrigger=PropertyChanged}" />
 		</controls:SimpleWaveBlockFormField>
 		<controls:SimpleWaveBlockFormField Name="Vertical offser">
-			<TextBox Text="{Binding VerticalOffset, Converter={c:DoubleToStringConverter}}" />
+			<TextBox Text="{Binding VerticalOffset, Converter={c:DoubleToStringConverter}, UpdateSourceTrigger=PropertyChanged}" />
 		</controls:SimpleWaveBlockFormField>
 		<controls:SimpleWaveBlockFormField Name="Horizontal offser">
-			<TextBox Text="{Binding HorizontalOffset, Converter={c:DoubleToStringConverter}}" />
+			<TextBox Text="{Binding HorizontalOffset, Converter={c:DoubleToStringConverter}, UpdateSourceTrigger=PropertyChanged}" />
 		</controls:SimpleWaveBlockFormField>
 	</controls:SimpleWaveBlockForm>
 </UserControl>

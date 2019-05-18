@@ -12,7 +12,7 @@
 	mc:Ignorable="d">
 	<controls:SimpleWaveBlockForm>
 		<controls:SimpleWaveBlockFormField Name="Period">
-			<TextBox Text="{Binding Period, Converter={c:DoubleToStringConverter}}" />
+			<TextBox Text="{Binding Period, Converter={c:DoubleToStringConverter}, UpdateSourceTrigger=PropertyChanged}" />
 		</controls:SimpleWaveBlockFormField>
 	</controls:SimpleWaveBlockForm>
 </UserControl>

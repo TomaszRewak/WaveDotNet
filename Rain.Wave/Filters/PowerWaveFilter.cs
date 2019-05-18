@@ -19,7 +19,7 @@ namespace Rain.Wave.Filters
 		{
 			var value = _baseWave.Probe(time);
 
-			return Math.Pow(value, _power);
+			return Math.Sign(value) * Math.Pow(Math.Abs(value), _power);
 		}
 	}
 }

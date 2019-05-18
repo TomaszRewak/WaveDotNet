@@ -11,8 +11,8 @@
 	d:DesignWidth="800"
 	mc:Ignorable="d">
 	<controls:SimpleWaveBlockForm>
-		<controls:SimpleWaveBlockFormField Name="α">
-			<TextBox Text="{Binding Alpha, Converter={c:DoubleToStringConverter}}" />
+		<controls:SimpleWaveBlockFormField Name="α" Description="[f(x-1/α) + f(x+1/α)] / 2">
+			<TextBox Text="{Binding Alpha, Converter={c:DoubleToStringConverter}, UpdateSourceTrigger=PropertyChanged}" />
 		</controls:SimpleWaveBlockFormField>
 	</controls:SimpleWaveBlockForm>
 </UserControl>

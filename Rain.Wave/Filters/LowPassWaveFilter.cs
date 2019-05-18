@@ -6,9 +6,6 @@ namespace Rain.Wave.Filters
 {
 	public class LowPassWaveFilter : IWave
 	{
-		double _power = 0;
-		double _lastProbe = int.MinValue;
-
 		private readonly IWave _baseWave;
 		private readonly double _alpha;
 
@@ -20,12 +17,7 @@ namespace Rain.Wave.Filters
 
 		public double Probe(double time)
 		{
-			if (_lastProbe == time)
-				return _power;
-
-			_lastProbe = time;
-
-			return _power = _alpha * _power + (1 - _alpha) * _baseWave.Probe(time);
+			return (_baseWave.Probe(time - 1 / _alpha) + _baseWave.Probe(time + 1 / _alpha)) / 2;
 		}
 	}
 }

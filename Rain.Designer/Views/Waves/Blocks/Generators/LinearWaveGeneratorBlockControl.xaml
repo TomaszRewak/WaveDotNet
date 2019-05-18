@@ -12,10 +12,10 @@
 	mc:Ignorable="d">
 	<controls:SimpleWaveBlockForm>
 		<controls:SimpleWaveBlockFormField Name="A">
-			<TextBox Text="{Binding A, Converter={c:DoubleToStringConverter}}" />
+			<TextBox Text="{Binding A, Converter={c:DoubleToStringConverter}, UpdateSourceTrigger=PropertyChanged}" />
 		</controls:SimpleWaveBlockFormField>
 		<controls:SimpleWaveBlockFormField Name="B">
-			<TextBox Text="{Binding B, Converter={c:DoubleToStringConverter}}" />
+			<TextBox Text="{Binding B, Converter={c:DoubleToStringConverter}, UpdateSourceTrigger=PropertyChanged}" />
 		</controls:SimpleWaveBlockFormField>
 	</controls:SimpleWaveBlockForm>
 </UserControl>

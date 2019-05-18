@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Rain.Designer.Views.Waves.Blocks.Filters
 {
     /// <summary>
-    /// Interaction logic for LowPassWaveFilterBlockControl.xaml
+    /// Interaction logic for AveragingWaveFilterBlockControl.xaml
     /// </summary>
-    public partial class LowPassWaveFilterBlockControl : UserControl
+    public partial class AveragingWaveFilterBlockControl : UserControl
     {
-        public LowPassWaveFilterBlockControl()
+        public AveragingWaveFilterBlockControl()
         {
             InitializeComponent();
         }

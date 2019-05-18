@@ -8,7 +8,7 @@ using Rain.Wave.Filters;
 
 namespace Rain.Designer.ViewModels.Waves.Blocks.Filters
 {
-	internal class LowPassWaveFilterBlockViewModel : WaveBlockViewModel
+	internal class AveragingWaveFilterBlockViewModel : WaveBlockViewModel
 	{
 		private double _alpha = 1000;
 		public double Alpha
@@ -18,7 +18,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Filters
 				.Then(UpdateWaveFactory);
 		}
 
-		public LowPassWaveFilterBlockViewModel() : base(1, 1)
+		public AveragingWaveFilterBlockViewModel() : base(1, 1)
 		{
 			UpdateWaveFactory();
 		}
@@ -27,7 +27,7 @@ namespace Rain.Designer.ViewModels.Waves.Blocks.Filters
 		{
 			var alpha = Alpha;
 
-			WaveFactory = (IWave[] inputs) => new LowPassWaveFilter(alpha: alpha, baseWave: inputs.First());
+			WaveFactory = (IWave[] inputs) => new AveragingWaveFilter(alpha: alpha, baseWave: inputs.First());
 		}
 
 		public override dynamic Serialize()

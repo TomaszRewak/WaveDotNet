@@ -29,13 +29,12 @@ namespace Rain.Designer.Modules
 
 			serviceCollection.AddFactory<AmplitudeWaveFilterBlockViewModel>();
 			serviceCollection.AddFactory<PowerWaveFilterBlockViewModel>();
-			serviceCollection.AddFactory<LowPassWaveFilterBlockViewModel>();
+			serviceCollection.AddFactory<AveragingWaveFilterBlockViewModel>();
 
 			serviceCollection.AddFactory<LinearWaveGeneratorBlockViewModel>();
 			serviceCollection.AddFactory<SinWaveGeneratorBlockViewModel>();
 			serviceCollection.AddFactory<SquareWaveGeneratorBlockViewModel>();
 			serviceCollection.AddFactory<TriangleWaveGeneratorBlockViewModel>();
-			serviceCollection.AddFactory<WhiteNoiseWaveGeneratorBlockViewModel>();
 
 			serviceCollection.AddFactory<AmplitudeWaveTransformerBlockViewModel>();
 			serviceCollection.AddFactory<FrequencyWaveTransformerBlockViewModel>();

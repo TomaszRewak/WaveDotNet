@@ -25,13 +25,12 @@
 						<c:SwitchConverter>
 							<c:CaseConverter Case="{x:Type fvm:AmplitudeWaveFilterBlockViewModel}" Value="{x:Type fc:AmplitudeWaveFilterBlockControl}" />
 							<c:CaseConverter Case="{x:Type fvm:PowerWaveFilterBlockViewModel}" Value="{x:Type fc:PowerWaveFilterBlockControl}" />
-							<c:CaseConverter Case="{x:Type fvm:LowPassWaveFilterBlockViewModel}" Value="{x:Type fc:LowPassWaveFilterBlockControl}" />
+							<c:CaseConverter Case="{x:Type fvm:AveragingWaveFilterBlockViewModel}" Value="{x:Type fc:AveragingWaveFilterBlockControl}" />
 
 							<c:CaseConverter Case="{x:Type gvm:LinearWaveGeneratorBlockViewModel}" Value="{x:Type gc:LinearWaveGeneratorBlockControl}" />
 							<c:CaseConverter Case="{x:Type gvm:SinWaveGeneratorBlockViewModel}" Value="{x:Type gc:SinWaveGeneratorBlockControl}" />
 							<c:CaseConverter Case="{x:Type gvm:SquareWaveGeneratorBlockViewModel}" Value="{x:Type gc:SquareWaveGeneratorBlockControl}" />
 							<c:CaseConverter Case="{x:Type gvm:TriangleWaveGeneratorBlockViewModel}" Value="{x:Type gc:TriangleWaveGeneratorBlockControl}" />
-							<c:CaseConverter Case="{x:Type gvm:WhiteNoiseWaveGeneratorBlockViewModel}" Value="{x:Type gc:WhiteNoiseGeneratorBlockControl}" />
 
 							<c:CaseConverter Case="{x:Type tvm:AmplitudeWaveTransformerBlockViewModel}" Value="{x:Type tc:AmplitudeWaveTransformerBlockControl}" />
 							<c:CaseConverter Case="{x:Type tvm:FrequencyWaveTransformerBlockViewModel}" Value="{x:Type tc:FrequencyWaveTransformerBlockControl}" />

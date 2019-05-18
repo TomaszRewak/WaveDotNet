@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Rain.Wave.Filters
 {
-	public class LowPassWaveFilter : IWave
+	public class AveragingWaveFilter : IWave
 	{
 		private readonly IWave _baseWave;
 		private readonly double _alpha;
 
-		public LowPassWaveFilter(IWave baseWave, double alpha)
+		public AveragingWaveFilter(IWave baseWave, double alpha)
 		{
 			_baseWave = baseWave;
 			_alpha = alpha;

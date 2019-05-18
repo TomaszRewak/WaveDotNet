@@ -63,19 +63,27 @@
 					<Border Canvas.Left="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Canvas}}" Canvas.Top="0">
 						<Border
 							Margin="10,0,0,0"
-							Padding="5,2"
 							Background="{Binding Background, ElementName=Self}"
 							CornerRadius="0 5 5 0">
-							<TextBlock Foreground="White" Text="{Binding Result, Converter={converters:MaxSampleConverter}, StringFormat={}{0:+#,0.00;-#,0.00}}" />
+							<Border
+								Padding="5,2"
+								Background="#22000000"
+								CornerRadius="0 5 5 0">
+								<TextBlock Foreground="#bbffffff" Text="{Binding Result, Converter={converters:MaxSampleConverter}, StringFormat={}{0:+#,0.00;-#,0.00}}" />
+							</Border>
 						</Border>
 					</Border>
 					<Border Canvas.Left="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Canvas}}" Canvas.Bottom="0">
 						<Border
 							Margin="10,0,0,0"
-							Padding="5,2"
 							Background="{Binding Background, ElementName=Self}"
 							CornerRadius="0 5 5 0">
-							<TextBlock Foreground="White" Text="{Binding Result, Converter={converters:MinSampleConverter}, StringFormat={}{0:+#,0.00;-#,0.00}}" />
+							<Border
+								Padding="5,2"
+								Background="#22000000"
+								CornerRadius="0 5 5 0">
+								<TextBlock Foreground="#bbffffff" Text="{Binding Result, Converter={converters:MinSampleConverter}, StringFormat={}{0:+#,0.00;-#,0.00}}" />
+							</Border>
 						</Border>
 					</Border>
 					<Path

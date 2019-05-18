@@ -38,7 +38,10 @@
 				</DataTemplate>
 			</ComboBox.ItemTemplate>
 		</ComboBox>
-		<Border Margin="0,5,0,0" Background="{Binding WaveBlockFactory.Color, Converter={c:ColorToBrushConverter}, FallbackValue=Gray}">
+		<Border
+			Margin="0,5,0,0"
+			Background="{Binding WaveBlockFactory.Color, Converter={c:ColorToBrushConverter}, FallbackValue=Gray}"
+			SnapsToDevicePixels="True">
 			<StackPanel>
 				<waves:WaveBlockControl Margin="10,0,10,10" DataContext="{Binding WaveBlock}" />
 				<Border Background="#22000000">

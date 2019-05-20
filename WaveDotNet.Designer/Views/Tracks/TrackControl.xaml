@@ -2,6 +2,7 @@
 	x:Class="WaveDotNet.Designer.Views.Tracks.TrackControl"
 	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:converters="clr-namespace:WaveDotNet.Designer.Views.Converters"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:local="clr-namespace:WaveDotNet.Designer.Views.Tracks"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -11,24 +12,30 @@
 	<StackPanel Orientation="Horizontal">
 		<Button
 			Width="50"
-			Command="{Binding StopCommand}"
+			Command="{Binding PlayCommand}"
 			Content="▶"
+			IsEnabled="{Binding CanPlay}"
 			Style="{DynamicResource PanelButtonStyle}" />
 		<Button
 			Width="50"
-			Command="{Binding StopCommand}"
+			Command="{Binding PauseCommand}"
 			Content="❚❚"
+			IsEnabled="{Binding CanPause}"
 			Style="{DynamicResource PanelButtonStyle}" />
 		<Button
 			Width="50"
 			Command="{Binding StopCommand}"
 			Content="■"
 			Foreground="#ed4e4e"
-			Style="{DynamicResource PanelButtonStyle}" />
-		<TextBlock
-			Margin="10,0,0,0"
-			VerticalAlignment="Center"
-			Foreground="#d9dbdd"
-			Text="00:00:00:00" />
+			IsEnabled="{Binding CanStop}"
+			Style="{DynamicResource PanelButtonStyle}"
+			Visibility="{Binding CanStop, Converter={converters:BooleanToVisibilityConverter True=Visible, False=Collapsed}}" />
+		<Button
+			Width="50"
+			Command="{Binding StopCommand}"
+			Content="🆇"
+			Foreground="#ed4e4e"
+			Style="{DynamicResource PanelButtonStyle}"
+			Visibility="{Binding CanStop, Converter={converters:BooleanToVisibilityConverter True=Collapsed, False=Visible}}" />
 	</StackPanel>
 </UserControl>

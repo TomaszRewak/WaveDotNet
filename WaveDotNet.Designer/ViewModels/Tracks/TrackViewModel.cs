@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace WaveDotNet.Designer.ViewModels.Tracks
 {
-	internal class TrackViewModel
+	internal class TrackViewModel : ViewModel
 	{
 		private readonly WavePlayer _wavePlayer;
 
@@ -18,11 +18,56 @@ namespace WaveDotNet.Designer.ViewModels.Tracks
 			_wavePlayer = wavePlayer;
 		}
 
-		private void Stop()
+		private bool _canPlay;
+		public bool CanPlay
 		{
-			_wavePlayer.Stop();
+			get => _canPlay;
+			set => Set(ref _canPlay, value);
 		}
 
+		private bool _canPause = true;
+		public bool CanPause
+		{
+			get => _canPause;
+			set => Set(ref _canPause, value);
+		}
+
+		private bool _canStop = true;
+		public bool CanStop
+		{
+			get => _canStop;
+			set => Set(ref _canStop, value);
+		}
+		
+		public void Play()
+		{
+			_wavePlayer.Play();
+
+			CanPlay = false;
+			CanPause = true;
+			CanStop = true;
+		}
+
+		public void Pause()
+		{
+			_wavePlayer.Pause();
+
+			CanPlay = true;
+			CanPause = false;
+			CanStop = true;
+		}
+
+		public void Stop()
+		{
+			_wavePlayer.Stop();
+
+			CanPlay = true;
+			CanPause = false;
+			CanStop = false;
+		}
+
+		public ICommand PlayCommand => new Command(Play);
+		public ICommand PauseCommand => new Command(Pause);
 		public ICommand StopCommand => new Command(Stop);
 	}
 }

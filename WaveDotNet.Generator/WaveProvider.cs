@@ -9,17 +9,17 @@ namespace WaveDotNet.Generator
 {
 	internal class WaveProvider : IWaveProvider
 	{
-		private long _time;
+		private readonly WaveProviderState _state;
 
 		public WaveFormat WaveFormat { get; }
 		public IWave[] Channels { get; }
 
 		public WaveProvider(int sampleRate, params IWave[] channels)
 		{
+			_state = new WaveProviderState(sampleRate);
+
 			WaveFormat = WaveFormat.CreateIeeeFloatWaveFormat(sampleRate, channels.Length);
-			Channels = channels
-				.Select(wave => new FrequencyWaveTransformer(baseWave: wave, frequency: 1.0 / sampleRate))
-				.ToArray();
+			Channels = channels;
 		}
 
 		public int Read(byte[] buffer, int offset, int count)
@@ -35,11 +35,15 @@ namespace WaveDotNet.Generator
 		private Span<float> ReadSmaple(Span<float> buffer)
 		{
 			for (int i = 0; i < Channels.Length; i++)
-				buffer[i] = (float)Channels[i].Probe(_time);
+				buffer[i] = (float)(Channels[i].Probe(_state.Time) * _state.Volume);
 
-			_time++;
+			_state.Step();
 
 			return buffer.Slice(Channels.Length);
 		}
+
+		public void Play() => _state.Play();
+		public void Pause() => _state.Pause();
+		public void Stop() => _state.Stop();
 	}
 }

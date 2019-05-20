@@ -8,32 +8,38 @@ namespace WaveDotNet.Generator
 {
 	public class WavePlayer : IDisposable
 	{
-		private readonly IWavePlayer _player;
+		private readonly WaveProvider _waveProvider;
+		private readonly IWavePlayer _wavePlayer;
 
-		public WavePlayer(IWave wave, int sampleRate = 48000) :
-			this(new WaveProvider(sampleRate, new[] { wave }))
-		{ }
-
-		internal WavePlayer(IWaveProvider waveProvider)
+		public WavePlayer(IWave wave, int sampleRate = 48000)
 		{
-			_player = new WaveOutEvent();
-			_player.Init(waveProvider);
+			_waveProvider = new WaveProvider(sampleRate, new[] { wave });
+			_wavePlayer = new WaveOutEvent();
+
+			_wavePlayer.Init(_waveProvider);
 		}
 
 		public void Play()
 		{
-			_player.Play();
+			if (_wavePlayer.PlaybackState != PlaybackState.Playing)
+				_wavePlayer.Play();
+
+			_waveProvider.Play();
+		}
+
+		public void Pause()
+		{
+			_waveProvider.Pause();
 		}
 
 		public void Stop()
 		{
-			_player.Stop();
-			_player.Pause();
+			_waveProvider.Stop();
 		}
 
 		public void Dispose()
 		{
-			_player.Dispose();
+			_wavePlayer.Dispose();
 		}
 	}
 }

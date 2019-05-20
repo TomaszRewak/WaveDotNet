@@ -126,6 +126,7 @@
     <Compile Include="ViewModels\Tree\TreeViewModel.cs" />
     <Compile Include="ViewModels\Tree\NodeViewModel.cs" />
     <Compile Include="ViewModels\WaveDesigner\WaveDesignerViewModel.cs" />
+    <Compile Include="Views\Animations\SolidColorBrushAnimation.cs" />
     <Compile Include="Views\Common\DependencyObject.cs" />
     <Compile Include="Views\Common\MultiValueConverter.cs" />
     <Compile Include="Views\Common\UserControl.cs" />

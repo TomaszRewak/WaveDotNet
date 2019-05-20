@@ -19,7 +19,7 @@
 								<BeginStoryboard>
 									<Storyboard>
 										<ColorAnimation
-											Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+											Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
 											To="#22ffffff"
 											Duration="00:00:00.1" />
 									</Storyboard>
@@ -29,13 +29,35 @@
 								<BeginStoryboard>
 									<Storyboard>
 										<ColorAnimation
-											Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+											Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
 											To="#00ffffff"
 											Duration="00:00:00.1" />
 									</Storyboard>
 								</BeginStoryboard>
 							</EventTrigger>
 						</Border.Triggers>
+						<TextBlock
+							VerticalAlignment="Center"
+							Opacity="{Binding IsEnabled, RelativeSource={RelativeSource AncestorType=Button}, Converter={converters:BooleanToDoubleConverter True=1, False=0.3}}"
+							Text="{Binding Content, RelativeSource={RelativeSource AncestorType=Button}}"
+							TextAlignment="Center" />
+					</Border>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+	<Style x:Key="SimplePanelButtonStyle" TargetType="Button">
+		<Setter Property="Foreground" Value="#d9dbdd" />
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate>
+					<Border
+						Margin="2"
+						Padding="10,2"
+						Background="#00ffffff"
+						BorderThickness="1"
+						Opacity="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=Self}, Converter={converters:BooleanToDoubleConverter True=1, False=0.5}}"
+						SnapsToDevicePixels="True">
 						<TextBlock
 							VerticalAlignment="Center"
 							Opacity="{Binding IsEnabled, RelativeSource={RelativeSource AncestorType=Button}, Converter={converters:BooleanToDoubleConverter True=1, False=0.3}}"

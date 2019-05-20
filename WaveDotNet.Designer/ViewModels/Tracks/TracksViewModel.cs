@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace WaveDotNet.Designer.ViewModels.Tracks
 {
@@ -32,5 +33,14 @@ namespace WaveDotNet.Designer.ViewModels.Tracks
 				.Union(new[] { track })
 				.ToList();
 		}
-    }
+
+		public void RemoveTrack(TrackViewModel track)
+		{
+			this.Tracks = Tracks
+				.Except(new[] { track })
+				.ToList();
+		}
+
+		public ICommand RemoveTrackCommand => new Command<TrackViewModel>(RemoveTrack);
+	}
 }

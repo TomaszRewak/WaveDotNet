@@ -5,6 +5,7 @@
 	xmlns:converters="clr-namespace:WaveDotNet.Designer.Views.Converters"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:local="clr-namespace:WaveDotNet.Designer.Views.Tracks"
+	xmlns:markups="clr-namespace:WaveDotNet.Designer.Views.Markups"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	d:DesignHeight="450"
 	d:DesignWidth="800"
@@ -32,10 +33,11 @@
 			Visibility="{Binding CanStop, Converter={converters:BooleanToVisibilityConverter True=Visible, False=Collapsed}}" />
 		<Button
 			Width="50"
-			Command="{Binding StopCommand}"
+			Command="{markups:DataContextBinding RemoveTrackCommand, ControlType=local:TracksControl}"
+			CommandParameter="{Binding}"
 			Content="🆇"
 			Foreground="#ed4e4e"
-			Style="{DynamicResource PanelButtonStyle}"
+			Style="{DynamicResource SimplePanelButtonStyle}"
 			Visibility="{Binding CanStop, Converter={converters:BooleanToVisibilityConverter True=Collapsed, False=Visible}}" />
 	</StackPanel>
 </UserControl>

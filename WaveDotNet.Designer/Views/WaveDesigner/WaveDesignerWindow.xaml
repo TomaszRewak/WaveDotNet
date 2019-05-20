@@ -8,7 +8,7 @@
 	xmlns:tracks="clr-namespace:WaveDotNet.Designer.Views.Tracks"
 	xmlns:tree="clr-namespace:WaveDotNet.Designer.Views.Tree"
 	xmlns:vm="clr-namespace:WaveDotNet.Designer.ViewModels.WaveDesigner"
-	Title="WaveDotNet.NET"
+	Title="WaveDotNet"
 	Width="800"
 	Height="450"
 	d:DataContext="{d:DesignInstance vm:WaveDesignerViewModel}"

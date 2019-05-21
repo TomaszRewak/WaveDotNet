@@ -170,7 +170,6 @@
     <Compile Include="Views\Plots\Converters\MaxSampleConverter.cs" />
     <Compile Include="Views\Plots\Converters\MinSampleConverter.cs" />
     <Compile Include="Views\Plots\Converters\SamplesToPathConverter.cs" />
-    <Compile Include="Views\Plots\Converters\WaveFactoryToWaveConverter.cs" />
     <Compile Include="Views\Plots\Converters\WaveToSamplesConverter.cs" />
     <Compile Include="Views\Plots\PlotControl.xaml.cs">
       <DependentUpon>PlotControl.xaml</DependentUpon>

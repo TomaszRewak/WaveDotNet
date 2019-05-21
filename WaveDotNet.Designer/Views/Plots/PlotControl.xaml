@@ -14,7 +14,7 @@
 	<ContentControl>
 		<ContentControl.DataContext>
 			<MultiBinding Converter="{c:AsyncMultiValueConverter {converters:WaveToSamplesConverter Width=200}}">
-				<Binding Converter="{converters:WaveFactoryToWaveConverter}" Path="WaveFactory" />
+				<Binding Path="Wave" />
 				<Binding
 					Converter="{c:InvertedConverter {c:DoubleToStringConverter}}"
 					ElementName="From"

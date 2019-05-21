@@ -37,8 +37,8 @@ namespace WaveDotNet.Designer.ViewModels.Tree
 		{
 			switch (args.PropertyName)
 			{
-				case nameof(WaveFactory):
-					UpdateWaveFactory();
+				case nameof(Wave):
+					UpdateWave();
 					break;
 			}
 		}
@@ -48,7 +48,7 @@ namespace WaveDotNet.Designer.ViewModels.Tree
 			switch (args.PropertyName)
 			{
 				case nameof(WaveBlock.WaveFactory):
-					UpdateWaveFactory();
+					UpdateWave();
 					break;
 			}
 		}
@@ -59,7 +59,7 @@ namespace WaveDotNet.Designer.ViewModels.Tree
 			get => _inputs;
 			set => Set(ref _inputs, value)
 				.ObserveChildren(InputChanged)
-				.Then(UpdateWaveFactory);
+				.Then(UpdateWave);
 		}
 
 		public IReadOnlyCollection<WaveBlockFactory> AvailableWaveBlockFactories
@@ -80,15 +80,15 @@ namespace WaveDotNet.Designer.ViewModels.Tree
 		{
 			get => _waveBlock;
 			set => Set(ref _waveBlock, value)
-				.Then(UpdateWaveFactory)
+				.Then(UpdateWave)
 				.Observe(WaveBlockChanged);
 		}
 
-		private Func<IWave> _waveFactory;
-		public Func<IWave> WaveFactory
+		private IWave _wave;
+		public IWave Wave
 		{
-			get => _waveFactory;
-			set => Set(ref _waveFactory, value);
+			get => _wave;
+			set => Set(ref _wave, value);
 		}
 
 		private Position _position;
@@ -120,17 +120,17 @@ namespace WaveDotNet.Designer.ViewModels.Tree
 			WaveBlock = WaveBlockFactory.Create();
 		}
 
-		private void UpdateWaveFactory()
+		private void UpdateWave()
 		{
-			WaveFactory = _waveBuilderHelper.BuildWaveFactory(this);
+			Wave = _waveBuilderHelper.BuildWave(this);
 		}
 
 		private void Play()
 		{
-			if (WaveFactory == null)
+			if (Wave == null)
 				return;
 			
-			_wavePlayerHelper.PlayWave(WaveFactory());
+			_wavePlayerHelper.PlayWave(Wave);
 		}
 
 		public dynamic Serialize()

@@ -9,17 +9,17 @@ namespace WaveDotNet.Designer.ViewModels.Tree.Helpers
 {
     internal class WaveBuilderHelper
 	{
-		public Func<IWave> BuildWaveFactory(NodeViewModel tree)
+		public IWave BuildWave(NodeViewModel tree)
 		{
 			if (!CanBuildWave(tree))
 				return null;
 
-			var subWaveFactories = tree
+			var subWaves = tree
 				.Inputs
-				.Select(node => node.WaveFactory)
+				.Select(node => node.Wave)
 				.ToArray();
 
-			return () => tree.WaveBlock.WaveFactory(subWaveFactories.Select(factory => factory()).ToArray());
+			return tree.WaveBlock.WaveFactory(subWaves);
 		}
 
 		private bool CanBuildWave(NodeViewModel tree)
@@ -27,7 +27,7 @@ namespace WaveDotNet.Designer.ViewModels.Tree.Helpers
 			return
 				tree.WaveBlock != null &&
 				tree.WaveBlock.WaveFactory != null &&
-				tree.Inputs.All(subTree => subTree.WaveFactory != null) &&
+				tree.Inputs.All(subTree => subTree.Wave != null) &&
 				tree.WaveBlock.MinInputs <= tree.Inputs.Count &&
 				tree.WaveBlock.MaxInputs >= tree.Inputs.Count;
 		}

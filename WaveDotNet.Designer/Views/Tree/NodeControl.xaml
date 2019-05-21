@@ -103,7 +103,7 @@
 			FontSize="13"
 			Text="⯈">
 			<controls:NodePartControl.Background>
-				<Binding Path="WaveFactory">
+				<Binding Path="Wave">
 					<Binding.Converter>
 						<c:ChainConverter>
 							<c:ChainedConverter Converter="{c:NullableToBooleanConverter}" />

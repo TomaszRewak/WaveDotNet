@@ -8,7 +8,7 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:filters="clr-namespace:WaveDotNet.Designer.ViewModels.Waves.Blocks.Filters"
 	xmlns:generators="clr-namespace:WaveDotNet.Designer.ViewModels.Waves.Blocks.Generators"
-	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+	xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
 	xmlns:local="clr-namespace:WaveDotNet.Designer.Views.Tree"
 	xmlns:m="clr-namespace:WaveDotNet.Designer.Views.Markups"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"

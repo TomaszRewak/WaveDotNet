@@ -5,7 +5,7 @@
 	xmlns:c="clr-namespace:WaveDotNet.Designer.Views.Converters"
 	xmlns:controls="clr-namespace:WaveDotNet.Designer.Views.Tree.Controls"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-	xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+	xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
 	xmlns:local="clr-namespace:WaveDotNet.Designer.Views.Tree"
 	xmlns:m="clr-namespace:WaveDotNet.Designer.Views.Markups"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
